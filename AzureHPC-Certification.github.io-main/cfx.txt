@@ -1,0 +1,1501 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="shortcut icon" href="img/icon.ico">
+    <link rel="Stylesheet" href="css/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;0,300;0,400;1,400&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script type="text/javascript" src="js/script.js"></script>
+
+    <script src="https://kit.fontawesome.com/3d0a07deaa.js" crossorigin="anonymous"></script>
+
+    <title>Azure HPC | CFX Report</title>
+    
+  </head>
+  <body>
+    <div id="wrapper" class="row g-0">
+      
+      <header class="container-fluid">   
+        <div class="logo container">
+          <div class="title-text"><a href="index.html">Azure <span>HPC</span></a></div>
+         
+          <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo">
+          <span class="logoline-top1"></span> <span class="px-1 px-sm-2">
+             <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo">
+          </span>
+        
+        </div>
+      </header>
+
+    <main class="container-fluid">
+
+      <section class="container-lg px-3 px-lg-0 rpt-wrapper">        
+      <h3 class="text-center text-uppercase py-4"><!--The Report title goes here-->Azure HPC Recipe Document for Ansys CFX</h3>
+    <div class="d-flex flex-row rpt">
+
+      <div class="col-2 px-1 px-sm-0 text-left index">
+        <label class="px-3"><!--The Report Name goes here-->Ansys CFX</label>
+        <div class="index-scroll"> 
+          <!--Index content goes here-->  
+          <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc98518154"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Introduction</span></a></p>
+          <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc98518155"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Ansys CFX Performance on Azure Virtual Machine</span></a></p>
+
+          <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc98518165"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Azure Cost</span></a></p>
+          <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc98518166"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">4 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Summary</span></a></p>
+          <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc98518167"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">5 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Running Ansys CFX on Azure Virtual Machines:</span></a></p>
+          <br style="page-break-before: always; clear: both;" />
+          <!--Index content goes here-->  
+      </div>
+      </div><!--index-->
+
+      <div class="col-8 col-md-8 px-3 content">
+       
+        <!--Add <div class="overflow-table"> before every table tag within the content-->
+       
+        <!--The Report content goes here-->
+
+        <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">1</span> <a name="_Toc81323166"></a><a name="_Toc81330548"></a><a name="_Toc81389013"></a><a name="_Toc81405758"></a><a name="_Toc85794185"></a><a name="_Toc85794512"></a><a name="_Toc85798816"></a><a name="_Toc90049209"></a><a name="_Ref96541386"></a><a name="_Toc98518154"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Introduction</span></h1>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">Running a complex </span><span style="font-family: Calibri;">CFD</span><span style="font-family: Calibri;"> simulation </span><span style="font-family: Calibri;">requires </span><span style="font-family: Calibri;">significant </span><span style="font-family: Calibri;">amount of time a</span><span style="font-family: Calibri;">nd the latest hardware with </span><span style="font-family: Calibri;">faster compute</span><span style="font-family: Calibri;"> (CPU</span><span style="font-family: Calibri;"> and GPU) </span><span style="font-family: Calibri;">capabilities</span><span style="font-family: Calibri;">. Microsoft Azure </span><span style="font-family: Calibri;">provide</span><span style="font-family: Calibri;">s</span> <span style="font-family: Calibri;">al</span><span style="font-family: Calibri;">l</span><span style="font-family: Calibri;"> the necessary infrastructure</span> <span style="font-family: Calibri;">required to run these </span><span style="font-family: Calibri;">high</span><span style="font-family: Calibri;">-</span><span style="font-family: Calibri;">end work loads and jobs. </span><span style="font-family: Calibri;">The Microsoft Azure Virtual Machines are equipped with latest </span><span style="font-family: Calibri;">CPUs and GPUs</span><span style="font-family: Calibri;"> in the market</span><span style="font-family: Calibri;">. One such Azure Virtual Machine Configuration i</span><span style="font-family: Calibri;">s</span> <a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/hbv3-series"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">HB120rs_v3</span></a> <span style="font-family: Calibri;">V</span><span style="font-family: Calibri;">irtual Machine</span><span style="font-family: Calibri;">.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">The </span><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/hbv3-series"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">HBv3</span></a><span style="font-family: Calibri;"> virtual machine is a new flagship addition to the Azure </span><span style="font-family: Calibri;">CPU</span><span style="font-family: Calibri;"> family. (</span><span style="font-family: Calibri;">Standard_HB120rs_v3</span> <span style="font-family: Calibri;">Virtual Machine). </span><span style="font-family: Calibri;">HBv3</span><span style="font-family: Calibri;"> VMs feature up to 120 AMD EPYC</span><span style="font-family: Calibri;"> 7003-series (Milan) CPU cores, 448 GB of RAM</span><span style="font-family: Calibri;">.</span></p>
+        <div class="overflow-table"><table style="width: 103.88%; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr style="height: 20.85pt;">
+        <td style="width: 22.18%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle; background-color: #a6a6a6;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; line-height: 107%; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">Size</span></p>
+        </td>
+        <td style="width: 4.46%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle; background-color: #a6a6a6;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; line-height: 107%; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">vCPU</span></p>
+        </td>
+        <td style="width: 8.06%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle; background-color: #a6a6a6;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; line-height: 107%; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">Memory: GiB</span></p>
+        </td>
+        <td style="width: 11.68%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle; background-color: #a6a6a6;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; line-height: 107%; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">Memory bandwidth GB/s</span></p>
+        </td>
+        <td style="width: 13.18%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle; background-color: #a6a6a6;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; line-height: 107%; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">Base CPU frequency (GHz)</span></p>
+        </td>
+        <td style="width: 8.48%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle; background-color: #a6a6a6;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; line-height: 107%; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">All-cores frequency (GHz, peak)</span></p>
+        </td>
+        <td style="width: 9.26%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle; background-color: #a6a6a6;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; line-height: 107%; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">Single-core frequency (GHz, peak)</span></p>
+        </td>
+        <td style="width: 11.68%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle; background-color: #a6a6a6;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; line-height: 107%; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">RDMA performance (Gb/s)</span></p>
+        </td>
+        <td style="width: 11.02%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle; background-color: #a6a6a6;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; line-height: 107%; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">Max data disks</span></p>
+        </td>
+        </tr>
+        <tr style="height: 16.55pt;">
+        <td style="width: 22.18%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">Standard_HB120rs_v3</span></p>
+        </td>
+        <td style="width: 4.46%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">120</span></p>
+        </td>
+        <td style="width: 8.06%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">448</span></p>
+        </td>
+        <td style="width: 11.68%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">350</span></p>
+        </td>
+        <td style="width: 13.18%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">2.45</span></p>
+        </td>
+        <td style="width: 8.48%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">3.1</span></p>
+        </td>
+        <td style="width: 9.26%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">3.675</span></p>
+        </td>
+        <td style="width: 11.68%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">200</span></p>
+        </td>
+        <td style="width: 11.02%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">32</span></p>
+        </td>
+        </tr>
+        <tr style="height: 16.55pt;">
+        <td style="width: 22.18%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10.5pt;"><span style="font-family: 'Segoe UI'; color: #171717; background-color: #ffffff;">Standard_HB120-96rs_v3</span></p>
+        </td>
+        <td style="width: 4.46%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">96</span></p>
+        </td>
+        <td style="width: 8.06%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">448</span></p>
+        </td>
+        <td style="width: 11.68%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">350</span></p>
+        </td>
+        <td style="width: 13.18%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">2.45</span></p>
+        </td>
+        <td style="width: 8.48%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">3.1</span></p>
+        </td>
+        <td style="width: 9.26%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">3.675</span></p>
+        </td>
+        <td style="width: 11.68%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">200</span></p>
+        </td>
+        <td style="width: 11.02%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">32</span></p>
+        </td>
+        </tr>
+        <tr style="height: 16.55pt;">
+        <td style="width: 22.18%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10.5pt;"><span style="font-family: 'Segoe UI'; color: #171717; background-color: #ffffff;">Standard_HB120-64rs_v3</span></p>
+        </td>
+        <td style="width: 4.46%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">64</span></p>
+        </td>
+        <td style="width: 8.06%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">448</span></p>
+        </td>
+        <td style="width: 11.68%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">350</span></p>
+        </td>
+        <td style="width: 13.18%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">2.45</span></p>
+        </td>
+        <td style="width: 8.48%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">3.1</span></p>
+        </td>
+        <td style="width: 9.26%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">3.675</span></p>
+        </td>
+        <td style="width: 11.68%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">200</span></p>
+        </td>
+        <td style="width: 11.02%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">32</span></p>
+        </td>
+        </tr>
+        <tr style="height: 16.55pt;">
+        <td style="width: 22.18%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10.5pt;"><span style="font-family: 'Segoe UI'; color: #171717; background-color: #ffffff;">Standard_HB120-32rs_v3</span></p>
+        </td>
+        <td style="width: 4.46%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">32</span></p>
+        </td>
+        <td style="width: 8.06%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">448</span></p>
+        </td>
+        <td style="width: 11.68%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">350</span></p>
+        </td>
+        <td style="width: 13.18%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">2.45</span></p>
+        </td>
+        <td style="width: 8.48%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">3.1</span></p>
+        </td>
+        <td style="width: 9.26%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">3.675</span></p>
+        </td>
+        <td style="width: 11.68%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">200</span></p>
+        </td>
+        <td style="width: 11.02%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">32</span></p>
+        </td>
+        </tr>
+        <tr style="height: 16.55pt;">
+        <td style="width: 22.18%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10.5pt;"><span style="font-family: 'Segoe UI'; color: #171717; background-color: #ffffff;">Standard_HB120-16rs_v3</span></p>
+        </td>
+        <td style="width: 4.46%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">16</span></p>
+        </td>
+        <td style="width: 8.06%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">448</span></p>
+        </td>
+        <td style="width: 11.68%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">350</span></p>
+        </td>
+        <td style="width: 13.18%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">2.45</span></p>
+        </td>
+        <td style="width: 8.48%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">3.1</span></p>
+        </td>
+        <td style="width: 9.26%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">3.675</span></p>
+        </td>
+        <td style="width: 11.68%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">200</span></p>
+        </td>
+        <td style="width: 11.02%; border-style: solid; border-width: 0.75pt; padding-top: 0.12pt; padding-right: 0.12pt; padding-left: 0.12pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; color: #171717;">32</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">Ansys </span><span style="font-family: Calibri;">CFX</span> <span style="font-family: Calibri;">2021 R2 </span><span style="font-family: Calibri;">is </span><span style="font-family: Calibri;">tested on </span><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/hbv3-series"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">HB120rs_v3</span></a><span style="font-family: Calibri;"> VM and the performance </span><span style="font-family: Calibri;">results are</span><span style="font-family: Calibri;"> analy</span><span style="font-family: Calibri;">zed</span><span style="font-family: Calibri;">. The subsequent section will show the performance of Ansys </span><span style="font-family: Calibri;">CFX</span> <span style="font-family: Calibri;">on Azure </span><span style="font-family: Calibri;">HBv3</span><span style="font-family: Calibri;"> Virtual Machine</span></p>
+        <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2</span> <a name="_Toc81399917"></a><a name="_Toc81405768"></a><a name="_Toc85794196"></a><a name="_Toc85794523"></a><a name="_Toc85798827"></a><a name="_Toc90049210"></a><a name="_Toc98518155"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Ansys </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">CFX </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Performance </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">on </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">A</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">zure </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">V</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">irtual </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">M</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">achine</span></h1>
+        <h2 style="margin-top: 2pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2.1</span> <a name="_Toc85794197"></a><a name="_Toc85794524"></a><a name="_Toc85798828"></a><a name="_Toc90049211"></a><a name="_Toc98518156"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Ansys</span> <span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">CFX</span> <span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Overview</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">Ansys CFX is the industry leading CFD software for turbomachinery applications. Shorten development time with streamlined workflows, advanced physics mode</span><span style="font-family: Calibri;">l</span><span style="font-family: Calibri;">ling capabilities and accurate results</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">Known for its extreme robustness, CFX is the gold standard CFD software when it comes to turbomachinery applications. Both solver and models are wrapped in a modern, intuitive, and flexible GUI, with extensive capabilities for customization and automation using session files, </span><span style="font-family: Calibri;">scripting,</span><span style="font-family: Calibri;"> and a powerful expression language. Highly scalable high-performance computing will help speed up simulations including pumps, fans, </span><span style="font-family: Calibri;">compressors,</span><span style="font-family: Calibri;"> and turbines.</span></p>
+        <div class="overflow-table"><table style="border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr>
+        <td style="width: 244.05pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Product Highlights</span></p>
+        </td>
+        <td style="width: 244.05pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Turbomachinery </span><span style="font-family: Calibri; font-weight: bold;">Capabilities</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 244.05pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+        <li style="margin-left: 28.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; text-align: justify; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Laminar to turbulent simulations</span></li>
+        <li style="margin-left: 28.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; text-align: justify; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Incompressible to fully compressible</span></li>
+        <li style="margin-left: 28.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; text-align: justify; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Subsonic to trans- and supersonic simulations</span></li>
+        <li style="margin-left: 28.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; text-align: justify; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Isothermal or with heat transfer by </span><span style="font-family: Calibri;">convection and/or radiation</span></li>
+        <li style="margin-left: 28.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; text-align: justify; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Non-reacting to combusting</span></li>
+        <li style="margin-left: 28.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; text-align: justify; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Stationary and/or rotating devices</span></li>
+        <li style="margin-left: 28.06pt; margin-bottom: 8pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; text-align: justify; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Single fluids and mixtures of fluids in one or more phases (incl. free surfaces)</span></li>
+        </ul>
+        </td>
+        <td style="width: 244.05pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+        <li style="margin-left: 28.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; text-align: justify; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Streamlined Turbo Setup and Post</span></li>
+        <li style="margin-left: 28.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; text-align: justify; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Rotor-stator Interaction Models</span></li>
+        <li style="margin-left: 28.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; text-align: justify; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Transient Blade Row Methods</span></li>
+        <li style="margin-left: 28.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; text-align: justify; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Blade Film Cooling</span></li>
+        <li style="margin-left: 28.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; text-align: justify; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Advanced Steam and Real-gas Models</span></li>
+        <li style="margin-left: 28.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; text-align: justify; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Industry Leading Turbulence Model</span><span style="font-family: Calibri;">l</span><span style="font-family: Calibri;">ing</span></li>
+        <li style="margin-left: 28.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; text-align: justify; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Multi-stage CFD Mode</span><span style="font-family: Calibri;">l</span><span style="font-family: Calibri;">ling</span></li>
+        <li style="margin-left: 28.06pt; margin-bottom: 8pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; text-align: justify; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">HPC Scalability</span></li>
+        </ul>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <h2 style="margin-top: 2pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2.2</span> <a name="_Toc81498994"></a><a name="_Toc85794198"></a><a name="_Toc85794525"></a><a name="_Toc85798829"></a><a name="_Toc90049212"></a><a name="_Toc98518157"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Model De</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">tails</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; font-size: 11pt;"><span style="font-family: Calibri;">Many factors can influence HPC scalability, including the mesh size, elements type, mesh topology, physical models, etc. All of these vary widely from case to case. Therefore, for HPC benchmark results that are most meaningful and applicable to an individual use of the software, it is best to use </span><span style="font-family: Calibri;">the</span><span style="font-family: Calibri;"> standard HPC benchmark cases </span><span style="font-family: Calibri;">which </span><span style="font-family: Calibri;">are available from the ANSYS Customer Portal</span><span style="font-family: Calibri;">. User can </span><span style="font-family: Calibri;">request for Ansys CFX models by contacting</span><span style="font-family: Calibri;"> Ansys</span><span style="font-family: Calibri;">.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">T</span><span style="font-family: Calibri;">he benchmark models</span> <span style="font-family: Calibri;">used </span><span style="font-family: Calibri;">are shown below,</span></p>
+        
+        <h3 style="margin-top: 2pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -36pt; page-break-inside: avoid; page-break-after: avoid; font-size: 12pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">2.2.1</span> <a name="_Toc98518158"></a><img style="margin-right: 9pt; margin-left: 9pt; -aw-left-pos: 332.9pt; -aw-rel-hpos: page; -aw-rel-vpos: paragraph; -aw-top-pos: 12.45pt; -aw-wrap-type: square; float: right;" src="cfx_files/a9fct-ju8lo.005.png" alt="" width="331" height="146" /><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">Pump</span></h3>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Wingdings !important;"></span> <span style="font-family: Calibri;">Case Details:</span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">a)</span> <span style="font-family: Calibri;">Automotive pump with rotating and stationary components</span></p>
+        <ul style="margin: 0pt; padding-left: 0pt;" type="circle">
+        <li style="margin-left: 47.6pt; padding-left: 6.4pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Courier New'; -aw-font-weight: normal; -aw-number-format: 'o';"><span style="font-family: Calibri;">Turbulent k-e, incompressible, isothermal, multiple frames of reference.</span></li>
+        <li style="margin-left: 47.6pt; padding-left: 6.4pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Courier New'; -aw-font-weight: normal; -aw-number-format: 'o';"><span style="font-family: Calibri;">Advection- scheme: specified blend factor 0.75</span></li>
+        </ul>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">b)</span> <span style="font-family: Calibri;">Global mesh size: 1,305,718 Nodes, 5362055 Elements</span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; font-size: 11pt;"><img style="margin-right: 9pt; margin-left: 9pt; -aw-left-pos: 281.65pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 40.65pt; -aw-wrap-type: square; float: right;" src="cfx_files/a9fct-ju8lo.006.png" alt="" width="334" height="186" /><span style="font-family: Calibri;">Tetrahedra-4,</span> <span style="font-family: Calibri;">509,</span> <span style="font-family: Calibri;">881, Prisms-850</span><span style="font-family: Calibri;">, </span><span style="font-family: Calibri;">617, Pyramids-1557</span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Wingdings !important;"></span> <span style="font-family: Calibri;">Benchmark information:</span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">c)</span> <span style="font-family: Calibri;">Suitable for up to ~16 cores</span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">d)</span> <span style="font-family: Calibri;"> Currently set to 10 iterations</span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">e)</span> <span style="font-family: Calibri;"> Partitioning memory requirement ~450 MB</span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">f)</span> <span style="font-family: Calibri;"> Partitioning time &lt;20 sec on Intel i7</span><span style="font-family: Calibri;">&shy;</span><span style="font-family: Calibri;">2820qm (Sandy Bridge)</span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">g)</span> <span style="font-family: Calibri;"> Solver memory requirement (total) ~3 GB</span></p>
+        <h3 style="margin-top: 2pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -36pt; page-break-inside: avoid; page-break-after: avoid; font-size: 12pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">2.2.2</span> <a name="_Toc98518159"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">10M Airfoil</span></h3>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Wingdings !important;"></span> <img style="margin-right: 9pt; margin-left: 9pt; -aw-left-pos: 436.45pt; -aw-rel-hpos: page; -aw-rel-vpos: paragraph; -aw-top-pos: 2.65pt; -aw-wrap-type: square; float: right;" src="cfx_files/a9fct-ju8lo.007.png" alt="" width="178" height="176" /><span style="font-family: Calibri;">Case Details:</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 18pt; font-size: 11pt;"><span style="font-family: Calibri;">a)</span> <span style="font-family: Calibri;">Transonic flow around an </span><span style="font-family: Calibri;">Airfoil.</span><span style="font-family: Calibri;"> Flow is 2D </span><span style="font-family: Calibri;">&shy;</span><span style="font-family: Calibri;"> the mesh is extruded to give a 3D </span> <span style="font-family: Calibri;">meshes of various sizes</span></p>
+        <ul style="margin: 0pt; padding-left: 0pt;" type="circle">
+        <li style="margin-left: 47.6pt; padding-left: 6.4pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Courier New'; -aw-font-weight: normal; -aw-number-format: 'o';"><span style="font-family: Calibri;">Turbulent SST, ideal gas, heat transfer </span></li>
+        <li style="margin-left: 47.6pt; padding-left: 6.4pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Courier New'; -aw-font-weight: normal; -aw-number-format: 'o';"><span style="font-family: Calibri;">Default advection scheme (high resolution) </span></li>
+        </ul>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;"> b) </span><span style="font-family: Calibri;">Global mesh size: </span><span style="font-family: Calibri;">9,933,000 nodes, 9,434,520 elements (all hexahedra)</span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Wingdings !important;"></span> <img style="margin-right: 9pt; margin-left: 9pt; -aw-left-pos: 346.45pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 34.1pt; -aw-wrap-type: square; float: right;" src="cfx_files/a9fct-ju8lo.008.jpeg" alt="" width="244" height="123" /><img style="margin-right: 9pt; margin-left: 9pt; -aw-left-pos: 227.95pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 34.35pt; -aw-wrap-type: square; float: right;" src="cfx_files/a9fct-ju8lo.009.jpeg" alt="" width="146" height="130" /><span style="font-family: Calibri;">Benchmark information:</span></p>
+        <p style="margin-top: 0pt; margin-left: 31.5pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">a)</span> <span style="font-family: Calibri;">Suitable for up to ~50 partitions </span></p>
+        <p style="margin-top: 0pt; margin-left: 31.5pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="height: 0pt; display: block; position: absolute; z-index: 9;"><img style="margin-top: -48.84pt; margin-left: 270.58pt; -aw-left-pos: 302.45pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 5.1pt; -aw-wrap-type: none;" src="cfx_files/a9fct-ju8lo.010.png" alt="" width="125" height="8" /></span><span style="font-family: Calibri;">b)</span> <span style="font-family: Calibri;">Currently set to 5 iterations </span></p>
+        <p style="margin-top: 0pt; margin-left: 31.5pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">c)</span> <span style="font-family: Calibri;">Partitioning memory requirement 1.7 GB </span></p>
+        <p style="margin-top: 0pt; margin-left: 31.5pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">d)</span> <span style="font-family: Calibri;">Partitioning time &lt;1 min on Intel 5670</span></p>
+        <p style="margin-top: 0pt; margin-left: 31.5pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">e)</span> <span style="font-family: Calibri;">Solver memory requirement (total) 13 GB</span></p>
+        <h3 style="margin-top: 2pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -36pt; page-break-inside: avoid; page-break-after: avoid; font-size: 12pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">2.2.3</span> <a name="_Toc98518160"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">50M Airfoil</span></h3>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Wingdings !important;"></span> <span style="font-family: Calibri;">Case Details:</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 18pt; font-size: 11pt;"><span style="font-family: Calibri;">a)</span> <span style="font-family: Calibri;">Transonic flow around an </span><span style="font-family: Calibri;">Airfoil. </span><span style="font-family: Calibri;">Flow is 2D </span><span style="font-family: Calibri;">&shy;</span><span style="font-family: Calibri;"> the mesh is extruded to give a 3D meshes of various sizes</span></p>
+        <ul style="margin: 0pt; padding-left: 0pt;" type="circle">
+        <li style="margin-left: 47.6pt; padding-left: 6.4pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Courier New'; -aw-font-weight: normal; -aw-number-format: 'o';"><span style="font-family: Calibri;">Turbulent SST, ideal gas, heat transfer </span></li>
+        <li style="margin-left: 47.6pt; padding-left: 6.4pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Courier New'; -aw-font-weight: normal; -aw-number-format: 'o';"><span style="font-family: Calibri;">Default advection scheme (high resolution) </span></li>
+        </ul>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;"> b) </span><span style="font-family: Calibri;">Global mesh size: </span><span style="font-family: Calibri;">47,773,000 nodes, 47,172,600 elements (all hexahedra)</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 18pt; font-size: 11pt;"><img style="margin-right: 9pt; margin-left: 9pt; -aw-left-pos: 383.95pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 10.95pt; -aw-wrap-type: square; float: right;" src="cfx_files/a9fct-ju8lo.011.png" alt="" width="183" height="185" /></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Wingdings !important;"></span> <span style="font-family: Calibri;">Benchmark information:</span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">a)</span> <span style="font-family: Calibri;">Suitable for up &gt;100 partitions</span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">b)</span> <span style="font-family: Calibri;">Currently set to 5 iterations </span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">c)</span> <span style="font-family: Calibri;">Need to use Large Problem Partitioner</span><span style="font-family: Calibri;">: S</span><span style="font-family: Calibri;">elect in solver manager, or from command</span><span style="font-family: Calibri;">&shy;</span><span style="font-family: Calibri;"> line use &ldquo;</span><span style="font-family: Calibri;">&shy;</span><span style="font-family: Calibri;">part</span><span style="font-family: Calibri;">&shy;</span> <span style="font-family: Calibri;">large&rdquo;</span> <span style="font-family: Calibri;">argument</span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">d)</span> <span style="font-family: Calibri;">Partitioning memory requirement ~13 GB </span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">e)</span> <span style="font-family: Calibri;">Partitioning time ~5 min on Intel 5670 </span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">f)</span> <span style="font-family: Calibri;">Solver memory requirement (total) ~65 GB</span></p>
+        <h3 style="margin-top: 2pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -36pt; page-break-inside: avoid; page-break-after: avoid; font-size: 12pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">2.2.4</span> <a name="_Toc98518161"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">100M Airfoil</span></h3>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Wingdings !important;"></span> <span style="font-family: Calibri;">Case Details:</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 18pt; font-size: 11pt;"><span style="font-family: Calibri;">a)</span> <span style="font-family: Calibri;">Transonic flow around an </span><span style="font-family: Calibri;">Airfoil.</span><span style="font-family: Calibri;"> Flow is 2D </span><span style="font-family: Calibri;">&shy;</span><span style="font-family: Calibri;"> the mesh is extruded to give a 3D meshes of various sizes</span></p>
+        <ul style="margin: 0pt; padding-left: 0pt;" type="circle">
+        <li style="margin-left: 47.6pt; padding-left: 6.4pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Courier New'; -aw-font-weight: normal; -aw-number-format: 'o';"><span style="font-family: Calibri;">Turbulent SST, ideal gas, heat transfer </span></li>
+        <li style="margin-left: 47.6pt; padding-left: 6.4pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Courier New'; -aw-font-weight: normal; -aw-number-format: 'o';"><span style="font-family: Calibri;">Default advection scheme (high resolution) </span></li>
+        </ul>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;"> b) </span><span style="font-family: Calibri;">Global mesh size: </span><span style="font-family: Calibri;">104,533,000 nodes, 103,779,720 elements (all hexahedra)</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 18pt; font-size: 11pt;"><img style="margin-right: 9pt; margin-left: 9pt; -aw-left-pos: 393.45pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 14.1pt; -aw-wrap-type: square; float: right;" src="cfx_files/a9fct-ju8lo.012.png" alt="" width="184" height="186" /></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Wingdings !important;"></span> <span style="font-family: Calibri;">Benchmark information:</span></p>
+        <p style="margin-top: 0pt; margin-left: 31.5pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">a)</span> <span style="font-family: Calibri;">Suitable for 100s </span><span style="font-family: Calibri;">&shy;</span><span style="font-family: Calibri;"> 1000s of partitions </span></p>
+        <p style="margin-top: 0pt; margin-left: 31.5pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">b)</span> <span style="font-family: Calibri;">Currently set to 5 iterations </span></p>
+        <p style="margin-top: 0pt; margin-left: 31.5pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">c)</span> <span style="font-family: Calibri;">Need to use Large Problem Partitioner</span><span style="font-family: Calibri;">: S</span><span style="font-family: Calibri;">elect in solver manager, or from command </span><span style="font-family: Calibri;">&shy;</span><span style="font-family: Calibri;">line use &ldquo;</span><span style="font-family: Calibri;">&shy;</span><span style="font-family: Calibri;">part</span> <span style="font-family: Calibri;">&shy;</span><span style="font-family: Calibri;">large&rdquo; argument</span></p>
+        <p style="margin-top: 0pt; margin-left: 31.5pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">d)</span> <span style="font-family: Calibri;">Partitioning memory requirement ~28 GB </span></p>
+        <p style="margin-top: 0pt; margin-left: 31.5pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">e)</span> <span style="font-family: Calibri;">Partitioning time ~15 min on Intel 5670 </span></p>
+        <p style="margin-top: 0pt; margin-left: 31.5pt; margin-bottom: 0pt; text-indent: -18pt; font-size: 11pt;"><span style="font-family: Calibri;">f)</span> <span style="font-family: Calibri;">Solver memory requirement (total) ~140 GB</span></p>
+        <h2 style="margin-top: 2pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2.3</span> <a name="_Toc81323180"></a><a name="_Toc81330562"></a><a name="_Toc81390114"></a><a name="_Toc81411727"></a><a name="_Toc81413124"></a><a name="_Toc81420235"></a><a name="_Toc81498995"></a><a name="_Toc85794199"></a><a name="_Toc85794526"></a><a name="_Toc85798830"></a><a name="_Toc90308819"></a><a name="_Toc98518162"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">A</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">nsys CFX</span> <span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2021 R2 Performance </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">on Azure Platform</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; font-size: 11pt;"><span style="font-family: Calibri;">When it comes to performance parameters, wall clock time (time taken to complete the simulation) is one parameter, which needs to be analysed. To carry out these fluid flow related simulations on Ansys CFX software, right hardware is required. </span><span style="font-family: Calibri; font-weight: bold; color: #2f5496;">Microsoft</span> <span style="font-family: Calibri;">partnered with</span> <span style="font-family: Calibri; font-weight: bold; color: #2f5496;">AMD</span><span style="font-family: Calibri;"> provides the required and suitable Infrastructure and hardware on Azure cloud platform. Microsoft Azure provides the latest and fastest compute capabilities for CPU intensive workloads.</span></p>
+        <div style="text-align: center;">
+        <div class="overflow-table"><table style="width: 484.75pt; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr style="height: 22.5pt;">
+        <td style="width: 473.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;" colspan="2">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">System</span><span style="font-family: Calibri; font-weight: bold;">/Software</span><span style="font-family: Calibri; font-weight: bold;"> Details</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 203.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">Operating system version</span></p>
+        </td>
+        <td style="width: 259.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">CentOS Linux release 8.1.1911 (Core)</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 203.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">OS Architecture</span></p>
+        </td>
+        <td style="width: 259.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">Linux </span><span style="font-family: Calibri;">X86-64</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 203.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">MPI </span></p>
+        </td>
+        <td style="width: 259.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">Intel MPI</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        </div>
+        <h2 style="margin-top: 2pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -27pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2.4</span> <a name="_Toc90308820"></a><a name="_Toc98518163"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Ansys CFX 2021 </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">R2 Performance Results</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;"> on Single Node</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">CFD</span><span style="font-family: Calibri;"> analys</span><span style="font-family: Calibri;">is</span><span style="font-family: Calibri;"> is carried out to see the performance of Azure </span><span style="font-family: Calibri;">HBv3 Series </span><span style="font-family: Calibri;">V</span><span style="font-family: Calibri;">irtual Machines</span><span style="font-family: Calibri;"> and </span><span style="font-family: Calibri;">based on the single node results, the optimal </span><span style="font-family: Calibri;">VM </span><span style="font-family: Calibri;">configuration </span><span style="font-family: Calibri;">for </span><span style="font-family: Calibri;">Ansys </span><span style="font-family: Calibri;">CFX</span><span style="font-family: Calibri;"> Solver is determined</span><span style="font-family: Calibri;">.</span><span style="font-family: Calibri;"> Refer chapter </span><a style="text-decoration: none; -aw-ignore: true;" href="#_Ref96541386"><span style="font-family: Calibri; color: #000000;">1</span></a><span style="font-family: Calibri;"> for the VM specifications</span><span style="font-family: Calibri;"> (HBv3 Series</span> <span style="font-family: Calibri;">with 16,32,64,96 and 120 CPUs)</span><span style="font-family: Calibri;">. </span><span style="font-family: Calibri;">Performance tests </span><span style="font-family: Calibri;">were </span><span style="font-family: Calibri;">performed on</span><span style="font-family: Calibri;"> the mentioned specifications correspondingly</span><span style="font-family: Calibri;"> with</span><span style="font-family: Calibri;"> the provided models, and the elapsed run time and speed up have been determined and presented below.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">The results are presented below for standard HPC benchmark cases as mentioned below</span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+        <li style="margin-left: 13.35pt; margin-bottom: 8pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Pump: Assembly of stator and rotor</li>
+        </ol>
+        <div style="text-align: center;">
+        <div class="overflow-table"><table style="width: 394.55pt; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr style="height: 13.9pt;">
+        <td style="width: 66pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 1pt; padding: 0.25pt 5.03pt 0.75pt 4.9pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Job Name</span></p>
+        </td>
+        <td style="width: 38.85pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">I</span><span style="font-family: Calibri;">teration</span><span style="font-family: Calibri;">s</span></p>
+        </td>
+        <td style="width: 44.45pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Cores</span></p>
+        </td>
+        <td style="width: 139.05pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">CFD solver walk clock Time (s)</span></p>
+        </td>
+        <td style="width: 51.2pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 1pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 4.9pt 0.75pt 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Speed Up</span></p>
+        </td>
+        </tr>
+        <tr style="height: 8.7pt;">
+        <td style="width: 66pt; border-style: solid; border-width: 0.75pt 0.75pt 0.75pt 1pt; padding: 0.38pt 5.03pt 0.38pt 4.9pt; vertical-align: middle;" rowspan="5">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;"> PUMP</span> <span style="font-family: Calibri;">perf_Pump_R16 </span></p>
+        </td>
+        <td style="width: 38.85pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: middle;" rowspan="5">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold; color: #0070c0;">10</span></p>
+        </td>
+        <td style="width: 44.45pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">16</span></p>
+        </td>
+        <td style="width: 139.05pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">32.59</span></p>
+        </td>
+        <td style="width: 51.2pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.00</span></p>
+        </td>
+        </tr>
+        <tr style="height: 8.7pt;">
+        <td style="width: 44.45pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">32</span></p>
+        </td>
+        <td style="width: 139.05pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">20.48</span></p>
+        </td>
+        <td style="width: 51.2pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.59</span></p>
+        </td>
+        </tr>
+        <tr style="height: 8.7pt;">
+        <td style="width: 44.45pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">64</span></p>
+        </td>
+        <td style="width: 139.05pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">16.19</span></p>
+        </td>
+        <td style="width: 51.2pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2.01</span></p>
+        </td>
+        </tr>
+        <tr style="height: 8.7pt;">
+        <td style="width: 44.45pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">96</span></p>
+        </td>
+        <td style="width: 139.05pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">16.85</span></p>
+        </td>
+        <td style="width: 51.2pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.93</span></p>
+        </td>
+        </tr>
+        <tr style="height: 8.7pt;">
+        <td style="width: 44.45pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">120</span></p>
+        </td>
+        <td style="width: 139.05pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">18.00</span></p>
+        </td>
+        <td style="width: 51.2pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.81</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        </div>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="cfx_files/a9fct-ju8lo.013.png" alt="" width="382" height="248" /></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="2" type="1">
+        <li style="margin-left: 13.35pt; margin-bottom: 8pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Airfoil with 10M mesh size</li>
+        </ol>
+        <div style="text-align: center;">
+        <div class="overflow-table"><table style="width: 434.4pt; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr style="height: 15.7pt;">
+        <td style="width: 99.5pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 1pt; padding: 0.25pt 5.03pt 0.75pt 4.9pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Job Name</span></p>
+        </td>
+        <td style="width: 38.85pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Iteration</span><span style="font-family: Calibri;">s</span></p>
+        </td>
+        <td style="width: 44.45pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Cores</span></p>
+        </td>
+        <td style="width: 137.9pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">CFD solver walk clock Time (s)</span></p>
+        </td>
+        <td style="width: 58.85pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: top; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Speedup</span></p>
+        </td>
+        </tr>
+        <tr style="height: 8.7pt;">
+        <td style="width: 99.5pt; border-style: solid; border-width: 0.75pt 0.75pt 0.75pt 1pt; padding: 0.38pt 5.03pt 0.38pt 4.9pt; vertical-align: middle;" rowspan="5">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; color: #444444; background-color: #ffffff;">perf_Airfoil_10M_R16</span></p>
+        </td>
+        <td style="width: 38.85pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: middle;" rowspan="5">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; color: #0070c0;">5</span></p>
+        </td>
+        <td style="width: 44.45pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">16</span></p>
+        </td>
+        <td style="width: 137.9pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">149.40</span></p>
+        </td>
+        <td style="width: 58.85pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.00</span></p>
+        </td>
+        </tr>
+        <tr style="height: 8.7pt;">
+        <td style="width: 44.45pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">32</span></p>
+        </td>
+        <td style="width: 137.9pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">113.05</span></p>
+        </td>
+        <td style="width: 58.85pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.32</span></p>
+        </td>
+        </tr>
+        <tr style="height: 8.7pt;">
+        <td style="width: 44.45pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">64</span></p>
+        </td>
+        <td style="width: 137.9pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">113.87</span></p>
+        </td>
+        <td style="width: 58.85pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.31</span></p>
+        </td>
+        </tr>
+        <tr style="height: 8.7pt;">
+        <td style="width: 44.45pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">96</span></p>
+        </td>
+        <td style="width: 137.9pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">121.71</span></p>
+        </td>
+        <td style="width: 58.85pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.23</span></p>
+        </td>
+        </tr>
+        <tr style="height: 8.7pt;">
+        <td style="width: 44.45pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">120</span></p>
+        </td>
+        <td style="width: 137.9pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">125.10</span></p>
+        </td>
+        <td style="width: 58.85pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.19</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        </div>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; "><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="cfx_files/a9fct-ju8lo.014.png" alt="" width="380" height="222" /></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="3" type="1">
+        <li style="margin-left: 13.35pt; margin-bottom: 8pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Airfoil with 50M mesh size</li>
+        </ol>
+        <div style="text-align: center;">
+        <div class="overflow-table"><table style="width: 367.9pt; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr style="height: 26.6pt;">
+        <td style="width: 99.5pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 1pt; padding: 0.25pt 5.03pt 0.75pt 4.9pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Job Name</span></p>
+        </td>
+        <td style="width: 38.85pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">I</span><span style="font-family: Calibri;">teration</span><span style="font-family: Calibri;">s</span></p>
+        </td>
+        <td style="width: 44.45pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Cores</span></p>
+        </td>
+        <td style="width: 81.35pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">CFD solver walk clock Time (s)</span></p>
+        </td>
+        <td style="width: 48.75pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 1pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 4.9pt 0.75pt 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Speed Up</span></p>
+        </td>
+        </tr>
+        <tr style="height: 8.7pt;">
+        <td style="width: 99.5pt; border-style: solid; border-width: 0.75pt 0.75pt 0.75pt 1pt; padding: 0.38pt 5.03pt 0.38pt 4.9pt; vertical-align: middle;" rowspan="5">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; color: #444444; background-color: #ffffff;">perf_Airfoil_50M_R16</span></p>
+        </td>
+        <td style="width: 38.85pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: middle;" rowspan="5">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold; color: #0070c0;">5</span></p>
+        </td>
+        <td style="width: 44.45pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">16</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">861.34</span></p>
+        </td>
+        <td style="width: 48.75pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.00</span></p>
+        </td>
+        </tr>
+        <tr style="height: 8.7pt;">
+        <td style="width: 44.45pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">32</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">627.99</span></p>
+        </td>
+        <td style="width: 48.75pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.37</span></p>
+        </td>
+        </tr>
+        <tr style="height: 8.7pt;">
+        <td style="width: 44.45pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">64</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">573.76</span></p>
+        </td>
+        <td style="width: 48.75pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.50</span></p>
+        </td>
+        </tr>
+        <tr style="height: 8.7pt;">
+        <td style="width: 44.45pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">96</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">616.32</span></p>
+        </td>
+        <td style="width: 48.75pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.40</span></p>
+        </td>
+        </tr>
+        <tr style="height: 8.7pt;">
+        <td style="width: 44.45pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">120</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">646.07</span></p>
+        </td>
+        <td style="width: 48.75pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.33</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        </div>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><img style="margin-right: 9pt; margin-left: 9pt; -aw-left-pos: 116.45pt; -aw-rel-hpos: margin; -aw-rel-vpos: paragraph; -aw-top-pos: 0.65pt; -aw-wrap-type: square; float: unset;" src="cfx_files/a9fct-ju8lo.015.png" alt="" width="380" height="240" /></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="4" type="1">
+        <li style="margin-left: 13.35pt; margin-bottom: 8pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Airfoil with 100M mesh size</li>
+        </ol>
+        <div style="text-align: center;">
+        <div class="overflow-table"><table style="width: 373.5pt; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr style="height: 26.6pt;">
+        <td style="width: 105.1pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 1pt; padding: 0.25pt 5.03pt 0.75pt 4.9pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Job Name</span></p>
+        </td>
+        <td style="width: 38.85pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">I</span><span style="font-family: Calibri;">teration</span><span style="font-family: Calibri;">s</span></p>
+        </td>
+        <td style="width: 44.45pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Cores</span></p>
+        </td>
+        <td style="width: 81.35pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">CFD solver walk clock Time (s)</span></p>
+        </td>
+        <td style="width: 48.75pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 1pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 4.9pt 0.75pt 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Speed Up</span></p>
+        </td>
+        </tr>
+        <tr style="height: 8.7pt;">
+        <td style="width: 105.1pt; border-style: solid; border-width: 0.75pt 0.75pt 0.75pt 1pt; padding: 0.38pt 5.03pt 0.38pt 4.9pt; vertical-align: middle;" rowspan="5">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; color: #444444; background-color: #ffffff;">perf_Airfoil_100M_R16</span></p>
+        </td>
+        <td style="width: 38.85pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: middle;" rowspan="5">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold; color: #0070c0;">5</span></p>
+        </td>
+        <td style="width: 44.45pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">16</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2029.20</span></p>
+        </td>
+        <td style="width: 48.75pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.00</span></p>
+        </td>
+        </tr>
+        <tr style="height: 8.7pt;">
+        <td style="width: 44.45pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">32</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1541.70</span></p>
+        </td>
+        <td style="width: 48.75pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.32</span></p>
+        </td>
+        </tr>
+        <tr style="height: 8.7pt;">
+        <td style="width: 44.45pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">64</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1445.70</span></p>
+        </td>
+        <td style="width: 48.75pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.40</span></p>
+        </td>
+        </tr>
+        <tr style="height: 8.7pt;">
+        <td style="width: 44.45pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">96</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1451.70</span></p>
+        </td>
+        <td style="width: 48.75pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.40</span></p>
+        </td>
+        </tr>
+        <tr style="height: 8.7pt;">
+        <td style="width: 44.45pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">120</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1473.70</span></p>
+        </td>
+        <td style="width: 48.75pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.05</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        </div>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; "><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="cfx_files/a9fct-ju8lo.016.png" alt="" width="379" height="255" /></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">We can see that the Performance scalability is improving as we increase the number of cores on the </span><span style="font-family: Calibri;">Virtual Machine</span><span style="font-family: Calibri;">. </span><span style="font-family: Calibri;">Since the simulations are performed on single node</span> <span style="font-family: Calibri;">and </span><span style="font-family: Calibri;">the memory </span><span style="font-family: Calibri;">bandwidth </span><span style="font-family: Calibri;">is fixed</span><span style="font-family: Calibri;">,</span><span style="font-family: Calibri;"> the </span><span style="font-family: Calibri;">solver performance will saturate </span><span style="font-family: Calibri;">after a certain </span><span style="font-family: Calibri;">number of cores</span><span style="font-family: Calibri;"> are reached. </span><span style="font-family: Calibri;">To</span><span style="font-family: Calibri;"> overcome this limitation and </span><span style="font-family: Calibri;">to fully utilize the CFX Solver Capabilities, a multi-node setup </span><span style="font-family: Calibri;">is </span><span style="font-family: Calibri;">deployed,</span><span style="font-family: Calibri;"> and the Performance Benchmarking is </span><span style="font-family: Calibri;">carried out using Azure HBv3 </span><span style="font-family: Calibri;">Virtual Machines.</span></p>
+        <br style="page-break-before: always; clear: both;" />
+        <h2 style="margin-top: 2pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2.5</span> <a name="_Toc98518164"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Ansys CFX 2021 </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">R2 Performance Results on Multi Node</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 125%; font-size: 11pt;"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/hbv3-series"><span style="font-family: 'Segoe UI'; font-size: 10.5pt; text-decoration: underline; color: #0563c1; background-color: #ffffff;">Standard_HB120-64rs_v3</span></a><span style="font-family: Calibri;"> with 64 </span><span style="font-family: Calibri;">CPUs</span><span style="font-family: Calibri;"> was used for multi node simulation. </span><span style="font-family: Calibri;">From the </span><span style="font-family: Calibri;">single node results, we can see that the 64 CPUs configuration was giving the optimal performance </span><span style="font-family: Calibri;">for the </span><span style="font-family: Calibri;">CFX,</span> <span style="font-family: Calibri;">and</span><span style="font-family: Calibri;"> license cost will</span> <span style="font-family: Calibri;">be minimal when compared to 96 and 120 core VMs which gives </span><span style="font-family: Calibri;">an optimal VM configuration for </span><span style="font-family: Calibri;">the end </span><span style="font-family: Calibri;">users</span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+        <li style="margin-left: 13.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Pump: - Assembly of stator and rotor</li>
+        </ol>
+        <div style="text-align: center;">
+        <div class="overflow-table"><table style="width: 510.2pt; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr style="height: 9.05pt;">
+        <td style="width: 68.65pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 1pt; padding: 0.25pt 5.03pt 0.75pt 4.9pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Job Name</span></p>
+        </td>
+        <td style="width: 43.45pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">I</span><span style="font-family: Calibri;">teration</span><span style="font-family: Calibri;">s</span></p>
+        </td>
+        <td style="width: 68.2pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">No.</span> <span style="font-family: Calibri;">of Nodes</span></p>
+        </td>
+        <td style="width: 63.4pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: top; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">No. of cores</span></p>
+        </td>
+        <td style="width: 149pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">CFD solver wall clock Time (s)</span></p>
+        </td>
+        <td style="width: 51.7pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 1pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 4.9pt 0.75pt 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Speed Up</span></p>
+        </td>
+        </tr>
+        <tr style="height: 5.4pt;">
+        <td style="width: 68.65pt; border-style: solid; border-width: 1pt 0.75pt 0.75pt 1pt; padding: 0.25pt 5.03pt 0.38pt 4.9pt; vertical-align: middle;" rowspan="5">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;"> PUMP perf_Pump_R16 </span></p>
+        </td>
+        <td style="width: 43.45pt; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding: 0.25pt 5.03pt 0.38pt; vertical-align: middle;" rowspan="5">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold; color: #0070c0;">10</span></p>
+        </td>
+        <td style="width: 68.2pt; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding: 0.25pt 5.03pt 0.38pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1</span></p>
+        </td>
+        <td style="width: 63.4pt; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding: 0.25pt 5.03pt 0.38pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">64</span></p>
+        </td>
+        <td style="width: 149pt; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding: 0.25pt 5.03pt 0.38pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">16.19</span></p>
+        </td>
+        <td style="width: 51.7pt; border-style: solid; border-width: 1pt 1pt 0.75pt 0.75pt; padding: 0.25pt 4.9pt 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.00</span></p>
+        </td>
+        </tr>
+        <tr style="height: 7.45pt;">
+        <td style="width: 68.2pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2</span></p>
+        </td>
+        <td style="width: 63.4pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">128</span></p>
+        </td>
+        <td style="width: 149pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">9.09</span></p>
+        </td>
+        <td style="width: 51.7pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.78</span></p>
+        </td>
+        </tr>
+        <tr style="height: 7.45pt;">
+        <td style="width: 68.2pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">4</span></p>
+        </td>
+        <td style="width: 63.4pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">256</span></p>
+        </td>
+        <td style="width: 149pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">4.93</span></p>
+        </td>
+        <td style="width: 51.7pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">3.28</span></p>
+        </td>
+        </tr>
+        <tr style="height: 7.45pt;">
+        <td style="width: 68.2pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">8</span></p>
+        </td>
+        <td style="width: 63.4pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">512</span></p>
+        </td>
+        <td style="width: 149pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">3.07</span></p>
+        </td>
+        <td style="width: 51.7pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">5.27</span></p>
+        </td>
+        </tr>
+        <tr style="height: 7.45pt;">
+        <td style="width: 68.2pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">16</span></p>
+        </td>
+        <td style="width: 63.4pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1024</span></p>
+        </td>
+        <td style="width: 149pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2.30</span></p>
+        </td>
+        <td style="width: 51.7pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">7.02</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        </div>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="cfx_files/a9fct-ju8lo.017.png" alt="" width="366" height="202" /></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="2" type="1">
+        <li style="margin-left: 13.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Airfoil with 10M mesh size</li>
+        </ol>
+        <div style="text-align: center;">
+        <div class="overflow-table"><table style="width: 510.2pt; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr style="height: 13.1pt;">
+        <td style="width: 99.5pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 1pt; padding: 0.25pt 5.03pt 0.75pt 4.9pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Job Name</span></p>
+        </td>
+        <td style="width: 43.15pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">I</span><span style="font-family: Calibri;">teration</span><span style="font-family: Calibri;">s</span></p>
+        </td>
+        <td style="width: 58.35pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">No.</span> <span style="font-family: Calibri;">of Nodes</span></p>
+        </td>
+        <td style="width: 60.1pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: top; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">No. of Cores</span></p>
+        </td>
+        <td style="width: 132.9pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">CFD solver wall clock Time (s)</span></p>
+        </td>
+        <td style="width: 50.4pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 1pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 4.9pt 0.75pt 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Speed Up</span></p>
+        </td>
+        </tr>
+        <tr style="height: 10.8pt;">
+        <td style="width: 99.5pt; border-style: solid; border-width: 1pt 0.75pt 0.75pt 1pt; padding: 0.25pt 5.03pt 0.38pt 4.9pt; vertical-align: middle;" rowspan="5">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; color: #444444; background-color: #ffffff;">perf_Airfoil_10M_R16</span></p>
+        </td>
+        <td style="width: 43.15pt; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding: 0.25pt 5.03pt 0.38pt; vertical-align: middle;" rowspan="5">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold; color: #0070c0;">10</span></p>
+        </td>
+        <td style="width: 58.35pt; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding: 0.25pt 5.03pt 0.38pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1</span></p>
+        </td>
+        <td style="width: 60.1pt; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding: 0.25pt 5.03pt 0.38pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">64</span></p>
+        </td>
+        <td style="width: 132.9pt; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding: 0.25pt 5.03pt 0.38pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">113.87</span></p>
+        </td>
+        <td style="width: 50.4pt; border-style: solid; border-width: 1pt 1pt 0.75pt 0.75pt; padding: 0.25pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.00</span></p>
+        </td>
+        </tr>
+        <tr style="height: 10.8pt;">
+        <td style="width: 58.35pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2</span></p>
+        </td>
+        <td style="width: 60.1pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">128</span></p>
+        </td>
+        <td style="width: 132.9pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">55.43</span></p>
+        </td>
+        <td style="width: 50.4pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2.05</span></p>
+        </td>
+        </tr>
+        <tr style="height: 10.8pt;">
+        <td style="width: 58.35pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">4</span></p>
+        </td>
+        <td style="width: 60.1pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">256</span></p>
+        </td>
+        <td style="width: 132.9pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">28.21</span></p>
+        </td>
+        <td style="width: 50.4pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">4.04</span></p>
+        </td>
+        </tr>
+        <tr style="height: 10.8pt;">
+        <td style="width: 58.35pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">8</span></p>
+        </td>
+        <td style="width: 60.1pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">512</span></p>
+        </td>
+        <td style="width: 132.9pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">15.39</span></p>
+        </td>
+        <td style="width: 50.4pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">7.40</span></p>
+        </td>
+        </tr>
+        <tr style="height: 10.8pt;">
+        <td style="width: 58.35pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">16</span></p>
+        </td>
+        <td style="width: 60.1pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1024</span></p>
+        </td>
+        <td style="width: 132.9pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">9.42</span></p>
+        </td>
+        <td style="width: 50.4pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">12.09</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        </div>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; "><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="cfx_files/a9fct-ju8lo.018.png" alt="" width="366" height="230" /></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="3" type="1">
+        <li style="margin-left: 13.35pt; margin-bottom: 8pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Airfoil with 50M mesh size</li>
+        </ol>
+        <div style="text-align: center;">
+        <div class="overflow-table"><table style="width: 510.2pt; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr style="height: 13.1pt;">
+        <td style="width: 99.5pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 1pt; padding: 0.25pt 5.03pt 0.75pt 4.9pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Job Name</span></p>
+        </td>
+        <td style="width: 43.15pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">I</span><span style="font-family: Calibri;">teration</span><span style="font-family: Calibri;">s</span></p>
+        </td>
+        <td style="width: 58.35pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">No.</span> <span style="font-family: Calibri;">of Nodes</span></p>
+        </td>
+        <td style="width: 60.1pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: top; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">No. of cores</span></p>
+        </td>
+        <td style="width: 132.9pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">CFD solver wall clock Time (s)</span></p>
+        </td>
+        <td style="width: 50.4pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 1pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 4.9pt 0.75pt 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Speed Up</span></p>
+        </td>
+        </tr>
+        <tr style="height: 10.8pt;">
+        <td style="width: 99.5pt; border-style: solid; border-width: 1pt 0.75pt 0.75pt 1pt; padding: 0.25pt 5.03pt 0.38pt 4.9pt; vertical-align: middle;" rowspan="5">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; color: #444444; background-color: #ffffff;">perf_Airfoil_50M_R16</span></p>
+        </td>
+        <td style="width: 43.15pt; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding: 0.25pt 5.03pt 0.38pt; vertical-align: middle;" rowspan="5">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold; color: #0070c0;">10</span></p>
+        </td>
+        <td style="width: 58.35pt; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding: 0.25pt 5.03pt 0.38pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1</span></p>
+        </td>
+        <td style="width: 60.1pt; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding: 0.25pt 5.03pt 0.38pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">64</span></p>
+        </td>
+        <td style="width: 132.9pt; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding: 0.25pt 5.03pt 0.38pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">573.76</span></p>
+        </td>
+        <td style="width: 50.4pt; border-style: solid; border-width: 1pt 1pt 0.75pt 0.75pt; padding: 0.25pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.00</span></p>
+        </td>
+        </tr>
+        <tr style="height: 10.8pt;">
+        <td style="width: 58.35pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2</span></p>
+        </td>
+        <td style="width: 60.1pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">128</span></p>
+        </td>
+        <td style="width: 132.9pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">284.75</span></p>
+        </td>
+        <td style="width: 50.4pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2.01</span></p>
+        </td>
+        </tr>
+        <tr style="height: 10.8pt;">
+        <td style="width: 58.35pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">4</span></p>
+        </td>
+        <td style="width: 60.1pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">256</span></p>
+        </td>
+        <td style="width: 132.9pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">143.73</span></p>
+        </td>
+        <td style="width: 50.4pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">3.99</span></p>
+        </td>
+        </tr>
+        <tr style="height: 10.8pt;">
+        <td style="width: 58.35pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">8</span></p>
+        </td>
+        <td style="width: 60.1pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">512</span></p>
+        </td>
+        <td style="width: 132.9pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">73.09</span></p>
+        </td>
+        <td style="width: 50.4pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">7.85</span></p>
+        </td>
+        </tr>
+        <tr style="height: 10.8pt;">
+        <td style="width: 58.35pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">16</span></p>
+        </td>
+        <td style="width: 60.1pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1024</span></p>
+        </td>
+        <td style="width: 132.9pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">38.35</span></p>
+        </td>
+        <td style="width: 50.4pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">14.96</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        </div>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="cfx_files/a9fct-ju8lo.019.png" alt="" width="378" height="248" /></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="4" type="1">
+        <li style="margin-left: 13.35pt; margin-bottom: 8pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Airfoil with 100M mesh size</li>
+        </ol>
+        <div style="text-align: center;">
+        <div class="overflow-table"><table style="width: 510.2pt; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr style="height: 13.1pt;">
+        <td style="width: 105.1pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 1pt; padding: 0.25pt 5.03pt 0.75pt 4.9pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Job Name</span></p>
+        </td>
+        <td style="width: 38.85pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">I</span><span style="font-family: Calibri;">teration</span></p>
+        </td>
+        <td style="width: 49.95pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">#</span> <span style="font-family: Calibri;">Of</span><span style="font-family: Calibri;"> Nodes</span></p>
+        </td>
+        <td style="width: 67.2pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: top; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;"># Of Cores</span></p>
+        </td>
+        <td style="width: 138pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 5.03pt 0.75pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">CFD solver wall clock Time</span><span style="font-family: Calibri;"> (s)</span></p>
+        </td>
+        <td style="width: 45.3pt; border-top-style: solid; border-top-width: 1pt; border-right-style: solid; border-right-width: 1pt; border-left-style: solid; border-left-width: 0.75pt; padding: 0.25pt 4.9pt 0.75pt 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Speed </span><span style="font-family: Calibri;">up</span></p>
+        </td>
+        </tr>
+        <tr style="height: 10.8pt;">
+        <td style="width: 105.1pt; border-style: solid; border-width: 1pt 0.75pt 0.75pt 1pt; padding: 0.25pt 5.03pt 0.38pt 4.9pt; vertical-align: middle;" rowspan="5">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; color: #444444; background-color: #ffffff;">perf_Airfoil_100M_R16</span></p>
+        </td>
+        <td style="width: 38.85pt; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding: 0.25pt 5.03pt 0.38pt; vertical-align: middle;" rowspan="5">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold; color: #0070c0;">10</span></p>
+        </td>
+        <td style="width: 49.95pt; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding: 0.25pt 5.03pt 0.38pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1</span></p>
+        </td>
+        <td style="width: 67.2pt; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding: 0.25pt 5.03pt 0.38pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">64</span></p>
+        </td>
+        <td style="width: 138pt; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding: 0.25pt 5.03pt 0.38pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1445.70</span></p>
+        </td>
+        <td style="width: 45.3pt; border-style: solid; border-width: 1pt 1pt 0.75pt 0.75pt; padding: 0.25pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.00</span></p>
+        </td>
+        </tr>
+        <tr style="height: 10.8pt;">
+        <td style="width: 49.95pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2</span></p>
+        </td>
+        <td style="width: 67.2pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">128</span></p>
+        </td>
+        <td style="width: 138pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">642.95</span></p>
+        </td>
+        <td style="width: 45.3pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2.25</span></p>
+        </td>
+        </tr>
+        <tr style="height: 10.8pt;">
+        <td style="width: 49.95pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">4</span></p>
+        </td>
+        <td style="width: 67.2pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">256</span></p>
+        </td>
+        <td style="width: 138pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">320.27</span></p>
+        </td>
+        <td style="width: 45.3pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">4.51</span></p>
+        </td>
+        </tr>
+        <tr style="height: 10.8pt;">
+        <td style="width: 49.95pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">8</span></p>
+        </td>
+        <td style="width: 67.2pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">512</span></p>
+        </td>
+        <td style="width: 138pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">161.64</span></p>
+        </td>
+        <td style="width: 45.3pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">8.94</span></p>
+        </td>
+        </tr>
+        <tr style="height: 10.8pt;">
+        <td style="width: 49.95pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: bottom;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">16</span></p>
+        </td>
+        <td style="width: 67.2pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1024</span></p>
+        </td>
+        <td style="width: 138pt; border-style: solid; border-width: 0.75pt; padding: 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">83.73</span></p>
+        </td>
+        <td style="width: 45.3pt; border-style: solid; border-width: 0.75pt 1pt 0.75pt 0.75pt; padding: 0.38pt 4.9pt 0.38pt 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">17.27</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        </div>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; "><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="cfx_files/a9fct-ju8lo.020.png" alt="" width="379" height="255" /></p>
+        <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">3</span> <a name="_Toc85794201"></a><a name="_Toc85794528"></a><a name="_Toc85798832"></a><a name="_Toc90049216"></a><a name="_Toc98518165"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Azure </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Cost</span></h1>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 125%; font-size: 11pt;"><span style="font-family: Calibri;">In</span><span style="font-family: Calibri;"> the below cost </span><span style="font-family: Calibri;">reports presented, we have shown only the indicative costs. T</span><span style="font-family: Calibri;">he</span> <span style="font-family: Calibri;">application installation time is not considered and only the </span><span style="font-family: Calibri;">wall clock time per 100 iterations for running each model </span><span style="font-family: Calibri;">in </span><span style="font-family: Calibri;">Ansys </span><span style="font-family: Calibri;">CFX</span><span style="font-family: Calibri;"> on HBv3</span><span style="font-family: Calibri;"> virtual machine</span><span style="font-family: Calibri;"> is considered</span><span style="font-family: Calibri;"> and the license cost is not included.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">The Hourly rates reported are subject to change. For the current rate please refer the link </span><span style="font-family: Calibri;">below</span><span style="font-family: Calibri;"> &ldquo;</span><a style="text-decoration: none;" href="https://azure.microsoft.com/en-in/pricing/calculator/"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">https://azure.microsoft.com/en-in/pricing/calculator/</span></a><span style="font-family: Calibri;">&rdquo;</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Note:</span> <span style="font-family: Calibri; font-style: italic;">Licensing cost is not included in this cost calculation sheet of Ansys CFX Application.</span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+        <li style="margin-left: 31.35pt; margin-bottom: 8pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Cost calculation for single Node configuration</li>
+        </ol>
+        <div style="text-align: center;">
+        <div class="overflow-table"><table style="width: 463.7pt; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr style="height: 39.1pt;">
+        <td style="width: 121.55pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">VM Name</span></p>
+        </td>
+        <td style="width: 38.8pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;"># CPUs</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">Azure VM hourly cost ($)</span></p>
+        </td>
+        <td style="width: 88.4pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">CFD Solver </span><span style="font-family: Calibri; font-weight: bold;">Wall clock time (Hours)</span></p>
+        </td>
+        <td style="width: 78.85pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;"> Azure consumption</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 121.55pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">Standard_HB120-16rs_v3</span></p>
+        </td>
+        <td style="width: 38.8pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">16</span></p>
+        </td>
+        <td style="width: 81.35pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">$ 4.68</span></p>
+        </td>
+        <td style="width: 88.4pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">0.85</span></p>
+        </td>
+        <td style="width: 78.85pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">$ 3.99</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 121.55pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">Standard_HB120-32rs_v3</span></p>
+        </td>
+        <td style="width: 38.8pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">32</span></p>
+        </td>
+        <td style="width: 81.35pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">$ 4.68</span></p>
+        </td>
+        <td style="width: 88.4pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">0.64</span></p>
+        </td>
+        <td style="width: 78.85pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">$ 2.99</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 121.55pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">Standard_HB120-64rs_v3</span></p>
+        </td>
+        <td style="width: 38.8pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">64</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">$ 4.68</span></p>
+        </td>
+        <td style="width: 88.4pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">0.60</span></p>
+        </td>
+        <td style="width: 78.85pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">$ 2.79</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 121.55pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">Standard_HB120-96rs_v3</span></p>
+        </td>
+        <td style="width: 38.8pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">96</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">$ 4.68</span></p>
+        </td>
+        <td style="width: 88.4pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">0.61</span></p>
+        </td>
+        <td style="width: 78.85pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">$ 2.87</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 121.55pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">Standard_HB120rs_v3</span></p>
+        </td>
+        <td style="width: 38.8pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">120</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">$ 4.68</span></p>
+        </td>
+        <td style="width: 88.4pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">0.63</span></p>
+        </td>
+        <td style="width: 78.85pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">$ 2.94</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        </div>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="2" type="1">
+        <li style="margin-left: 31.35pt; margin-bottom: 8pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Azure cost calculation for multi-Node configuration</li>
+        </ol>
+        <div class="overflow-table"><table style="width: 471.05pt; margin-right: 9pt; margin-left: 9pt; border-collapse: collapse; float: right;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr style="height: 42.05pt;">
+        <td style="width: 89.6pt; border-style: solid; border-width: 0.75pt 0.75pt 1pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d0cece;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">VM Name</span></p>
+        </td>
+        <td style="width: 44.5pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 1pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #d0cece;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;"># Nodes</span></p>
+        </td>
+        <td style="width: 44.5pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 1pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #d0cece;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;"># Cores</span></p>
+        </td>
+        <td style="width: 82.6pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 1pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #d0cece;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">CFD Solver Wall clock time (Secs)</span></p>
+        </td>
+        <td style="width: 44.5pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 1pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #d0cece;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">Hrs</span></p>
+        </td>
+        <td style="width: 44.5pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 1pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #d0cece;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">Azure Cost/Hr</span></p>
+        </td>
+        <td style="width: 44.5pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 1pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #d0cece;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">Azure Cost</span></p>
+        </td>
+        </tr>
+        <tr style="height: 20.6pt;">
+        <td style="width: 89.6pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;" rowspan="5">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">HB120rs-64rs_v3 </span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">1</span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">64</span></p>
+        </td>
+        <td style="width: 82.6pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">2175</span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">0.60</span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;"> $ 4.68 </span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;"> $ 2.79</span></p>
+        </td>
+        </tr>
+        <tr style="height: 20.6pt;">
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">2</span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">128</span></p>
+        </td>
+        <td style="width: 82.6pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">1005</span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">0.28</span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;"> $ 4.68 </span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;"> $ 2.58 </span></p>
+        </td>
+        </tr>
+        <tr style="height: 20.6pt;">
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">4</span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">256</span></p>
+        </td>
+        <td style="width: 82.6pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">504</span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">0.14</span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;"> $ 4.68 </span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;"> $ 2.59 </span></p>
+        </td>
+        </tr>
+        <tr style="height: 20.6pt;">
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">8</span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">512</span></p>
+        </td>
+        <td style="width: 82.6pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">257</span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">0.07</span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;"> $ 4.68 </span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;"> $ 2.63 </span></p>
+        </td>
+        </tr>
+        <tr style="height: 21.35pt;">
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">16</span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">1024</span></p>
+        </td>
+        <td style="width: 82.6pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">134</span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">0.04</span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;"> $ 4.68 </span></p>
+        </td>
+        <td style="width: 44.5pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;"> $ 2.78 </span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">4</span> <a name="_Toc85794202"></a><a name="_Toc85794529"></a><a name="_Toc85798833"></a><a name="_Toc90049217"></a><a name="_Toc98518166"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Summary</span></h1>
+        <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+        <li style="margin-left: 31.35pt; line-height: 125%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Ansys CFX Application is successfully deployed and tested on <span style="font-family: 'Segoe UI'; font-size: 10.5pt; color: #171717; background-color: #ffffff;">HB</span><span style="font-family: 'Segoe UI'; font-size: 10.5pt; color: #171717; background-color: #ffffff;">v3</span> <span style="font-family: 'Segoe UI'; font-size: 10.5pt; color: #171717; background-color: #ffffff;">120 AMD EPYC&trade; 7003-series (Milan) CPU cores</span> Azure Virtual Machines.</li>
+        <li style="margin-left: 31.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Ansys CFX simulations on single node configuration scaling well up to 64 cores and after that the speedup is saturating with further increase in the cores.</li>
+        <li style="margin-left: 31.35pt; line-height: 125%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">For Multi-Node runs, Ansys CFX is scaling up linearly with increase of nodes as seen in above results</li>
+        <li style="margin-left: 31.35pt; line-height: 125%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Azure provides the suitable Virtual Machines equipped with latest CPUs for running CFX/CFD Simulations.</li>
+        </ol>
+        <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">5</span> <a name="_Toc88142531"></a><a name="_Toc88753561"></a><a name="_Toc90049218"></a><a name="_Toc98518167"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Running Ansys </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">CFX</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;"> on Azure Virtual Machines:</span></h1>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">Users can use </span><a style="text-decoration: none;" href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/ansys.cloud-getitnow?tab=Overview"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Ansys Cloud</span></a><span style="font-family: Calibri;"> or alternatively they can reach out to any one of the following contact for the further support. </span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+        <li style="margin-left: 31.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Contact through Ansys: <span style="text-decoration: underline; color: #0563c1;">cloud-sales@ansys.com</span></li>
+        <li style="margin-left: 31.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Contact through Microsoft: <a style="text-decoration: none;" href="https://azure.microsoft.com/en-us/overview/contact-azure-sales/#contact-sales"><span style="text-decoration: underline; color: #0563c1;">Microsoft global black belt team</span></a></li>
+        <li style="margin-left: 31.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Contact through Capgemini: <a style="text-decoration: none;" href="mailto:AzureHPC-Certification@capgemini.com"><span style="text-decoration: underline; color: #0563c1;">AzureHPC-Certification@capgemini.com</span></a></li>
+        </ol>
+        
+        <!--The Report content goes here-->
+      </div><!--content-->
+      
+     <div class="col-4 col-md-2 px-1 px-sm-0 toc">
+        <label class="px-3">Table of Contents</label>
+        <!--toc content goes here-->  
+        <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc98518154"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Introduction</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc98518155"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Ansys CFX Performance on Azure Virtual Machine</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc98518156"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Ansys CFX Overview</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc98518157"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Model Details</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 22pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc98518158"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.2.1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Pump</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 22pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc98518159"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.2.2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">10M Airfoil</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 22pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc98518160"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.2.3 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">50M Airfoil</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 22pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc98518161"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.2.4 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">100M Airfoil</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc98518162"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.3 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Ansys CFX</span> <span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">on Azure Platform</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc98518163"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.4 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Ansys CFX 2021 R2 Performance Results on Single Node</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc98518164"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.5 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Ansys CFX 2021 R2 Performance Results on Multi Node</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc98518165"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Azure Cost</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc98518166"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">4 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Summary</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc98518167"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">5 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Running Ansys CFX on Azure Virtual Machines:</span></a></p>
+        <br style="page-break-before: always; clear: both;" />
+        
+        <!--toc content goes here-->  
+     </div>
+
+    </div><!--rpt-->
+
+
+      </section>
+          
+      <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
+ 
+    </main>
+
+    <footer>
+      <div class="row g-0">		
+        <div class="container text-center mx-auto">
+        <div class="container px-3 d-flex justify-content-between flex-column flex-md-row-reverse my-auto">
+          <div>
+            <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo" />
+            <span class="logoline-bot1"></span> 
+            <span class="px-1 px-sm-2">
+              <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo" />
+            </span>
+      </div>
+            <div class="text-uppercase align-self-center pt-3 pt-md-2 footer-text">Copyright &copy; 2021 Azure HPC</div>
+          </div>
+        </div>
+      </div>
+      </footer>
+    </div><!--wrapper-->
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+    <script> 
+    
+      let mybutton = document.getElementById("btn-back-to-top");  
+      
+      // When the user clicks on the button, scroll to the top of the document
+      mybutton.addEventListener("click", backToTop);
+    
+    </script>
+    
+    </body>
+    </html>

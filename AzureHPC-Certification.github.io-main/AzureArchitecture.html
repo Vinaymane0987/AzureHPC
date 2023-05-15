@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="shortcut icon" href="img/icon.ico">
+    <link rel="Stylesheet" href="css/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;0,300;0,400;1,400&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script type="text/javascript" src="js/script.js"></script>
+
+    <script src="https://kit.fontawesome.com/3d0a07deaa.js" crossorigin="anonymous"></script>
+    <title>Azure HPC | Azure Architecture</title>
+</head>
+<body>
+    <div id="wrapper" class="row g-0">
+      
+        <header class="container-fluid">   
+          <div class="logo container">
+            <div class="title-text"><a href="index.html">Azure <span>HPC</span></a></div>
+           
+            <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo">
+            <span class="logoline-top1"></span> <span class="px-1 px-sm-2">
+               <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo">
+            </span>
+          
+          </div>
+        </header>
+  
+      <main class="container-fluid">
+  
+        <section class="container-lg px-3 px-lg-0 rpt-wrapper">  
+    <h3 class="text-center text-uppercase py-4"><!--The Report title goes here-->  Azure HPC Recipe Document for Azure Architecture</h3>
+     <center> 
+    <div class="col-8 col-md-8 px-3 content">
+        <h1 style="margin-top: 0pt; margin-bottom: 0pt;">&nbsp;</h1>
+        <h1 style="margin-top: 0pt; margin-bottom: 0pt; text-align: justify;"> <span style="font-family: 'Segoe UI';">HPC </span><span style="font-family: 'Segoe UI';">D</span><span style="font-family: 'Segoe UI';">eployment</span><span style="font-family: 'Segoe UI';"> on Azure </span><span style="font-family: 'Segoe UI';">Platform</span></h1>
+        <h1 style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;">&nbsp;</h1>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt; background-color: #ffffff;text-align: justify;"><span style="font-family: 'Segoe UI';">This </span><span style="font-family: 'Segoe UI';">deployment document covers the following topics</span></p>
+        <ol style="margin: 0pt; text-align: justify;" type="1">
+        <li style="margin-left: 30.56pt; line-height: 11.75pt; padding-left: 5.44pt; font-family: 'Segoe UI'; font-size: 10pt; background-color: #ffffff; "><span style="font-size: 11pt;">Overview of Azure cloud Architecture</span></li>
+        <li style="margin-left: 30.56pt; line-height: 11.75pt; padding-left: 5.44pt; font-family: 'Segoe UI'; font-size: 10pt; background-color: #ffffff;"><span style="font-size: 11pt;">Deploy &amp; connect to a virtual machine on Azure platform</span></li>
+        <li style="margin-left: 30.56pt; margin-bottom: 14pt; line-height: 11.75pt; padding-left: 5.44pt; font-family: 'Segoe UI'; font-size: 10pt; background-color: #ffffff;"><span style="font-size: 11pt;">Install </span><span style="font-size: 11pt;">the </span><span style="font-size: 11pt;">required </span><span style="font-size: 11pt;">GPU </span><span style="font-size: 11pt;">drivers</span> <span style="font-size: 11pt;">in virtual machine</span></li>
+        </ol>
+        <h2 style="margin-top: 14pt; margin-bottom: 14pt; text-align: justify;"><a name="_Toc81323168"></a><a name="_Toc81330550"></a><a name="_Toc81389015"></a><a name="_Toc81405760"></a><a name="_Toc85794187"></a><a name="_Toc85794514"></a><a name="_Toc85798817"></a><a name="_Toc92365897"></a><a name="_Toc85798818"></a><a name="_Toc92365898"></a><span style="font-family: 'Segoe UI';">Azure </span><span style="font-family: 'Segoe UI';">Cloud Architecture for the Application</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 11.9pt; background-color: #ffffff; text-align: justify;"><span style="font-family: 'Segoe UI'; font-size: 11pt;">The architectural diagram below shows the </span><span style="font-family: 'Segoe UI'; font-size: 11pt;">V</span><span style="font-family: 'Segoe UI'; font-size: 11pt;">irtual </span><span style="font-family: 'Segoe UI'; font-size: 11pt;">M</span><span style="font-family: 'Segoe UI'; font-size: 11pt;">achine running on Azure</span></p>
+        <p style="margin-top: 12pt; margin-bottom: 8pt; text-align: center; line-height: 108%; font-size: 11pt;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="Azure Architecture/commondoc1.png" alt="Screenshot showing the Azure Architectural diagram of Virtual Machine deployed on Azure Cloud platform. Here we have shown a user is connected to a Virtual Machine in Azure cloud via a Public IP address through internet from his Azure Portal account. All the Resources related to the Virtual Machine like Storage Disks, Virtual networks, subnets, Network security group, NIC cards etc are grouped together inside a Resource Group and are shown here inside Microsoft Azure cloud platform." width="538" height="425" /></p>
+        <h2 style="margin-top: 14pt; margin-bottom: 14pt;">&nbsp;</h2>
+        <h2 style="margin-top: 14pt; margin-bottom: 14pt;">&nbsp;</h2>
+        <h2 style="margin-top: 14pt; margin-bottom: 14pt;"><span style="font-family: 'Segoe UI';">Deploying a Virtual Machine on Azure Cloud Platform</span></h2>
+        <h3 style="margin-top: 14pt; margin-bottom: 14pt; font-size: 13.5pt; text-align: justify;"><a name="_Toc81323169"></a><a name="_Toc81330551"></a><a name="_Toc81389016"></a><a name="_Toc81405761"></a><a name="_Toc85794188"></a><a name="_Toc85794515"></a><a name="_Ref85797239"></a><a name="_Toc85798819"></a><a name="_Ref91170720"></a><a name="_Toc92365899"></a><span style="font-family: 'Segoe UI';">AZURE VIRTUAL MACHINE (VM)</span></h3>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: justify; line-height: 11.9pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; font-size: 11pt;">A VM is a virtualized instance of a computer that can perform almost</span><span style="font-family: 'Segoe UI'; font-size: 11pt;"> all</span><span style="font-family: 'Segoe UI'; font-size: 11pt;"> the same functions as a computer, including running applications and operating systems.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: justify; line-height: 11.9pt; background-color: #ffffff;">&nbsp;</p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 11.9pt; background-color: #ffffff; text-align: justify;"><span style="font-family: 'Segoe UI'; font-size: 11pt;">Things to be considered </span><span style="font-family: 'Segoe UI'; font-size: 11pt;">while</span><span style="font-family: 'Segoe UI'; font-size: 11pt;"> deploying a V</span><span style="font-family: 'Segoe UI'; font-size: 11pt;">irtual </span><span style="font-family: 'Segoe UI'; font-size: 11pt;">M</span><span style="font-family: 'Segoe UI'; font-size: 11pt;">achine</span><span style="font-family: 'Segoe UI'; font-size: 11pt;"> on </span><span style="font-family: 'Segoe UI'; font-size: 11pt;">Azure </span><span style="font-family: 'Segoe UI'; font-size: 11pt;">cloud platform</span><span style="font-family: 'Segoe UI'; font-size: 11pt;">,</span></p>
+        <ol style="margin: 0pt; padding-left: 0pt; text-align: start;" type="1">
+        <li style="margin-left: 94.51pt; line-height: 115%; padding-left: 5.29pt; font-family: 'Segoe UI'; font-size: 10pt; color: #171717; background-color: #ffffff;"><span style="font-size: 11pt;">The </span><span style="font-size: 11pt;">Prerequisites required for the application to be </span><span style="font-size: 11pt;">installed</span></li>
+        <li style="margin-left: 94.61pt; line-height: 115%; padding-left: 5.44pt; font-family: 'Segoe UI'; font-size: 10pt; color: #171717; background-color: #ffffff;"><span style="font-size: 11pt;">The </span><span style="font-size: 11pt;">Azure region</span><span style="font-size: 11pt;"> where the resources </span><span style="font-size: 11pt;">will be</span> <span style="font-size: 11pt;">deployed</span></li>
+        <li style="margin-left: 94.61pt; line-height: 115%; padding-left: 5.44pt; font-family: 'Segoe UI'; font-size: 10pt; color: #171717; background-color: #ffffff;"><span style="font-size: 11pt;">The size </span><span style="font-size: 11pt;">and configuration </span><span style="font-size: 11pt;">of the VM</span></li>
+        <li style="margin-left: 94.61pt; line-height: 115%; padding-left: 5.44pt; font-family: 'Segoe UI'; font-size: 10pt; color: #171717; background-color: #ffffff;"><span style="font-size: 11pt;">The operating system </span><span style="font-size: 11pt;">required for the applicatio</span><span style="font-size: 11pt;">n</span></li>
+        <li style="margin-left: 94.51pt; line-height: 115%; padding-left: 5.29pt; font-family: 'Segoe UI'; font-size: 10pt; color: #171717; background-color: #ffffff;"><span style="font-size: 11pt;">The </span><span style="font-size: 11pt;">compatible drivers for the given application</span></li>
+        </ol>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: justify; font-size: 11pt; background-color: #ffffff;">&nbsp;</p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: justify; font-size: 11pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">Depending on the workload, the user</span><span style="font-family: 'Segoe UI'; color: #171717;"> can</span><span style="font-family: 'Segoe UI'; color: #171717;"> choose the appropriate VM size</span><span style="font-family: 'Segoe UI'; color: #171717;"> for the given VM series</span><span style="font-family: 'Segoe UI'; color: #171717;">. For a complete </span><span style="font-family: 'Segoe UI'; color: #171717;">list</span><span style="font-family: 'Segoe UI'; color: #171717;"> of available VM&rsquo;s</span><span style="font-family: 'Segoe UI'; color: #171717;">,</span><span style="font-family: 'Segoe UI'; color: #171717;"> please </span><span style="font-family: 'Segoe UI'; color: #171717;">check </span><a name="_Toc81323171"></a><a name="_Toc81330553"></a><a name="_Toc81389017"></a><a name="_Toc81405762"></a><a name="_Toc85794189"></a><a name="_Toc85794516"></a><a name="_Toc85798820"></a><a name="_Toc92365900"></a><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/sizes/"><span style="font-family: 'Segoe UI'; color: #0563c1;">here</span></a><span style="font-family: 'Segoe UI'; color: #171717;">.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: justify; font-size: 11pt; background-color: #ffffff;">&nbsp;</p>
+        <h3 style="margin-top: 0pt; margin-bottom: 0pt; font-size: 13.5pt; text-align: justify;"><span style="font-family: 'Segoe UI';">Procedure to </span><span style="font-family: 'Segoe UI';">C</span><span style="font-family: 'Segoe UI';">reate </span><span style="font-family: 'Segoe UI';">and Connect </span><span style="font-family: 'Segoe UI';">to a</span><span style="font-family: 'Segoe UI';"> V</span><span style="font-family: 'Segoe UI';">irtual</span><span style="font-family: 'Segoe UI';"> M</span><span style="font-family: 'Segoe UI';">achine</span> <span style="font-family: 'Segoe UI';">on</span><span style="font-family: 'Segoe UI';"> A</span><span style="font-family: 'Segoe UI';">zure</span></h3>
+        <p style="margin-top: 0pt; margin-bottom: 0pt;">&nbsp;</p>
+        <ol style="margin: 0pt; padding-left: 0pt; text-align: justify;" type="1">
+        <li style="margin-left: 12.56pt; line-height: 115%; padding-left: 5.44pt; font-family: 'Segoe UI'; font-size: 10pt;"><span style="font-size: 11pt; color: #171717;">Sign into the </span><a style="text-decoration: none;" href="https://portal.azure.com/"><span style="font-size: 11pt; color: #0563c1;">Azure portal.</span></a></li>
+        <li style="margin-left: 12.56pt; line-height: 115%; padding-left: 5.44pt; font-family: 'Segoe UI'; font-size: 10pt; background-color: #ffffff;"><span style="font-size: 11pt; color: #171717;">Procedure to </span><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/azure-portal/supportability/per-vm-quota-requests"><span style="font-size: 11pt; color: #0563c1;">I</span><span style="font-size: 11pt; color: #0563c1;">ncrease the vCPU quota</span></a><span style="font-size: 11pt; color: #0563c1;">.</span></li>
+        <li style="margin-left: 12.56pt; line-height: 115%; padding-left: 5.44pt; font-family: 'Segoe UI'; font-size: 10pt; color: #171717; background-color: #ffffff;"><span style="font-size: 11pt;">Procedure to deploy and connect to a </span><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal/"><span style="font-size: 11pt; color: #0563c1;">Windows virtual machine</span></a><span style="font-size: 11pt; color: #0563c1;">.</span></li>
+        <li style="margin-left: 12.56pt; line-height: 115%; padding-left: 5.44pt; font-family: 'Segoe UI'; font-size: 10pt; color: #171717; background-color: #ffffff;"><span style="font-size: 11pt;">Procedure to deploy and connect to a </span><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-portal/"><span style="font-size: 11pt; color: #0563c1;">Linux virtual machine</span></a><span style="font-size: 11pt; color: #0563c1;">.</span></li>
+        </ol>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 115%; font-size: 11pt; background-color: #ffffff;">&nbsp;</p>
+        <h3 style="margin-top: 0pt; margin-bottom: 0pt; font-size: 13.5pt; text-align: justify;"><a name="_Toc81390107"></a><a name="_Toc81411720"></a><a name="_Toc81413117"></a><a name="_Toc86074400"></a><span style="font-family: 'Segoe UI';">Install Nvidia Drivers</span></h3>
+        <p style="margin-top: 0pt; margin-bottom: 0pt;">&nbsp;</p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: justify; line-height: 115%; font-size: 11pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">To take advantage of the GPU capabilities of Azure N-series VMs backed by NVIDIA GPUs,</span><span style="font-family: 'Segoe UI'; color: #171717;">the user</span><span style="font-family: 'Segoe UI'; color: #171717;"> must install the NVIDIA GPU drivers. </span></p>
+        <ul style="margin: 0pt; padding-left: 0pt; text-align: justify;" type="disc">
+        <li style="margin-left: 27.91pt; line-height: 115%; padding-left: 7.79pt; font-family: serif; font-size: 11pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: 'Segoe UI';">Install NVIDIA GPU driver on </span><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/n-series-driver-setup/"><span style="font-family: 'Segoe UI'; color: #0563c1;">Windows VM</span></a><span style="font-family: 'Segoe UI'; color: #0563c1;">.</span></li>
+        <li style="margin-left: 28.06pt; line-height: 115%; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: 'Segoe UI';">Install NVIDIA GPU driver on </span><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/n-series-driver-setup/"><span style="font-family: 'Segoe UI'; color: #0563c1;">Linux VM.</span></a></li>
+        </ul>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 115%; font-size: 11pt; background-color: #ffffff;"><span style="height: 0pt; display: block; position: absolute; z-index: 0;"><img style="margin-top: 7.18pt; margin-left: -11.12pt; -aw-left-pos: -11pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 7.3pt; -aw-wrap-type: none; position: absolute;" src="Azure Architecture/commondoc2.png" alt="" width="665" height="63" /></span></p>
+       <center> 
+        <div style="border: 3px solid #67c2ef; text-align:center; width: auto; border-radius: 16px;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: justify; line-height: 115%; font-size: 11pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;">Note</span><span style="font-family: 'Segoe UI'; color: #171717;">:</span><span style="font-family: 'Segoe UI'; color: #171717;"> If</span><span style="font-family: 'Segoe UI'; color: #171717;"> the </span><span style="font-family: 'Segoe UI'; color: #171717;">Nvidia virtual </span><span style="font-family: 'Segoe UI'; color: #171717;">machine has an NV Link </span><span style="font-family: 'Segoe UI'; color: #171717;">or</span><span style="font-family: 'Segoe UI'; color: #171717;"> NV Switch connecting</span><span style="font-family: 'Segoe UI'; color: #171717;">the GPUs,</span><span style="font-family: 'Segoe UI'; color: #171717;">Nvidia fabric manager</span><span style="font-family: 'Segoe UI'; color: #171717;"> installation it </span><span style="font-family: 'Segoe UI'; color: #171717;">must.</span></p>
+       </div>
+      </center>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; line-height: 115%; font-size: 11pt; background-color: #ffffff;">&nbsp;</p>
+        <h3 style="margin-top: 0pt; margin-bottom: 0pt; font-size: 13.5pt; text-align: justify;"><span style="font-family: 'Segoe UI';">Install AMD Drivers</span></h3>
+        <p style="margin-top: 0pt; margin-bottom: 0pt;">&nbsp;</p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: justify; line-height: 115%; font-size: 11pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">To take advantage of the GPU capabilities of Azure N-series VMs backed by AMD GPUs,</span><span style="font-family: 'Segoe UI'; color: #171717;">the user</span><span style="font-family: 'Segoe UI'; color: #171717;"> must install the AMD GPU drivers. </span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 115%; font-size: 11pt; background-color: #ffffff;">&nbsp;</p>
+        <ul style="margin: 0pt; padding-left: 0pt; text-align: justify;" type="disc">
+        <li style="margin-left: 27.91pt; line-height: 115%; padding-left: 7.79pt; font-family: serif; font-size: 11pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: 'Segoe UI'; color: #171717;">Install </span><span style="font-family: 'Segoe UI'; color: #171717;">AMD</span><span style="font-family: 'Segoe UI'; color: #171717;"> GPU driver on </span><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/n-series-amd-driver-setup"><span style="font-family: 'Segoe UI'; color: #0563c1;">Windows VM</span></a><span style="font-family: 'Segoe UI'; color: #0563c1;">.</span></li> 
+      </ul>
+        </div> 
+         
+          </div>
+       </div>
+    </section>      
+    <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
+  
+  </main>
+  
+  <footer>
+  <div class="row g-0">		
+    <div class="container text-center mx-auto">
+    <div class="container px-3 d-flex justify-content-between flex-column flex-md-row-reverse my-auto">
+      <div>
+        <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo" />
+        <span class="logoline-bot1"></span> 
+        <span class="px-1 px-sm-2">
+          <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo" />
+        </span>
+  </div>
+        <div class="text-uppercase align-self-center pt-3 pt-md-2 footer-text">Copyright &copy; 2021 Azure HPC</div>
+      </div>
+    </div>
+  </div>
+  </footer>
+  </div> <!--wrapper -->
+  
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  
+  <script> 
+  
+  let mybutton = document.getElementById("btn-back-to-top");  
+  
+  // When the user clicks on the button, scroll to the top of the document
+  mybutton.addEventListener("click", backToTop);
+  
+  </script>
+  </center> 
+</body>
+</html>

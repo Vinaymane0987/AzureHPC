@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="shortcut icon" href="img/icon.ico">
+    <link rel="Stylesheet" href="css/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;0,300;0,400;1,400&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script type="text/javascript" src="js/script.js"></script>
+
+    <script src="https://kit.fontawesome.com/3d0a07deaa.js" crossorigin="anonymous"></script>
+    
+    <title>Azure HPC | Optistruct Report</title>
+</head>
+<body>
+    <div id="wrapper" class="row g-0">
+      
+        <header class="container-fluid">   
+          <div class="logo container">
+            <div class="title-text"><a href="index.html">Azure <span>HPC</span></a></div>
+           
+            <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo">
+            <span class="logoline-top1"></span> <span class="px-1 px-sm-2">
+               <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo">
+            </span>
+          
+          </div>
+        </header>
+  
+      <main class="container-fluid">
+  
+        <section class="container-lg px-3 px-lg-0 rpt-wrapper">  
+    <h3 class="text-center text-uppercase py-4"><!--The Report title goes here-->  Azure HPC Recipe Document for Altair Optistruct</h3>
+    <div class="d-flex flex-row rpt">
+        <div class="col-2 px-1 px-sm-0 text-left index">
+
+            <label class="px-3">Altair Optistruct</label>
+    <div class="index-scroll">
+    <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_Azure"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">1 </span><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">Introduction</span></a></p>
+    <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_Install_Altair_Optistruct"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">2 </span><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">Installation of Altair Optistruct</span></a></p>
+    <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_Performance_results_of_Optistruct"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">3 </span><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">Performance results of Optistruct</span></a></p>
+    <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_Pricing"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">4 </span><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">Azure pricing</span></a></p> 
+    <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_Additional_notes"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">5 </span><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">Additional notes</span></a></p>
+    
+        </div>
+        </div>
+   <div class="col-8 col-md-8 px-3 content">
+    <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 115%; font-size: 24pt; background-color: #ffffff;"><a name="_Azure"></a><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;">Deploy Altair Optistruct for HPC on a virtual machine</span></p>
+    <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;"><span style="font-family: 'Segoe UI';">This article briefly describes the steps for running </span><a style="text-decoration: none;" href="https://www.altair.com/optistruct"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0000ff;">Altair Optistruct</span></a><span style="font-family: 'Segoe UI';"> application on a virtual machine (VM) that's deployed on Azure. It also presents the performance results of running </span><span style="font-family: 'Segoe UI';">Optistruct</span><span style="font-family: 'Segoe UI';"> on Azure.</span></p>
+    <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: justify; line-height: 115%; font-size: 11pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI';">OptiStruct&reg; from Altair is a contemporary structural analysis solver that tackles both linear and nonlinear simulation under static and dynamic loadings. This proven software is the most used solution for structural design and optimization in varied industries. Industrial structures have various parameters. OptiStruct&reg; helps engineers and designers optimize these parameters like strength, durability and NVH. This in turn helps the team develop innovative, lightweight, and structurally efficient designs.</span></p>
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify; line-height: 150%; font-size: 11pt;"><span style="font-family: 'Segoe UI'; color: #333333; background-color: #ffffff;">OptiStruct provides comprehensive, accurate, and scalable solutions for statics and dynamics, vibrations, acoustics, fatigue, heat transfer, and multi-physics disciplines. It is used globally at industry-leading companies to drive design with optimization and validate structural performance. OptiStruct solves both linear and nonlinear problems using an enhanced proprietary version of NASTRAN and a modern proprietary nonlinear formulation developed and maintained by Altair.</span></p>
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify; line-height: 150%; font-size: 11pt;"><span style="font-family: 'Segoe UI'; color: #333333; background-color: #ffffff;">OptiStruct topology optimization has driven the lightweight and structurally efficient designs of products and use every day. OptiStruct offers many other structural optimization methods and a broad range of essential manufacturing constraints for traditional processes, composites, and additive manufacturing.</span></p>
+    <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 18pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;">Architecture</span></p>
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; line-height: 115%; font-size: 11pt; background-color: #ffffff;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="img/Optistruct_files/1.png" alt="Diagram that shows architecture for running Optistruct on Azure" width="624" height="577" /></p>
+    <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 115%; font-size: 11pt; background-color: #ffffff;">&nbsp;</p>
+    <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 18pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;">Components</span></p>
+    <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+    <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://azure.microsoft.com/services/virtual-machines"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Azure Virtual Machines</span></a><span style="font-family: 'Segoe UI'; font-size: 11pt;">. Create Linux and Windows virtual machines in seconds.</span></li>
+    <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://azure.microsoft.com/services/virtual-network"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Azure Virtual Network</span></a><span style="font-family: 'Segoe UI'; font-size: 11pt;">. Use Virtual Network to create your own private network infrastructure in the cloud.</span></li>
+    </ul>
+    <p style="margin-top: 0pt; margin-left: 28.5pt; margin-bottom: 0pt; font-size: 11pt; background-color: #ffffff;">&nbsp;</p>
+    <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 18pt; background-color: #ffffff;"><a name="_Install_Altair_Optistruct"></a><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;">Install Optistruct on a VM</span></p>
+    <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 11pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">For information about deploying the VM and installing the drivers, see one of these articles:</span></p>
+    <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+    <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/n-tier/windows-vm"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Run a Windows VM on Azure</span></a></li>
+    <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/n-tier/linux-vm"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Run a Linux VM on Azure</span></a></li>
+    </ul>
+    <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 11pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">To download Optistruct:</span></p>
+    <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+    <li style="margin-left: 31.31pt; line-height: 108%; padding-left: 4.69pt; font-family: 'Segoe UI'; font-size: 11pt;">Open Altair one Marketplace in web browser and sign in</li>
+    <li style="margin-left: 31.31pt; line-height: 108%; padding-left: 4.69pt; font-family: 'Segoe UI'; font-size: 11pt;">Select Optistruct in the product list.</li>
+    <li style="margin-left: 31.31pt; line-height: 108%; padding-left: 4.69pt; font-family: 'Segoe UI'; font-size: 11pt;">Select appropriate operating system and download.</li>
+    <li style="margin-left: 31.31pt; line-height: 108%; padding-left: 4.69pt; font-family: 'Segoe UI'; font-size: 11pt;">Download the license manager.</li>
+    </ol>
+    <p style="margin-top: 0pt; margin-left: 18pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;"><span style="font-family: 'Segoe UI';">See the documents in </span><a style="text-decoration: none;" href="https://altairone.com/Marketplace?queryText=optistruct&amp;app=OptiStruct&amp;tab=Download"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0000ff;">Altair one Marketplace</span></a><span style="font-family: 'Segoe UI';"> for instructions for installing </span><span style="font-family: 'Segoe UI';">Optistruct.</span></p>
+    <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 18pt; background-color: #ffffff;"><a name="_Performance_results_of_Optistruct"></a><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;">Performance results of Optistruct on an Azure VM</span></p>
+    <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 16pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;">Optistruct</span><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;"> 2021.2</span><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;"> performance results</span></p>
+    <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;"><span style="font-family: 'Segoe UI';">A set of </span><span style="font-family: 'Segoe UI';">2</span><span style="font-family: 'Segoe UI';"> test case models are considered for testing the performance of the Altair </span><span style="font-family: 'Segoe UI';">Optistruct</span><span style="font-family: 'Segoe UI';"> on Azure VM. The model details are shown below.</span></p>
+    <div style="text-align: center;">
+    <table style="width: 100%; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+    <tbody>
+    <tr style="height: 23.4pt;">
+    <td style="border-top: 0.75pt solid #a5a5a5; border-left: 0.75pt solid #a5a5a5; border-bottom: 0.75pt solid #a5a5a5; padding-right: 5.4pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;" colspan="2">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Engine Assembly</span></p>
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">(Non-Linear Analysis)</span></p>
+    </td>
+    <td style="border-top: 0.75pt solid #a5a5a5; border-right: 0.75pt solid #a5a5a5; border-bottom: 0.75pt solid #a5a5a5; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #a5a5a5;" colspan="2">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Knuckle Finer Analysis</span></p>
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">(Linear Static Analysis)</span></p>
+    </td>
+    </tr>
+    <tr style="height: 37.95pt;">
+    <td style="width: 24.98%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">Total # of Elements Excluding Contact</span></p>
+    </td>
+    <td style="width: 24.96%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">841550</span></p>
+    </td>
+    <td style="width: 25.02%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">Total # of Grids (Structural)</span></p>
+    </td>
+    <td style="width: 25.02%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">2821615</span></p>
+    </td>
+    </tr>
+    <tr style="height: 28.3pt;">
+    <td style="width: 24.98%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">Total # of N2S Contact Elements (3D)</span></p>
+    </td>
+    <td style="width: 24.96%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">20118</span></p>
+    </td>
+    <td style="width: 25.02%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">Total # of Elements</span></p>
+    </td>
+    <td style="width: 25.02%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">2064042</span></p>
+    </td>
+    </tr>
+    <tr style="height: 28.7pt;">
+    <td style="width: 24.98%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">Total # of S2S Contact Elements (3D)</span></p>
+    </td>
+    <td style="width: 24.96%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">64020</span></p>
+    </td>
+    <td style="width: 25.02%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">Total # of Rigid Elements</span></p>
+    </td>
+    <td style="width: 25.02%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">18</span></p>
+    </td>
+    </tr>
+    <tr style="height: 28.3pt;">
+    <td style="width: 24.98%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">Total # of Local Coordinate Systems</span></p>
+    </td>
+    <td style="width: 24.96%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">32</span></p>
+    </td>
+    <td style="width: 25.02%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">Total # of Rigid Element Constraints</span></p>
+    </td>
+    <td style="width: 25.02%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">5241</span></p>
+    </td>
+    </tr>
+    <tr style="height: 37.95pt;">
+    <td style="width: 24.98%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">Total # of Degrees of Freedom (Structural)</span></p>
+    </td>
+    <td style="width: 24.96%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">4600801</span></p>
+    </td>
+    <td style="width: 25.02%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">Total # of Degrees of Freedom</span></p>
+    </td>
+    <td style="width: 25.02%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">8464881</span></p>
+    </td>
+    </tr>
+    <tr style="height: 28.7pt;">
+    <td style="width: 24.98%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">Total # of Pretension sections</span></p>
+    </td>
+    <td style="width: 24.96%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">10</span></p>
+    </td>
+    <td style="width: 25.02%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">CTETRA Elements</span></p>
+    </td>
+    <td style="width: 25.02%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">2064042</span></p>
+    </td>
+    </tr>
+    <tr style="height: 18.95pt;">
+    <td style="width: 24.98%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">CHEXA Elements</span></p>
+    </td>
+    <td style="width: 24.96%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">17511</span></p>
+    </td>
+    <td style="width: 25.02%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">LOAD and TEMP Sets</span></p>
+    </td>
+    <td style="width: 25.02%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">1</span></p>
+    </td>
+    </tr>
+    <tr style="height: 18.95pt;">
+    <td style="width: 24.98%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">CTETRA Elements</span></p>
+    </td>
+    <td style="width: 24.96%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">813767</span></p>
+    </td>
+    <td style="width: 25.02%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">SPC Sets</span></p>
+    </td>
+    <td style="width: 25.02%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">1</span></p>
+    </td>
+    </tr>
+    <tr style="height: 18.95pt;">
+    <td style="width: 24.98%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">CGASK8 Elements</span></p>
+    </td>
+    <td style="width: 24.96%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">9977</span></p>
+    </td>
+    <td style="width: 25.02%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">PSOLID Cards</span></p>
+    </td>
+    <td style="width: 25.02%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">2</span></p>
+    </td>
+    </tr>
+    <tr style="height: 18.95pt;">
+    <td style="width: 24.98%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">CGASK6 Elements</span></p>
+    </td>
+    <td style="width: 24.96%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">295</span></p>
+    </td>
+    <td style="width: 25.02%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">MAT1 Cards</span></p>
+    </td>
+    <td style="width: 25.02%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 9pt;"><span style="font-family: 'Segoe UI';">1</span></p>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+    <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: justify; line-height: 108%; font-size: 11pt;">&nbsp;</p>
+    <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: justify; line-height: 108%; font-size: 11pt;"><span style="font-family: 'Segoe UI';">All models mentioned above were performed on </span><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/hbv3-series"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0000ff;">HBv3-series</span></a> <span style="font-family: 'Segoe UI';">Azure VMs.</span></p>
+    <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 12pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">NOTE:</span></p>
+    <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+    <li style="margin-left: 17.16pt; text-align: justify; line-height: 108%; padding-left: 7.94pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: 'Segoe UI';">Shared Memory Parallelization (SMP): </span><span style="font-family: 'Segoe UI';">It is a parallelization technique that incorporates the usage of multiple threads (or logical processors) in a node to solve problems. SMP involves </span><span style="font-family: 'Segoe UI';">the utilization of a Shared Memory paradigm wherein, multiple threads communicate with each other and use a single shared memory space.</span></li>
+    <li style="margin-left: 17.16pt; margin-bottom: 8pt; text-align: justify; line-height: 108%; padding-left: 7.94pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: 'Segoe UI';">Hybrid Shared/Distributed Memory Parallelization (SPMD): </span><span style="font-family: 'Segoe UI';">Single Program, Multiple Data (SPMD) is a parallelization technique in computing that is employed to achieve faster results by splitting the program into multiple subsets and running them simultaneously on multiple processors/machines. SPMD typically implies running the same process or program on single or multiple machines (nodes) with different input data for each individual task. In SPMD, Domain Decomposition Method (DDM) is available for analysis and optimization. DDM is a parallelization option in OptiStruct that can help significantly reduce model runtime with improved scalability compared to legacy shared memory parallelization approaches, especially on machines with a high number of cores.</span></li>
+    </ul>
+    <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 16pt; background-color: #ffffff;"><a name="_Toc92365909"></a><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;">Performance results for </span><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;">HBv3</span></p>
+    <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 108%; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Model 1 &ndash; Knuckle Finer Analysis</span></p>
+    <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 108%; font-size: 11pt;">&nbsp;</p>
+    <table style="width: 100%; margin-right: 9pt; margin-left: 9pt; border-collapse: collapse; float: left;" cellspacing="0" cellpadding="0">
+    <tbody>
+    <tr style="height: 14.15pt;">
+    <td style="width: 31.36%; border: 0.75pt solid #bfbfbf; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #7b7b7b;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">VM size</span></p>
+    </td>
+    <td style="width: 26.48%; border: 0.75pt solid #bfbfbf; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #7b7b7b;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">No. of vCPU available</span></p>
+    </td>
+    <td style="width: 21.86%; border: 0.75pt solid #bfbfbf; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #7b7b7b;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">no. of vCPU used</span></p>
+    </td>
+    <td style="width: 20.3%; border: 0.75pt solid #bfbfbf; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #7b7b7b;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Time in secs</span></p>
+    </td>
+    </tr>
+    <tr style="height: 14.15pt;">
+    <td style="width: 31.36%; border: 0.75pt solid #bfbfbf; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #f2f2f2;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">Standard_HB16rs_v3</span></p>
+    </td>
+    <td style="width: 26.48%; border: 0.75pt solid #bfbfbf; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #f2f2f2;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">16</span></p>
+    </td>
+    <td style="width: 21.86%; border: 0.75pt solid #bfbfbf; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #f2f2f2;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">1</span></p>
+    </td>
+    <td style="width: 20.3%; border: 0.75pt solid #bfbfbf; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #f2f2f2;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">15964.60</span></p>
+    </td>
+    </tr>
+    <tr style="height: 14.15pt;">
+    <td style="width: 31.36%; border: 0.75pt solid #bfbfbf; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">Standard_HB16rs_v3</span></p>
+    </td>
+    <td style="width: 26.48%; border: 0.75pt solid #bfbfbf; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">16</span></p>
+    </td>
+    <td style="width: 21.86%; border: 0.75pt solid #bfbfbf; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">8</span></p>
+    </td>
+    <td style="width: 20.3%; border: 0.75pt solid #bfbfbf; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">2310.65</span></p>
+    </td>
+    </tr>
+    <tr style="height: 14.15pt;">
+    <td style="width: 31.36%; border: 0.75pt solid #bfbfbf; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #f2f2f2;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">Standard_HB16rs_v3</span></p>
+    </td>
+    <td style="width: 26.48%; border: 0.75pt solid #bfbfbf; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #f2f2f2;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">16</span></p>
+    </td>
+    <td style="width: 21.86%; border: 0.75pt solid #bfbfbf; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #f2f2f2;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">16</span></p>
+    </td>
+    <td style="width: 20.3%; border: 0.75pt solid #bfbfbf; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #f2f2f2;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">1338.99</span></p>
+    </td>
+    </tr>
+    <tr style="height: 14.15pt;">
+    <td style="width: 31.36%; border: 0.75pt solid #bfbfbf; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">Standard_HB32rs_v3</span></p>
+    </td>
+    <td style="width: 26.48%; border: 0.75pt solid #bfbfbf; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">32</span></p>
+    </td>
+    <td style="width: 21.86%; border: 0.75pt solid #bfbfbf; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">32</span></p>
+    </td>
+    <td style="width: 20.3%; border: 0.75pt solid #bfbfbf; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">910</span></p>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;">&nbsp;</p>
+    <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; line-height: 108%; font-size: 11pt;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="img/Optistruct_files/2.png" alt="Graph of relative speed up for Knuckle finer analysis" width="428" height="328" /></p>
+    <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Model 2 &ndash; Engine Assembly </span></p>
+    <table style="width: 100%; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+    <tbody>
+    <tr style="height: 14.5pt;">
+    <td style="width: 26.6%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #7b7b7b;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">VM size</span></p>
+    </td>
+    <td style="width: 26.74%; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #7b7b7b;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">No. of vCPUs available</span></p>
+    </td>
+    <td style="width: 20.18%; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #7b7b7b;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">no. of vCPU used</span></p>
+    </td>
+    <td style="width: 26.5%; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #7b7b7b;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Time in secs</span></p>
+    </td>
+    </tr>
+    <tr style="height: 14.5pt;">
+    <td style="width: 26.6%; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">Standard_HB16rs_v3</span></p>
+    </td>
+    <td style="width: 26.74%; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">16</span></p>
+    </td>
+    <td style="width: 20.18%; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">1</span></p>
+    </td>
+    <td style="width: 26.5%; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">8336.46</span></p>
+    </td>
+    </tr>
+    <tr style="height: 14.5pt;">
+    <td style="width: 26.6%; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">Standard_HB16rs_v3</span></p>
+    </td>
+    <td style="width: 26.74%; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">16</span></p>
+    </td>
+    <td style="width: 20.18%; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">8</span></p>
+    </td>
+    <td style="width: 26.5%; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">1981.4</span></p>
+    </td>
+    </tr>
+    <tr style="height: 14.5pt;">
+    <td style="width: 26.6%; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">Standard_HB16rs_v3</span></p>
+    </td>
+    <td style="width: 26.74%; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">16</span></p>
+    </td>
+    <td style="width: 20.18%; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">16</span></p>
+    </td>
+    <td style="width: 26.5%; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">1320.34</span></p>
+    </td>
+    </tr>
+    <tr style="height: 14.5pt;">
+    <td style="width: 26.6%; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">Standard_HB32rs_v3</span></p>
+    </td>
+    <td style="width: 26.74%; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">32</span></p>
+    </td>
+    <td style="width: 20.18%; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">32</span></p>
+    </td>
+    <td style="width: 26.5%; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">753.23</span></p>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;">&nbsp;</p>
+    <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; line-height: 108%; font-size: 11pt;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="img/Optistruct_files/3.png" alt="Graph of relative speed up for Engine Assembly" width="454" height="342" /></p>
+    <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; line-height: 108%; font-size: 11pt;">&nbsp;</p>
+    <div style="background-color: #ffffff;">
+    <p style="margin-top: 0pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; line-height: 18pt;"><a name="_Pricing"></a><span style="font-family: 'Segoe UI'; font-size: 18pt; font-weight: bold;">Pricing</span></p>
+    </div>
+    <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">Only model running time (wall clock time) is considered for these cost calculations. Application installation time isn't considered. The calculations are indicative. The actual numbers depend on the size of the model.</span></p>
+    <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">You can use the </span><a style="text-decoration: none;" href="https://azure.microsoft.com/pricing/calculator"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0000ff;">Azure pricing calculator</span></a><span style="font-family: 'Segoe UI'; color: #171717;"> to estimate costs for your configuration.</span></p>
+    <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">The following tables provide elapsed times in hours. To compute the total cost, multiply by the Azure VM hourly cost, which you can find  </span><a style="text-decoration: none;" href="https://azure.microsoft.com/pricing/details/virtual-machines/windows/#pricing"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0000ff;">here for Windows</span></a><span style="font-family: 'Segoe UI'; color: #171717;"> and </span><a style="text-decoration: none;" href="https://azure.microsoft.com/pricing/details/virtual-machines/linux/#pricing"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0000ff;">here for Linux</span></a><span style="font-family: 'Segoe UI'; color: #171717;">.</span></p>
+    
+    <table style="width: 100%; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+    <tbody>
+    <tr style="height: 15pt;">
+    <td style="width: 44.68%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Model Name</span></p>
+    </td>
+    <td style="width: 28.04%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #a5a5a5;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Number</span><span style="font-family: 'Segoe UI'; font-weight: bold;"> of CPUs</span></p>
+    </td>
+    <td style="width: 27.28%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #a5a5a5;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Elapsed</span><span style="font-family: 'Segoe UI'; font-weight: bold;"> Time in hours</span></p>
+    </td>
+    </tr>
+    <tr style="height: 14.5pt;">
+    <td style="width: 44.68%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;" rowspan="4">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Knuckle Finer Analysis</span></p>
+    </td>
+    <td style="width: 28.04%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">1</span></p>
+    </td>
+    <td style="width: 27.28%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">4.43</span></p>
+    </td>
+    </tr>
+    <tr style="height: 14.5pt;">
+    <td style="width: 28.04%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">8</span></p>
+    </td>
+    <td style="width: 27.28%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">0.64</span></p>
+    </td>
+    </tr>
+    <tr style="height: 14.5pt;">
+    <td style="width: 28.04%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">16</span></p>
+    </td>
+    <td style="width: 27.28%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">0.37</span></p>
+    </td>
+    </tr>
+    <tr style="height: 14.5pt;">
+    <td style="width: 28.04%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">32</span></p>
+    </td>
+    <td style="width: 27.28%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">0.25</span></p>
+    </td>
+    </tr>
+    <tr style="height: 15pt;">
+    <td style="width: 44.68%; border-top-style: solid; border-top-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.4pt; padding-left: 5.4pt; vertical-align: middle;">&nbsp;</td>
+    <td style="width: 28.04%; border-top-style: solid; border-top-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.4pt; padding-left: 5.4pt; vertical-align: top;">&nbsp;</td>
+    <td style="width: 27.28%; border-top-style: solid; border-top-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.4pt; padding-left: 5.4pt; vertical-align: top;">&nbsp;</td>
+    </tr>
+    <tr style="height: 14.5pt;">
+    <td style="width: 44.68%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #e7e6e6;" rowspan="4">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Engine Assembly</span></p>
+    </td>
+    <td style="width: 28.04%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">1</span></p>
+    </td>
+    <td style="width: 27.28%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">2.31</span></p>
+    </td>
+    </tr>
+    <tr style="height: 14.5pt;">
+    <td style="width: 28.04%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">8</span></p>
+    </td>
+    <td style="width: 27.28%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">0.55</span></p>
+    </td>
+    </tr>
+    <tr style="height: 14.5pt;">
+    <td style="width: 28.04%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">16</span></p>
+    </td>
+    <td style="width: 27.28%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">0.37</span></p>
+    </td>
+    </tr>
+    <tr style="height: 14.5pt;">
+    <td style="width: 28.04%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">32</span></p>
+    </td>
+    <td style="width: 27.28%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">0.21</span></p>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 18pt; background-color: #ffffff;"><a name="_Additional_notes"></a><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;">Additional notes about tests</span></p>
+    <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+    <li style="margin-left: 38.36pt; margin-bottom: 8pt; text-align: justify; line-height: 108%; padding-left: 4.69pt; font-family: 'Segoe UI'; font-size: 11.5pt;color: #161616;">Optistruct is successfully tested on the HBv3 Virtual Machine.</li>
+    <li style="margin-left: 38.74pt; text-align: justify; padding-left: 4.31pt; font-family: 'Segoe UI'; font-size: 11.5pt; color: #161616;">The AMD EPYC&trade; 7V73X (Milan-X) CPU cores provides optistruct unprecedented processing power on Azure.</li>
+    <li style="margin-left: 38.74pt; text-align: justify; padding-left: 4.31pt; font-family: 'Segoe UI'; font-size: 11.5pt; color: #161616;">Depending on the model complexity the scale up of CPUs was linear as per the performance data shown above.</li>
+    <li style="margin-left: 38.74pt; text-align: justify; padding-left: 4.31pt; font-family: 'Segoe UI'; font-size: 11.5pt; color: #161616;">The HBv3 demonstrated good CPU acceleration. The peak performance achieved for model 1 was 17.54x times and for model 2 it was 11x times when 32 core HBv3 was used.</li>
+    </ol>
+    <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 18pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;">Contributors</span></p>
+    <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; font-style: italic; color: #171717;">This article is maintained by Microsoft. It was originally written by the following contributors.</span></p>
+    <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">Principal authors:</span></p>
+    <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+    <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://www.linkedin.com/in/hari-bagudu-88732a19"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Hari Bagudu</span></a><span style="font-family: 'Segoe UI'; font-size: 11pt;"> | Senior Manager</span></li>
+    <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://www.linkedin.com/in/gauharjunnarkar"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Gauhar</span> <span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Junnarkar</span></a><span style="font-family: 'Segoe UI'; font-size: 11pt;"> | Principal Program Manager</span></li>
+    <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://www.linkedin.com/in/saurabh-parave-957303162/"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Saurabh Parave</span></a><span style="font-family: 'Segoe UI'; font-size: 11pt;"> | HPC Performance Engineer</span></li>
+    </ul>
+    <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">Other contributors:</span></p>
+    <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+    <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://www.linkedin.com/in/mick-alberts-a24a1414"><span style="font-family: 'Segoe UI'; font-size: 11pt; color: #0000ff;"><u>Mick Alberts</u></span></a><span style="font-family: 'Segoe UI'; font-size: 11pt;"> | Technical Writer</span></li>
+    <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://www.linkedin.com/in/guybursell"><span style="font-family: 'Segoe UI'; font-size: 11pt; color: #0000ff;"> <u>Guy Bursell</u> </span></a><span style="font-family: 'Segoe UI'; font-size: 11pt;"> | Director Business Strategy</span></li>
+    <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://www.linkedin.com/in/sachin-rastogi-907a3b5"><span style="font-family: 'Segoe UI'; font-size: 11pt; color: #0000ff;"><u>Sachin Rastogi</u> </span></a><span style="font-family: 'Segoe UI'; font-size: 11pt;"> | Manager</span></li>
+    </ul>
+    <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; font-style: italic; color: #171717;">To see non-public LinkedIn profiles, sign </span><span style="font-family: 'Segoe UI'; font-style: italic; color: #171717;">in to</span><span style="font-family: 'Segoe UI'; font-style: italic; color: #171717;"> LinkedIn.</span></p>
+    <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 18pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;">Next steps</span></p>
+    <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+    <li style="margin-left: 56.1pt; text-align: justify; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-gpu"><span style="font-family: 'Segoe UI'; font-size: 12pt; text-decoration: underline; color: #0000ff;">GPU optimized virtual machine sizes</span></a></li>
+    <li style="margin-left: 56.1pt; text-align: justify; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/overview"><span style="font-family: 'Segoe UI'; font-size: 12pt; text-decoration: underline; color: #0000ff;">Windows virtual machines in Azure</span></a></li>
+    <li style="margin-left: 56.1pt; text-align: justify; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/overview"><span style="font-family: 'Segoe UI'; font-size: 12pt; text-decoration: underline; color: #0000ff;">Linux virtual machines in Azure</span></a></li>
+    <li style="margin-left: 56.1pt; text-align: justify; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-network/network-overview"><span style="font-family: 'Segoe UI'; font-size: 12pt; text-decoration: underline; color: #0000ff;">Virtual networks and virtual machines in Azure</span></a></li>
+    <li style="margin-left: 56.1pt; text-align: justify; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/learn/paths/run-high-performance-computing-applications-azure"><span style="font-family: 'Segoe UI'; font-size: 12pt; text-decoration: underline; color: #0000ff;">Learning path: Run high-performance computing (HPC) applications on Azure</span></a></li>
+    </ul>
+    <p style="margin-top: 14pt; margin-bottom: 14pt; text-align: justify; font-size: 18pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;">Related resources</span></p>
+    <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+    <li style="margin-left: 56.1pt; text-align: justify; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/n-tier/windows-vm"><span style="font-family: 'Segoe UI'; font-size: 12pt; text-decoration: underline; color: #0000ff;">Run a Windows VM on Azure</span></a></li>
+    <li style="margin-left: 56.1pt; text-align: justify; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/n-tier/linux-vm"><span style="font-family: 'Segoe UI'; font-size: 12pt; text-decoration: underline; color: #0000ff;">Run a Linux VM on Azure</span></a></li>
+    <li style="margin-left: 56.1pt; text-align: justify; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/architecture/solution-ideas/articles/big-compute-with-azure-batch"><span style="font-family: 'Segoe UI'; font-size: 12pt; text-decoration: underline; color: #0000ff;">HPC system and big-compute solutions</span></a></li>
+    <li style="margin-left: 56.1pt; text-align: justify; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/architecture/solution-ideas/articles/hpc-cluster"><span style="font-family: 'Segoe UI'; font-size: 12pt; text-decoration: underline; color: #0000ff;">HPC cluster deployed in the cloud</span></a></li>
+    </ul>
+    <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: justify; line-height: 115%; font-size: 11pt;">&nbsp;</p>
+    <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;">&nbsp;</p>
+    </div>
+</div>
+</div>
+</div>
+</section>      
+<button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+</main>
+    
+<footer>
+    <div class="row g-0">		
+     <div class="container text-center mx-auto">
+     <div class="container px-3 d-flex justify-content-between flex-column flex-md-row-reverse my-auto">
+       <div>
+         <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo" />
+         <span class="logoline-bot1"></span> 
+         <span class="px-1 px-sm-2">
+           <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo" />
+         </span>
+    </div>
+         <div class="text-uppercase align-self-center pt-3 pt-md-2 footer-text">Copyright &copy; 2021 Azure HPC</div>
+       </div>
+     </div>
+    </div>
+    </footer>
+    </div> <!--wrapper -->
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+    <script> 
+    
+    let mybutton = document.getElementById("btn-back-to-top");  
+    
+    // When the user clicks on the button, scroll to the top of the document
+    mybutton.addEventListener("click", backToTop);
+    
+    </script> 
+    </body>
+    </html>

@@ -1,0 +1,742 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="shortcut icon" href="img/icon.ico">
+    <link rel="Stylesheet" href="css/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;0,300;0,400;1,400&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script type="text/javascript" src="js/script.js"></script>
+
+    <script src="https://kit.fontawesome.com/3d0a07deaa.js" crossorigin="anonymous"></script>
+
+    <title>Azure HPC | Turbostream Report</title>
+    
+  </head>
+  <body>
+    <div id="wrapper" class="row g-0">
+      
+      <header class="container-fluid">   
+        <div class="logo container">
+          <div class="title-text"><a href="index.html">Azure <span>HPC</span></a></div>
+         
+          <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo">
+          <span class="logoline-top1"></span> <span class="px-1 px-sm-2">
+             <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo">
+          </span>
+        
+        </div>
+      </header>
+
+    <main class="container-fluid">
+
+      <section class="container-lg px-3 px-lg-0 rpt-wrapper">        
+      <h3 class="text-center text-uppercase py-4"><!--The Report title goes here-->Azure HPC Recipe Document for Turbostream</h3>
+    <div class="d-flex flex-row rpt">
+
+      <div class="col-2 px-1 px-sm-0 text-left index">
+        <label class="px-3"><!--The Report Name goes here-->Turbostream</label>
+        <div class="index-scroll"> 
+          <!--Index content goes here-->  
+          <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561633"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Introduction</span></a></p>
+          <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561634"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Deploy Virtual Machine on Azure Cloud Platform</span></a></p>
+         
+          <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561640"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Install Turbostream Application on Virtual Machine</span></a></p>
+         
+          <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561645"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">4 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Performance results of Turbostream on Azure virtual machine</span></a></p>
+         
+          <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561651"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">5 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Azure Cost</span></a></p>
+          <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561652"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">6 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Summary</span></a></p>
+          <!--Index content goes here-->  
+      </div>
+      </div><!--index-->
+
+      <div class="col-8 col-md-8 px-3 content">
+       
+        <!--Add <div class="overflow-table"> before every table tag within the content-->
+       
+        <!--The Report content goes here-->
+
+        <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">1</span> <a name="_Toc81323166"></a><a name="_Toc81330548"></a><a name="_Toc81389013"></a><a name="_Toc81405758"></a><a name="_Toc85794185"></a><a name="_Toc85794512"></a><a name="_Toc85798816"></a><a name="_Toc102561633"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Introduction</span></h1>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; font-size: 11pt;"><span style="font-family: Calibri;">This document </span><span style="font-family: Calibri;">briefly explain</span><span style="font-family: Calibri;">s</span><span style="font-family: Calibri;"> the </span><span style="font-family: Calibri;">steps to </span><span style="font-family: Calibri;">install</span><span style="font-family: Calibri;"> and run</span> <span style="font-family: Calibri;">the </span><span style="font-family: Calibri;">Turbostream</span> <span style="font-family: Calibri;">a</span><span style="font-family: Calibri;">pplication on a Virtual Machine deployed in Azure Cloud Platform</span><span style="font-family: Calibri;"> and presents the performance results</span><span style="font-family: Calibri;">.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">This </span><span style="font-family: Calibri;">recipe </span><span style="font-family: Calibri;">document covers the following topics</span><span style="font-family: Calibri;">: -</span></p>
+        <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+        <li style="margin-left: 30.56pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">D</span><span style="font-family: Calibri;">eploy </span><span style="font-family: Calibri;">&amp; </span><span style="font-family: Calibri;">connect </span><span style="font-family: Calibri;">a </span><span style="font-family: Calibri;">required </span><span style="font-family: Calibri;">v</span><span style="font-family: Calibri;">irtual </span><span style="font-family: Calibri;">m</span><span style="font-family: Calibri;">achine</span> <span style="font-family: Calibri;">on </span><span style="font-family: Calibri;">the </span><span style="font-family: Calibri;">Azure </span><span style="font-family: Calibri;">p</span><span style="font-family: Calibri;">latform.</span></li>
+        <li style="margin-left: 31.02pt; padding-left: 7.48pt; font-family: serif; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri; font-size: 11pt;">Install </span><span style="font-family: Calibri; font-size: 11pt;">required NVIDIA drivers in </span><span style="font-family: Calibri; font-size: 11pt;">a </span><span style="font-family: Calibri; font-size: 11pt;">virtual machine</span><span style="font-family: Calibri; font-size: 11pt;">.</span></li>
+        <li style="margin-left: 30.56pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Install</span> <span style="font-family: Calibri;">A</span><span style="font-family: Calibri;">pplication o</span><span style="font-family: Calibri;">n </span><span style="font-family: Calibri;">a </span><span style="font-family: Calibri;">virtual machine</span><span style="font-family: Calibri;">.</span></li>
+        <li style="margin-left: 30.56pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Install license man</span><span style="font-family: Calibri;">a</span><span style="font-family: Calibri;">ger for </span><span style="font-family: Calibri;">the </span><span style="font-family: Calibri;">current </span><span style="font-family: Calibri;">application</span></li>
+        <li style="margin-left: 31.02pt; padding-left: 7.48pt; font-family: serif; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri; font-size: 11pt;">Performance results of current app</span><span style="font-family: Calibri; font-size: 11pt;">lication</span><span style="font-family: Calibri; font-size: 11pt;"> on </span><span style="font-family: Calibri; font-size: 11pt;">an Azure</span><span style="font-family: Calibri; font-size: 11pt;"> virtual machine</span></li>
+        <li style="margin-left: 31.02pt; padding-left: 7.48pt; font-family: serif; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri; font-size: 11pt;">Azure co</span><span style="font-family: Calibri; font-size: 11pt;">n</span><span style="font-family: Calibri; font-size: 11pt;">sumption</span></li>
+        <li style="margin-left: 30.56pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Summary</span></li>
+        </ul>
+        <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2</span> <a name="_Toc81323168"></a><a name="_Toc81330550"></a><a name="_Toc81389015"></a><a name="_Toc81405760"></a><a name="_Toc85794187"></a><a name="_Toc85794514"></a><a name="_Toc85798817"></a><a name="_Toc102561634"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Deploy Virtual Machine on Azure Cloud Platform</span></h1>
+        <h2 style="margin-top: 2pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2.1</span> <a name="_Toc85798818"></a><a name="_Toc102561635"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Azure</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;"> Cloud Architecture for Application</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">The below Architecture explains the virtual machine running on an Azure Platform</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="turbostream_files/ad5gt-5hewi.004.png" alt="" width="604" height="478" /></p>
+        <h2 style="margin-top: 2pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 12pt;"><span style="font-family: 'Calibri Light'; font-size: 13pt; font-weight: normal; color: #2f5496;">2.2</span> <a name="_Toc81323169"></a><a name="_Toc81330551"></a><a name="_Toc81389016"></a><a name="_Toc81405761"></a><a name="_Toc85794188"></a><a name="_Toc85794515"></a><a name="_Ref85797239"></a><a name="_Toc85798819"></a><a name="_Toc102561636"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Azure Virtual Machine (VM)</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; font-size: 11pt;"><span style="font-family: Calibri;">A VM is a virtualized instance of a computer that can perform almost </span><span style="font-family: Calibri;">all</span><span style="font-family: Calibri;"> the same functions as a computer, including running applications and operating systems.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">An Azure VM gives the flexibility of virtualization without having to buy and maintain the physical hardware that runs it. However, </span><span style="font-family: Calibri;">the user</span><span style="font-family: Calibri;"> still </span><span style="font-family: Calibri;">needs</span><span style="font-family: Calibri;"> to maintain the VM by performing tasks, such as configuring, patching, and installing the software that runs on it.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">Things to be considered before deploying a VM,</span></p>
+        <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+        <li style="margin-left: 64.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">The names of </span><span style="font-family: Calibri;">the</span><span style="font-family: Calibri;"> application resources</span></li>
+        <li style="margin-left: 64.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">The location where the resources are stored</span></li>
+        <li style="margin-left: 64.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">The size of the VM</span></li>
+        <li style="margin-left: 64.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">The operating system that the VM runs</span></li>
+        <li style="margin-left: 64.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">The configuration of the VM</span></li>
+        <li style="margin-left: 64.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">The related resources that the VM needs</span></li>
+        </ul>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt; background-color: #ffffff;"><span style="font-family: Calibri; color: #171717;">There are </span><span style="font-family: Calibri; color: #171717;">different sizes</span> <span style="font-family: Calibri; color: #171717;">and options </span><span style="font-family: Calibri; color: #171717;">available</span> <span style="font-family: Calibri; color: #171717;">for the Azure virtual machines </span><span style="font-family: Calibri; color: #171717;">and </span><span style="font-family: Calibri;">users</span> <span style="font-family: Calibri;">can use </span><span style="font-family: Calibri;">them </span><span style="font-family: Calibri;">to run apps</span><span style="font-family: Calibri; color: #171717;"> and workloads. Depending on the workload user </span><span style="font-family: Calibri; color: #171717;">must</span><span style="font-family: Calibri; color: #171717;"> choose the appropriate VM size</span><span style="font-family: Calibri; color: #171717;">. F</span><span style="font-family: Calibri; color: #171717;">or </span><span style="font-family: Calibri; color: #171717;">the </span><span style="font-family: Calibri; color: #171717;">complete </span><span style="font-family: Calibri; color: #171717;">list,</span><span style="font-family: Calibri; color: #171717;"> check this </span><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/sizes/"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">https://docs.microsoft.com/en-us/azure/virtual-machines/sizes/</span></a><span style="font-family: Calibri; color: #171717;">.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt; background-color: #ffffff;"><span style="font-family: Calibri;">To test</span> <span style="font-family: Calibri;">the </span><span style="font-family: Calibri;">performance of</span> <span style="font-family: Calibri;">Turbostream</span><span style="font-family: Calibri;"> on Azure Platform,</span> <a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/nda100-v4-series"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1; background-color: #ffffff;">ND</span><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1; background-color: #ffffff;">v4 A100</span></a><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1; background-color: #ffffff;">,</span><span style="font-family: Calibri;"> the </span><span style="font-family: Calibri;">virtual</span><span style="font-family: Calibri;"> mach</span><span style="font-family: Calibri;">ine</span> <span style="font-family: Calibri;">is </span><span style="font-family: Calibri;">deployed</span><span style="font-family: Calibri;">.</span></p>
+        <div style="text-align: center;">
+        <div class="overflow-table"><table style="width: 466.75pt; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr style="height: 40pt;">
+        <td style="width: 101.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">VM Name</span></p>
+        </td>
+        <td style="width: 48.2pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">vCPU</span></p>
+        </td>
+        <td style="width: 48.2pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Memory (GiB)</span></p>
+        </td>
+        <td style="width: 48.2pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">SSD (GiB)</span></p>
+        </td>
+        <td style="width: 48.2pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">GPU</span></p>
+        </td>
+        <td style="width: 48.2pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">GPU Memory (GiB)</span></p>
+        </td>
+        <td style="width: 48.2pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Max Data Disk</span></p>
+        </td>
+        </tr>
+        <tr style="height: 27.5pt;">
+        <td style="width: 101.2pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; color: #171717; background-color: #ffffff;">Standard_ND96asr_v4</span></p>
+        </td>
+        <td style="width: 48.2pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">96</span></p>
+        </td>
+        <td style="width: 48.2pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">9</span><span style="font-family: Calibri;">00</span></p>
+        </td>
+        <td style="width: 48.2pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">2000</span></p>
+        </td>
+        <td style="width: 48.2pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; color: #171717; background-color: #ffffff;">8 A100</span></p>
+        </td>
+        <td style="width: 48.2pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">40</span></p>
+        </td>
+        <td style="width: 48.2pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">32</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        </div>
+        <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+        <li style="margin-left: 27.55pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Standard_ND96asr_v4: This VMs is powered by <a style="text-decoration: none;" href="https://www.nvidia.com/en-in/data-center/a100/"><span style="text-decoration: underline; color: #0563c1;">NVIDIA Ampere A100 Tensor Core</span></a> GPUs and 96 physical 2nd-generation AMD Epyc&trade; CPU cores (2.44GHz). The &ldquo;ND96asr_v4&rdquo; VM has 8 GPUs with 40 GB of memory each and is supported by 96 AMD processor cores with a total memory of 900GB. Each GPU features NVLINK 3.0 connectivity for communication within the VM.</li>
+        </ol>
+        <h2 style="margin-top: 2pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2.3</span> <a name="_Toc81323171"></a><a name="_Toc81330553"></a><a name="_Toc81389017"></a><a name="_Toc81405762"></a><a name="_Toc85794189"></a><a name="_Toc85794516"></a><a name="_Toc85798820"></a><a name="_Toc102561637"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Creat</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">e</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;"> a Virtual Machine on Azure Platform</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">Sign </span><span style="font-family: Calibri; font-weight: bold;">into</span><span style="font-family: Calibri; font-weight: bold;"> Azure</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri; color: #171717;">Sign </span><span style="font-family: Calibri; color: #171717;">into</span><span style="font-family: Calibri; color: #171717;"> the Azure portal </span><span style="font-family: Calibri; color: #171717;">by using </span><a style="text-decoration: none;" href="https://portal.azure.com/"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">https://portal.azure.com/</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><a style="text-decoration: none;" href="https://azure.microsoft.com/offers/ms-azr-0044p"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1; background-color: #ffffff;">Free Trial subscriptions</span></a><span style="font-family: Calibri; color: #171717; background-color: #ffffff;">are not</span><span style="font-family: Calibri; color: #171717; background-color: #ffffff;"> eligible for limit or quota increases. </span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri; color: #171717;">After the successful </span><span style="font-family: Calibri; color: #171717;">sign-in</span><span style="font-family: Calibri; color: #171717;"> or </span><span style="font-family: Calibri; color: #171717;">sign-up</span><span style="font-family: Calibri; color: #171717;">, one </span><span style="font-family: Calibri; color: #171717;">has to</span><span style="font-family: Calibri; color: #171717;"> upgrade the Azure subscription </span><span style="font-family: Calibri; color: #171717;">to </span><a style="text-decoration: none;" href="https://azure.microsoft.com/en-us/offers/ms-azr-0003p/"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Pay-As-You-Go</span></a> <span style="font-family: Calibri; color: #171717;">to</span><span style="font-family: Calibri; color: #171717;"> deploy a Virtual machine. For deployment, the user must have </span><span style="font-family: Calibri; color: #171717;">a </span><span style="font-family: Calibri; color: #171717;">regional vCPU </span><span style="font-family: Calibri; color: #171717;">quota, which</span><span style="font-family: Calibri; color: #171717;"> can be obtained by raising a request.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri; color: #171717;">The </span><span style="font-family: Calibri; color: #171717;">step-by-step</span><span style="font-family: Calibri; color: #171717;"> procedure to increase the vCPU quota is given below,</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/azure-portal/supportability/per-vm-quota-requests"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">https://docs.microsoft.com/en-us/azure/azure-portal/supportability/per-vm-quota-requests</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 115%; font-size: 11pt;"><span style="font-family: Calibri; color: #171717;">The </span><span style="font-family: Calibri; color: #171717;">step-by-step</span><span style="font-family: Calibri; color: #171717;"> procedure to deploy </span><span style="font-family: Calibri; color: #171717;">a </span><span style="font-family: Calibri; color: #171717;">Virtual machine is given below,</span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+        <li style="margin-top: 14pt; margin-left: 23.85pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">Type&nbsp;<span style="font-weight: bold;">virtual machines</span>&nbsp;in the marketplace search.</li>
+        <li style="margin-left: 23.85pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">Under&nbsp;<span style="font-weight: bold;">Services</span>, select&nbsp;<span style="font-weight: bold;">Virtual machines</span>.</li>
+        <li style="margin-left: 23.85pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">In the&nbsp;<span style="font-weight: bold;">Virtual machines</span>&nbsp;page, select&nbsp;<span style="font-weight: bold;">Create</span>&nbsp;Then&nbsp;<span style="font-weight: bold;">Virtual machine</span>.</li>
+        <li style="margin-left: 23.85pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">In the&nbsp;<span style="font-weight: bold;">Basics</span>&nbsp;tab, under&nbsp;<span style="font-weight: bold;">Project details</span>, make sure the correct subscription is selected and then choose to&nbsp;<span style="font-weight: bold;">create</span> <span style="font-weight: bold;">a </span><span style="font-weight: bold;">new</span>&nbsp;resource group. Type&nbsp;<span style="font-weight: bold; font-style: italic;">Azure-PerformanceTest</span><span style="font-weight: bold;">(user choice) </span>for the name.</li>
+        <li style="margin-left: 23.85pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">Under&nbsp;<span style="font-weight: bold; color: #000000;">Instance details</span>, type&nbsp;<span style="color: #000000;">Azure-VM (user choice)</span>&nbsp;for the&nbsp;<span style="font-weight: bold; color: #000000;">Virtual machine name</span>&nbsp;and choose&nbsp;West Europe for <span style="font-weight: bold; color: #000000;">Region</span>. Choose&nbsp;<span style="color: #000000;">CentOS, Version 8.1 HPC</span><span style="color: #000000;">-Gen2 </span>for the&nbsp;<span style="font-weight: bold; color: #000000;">Image</span>&nbsp;and&nbsp;<span style="color: #000000;">Standard_</span><span style="color: #000000;">ND96asr</span><span style="color: #000000;">_v</span><span style="color: #000000;">4</span>&nbsp;for the&nbsp;<span style="font-weight: bold; color: #000000;">Size </span><span style="color: #000000;">(user choice).</span> Leave the other defaults.</li>
+        </ol>
+        <p style="margin-top: 0pt; margin-left: 28.5pt; margin-bottom: 0pt; line-height: 115%; font-size: 11pt; background-color: #ffffff;"><span style="font-family: Calibri; font-weight: bold; color: #171717;">Note: </span></p>
+        <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+        <li style="margin-left: 28.06pt; line-height: 115%; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri; font-weight: bold;">Region</span><span style="font-family: Calibri;"> must be decided based on where </span><span style="font-family: Calibri;">the</span><span style="font-family: Calibri;"> Virtual machine</span><span style="font-family: Calibri;"> is going to be deployed</span><span style="font-family: Calibri;">. To avoid network latency, the region should be near the location where the VM is to be deployed.</span></li>
+        <li style="margin-left: 28.06pt; line-height: 115%; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri; font-weight: bold;">Image </span><span style="font-family: Calibri;">selection is of user choice based on the application user can choose the image (Windows 10, Linux based OS and Windows Server)</span></li>
+        </ul>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="6" type="1">
+        <li style="margin-left: 23.85pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; background-color: #ffffff;">Under&nbsp;<span style="font-weight: bold;">Administrator account</span>, provide a username, such as&nbsp;Azure user, and a password. The password must be at least 12 characters long and meet the&nbsp;<a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm-"><span style="text-decoration: underline; color: #0563c1; background-color: #ffffff;">defined complexity requirements</span></a><span style="color: #171717; background-color: #ffffff;">.</span></li>
+        <li style="margin-left: 23.85pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; background-color: #ffffff;">Under&nbsp;<span style="font-weight: bold;">Inbound port rules</span>, choose to&nbsp;<span style="font-weight: bold;">Allow selected ports</span>&nbsp;and then select&nbsp;<span style="font-weight: bold;">SSH (22</span><span style="font-weight: bold;">)</span>&nbsp;from the drop-down.</li>
+        <li style="margin-left: 23.85pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; background-color: #ffffff;"><a name="_Ref81315987"></a>In the <span style="font-weight: bold;">Advanced</span> tab, under the Extensions click <span style="font-weight: bold;">Select an extension to install</span>, select <span style="font-weight: bold;">NVIDIA GPU Driver Extension</span> (user choice)</li>
+        </ol>
+        <p style="margin-top: 0pt; margin-left: 28.35pt; margin-bottom: 0pt; line-height: 115%; font-size: 11pt; background-color: #ffffff;"><span style="font-family: Calibri; font-weight: bold;">Note: </span><span style="font-family: Calibri; font-weight: bold;">This Step </span><span style="font-family: Calibri; font-weight: bold;">8</span><span style="font-family: Calibri; font-weight: bold;">, will </span><span style="font-family: Calibri; font-weight: bold;">install</span><span style="font-family: Calibri; font-weight: bold;"> the older version of Nvidia and Cuda driver hence the user can skip this step and proceed </span><span style="font-family: Calibri; font-weight: bold;">with </span><span style="font-family: Calibri; font-weight: bold;">the VM deployment without extension. Follow manual installation as per</span><span style="font-family: Calibri; font-weight: bold;"> chapter</span> <span style="font-family: Calibri; font-weight: bold;">2.5</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">.</span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="9" type="1">
+        <li style="margin-left: 23.85pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; background-color: #ffffff;">Leave the remaining defaults and then select the&nbsp;<span style="font-weight: bold;">Review + create</span>&nbsp;button at the bottom of the page.</li>
+        <li style="margin-left: 28.5pt; line-height: 115%; font-family: Calibri; font-size: 11pt; background-color: #ffffff;">After validation runs, select the&nbsp;Create&nbsp;button at the bottom of the page.</li>
+        <li style="margin-left: 28.5pt; font-family: Calibri; font-size: 11pt; background-color: #ffffff;">After deployment is complete, select&nbsp;Go to the resource.</li>
+        </ol>
+        <p style="margin-top: 0pt; margin-left: 28.5pt; margin-bottom: 0pt; font-size: 11pt; background-color: #ffffff;"><span style="font-family: Calibri;">For more information follow below link</span></p>
+        <p style="margin-top: 0pt; margin-left: 28.5pt; margin-bottom: 0pt; font-size: 11pt; background-color: #ffffff;"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-portal"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">https://docs.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-portal</span></a></p>
+        <h2 style="margin-top: 2pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2.4</span> <a name="_Toc81313723"></a><a name="_Toc81323172"></a><a name="_Toc81330554"></a><a name="_Toc81389018"></a><a name="_Toc81405763"></a><a name="_Toc85794190"></a><a name="_Toc85794517"></a><a name="_Toc85798821"></a><a name="_Toc102561638"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">C</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">onnect to </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">the </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">virtual machine</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt; background-color: #ffffff;"><a name="_Toc81330555"></a><a name="_Toc81389019"></a><a name="_Toc81405764"></a><span style="font-family: Calibri; color: #171717;">Create </span><span style="font-family: Calibri; color: #171717;">an</span> <span style="font-family: Calibri; color: #171717;">SSH</span><span style="font-family: Calibri; color: #171717;"> connection to the virtual machine. </span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+        <li style="margin-left: 31.2pt; line-height: 115%; padding-left: 4.5pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">On the overview page of a virtual machine, select the&nbsp;<span style="font-weight: bold;">Connect</span>&nbsp;button then select&nbsp;<span style="font-weight: bold;">SSH </span>and copy the public IP address<span style="font-weight: bold;">.</span></li>
+        <li style="margin-left: 31.2pt; line-height: 115%; padding-left: 4.5pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">Open any SSH client tool of user choice, in this case, <span style="font-weight: bold;">PUTTY </span>is used.</li>
+        <li style="margin-left: 31.2pt; line-height: 115%; padding-left: 4.5pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">Enter the <span style="font-weight: bold;">IP address</span> and port as 22 and click <span style="font-weight: bold;">Open</span></li>
+        </ol>
+        <p style="margin-top: 14pt; margin-left: 36pt; margin-bottom: 0pt; line-height: 115%; font-size: 11pt; background-color: #ffffff;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="turbostream_files/ad5gt-5hewi.005.jpg" alt="" width="353" height="348" /></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="4" type="1">
+        <li style="margin-left: 31.35pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">Enter username in <span style="font-weight: bold;">Login</span>, enter the password, and click<span style="font-weight: bold;"> Enter.</span></li>
+        </ol>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="5" type="1">
+        <li style="margin-left: 31.35pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">Now user is connected to the VM in Console.</li>
+        </ol>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; line-height: 115%; font-size: 11pt; background-color: #ffffff;"><span style="font-family: Calibri; color: #171717;">For more information follow below link</span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; line-height: 115%; background-color: #ffffff;"><a style="text-decoration: none;" href="https://help.communicationsquare.com/article/103-how-to-connect-to-a-linux-vm-using-putty"><span style="font-family: Calibri; font-size: 11pt; text-decoration: underline; color: #0563c1;">https://help.communicationsquare.com/article/103-how-to-connect-to-a-linux-vm-using-putty</span></a></p>
+        <h2 style="margin-top: 2pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2.5</span> <a name="_Ref85632735"></a><a name="_Toc85794191"></a><a name="_Toc85794518"></a><a name="_Toc85798822"></a><a name="_Toc102561639"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Install Nvidia </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Drivers</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri; color: #171717;">To take advantage of the GPU capabilities of Azure N-series VMs backed by NVIDIA GPUs, </span><span style="font-family: Calibri; color: #171717;">the user</span><span style="font-family: Calibri; color: #171717;"> must install NVIDIA GPU drivers. </span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri; color: #171717;">If the machine has </span><span style="font-family: Calibri; color: #171717;">an</span><span style="font-family: Calibri; color: #171717;"> NVLink or </span><span style="font-family: Calibri; color: #171717;">NV Switch</span><span style="font-family: Calibri; color: #171717;"> connecting the GPUs</span><span style="font-family: Calibri; color: #171717;"> like in the case of </span><span style="font-family: Calibri; color: #171717;">the </span><span style="font-family: Calibri; color: #171717;">NDv4 virtual </span><span style="font-family: Calibri; color: #171717;">machine,</span> <span style="font-family: Calibri; color: #171717;">one should also install the associated version of the Nvidia fabric manager</span><span style="font-family: Calibri; color: #171717;">.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri; color: #171717;">There are </span><span style="font-family: Calibri; color: #171717;">two ways </span><span style="font-family: Calibri; color: #171717;">to</span><span style="font-family: Calibri; color: #171717;"> install the drivers,</span></p>
+        <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+        <li style="margin-left: 28.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">The</span><span style="font-family: Calibri;">NVIDIA GPU Driver Extension</span><span style="font-family: Calibri;">installs appropriate NVIDIA CUDA or GRID drivers on an N-series VM. Install or manage the extension using the Azure portal (Re</span><span style="font-family: Calibri;">f </span><span style="font-family: Calibri;">8</span><span style="font-family: Calibri;">)</span></li>
+        <li style="margin-left: 28.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Install NVIDIA GPU drivers manually. (For the manual installation follow the procedure given below)</span></li>
+        </ul>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Nvidia Data Center Driver installation guide for CentOS 8</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 115%; font-size: 11pt;"><span style="font-family: Calibri;">The </span><span style="font-family: Calibri;">step-by-step</span><span style="font-family: Calibri;"> instruction is given below,</span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+        <li style="margin-left: 31.35pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">In some cases, the user may need to install some additional dependencies that are required</li>
+        </ol>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; line-height: 115%; font-size: 11pt;"><span style="font-family: Calibri;">For</span><span style="font-family: Calibri;"> installing the NVIDIA drivers.</span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; line-height: 115%; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; font-style: italic;"># </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">sudo</span> <span style="font-family: Calibri; font-weight: bold; font-style: italic;">dnf</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;"> install -y tar bzip2 make </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">automake</span> <span style="font-family: Calibri; font-weight: bold; font-style: italic;">gcc</span> <span style="font-family: Calibri; font-weight: bold; font-style: italic;">gcc-c</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">++ </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">pciutils</span> <span style="font-family: Calibri; font-weight: bold; font-style: italic;">elfutils-libelf-devel</span> <span style="font-family: Calibri; font-weight: bold; font-style: italic;">libglvnd-devel</span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="2" type="1">
+        <li style="margin-left: 31.35pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Enable the PowerTools repo and set up the external dependency on EPEL for DKMS.</li>
+        </ol>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; line-height: 115%; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; font-style: italic;"># </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">sudo</span> <span style="font-family: Calibri; font-weight: bold; font-style: italic;">dnf</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;"> config-manager --set-enabled </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">PowerTools</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; line-height: 115%; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; font-style: italic;"># </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">sudo</span> <span style="font-family: Calibri; font-weight: bold; font-style: italic;">dnf</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;"> install -y </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">epel</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">-release</span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="3" type="1">
+        <li style="margin-left: 31.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Install the CUDA repository public GPG key</li>
+        </ol>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; font-style: italic;"># </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">Distribution=</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">rhel8</span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="4" type="1">
+        <li style="margin-left: 31.35pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Setup the CUDA network repository</li>
+        </ol>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; font-style: italic;"># ARCH=</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">$( /</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">bin/</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">arch)</span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; font-size: 11pt; text-align: left;"><span style="font-family: Calibri; font-weight: bold; font-style: italic;"># sudo </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">dnf</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;"> config-manager --add-repo </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">http://developer.download.nvidia.com/compute/cuda/repos/$distribution/${</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">ARCH}/cuda-$distribution.repo</span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="5" type="1">
+        <li style="margin-left: 31.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">For CentOS 8, ensure that the system has the correct Linux kernel sources from the CentOS repositories:</li>
+        </ol>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; font-style: italic;"># </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">sudo</span> <span style="font-family: Calibri; font-weight: bold; font-style: italic;">dnf</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;"> install -y kernel-</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">devel</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">-$(</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">uname</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;"> -r) kernel-headers-$(</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">uname</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;"> -r)</span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="6" type="1">
+        <li style="margin-left: 31.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Note that in some cases, the user may have to update the running kernel as a pre-requisite:</li>
+        </ol>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; font-style: italic;"># </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">sudo</span> <span style="font-family: Calibri; font-weight: bold; font-style: italic;">dnf</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;"> install -y kernel kernel-core kernel-modules</span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="7" type="1">
+        <li style="margin-left: 31.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Update the repository cache and install the driver using the nvidia-driver meta-package</li>
+        </ol>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; font-style: italic;"># </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">sudo</span> <span style="font-family: Calibri; font-weight: bold; font-style: italic;">dnf</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;"> clean all</span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; font-style: italic;"># sudo </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">dnf</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;"> -y module install </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">nvidia-</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">driver:latest</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">-dkms</span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="8" type="1">
+        <li style="margin-left: 31.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Install fabric manager to activate the NVswitch (For NDv4 instance)</li>
+        </ol>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; font-style: italic;"># sudo </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">dnf</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;"> module install </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">nvidia-</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">driver:latest</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">-dkms</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">/</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">fm</span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="9" type="1">
+        <li style="margin-left: 31.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Enable FM Service to Auto Start at Boot</li>
+        </ol>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; font-style: italic;"># </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">sudo</span> <span style="font-family: Calibri; font-weight: bold; font-style: italic;">systemctl</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;"> enable </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">nvidia-fabricmanager</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; font-style: italic;">Reference: </span><a style="text-decoration: none;" href="https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html#centos8/"><span style="font-family: Calibri; font-weight: bold; font-style: italic; text-decoration: underline; color: #0563c1;">https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html#centos8/</span></a></p>
+        <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">3</span> <a name="_Toc81405765"></a><a name="_Toc85794192"></a><a name="_Toc85794519"></a><a name="_Toc85798823"></a><a name="_Toc102561640"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Install </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Turbostream</span> <span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Application on Virtual Machine</span></h1>
+        <h2 style="margin-top: 2pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">3.1</span> <a name="_Toc85794193"></a><a name="_Toc85794520"></a><a name="_Toc85798824"></a><a name="_Toc102561641"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Download product</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">Instructions on how to download </span><span style="font-family: Calibri;">the </span><span style="font-family: Calibri;">Turbo</span><span style="font-family: Calibri;">-</span><span style="font-family: Calibri;">stream</span><span style="font-family: Calibri;"> application</span><span style="font-family: Calibri;">. </span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">Before you begin, open </span><span style="font-family: Calibri;">the </span><span style="font-family: Calibri;">below </span><span style="font-family: Calibri;">link in</span><span style="font-family: Calibri;"> a web browser and log </span><span style="font-family: Calibri;">i</span><span style="font-family: Calibri;">n</span><span style="font-family: Calibri;"> as </span><span style="font-family: Calibri;">a </span><span style="font-family: Calibri;">customer.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><a style="text-decoration: none;" href="https://app.exavault.com/" target="_blank"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">https://app.exavault.com/</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><img style="border: 0.75pt solid #000000; -aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="turbostream_files/ad5gt-5hewi.006.png" alt="Graphical user interface, application, Teams
+        
+        Description automatically generated" width="396" height="285" /></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">U</span><span style="font-family: Calibri;">ser</span><span style="font-family: Calibri;"> will find the following:</span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+        <li style="margin-left: 23pt; padding-left: 13pt; font-family: Calibri; font-size: 11pt;">Release package for CentOS 8 with CUDA 11.4.2</li>
+        <li style="margin-left: 23pt; padding-left: 13pt; font-family: Calibri; font-size: 11pt;">license file</li>
+        <li style="margin-left: 23pt; padding-left: 13pt; font-family: Calibri; font-size: 11pt;">The Turbostream quickstart guide</li>
+        <li style="margin-left: 23pt; padding-left: 13pt; font-family: Calibri; font-size: 11pt;">A test simulation pack (Scaling_Test)</li>
+        <li style="margin-left: 23pt; padding-left: 13pt; font-family: Calibri; font-size: 11pt;">The Turbostream documentation</li>
+        </ol>
+        <h2 style="margin-top: 2pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">3.2</span> <a name="_Toc81399916"></a><a name="_Toc81405767"></a><a name="_Toc85794194"></a><a name="_Toc85794521"></a><a name="_Toc85798825"></a><a name="_Toc102561642"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Install </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Turbostream</span> <span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">application</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;"> on Linux</span></h2>
+        <h3 style="margin-top: 2pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -36pt; page-break-inside: avoid; page-break-after: avoid; font-size: 12pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">3.2.1</span> <a name="_Toc102561643"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">Install the release distribution</span></h3>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">The binary release distribution </span><span style="font-family: Calibri;">and license file </span><span style="font-family: Calibri;">for </span><span style="font-family: Calibri;">Turbo</span><span style="font-family: Calibri;">-</span><span style="font-family: Calibri;">stream can be obtained from the client</span><span style="font-family: Calibri;">&rsquo;s </span><span style="font-family: Calibri;">website.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 150%; font-size: 11pt;"><span style="font-family: Calibri;">The relevant distribution will be named as follows:</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 150%; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold; font-style: italic;">ts_release_4.1.110_centos8_openmpi_cuda_11.4.2</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 150%; font-size: 11pt;"><span style="font-family: Calibri;">Extract the release distribution as follows:</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 150%; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold; font-style: italic;">tar </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">xjpvf</span> <span style="font-family: Calibri; font-weight: bold; font-style: italic;">ts_release_4.1.110_centos8_openmpi_cuda_11.4.2</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 150%; font-size: 11pt;"><span style="font-family: Calibri;">after extracting </span><span style="font-family: Calibri;">the </span><span style="font-family: Calibri;">package installation will </span><span style="font-family: Calibri;">be </span><span style="font-family: Calibri;">complete</span><span style="font-family: Calibri;">.</span></p>
+        <h3 style="margin-top: 2pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -36pt; page-break-inside: avoid; page-break-after: avoid; font-size: 12pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">3.2.2</span> <a name="_Toc102561644"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">Edit the </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">bashrc_tsfil</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">e</span></h3>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">Make the </span><span style="font-family: Calibri;">following changes</span><span style="font-family: Calibri;"> as appropriate to the </span><span style="font-family: Calibri;">bashrc_ts</span><span style="font-family: Calibri;"> file in the release distribution</span><span style="font-family: Calibri;">.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 150%; font-size: 11pt;"><span style="font-family: Calibri;">Location of </span><span style="font-family: Calibri;">the </span><span style="font-family: Calibri;">folder that release distribution was copied to</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 150%; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold; font-style: italic;">export TSHOME=</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">$TSHOME</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">/ts_release_4.1.110_centos8_openmpi_cuda_11.4.2</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 150%; font-size: 11pt;"><span style="font-family: Calibri;">Location of the </span><span style="font-family: Calibri;">license</span><span style="font-family: Calibri;"> file you have received </span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 150%; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold; font-style: italic;">export TSLICENCE=</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">$TSHOME </span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">/</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">ts.lic</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 150%; font-size: 11pt;"><span style="font-family: Calibri;">H5PY</span><span style="font-family: Calibri;"> file setting</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 150%; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold; font-style: italic;">export PYTHONPATH=$TSHOME/h5py/lib/python3.8/site-</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">packages:$</span><span style="font-family: Calibri; font-weight: bold; font-style: italic;">PYTHONPATH</span></p>
+        <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">4</span> <a name="_Toc81399917"></a><a name="_Toc81405768"></a><a name="_Toc85794196"></a><a name="_Toc85794523"></a><a name="_Toc85798827"></a><a name="_Toc102561645"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Performance results of</span> <span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Turbostream</span> <span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">on </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">A</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">zure virtual machine</span></h1>
+        <h2 style="margin-top: 2pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">4.1</span> <a name="_Toc102561646"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Turbostream Overview</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">Turbostream is a cloud-based computational fluid dynamics software for turbomachinery. The product offered is </span><span style="font-family: Calibri;">Turbostream.</span><span style="font-family: Calibri;"> The key features of the product are speed and </span><span style="font-family: Calibri;">a </span><span style="font-family: Calibri;">multi-core processor. The software is provided both </span><span style="font-family: Calibri;">on-premises</span><span style="font-family: Calibri;"> and on </span><span style="font-family: Calibri;">the </span><span style="font-family: Calibri;">cloud.</span> <span style="font-family: Calibri;">Turbostream allows high-fidelity methods such as unsteady full-annulus simulations to be used as part of the routine design process for the first time.</span></p>
+        <h2 style="margin-top: 2pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">4.2</span> <a name="_Toc81323180"></a><a name="_Toc81330562"></a><a name="_Toc81390114"></a><a name="_Toc81411727"></a><a name="_Toc81413124"></a><a name="_Toc81420235"></a><a name="_Toc81498995"></a><a name="_Toc85794199"></a><a name="_Toc85794526"></a><a name="_Toc85798830"></a><a name="_Toc102561647"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Turbostream on</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;"> Azure Platform</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">To carry out the CFD simulations on </span><span style="font-family: Calibri;">Turbostream</span><span style="font-family: Calibri;"> software, </span><span style="font-family: Calibri;">the </span><span style="font-family: Calibri;">right hardware with </span><span style="font-family: Calibri;">the </span><span style="font-family: Calibri;">latest CPUs and GPUs are required. Microsoft partnered with Nvidia provides the required and suitable Infrastructure and hardware on </span><span style="font-family: Calibri;">the </span><span style="font-family: Calibri;">Azure cloud platform. It provides the latest and fastest </span><span style="font-family: Calibri;">computes</span><span style="font-family: Calibri;"> capabilities for </span><span style="font-family: Calibri;">GPU-intensive</span><span style="font-family: Calibri;"> workloads.</span></p>
+        <div style="text-align: center;">
+        <div class="overflow-table"><table style="width: 484pt; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr style="height: 22.5pt;">
+        <td style="width: 473.2pt; padding-right: 5.4pt; padding-left: 5.4pt; vertical-align: middle; background-color: #0170ad;" colspan="2">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; ">Operating system and Nvidia drivers Details </span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 203.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Operating system version</span></p>
+        </td>
+        <td style="width: 259.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">CentOS Linux release 8.</span><span style="font-family: Calibri;">1</span><span style="font-family: Calibri;">.1911 (Core)</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 203.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">OS Architecture</span></p>
+        </td>
+        <td style="width: 259.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">X86-64</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 203.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">GPU Drivers version</span></p>
+        </td>
+        <td style="width: 259.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">470.57.02</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 203.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Cuda version</span></p>
+        </td>
+        <td style="width: 259.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">11.4</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        </div>
+        <h2 style="margin-top: 0pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">4.3</span> <a name="_Toc102561648"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Model Details</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">The parameters are as follows:</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">N1: Number of grid nodes in the axial direction</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">N</span><span style="font-family: Calibri;">2: Number</span><span style="font-family: Calibri;"> of grid nodes in the circumferential and the radial directions</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">NGPU: Number of GPUs to use</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">NGPU_NODE: Number of GPUs per node</span></p>
+        <div style="text-align: center;">
+        <div class="overflow-table"><table style="margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr>
+        <td style="width: 81.1pt; padding-right: 5.4pt; padding-left: 5.4pt; vertical-align: top; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; ">Model</span></p>
+        </td>
+        <td style="width: 81.35pt; padding-right: 5.4pt; padding-left: 5.4pt; vertical-align: top; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; ">No. of GPUs</span></p>
+        </td>
+        <td style="width: 138.05pt; padding-right: 5.4pt; padding-left: 5.4pt; vertical-align: top; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; ">No. of Grid </span><span style="font-family: Calibri; font-weight: bold; ">nodes (</span><span style="font-family: Calibri; font-weight: bold; ">In million)</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 81.1pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Model 1</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1</span></p>
+        </td>
+        <td style="width: 138.05pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">6</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 81.1pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Model 2</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2</span></p>
+        </td>
+        <td style="width: 138.05pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">12</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 81.1pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Model 3</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">4</span></p>
+        </td>
+        <td style="width: 138.05pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">24</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 81.1pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Model 4</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">8</span></p>
+        </td>
+        <td style="width: 138.05pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">48</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        </div>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="turbostream_files/ad5gt-5hewi.007.jpg" alt="Icon
+        
+        Description automatically generated" width="308" height="213" /></p>
+        <h2 style="margin-top: 2pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">4.4</span> <a name="_Toc81323186"></a><a name="_Toc81330568"></a><a name="_Toc81390120"></a><a name="_Toc81411733"></a><a name="_Toc81413130"></a><a name="_Toc81420241"></a><a name="_Toc81498996"></a><a name="_Toc85794200"></a><a name="_Toc85794527"></a><a name="_Toc85798831"></a><a name="_Toc102561649"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Turbostream Performance</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;"> Result</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">s</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">To Analyse the performance</span><span style="font-family: Calibri;"> of </span><span style="font-family: Calibri;">Turbostream</span><span style="font-family: Calibri;"> we carried out </span><span style="font-family: Calibri;">simulations. These performance tests aim to </span><span style="font-family: Calibri;">test the simulation performance on chosen Azure VM. The results are presented below</span></p>
+        <h3 style="margin-top: 2pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -36pt; page-break-inside: avoid; page-break-after: avoid; font-size: 12pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">4.4.1</span> <a name="_Toc102561650"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">Performance Calculation</span></h3>
+        <div style="text-align: center;">
+        <div class="overflow-table"><table style="margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr>
+        <td style="width: 59.85pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">No. of</span><span style="font-family: Calibri; font-weight: bold;"> GPU</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">ngpu</span></p>
+        </td>
+        <td style="width: 123.85pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Time</span><span style="font-family: Calibri; font-weight: bold;"> (seconds)</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">(</span><span style="font-family: Calibri; font-weight: bold;">Average of 200 iterations</span><span style="font-family: Calibri; font-weight: bold;">)</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">No. of </span><span style="font-family: Calibri; font-weight: bold;">grid </span><span style="font-family: Calibri; font-weight: bold;">Node</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">n</span><span style="font-family: Calibri; font-weight: bold;">node</span><span style="font-family: Calibri; font-weight: bold;"> (1e4)</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 59.85pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><a name="_Hlk102555203"></a><span style="font-family: Calibri;">1</span></p>
+        </td>
+        <td style="width: 123.85pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">0.0743</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">600</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 59.85pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2</span></p>
+        </td>
+        <td style="width: 123.85pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">0.0944</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1200</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 59.85pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">4</span></p>
+        </td>
+        <td style="width: 123.85pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">0.1145</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2400</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 59.85pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">8</span></p>
+        </td>
+        <td style="width: 123.85pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">0.1319</span></p>
+        </td>
+        <td style="width: 81.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">4800</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        </div>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">Performance is the number of grid nodes processed per second. Each model's performance is calculated using the formula below.</span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">perf = nnode/time</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">To calculate relative performance</span><span style="font-family: Calibri;">,</span><span style="font-family: Calibri;"> normalise all GPUs performance with 1 GPU</span></p>
+        <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">Relative </span><span style="font-family: Calibri;">perf = perf/</span><span style="font-family: Calibri;">perf [</span><span style="font-family: Calibri;">1</span><span style="font-family: Calibri;">]</span></p>
+        <div style="text-align: center;">
+        <div class="overflow-table"><table style="margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr>
+        <td style="width: 58.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; ">No. of GPUs</span></p>
+        </td>
+        <td style="width: 33.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; ">N1</span></p>
+        </td>
+        <td style="width: 38.85pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; ">N2</span></p>
+        </td>
+        <td style="width: 116.75pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; ">Time per iteration (sec)</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; ">Average of 200 iterations</span></p>
+        </td>
+        <td style="width: 60.1pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; ">Performance</span></p>
+        </td>
+        <td style="width: 59.7pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; ">Relative Performance</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 58.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1</span></p>
+        </td>
+        <td style="width: 33.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">600</span></p>
+        </td>
+        <td style="width: 38.85pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">100</span></p>
+        </td>
+        <td style="width: 116.75pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #cccccc;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">0.0743</span></p>
+        </td>
+        <td style="width: 60.1pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">80753701.21</span></p>
+        </td>
+        <td style="width: 59.7pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 58.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2</span></p>
+        </td>
+        <td style="width: 33.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1200</span></p>
+        </td>
+        <td style="width: 38.85pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">100</span></p>
+        </td>
+        <td style="width: 116.75pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">0.0944</span></p>
+        </td>
+        <td style="width: 60.1pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">127118644.1</span></p>
+        </td>
+        <td style="width: 59.7pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.57</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 58.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">4</span></p>
+        </td>
+        <td style="width: 33.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2400</span></p>
+        </td>
+        <td style="width: 38.85pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">100</span></p>
+        </td>
+        <td style="width: 116.75pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #cccccc;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">0.1145</span></p>
+        </td>
+        <td style="width: 60.1pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">209606986.9</span></p>
+        </td>
+        <td style="width: 59.7pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2.60</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 58.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">8</span></p>
+        </td>
+        <td style="width: 33.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">4800</span></p>
+        </td>
+        <td style="width: 38.85pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">100</span></p>
+        </td>
+        <td style="width: 116.75pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">0.1319</span></p>
+        </td>
+        <td style="width: 60.1pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">363912054.6</span></p>
+        </td>
+        <td style="width: 59.7pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">4.51</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        </div>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="turbostream_files/ad5gt-5hewi.008.png" alt="" width="528" height="360" /><a name="_Toc85794201"></a><a name="_Toc85794528"></a><a name="_Toc85798832"></a></p>
+        <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">5</span> <a name="_Toc102561651"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Azure Co</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">st</span></h1>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">For the below cost reports, the</span> <span style="font-family: Calibri;">a</span><span style="font-family: Calibri;">pplication</span><span style="font-family: Calibri;"> i</span><span style="font-family: Calibri;">nstallation time </span><span style="font-family: Calibri;">is</span><span style="font-family: Calibri;"> not considered </span><span style="font-family: Calibri;">and only </span><span style="font-family: Calibri;">wall clock time </span><span style="font-family: Calibri;">is considered for the cost calculation</span><span style="font-family: Calibri;">.</span></p>
+        <div style="text-align: center;">
+        <div class="overflow-table"><table style="margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr>
+        <td style="width: 91.1pt; padding-right: 5.4pt; padding-left: 5.4pt; vertical-align: middle; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><a name="_Hlk87966446"></a><span style="font-family: Calibri; font-weight: bold; ">A</span><span style="font-family: Calibri; font-weight: bold; ">zure</span><span style="font-family: Calibri; font-weight: bold; "> VM Size</span></p>
+        </td>
+        <td style="width: 91.15pt; padding-right: 5.4pt; padding-left: 5.4pt; vertical-align: middle; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; ">CPU&amp;GPU</span></p>
+        </td>
+        <td style="width: 91.15pt; padding-right: 5.4pt; padding-left: 5.4pt; vertical-align: middle; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; ">Elapsed</span> <span style="font-family: Calibri; font-weight: bold; ">Time in </span><span style="font-family: Calibri; font-weight: bold; ">sec</span></p>
+        </td>
+        <td style="width: 91.15pt; padding-right: 5.4pt; padding-left: 5.4pt; vertical-align: middle; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; ">Azure VM Hourly Cost</span></p>
+        </td>
+        <td style="width: 91.15pt; padding-right: 5.4pt; padding-left: 5.4pt; vertical-align: middle; background-color: #0170ad;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold; ">Total Azure Co</span><span style="font-family: Calibri; font-weight: bold; ">st</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 91.1pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ffffff;" rowspan="4">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">ND96asr_v4</span></p>
+        </td>
+        <td style="width: 91.15pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1-GPU</span></p>
+        </td>
+        <td style="width: 91.15pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">79.33</span></p>
+        </td>
+        <td style="width: 91.15pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">$39.77</span></p>
+        </td>
+        <td style="width: 91.15pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: bottom; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">$0.78</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 91.15pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2-GPU</span></p>
+        </td>
+        <td style="width: 91.15pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">93.06</span></p>
+        </td>
+        <td style="width: 91.15pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">$39.77</span></p>
+        </td>
+        <td style="width: 91.15pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">$0.91</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 91.15pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">4-GPU</span></p>
+        </td>
+        <td style="width: 91.15pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">133.29</span></p>
+        </td>
+        <td style="width: 91.15pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">$39.77</span></p>
+        </td>
+        <td style="width: 91.15pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">$1.31</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 91.15pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">8-GPU</span></p>
+        </td>
+        <td style="width: 91.15pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">196.10</span></p>
+        </td>
+        <td style="width: 91.15pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">$39.77</span></p>
+        </td>
+        <td style="width: 91.15pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ffffff;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">$1.93</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        </div>
+        <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">6</span> <a name="_Toc85794202"></a><a name="_Toc85794529"></a><a name="_Toc85798833"></a><a name="_Toc102561652"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Summary</span></h1>
+        <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+        <li style="margin-left: 21.16pt; line-height: 125%; padding-left: 3.89pt; font-family: Calibri; font-size: 12pt;">Turbostream is successfully tested on NDv4-A100 Virtual Machine.</li>
+        <li style="margin-left: 21.16pt; line-height: 125%; padding-left: 3.89pt; font-family: Calibri; font-size: 12pt;">We can see that the performance is scaling well up to 8 GPUs.</li>
+        </ol>
+        
+        <!--The Report content goes here-->
+      </div><!--content-->
+      
+     <div class="col-4 col-md-2 px-1 px-sm-0 toc">
+        <label class="px-3">Table of Contents</label>
+        <!--toc content goes here-->  
+
+        <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561633"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Introduction</span></a></p>
+<p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561634"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Deploy Virtual Machine on Azure Cloud Platform</span></a></p>
+<p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561635"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Azure Cloud Architecture for Application</span></a></p>
+<p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561636"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Azure Virtual Machine (VM)</span></a></p>
+<p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561637"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.3 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Create a Virtual Machine on Azure Platform</span></a></p>
+<p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561638"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.4 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Connect to the virtual machine</span></a></p>
+<p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561639"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.5 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Install Nvidia </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Drivers</span></a></p>
+<p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561640"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Install Turbostream Application on Virtual Machine</span></a></p>
+<p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561641"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3.1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Download product</span></a></p>
+<p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561642"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3.2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Install Turbostream application on Linux</span></a></p>
+<p style="margin-top: 0pt; margin-left: 22pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561643"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3.2.1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Install the release distribution</span></a></p>
+<p style="margin-top: 0pt; margin-left: 22pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561644"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3.2.2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Edit the bashrc_tsfile</span></a></p>
+<p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561645"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">4 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Performance results of Turbostream on Azure virtual machine</span></a></p>
+<p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561646"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">4.1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Turbostream Overview</span></a></p>
+<p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561647"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">4.2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Turbostream on</span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;"> Azure Platform</span></a></p>
+<p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561648"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">4.3 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Model Details</span></a></p>
+<p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561649"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">4.4 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Turbostream Performance Results</span></a></p>
+<p style="margin-top: 0pt; margin-left: 22pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561650"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">4.4.1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Performance Calculation</span></a></p>
+<p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561651"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">5 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Azure Cost</span></a></p>
+<p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc102561652"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">6 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Summary</span></a></p>
+        
+        <!--toc content goes here-->  
+     </div>
+
+    </div><!--rpt-->
+
+
+      </section>
+          
+      <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
+ 
+    </main>
+
+    <footer>
+      <div class="row g-0">		
+        <div class="container text-center mx-auto">
+        <div class="container px-3 d-flex justify-content-between flex-column flex-md-row-reverse my-auto">
+          <div>
+            <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo" />
+            <span class="logoline-bot1"></span> 
+            <span class="px-1 px-sm-2">
+              <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo" />
+            </span>
+      </div>
+            <div class="text-uppercase align-self-center pt-3 pt-md-2 footer-text">Copyright &copy; 2021 Azure HPC</div>
+          </div>
+        </div>
+      </div>
+      </footer>
+    </div><!--wrapper-->
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+    <script> 
+    
+      let mybutton = document.getElementById("btn-back-to-top");  
+      
+      // When the user clicks on the button, scroll to the top of the document
+      mybutton.addEventListener("click", backToTop);
+    
+    </script>
+    
+    </body>
+    </html>

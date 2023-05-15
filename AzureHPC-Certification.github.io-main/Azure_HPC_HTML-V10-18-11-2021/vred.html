@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+    
+    <link rel="shortcut icon" href="img/icon.ico">
+    <link rel="Stylesheet" href="css/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
+    <script src="https://kit.fontawesome.com/3d0a07deaa.js" crossorigin="anonymous"></script>
+
+    <title>Microsoft HPC Azure | HOME</title>
+    
+  </head>
+  <body>
+    <div id="wrapper" class="row g-0">
+      <header class="container-fluid">   
+        <div class="logo container">
+         <a href="index.html">Microsoft <span>HPC Azure</span> </a><br>
+            <span>
+            <a href="#">
+              <img src="img/MicrosoftLogo_Small.png" alt="Microsoft Logo" />
+            </a>  
+          </span> 
+          <span>
+            <a href="#">
+              <img src="img/CapgeminiLogo_Small.png" alt="Capgemini Logo" />
+            </a>
+          </span>
+  
+        </div>
+      </header>
+
+    <main class="container-fluid">
+
+      <section class="container vred-wrapper">        
+      <h3 class="text-center text-uppercase py-4">Vred Documentation</h3>
+    <div class="row vred">
+      <div class="col-2 text-left index">
+        <div class="index-scroll">
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#intro" class="nav-link p-0 text-muted">Introduction</a></li>
+          <li class="nav-item mb-2"><a href="#deploy" class="nav-link p-0 text-muted">Deploy Virtual Machine on
+            Azure Cloud Platform</a></li>
+          <li class="nav-item mb-2"><a href="#install" class="nav-link p-0 text-muted">Install VRED Application on
+            Virtual Machine:</a></li>
+          <li class="nav-item mb-2"><a href="#performance" class="nav-link p-0 text-muted">Performance results of
+            Autodesk VRED on Azure Virtual Machines</a></li>
+          <li class="nav-item mb-2"><a href="#consumption" class="nav-link p-0 text-muted">Azure Consumption</a></li>
+          <li class="nav-item mb-2"><a href="#summary" class="nav-link p-0 text-muted">Summary</a></li>
+        </ul></div>
+      </div><!--index-->
+      <div class="col-8 content">
+
+      <div id="intro">
+        <h3>Introduction</h3>
+        <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: justify;text-indent: 36pt;">This document briefly explains the steps to install and run Autodesk VRED application on a Virtual Machine deployed in Azure Cloud Platform and presents the performance results.</p>
+        <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;">This recipe document covers the following topics: -</p>
+        <p style="margin: 0cm 0cm 0cm 38.5pt;font-size:15px;font-family: Calibri, sans-serif;line-height: 15.5467px;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: justify;text-indent: -18pt;"><span style="font-family: Symbol;">�&nbsp; &nbsp; &nbsp; &nbsp;</span>Deploy &amp; connect a required virtual machine on Azure platform.</p>
+        <p style="margin: 0cm 0cm 0cm 38.5pt;font-size:15px;font-family: Calibri, sans-serif;line-height: 15.5467px;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: justify;text-indent: -18pt;"><span style="font-size:16px;line-height: 16.96px;font-family: Symbol;">�&nbsp; &nbsp; &nbsp; &nbsp;</span>Install required NVIDIA drivers in virtual machine.</p>
+        <p style="margin: 0cm 0cm 0cm 38.5pt;font-size:15px;font-family: Calibri, sans-serif;line-height: 15.5467px;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: justify;text-indent: -18pt;"><span style="font-family: Symbol;">�&nbsp; &nbsp; &nbsp; &nbsp;</span>Install Application on virtual machine.</p>
+        <p style="margin: 0cm 0cm 0cm 38.5pt;font-size:15px;font-family: Calibri, sans-serif;line-height: 15.5467px;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: justify;text-indent: -18pt;"><span style="font-family: Symbol;">�&nbsp; &nbsp; &nbsp; &nbsp;</span>Install license manager for current application</p>
+        <p style="margin: 0cm 0cm 0cm 38.5pt;font-size:15px;font-family: Calibri, sans-serif;line-height: 15.5467px;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: justify;text-indent: -18pt;"><span style="font-size:16px;line-height: 16.96px;font-family: Symbol;">�&nbsp; &nbsp; &nbsp; &nbsp;</span>Performance results of current application on azure virtual machine</p>
+        <p style="margin: 0cm 0cm 0cm 38.5pt;font-size:15px;font-family: Calibri, sans-serif;line-height: 15.5467px;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: justify;text-indent: -18pt;"><span style="font-size:16px;line-height: 16.96px;font-family: Symbol;">�&nbsp; &nbsp; &nbsp; &nbsp;</span>Azure consumption</p>
+        <p style="margin: 0cm 0cm 0cm 38.5pt;font-size:15px;font-family: Calibri, sans-serif;line-height: 15.5467px;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: justify;text-indent: -18pt;"><span style="font-family: Symbol;">�&nbsp; &nbsp; &nbsp; &nbsp;</span>Summary</p>
+      </div><!--intro-->
+<br>
+      <div id="deploy">
+        <h3>Deploy Virtual Machine on Azure Cloud Platform</h3>
+        <h2 style='margin: 2pt 0cm 0cm 35.9pt;text-indent: -28.8pt;line-height: normal;font-size:17px;font-family: "Calibri Light", sans-serif;color: rgb(47, 84, 150);font-weight: normal;font-style: normal;text-align: start;'>2.1&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Azure Cloud Architecture for Application</h2>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">The below Architecture explains the virtual machine running on an Azure Platform</p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;"><img width="604" height="477" src="https://azurehpc-certification.github.io/vred_files/image004.png"></p>
+<h2 style='margin: 2pt 0cm 0cm 35.9pt;text-indent: -28.8pt;line-height: normal;font-size:17px;font-family: "Calibri Light", sans-serif;color: rgb(47, 84, 150);font-weight: normal;font-style: normal;text-align: start;'>2.2&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size:16px;">Azure Virtual Machine (VM)</span></h2>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: justify;text-indent: 36pt;">A VM is a virtualized instance of a computer that can perform almost&nbsp;all of&nbsp;the same functions as a computer, including running applications and operating systems.</p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;">An Azure VM gives the flexibility of virtualization without having to buy and maintain the physical hardware that runs it. However, user still need to maintain the VM by performing tasks, such as configuring, patching, and installing the software that runs on it.</p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;">Things to be considered before deploying a VM,</p>
+<p style="margin: 0cm 0cm 0cm 72pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: justify;text-indent: -18pt;background: white;"><span style="font-family: Symbol;color: rgb(23, 23, 23);">�&nbsp; &nbsp; &nbsp; &nbsp;</span><span style="color: rgb(23, 23, 23);">The names of the application resources</span></p>
+<p style="margin: 0cm 0cm 0cm 72pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: justify;text-indent: -18pt;background: white;"><span style="font-family: Symbol;color: rgb(23, 23, 23);">�&nbsp; &nbsp; &nbsp; &nbsp;</span><span style="color: rgb(23, 23, 23);">The location where the resources are stored</span></p>
+<p style="margin: 0cm 0cm 0cm 72pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: justify;text-indent: -18pt;background: white;"><span style="font-family: Symbol;color: rgb(23, 23, 23);">�&nbsp; &nbsp; &nbsp; &nbsp;</span><span style="color: rgb(23, 23, 23);">The size of the VM</span></p>
+<p style="margin: 0cm 0cm 0cm 72pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;background: white;"><span style="font-family: Symbol;color: rgb(23, 23, 23);">�&nbsp; &nbsp; &nbsp; &nbsp;</span><span style="color: rgb(23, 23, 23);">The operating system that the VM runs</span></p>
+<p style="margin: 0cm 0cm 0cm 72pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;background: white;"><span style="font-family: Symbol;color: rgb(23, 23, 23);">�&nbsp; &nbsp; &nbsp; &nbsp;</span><span style="color: rgb(23, 23, 23);">The configuration of the VM</span></p>
+<p style="margin: 0cm 0cm 0cm 72pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;background: white;"><span style="font-family: Symbol;color: rgb(23, 23, 23);">�&nbsp; &nbsp; &nbsp; &nbsp;</span><span style="color: rgb(23, 23, 23);">The related resources that the VM needs</span></p>
+<p style="margin: 0cm 0cm 0cm 28.5pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;background: white;"><span style="color: rgb(23, 23, 23);">&nbsp;</span></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;background: white;"><span style="color: rgb(23, 23, 23);">There are different</span><span style="color: rgb(23, 23, 23);">&nbsp;sizes and options for the Azure virtual machines one can use to run apps and workloads. Depending on the workload user&nbsp;has to&nbsp;choose the appropriate VM size or complete list check this&nbsp;</span><span style="color: black;"><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/sizes/" style="color: rgb(5, 99, 193);text-decoration: underline;">https://docs.microsoft.com/en-us/azure/virtual-machines/sizes/</a></span><span style="color: rgb(23, 23, 23);">.</span></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;background: white;"><span style="color: rgb(23, 23, 23);">&nbsp;</span></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;background: white;"><span style="color: black;">The performance of&nbsp;</span><span style="color: rgb(38, 38, 38);">Autodesk VRED on Azure Platform&nbsp;</span><span style="color: black;"><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/nct4-v3-series" style="color: rgb(5, 99, 193);text-decoration: underline;">NC64as_T4_v3</a> &amp;&nbsp;<a href="https://docs.microsoft.com/en-us/azure/virtual-machines/nvv3-series" style="color: rgb(5, 99, 193);text-decoration: underline;">NV48s_v3</a> virtual machines are deployed to analyse the hardware performance.</span></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;background: white;">&nbsp;</p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;background: white;"><span style="color: rgb(23, 23, 23);">&nbsp;</span></p>
+<div align="center" style='color: rgb(0, 0, 0);font-family: "Times New Roman";font-size: medium;font-style: normal;font-weight: 400;text-indent: 0px;'>
+    <table border="0" cellpadding="0" cellspacing="0" style="width: 491.9pt;border-collapse: collapse;" width="656">
+        <tbody>
+            <tr>
+                <td style="width: 122.9pt;border: 1pt solid windowtext;background: rgb(165, 165, 165);padding: 0cm 5.4pt;height: 32pt;" width="25%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><strong><span style="color: white;">Size</span></strong></p>
+                </td>
+                <td style="width: 41pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(165, 165, 165);padding: 0cm 5.4pt;height: 32pt;" width="8.384146341463415%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><strong><span style="color: white;">vCPU</span></strong></p>
+                </td>
+                <td style="width: 77pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(165, 165, 165);padding: 0cm 5.4pt;height: 32pt;" width="15.701219512195122%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><strong><span style="color: white;">Memory: GiB</span></strong></p>
+                </td>
+                <td style="width: 75pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(165, 165, 165);padding: 0cm 5.4pt;height: 32pt;" width="15.24390243902439%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><strong><span style="color: white;">Temp storage (SSD) GiB</span></strong></p>
+                </td>
+                <td style="width: 37pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(165, 165, 165);padding: 0cm 5.4pt;height: 32pt;" width="7.469512195121951%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><strong><span style="color: white;"># GPU</span></strong></p>
+                </td>
+                <td style="width: 73pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(165, 165, 165);padding: 0cm 5.4pt;height: 32pt;" width="14.786585365853659%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><strong><span style="color: white;">GPU memory: GiB</span></strong></p>
+                </td>
+                <td style="width: 66pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(165, 165, 165);padding: 0cm 5.4pt;height: 32pt;" width="13.414634146341463%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><strong><span style="color: white;">Max data disks</span></strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 122.9pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(237, 237, 237);padding: 0cm 5.4pt;height: 14.5pt;" width="25%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="color: black;">Standard_NC64as_T4_v3</span></p>
+                </td>
+                <td style="width: 41pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(237, 237, 237);padding: 0cm 5.4pt;height: 14.5pt;" width="8.384146341463415%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="color: black;">64</span></p>
+                </td>
+                <td style="width: 77pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(237, 237, 237);padding: 0cm 5.4pt;height: 14.5pt;" width="15.701219512195122%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="color: black;">440</span></p>
+                </td>
+                <td style="width: 75pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(237, 237, 237);padding: 0cm 5.4pt;height: 14.5pt;" width="15.24390243902439%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="color: black;">2880</span></p>
+                </td>
+                <td style="width: 37pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(237, 237, 237);padding: 0cm 5.4pt;height: 14.5pt;" width="7.469512195121951%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="color: black;">4</span></p>
+                </td>
+                <td style="width: 73pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(237, 237, 237);padding: 0cm 5.4pt;height: 14.5pt;" width="14.786585365853659%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="color: black;">64</span></p>
+                </td>
+                <td style="width: 66pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(237, 237, 237);padding: 0cm 5.4pt;height: 14.5pt;" width="13.414634146341463%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="color: black;">32</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 122.9pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0cm 5.4pt;height: 14.5pt;" width="25%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="color: black;">Standard_NV48s_v3</span></p>
+                </td>
+                <td style="width: 41pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 14.5pt;" width="8.384146341463415%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="color: black;">48</span></p>
+                </td>
+                <td style="width: 77pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 14.5pt;" width="15.701219512195122%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="color: black;">448</span></p>
+                </td>
+                <td style="width: 75pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 14.5pt;" width="15.24390243902439%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="color: black;">1280</span></p>
+                </td>
+                <td style="width: 37pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 14.5pt;" width="7.469512195121951%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="color: black;">4</span></p>
+                </td>
+                <td style="width: 73pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 14.5pt;" width="14.786585365853659%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="color: black;">32</span></p>
+                </td>
+                <td style="width: 66pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 14.5pt;" width="13.414634146341463%">
+                    <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="color: black;">32</span></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;background: white;"><span style="color: rgb(23, 23, 23);">&nbsp;</span></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;background: white;"><span style="color: rgb(23, 23, 23);">To Analyse the performance of Autodesk VRED on Azure Platform&nbsp;</span><span style="color: black;"><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/nct4-v3-series" style="color: rgb(5, 99, 193);text-decoration: underline;">NCasT4_v3-series</a></span><span style="color: rgb(23, 23, 23);">&nbsp;VM is deployed. These Series VMs are powered by &nbsp;</span><span style="color: black;"><a href="https://www.nvidia.com/en-us/data-center/tesla-t4/" style="color: rgb(5, 99, 193);text-decoration: underline;">Nvidia T4</a></span><span style="color: rgb(23, 23, 23);">&nbsp;GPUs and AMD EPYC 7V12(Rome) CPUs. The �NC64as_T4_v3� VM has 4 NVIDIA T4 GPUs with 16 GB of memory each, up to 64 non-multithreaded AMD processor cores with a total memory of 448GB.</span></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;background: white;"><span style="color: rgb(23, 23, 23);">&nbsp;</span></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;background: white;"><span style='font-size:14px;font-family: "Segoe UI", sans-serif;color: rgb(23, 23, 23);background: white;'>Another VM of&nbsp;</span><span style="color: black;"><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/nvv3-series" style="color: rgb(5, 99, 193);text-decoration: underline;"><span style="background: white;">NVv3-series</span></a></span><span style="color: rgb(23, 23, 23);background: white;">&nbsp;is deployed and is powered by &nbsp;</span><span style="color: black;"><a href="https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf" style="color: rgb(5, 99, 193);text-decoration: underline;"><span style="background: white;">NVIDIA M60</span></a></span><span style="color: rgb(23, 23, 23);background: white;">&nbsp;GPUs and Intel E5-2690 v4 (Broadwell) CPUs (2.60GHz). The �NV48s_v3� VM has NVIDIA Grid Technology with Intel cores and Intel Hyper-Threading Technology. Each GPU in NVv3 instances comes with a GRID license,</span><span style='font-family: "Segoe UI", sans-serif;color: rgb(23, 23, 23);background: white;'>&nbsp;</span><span style="color: rgb(23, 23, 23);background: white;">this license gives the flexibility to use an NV instance as a virtual workstation for a single user, or 25 concurrent users can connect to the VM for a virtual application scenario</span></p>
+<p><span style="font-style: normal;font-weight: 400;text-indent: 0px;font-size:15px;font-family: Calibri, sans-serif;color: rgb(23, 23, 23);"><br></span></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><span style="color: rgb(23, 23, 23);">&nbsp;</span></p>
+<h2 style='margin: 2pt 0cm 0cm 35.9pt;text-indent: -28.8pt;line-height: normal;font-size:17px;font-family: "Calibri Light", sans-serif;color: rgb(47, 84, 150);font-weight: normal;font-style: normal;text-align: start;'>2.3&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Create a Virtual Machine on Azure Platform</h2>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><strong><span style="font-size:13px;">Sign&nbsp;in to&nbsp;Azure</span></strong></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><span style="color: rgb(23, 23, 23);">Sign into the Azure portal by using&nbsp;</span><a href="https://portal.azure.com/" style="color: rgb(5, 99, 193);text-decoration: underline;">https://portal.azure.com/</a></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><span style="color: rgb(23, 23, 23);">&nbsp;</span></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;"><a href="https://azure.microsoft.com/offers/ms-azr-0044p" style="color: rgb(5, 99, 193);text-decoration: underline;"><span style="background: white;">Free Trial subscriptions</span></a><span style="color: rgb(23, 23, 23);background: white;">&nbsp;aren&apos;t eligible for limit or quota increases. If user have a&nbsp;</span><a href="https://azure.microsoft.com/offers/ms-azr-0044p" style="color: rgb(5, 99, 193);text-decoration: underline;"><span style="background: white;">Free Trial subscription</span></a><span style="color: rgb(23, 23, 23);background: white;">, user can upgrade to a&nbsp;</span><a href="https://azure.microsoft.com/offers/ms-azr-0003p/" style="color: rgb(5, 99, 193);text-decoration: underline;"><span style="background: white;">Pay-As-You-Go</span></a><span style="color: rgb(23, 23, 23);background: white;">&nbsp;subscription</span></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><span style="color: rgb(23, 23, 23);">&nbsp;</span></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><span style="color: rgb(23, 23, 23);">After the successful sign in or sign up, one&nbsp;has to&nbsp;upgrade the Azure subscription to&nbsp;</span><a href="https://azure.microsoft.com/en-us/offers/ms-azr-0003p/" style="color: rgb(5, 99, 193);text-decoration: underline;">Pay-As-You-Go</a><span style="color: rgb(23, 23, 23);">&nbsp;to deploy a Virtual machine. For deployment, the user must have regional vCPU quota which can be obtained by raising a request.</span></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><span style="color: rgb(23, 23, 23);">The step-by-step procedure to increase the vCPU quota is given below,</span></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><a href="https://docs.microsoft.com/en-us/azure/azure-portal/supportability/per-vm-quota-requests" style="color: rgb(5, 99, 193);text-decoration: underline;">https://docs.microsoft.com/en-us/azure/azure-portal/supportability/per-vm-quota-requests</a></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><span style="color: rgb(23, 23, 23);">The step-by-step procedure to deploy Virtual machine is given below,</span></p>
+<p style="margin: 0cm 0cm 8pt 28.5pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;background: white;"><span style="color: rgb(23, 23, 23);">1.&nbsp; &nbsp; &nbsp; &nbsp;</span><span style="color: rgb(23, 23, 23);">Type <strong>virtual machines</strong> in the marketplace search.</span></p>
+<p style="margin: 0cm 0cm 8pt 28.5pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;background: white;"><span style="color: rgb(23, 23, 23);">2.&nbsp; &nbsp; &nbsp; &nbsp;</span><span style="color: rgb(23, 23, 23);">Under <strong>Services</strong>, select <strong>Virtual machines</strong>.</span></p>
+<p style="margin: 0cm 0cm 8pt 28.5pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;background: white;"><span style="color: rgb(23, 23, 23);">3.&nbsp; &nbsp; &nbsp; &nbsp;</span><span style="color: rgb(23, 23, 23);">In the <strong>Virtual machines</strong> page, select <strong>Create</strong> Then <strong>Virtual machine</strong>.</span></p>
+<p style="margin: 0cm 0cm 8pt 28.5pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;background: white;"><span style="color: rgb(23, 23, 23);">4.&nbsp; &nbsp; &nbsp; &nbsp;</span><span style="color: rgb(23, 23, 23);">In the <strong>Basics</strong> tab, under <strong>Project details</strong>, make sure the correct subscription is selected and then choose to <strong>Create new</strong> resource group. Type <strong><em>Azure-</em></strong></span><strong><em><span style="color: rgb(23, 23, 23);">&nbsp;PerformanceTest</span></em></strong><strong><span style="color: rgb(23, 23, 23);">&nbsp;(user choice)&nbsp;</span></strong><span style="color: rgb(23, 23, 23);">for the name.</span></p>
+<p style="margin: 0cm 0cm 8pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;background: white;"><span style="color: black;"><img border="0" width="550" height="269" src="https://azurehpc-certification.github.io/vred_files/image006.jpg"></span></p>
+<p><span style="font-style: normal;font-weight: 400;text-indent: 0px;font-size:15px;font-family: Calibri, sans-serif;color: rgb(23, 23, 23);"><br></span></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><span style="color: rgb(23, 23, 23);">&nbsp;</span></p>
+<p style="margin: 0cm 0cm 8pt 28.5pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;background: white;"><span style="color: rgb(23, 23, 23);">5.&nbsp; &nbsp; &nbsp; &nbsp;</span><span style="color: rgb(23, 23, 23);">Under&nbsp;</span><strong><span style="color: black;">Instance details</span></strong><span style="color: rgb(23, 23, 23);">, type&nbsp;</span><span style="color: black;">Azure-VM (user choice)</span><span style="color: rgb(23, 23, 23);">&nbsp;for the&nbsp;</span><strong><span style="color: black;">Virtual machine name</span></strong><span style="color: rgb(23, 23, 23);">&nbsp;and choose Australia&nbsp;</span><span style="color: black;">East&nbsp;</span><span style="color: rgb(23, 23, 23);">for your&nbsp;</span><strong><span style="color: black;">Region</span></strong><span style="color: rgb(23, 23, 23);">. Choose&nbsp;</span><span style="color: black;">Windows 10 pro, Version 20H2-Gen2&nbsp;</span><span style="color: rgb(23, 23, 23);">for the&nbsp;</span><span style="color: black;">Image</span><span style="color: rgb(23, 23, 23);">&nbsp;and&nbsp;</span><span style="color: black;">Standard_NC64as_T4_v3</span><span style="color: rgb(23, 23, 23);">&nbsp;for the&nbsp;</span><strong><span style="color: black;">Size&nbsp;</span></strong><span style="color: black;">(user choice).</span><span style="color: rgb(23, 23, 23);">&nbsp;Leave the other defaults.</span></p>
+<p style="margin: 0cm 0cm 8pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;background: white;"><span style="color: black;"><img border="0" width="549" height="222" src="https://azurehpc-certification.github.io/vred_files/image008.jpg"></span></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;background: white;"><strong><span style="color: rgb(23, 23, 23);">Note:</span></strong></p>
+<p style="margin: 0cm 0cm 0cm 36pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: justify;text-indent: -18pt;"><span style="font-family: Symbol;color: rgb(23, 23, 23);">�&nbsp; &nbsp; &nbsp; &nbsp;</span><strong><span style="color: rgb(23, 23, 23);">Region</span></strong><span style="color: rgb(23, 23, 23);">&nbsp;must be decided based on where you are going to deploy a Virtual machine. To avoid the network latency, the region should be near to the location where the VM is to be deployed.</span></p>
+<p style="margin: 0cm 0cm 0cm 36pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: justify;text-indent: -18pt;"><span style="font-family: Symbol;color: rgb(23, 23, 23);">�&nbsp; &nbsp; &nbsp; &nbsp;</span><strong><span style="color: rgb(23, 23, 23);">Image&nbsp;</span></strong><span style="color: rgb(23, 23, 23);">selection is of user choice based on the application user can choose the image (Windows 10, Linux based OS and Windows Server)</span></p>
+<p style="margin: 0cm 0cm 8pt 28.5pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;background: white;">6.&nbsp; &nbsp; &nbsp; &nbsp;<span style="color: black;">Under&nbsp;</span><strong><span style="color: black;">Administrator account</span></strong><span style="color: black;">, provide a username, such as&nbsp;</span><span style="color: black;">Azureuser</span><span style="color: black;">&nbsp;and a password. The password must be at least 12 characters long and meet the&nbsp;</span><span style="color: black;"><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm-" style="color: rgb(5, 99, 193);text-decoration: underline;"><span style="background: white;">defined complexity requirements</span></a></span><span style="color: rgb(23, 23, 23);background: white;">.</span></p>
+<p style='margin-right: 0cm;margin-left: 0cm;font-size: medium;font-family: "Times New Roman", serif;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;background: white;'><span style="font-size:15px;font-family: Calibri, sans-serif;color: black;"><img border="0" width="549" height="110" src="https://azurehpc-certification.github.io/vred_files/image010.jpg"></span></p>
+<p style="margin: 0cm 0cm 8pt 28.5pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;background: white;">7.&nbsp; &nbsp; &nbsp; &nbsp;<span style="color: black;">Under&nbsp;</span><strong><span style="color: black;">Inbound port rules</span></strong><span style="color: black;">, choose&nbsp;</span><strong><span style="color: black;">Allow selected ports</span></strong><span style="color: black;">&nbsp;and then select&nbsp;</span><strong><span style="color: black;">RDP (3389)</span></strong><span style="color: black;">&nbsp;and&nbsp;</span><strong><span style="color: black;">HTTP (80)</span></strong><span style="color: black;">&nbsp;from the drop-down.</span></p>
+<p style="margin: 0cm 0cm 8pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;background: white;"><span style="color: black;"><img border="0" width="549" height="208" src="https://azurehpc-certification.github.io/vred_files/image012.jpg"></span></p>
+<p style="margin: 0cm 0cm 8pt 28.5pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;background: white;">8.&nbsp; &nbsp; &nbsp; &nbsp;<span style="color: black;">Under the Licencing click the check box</span></p>
+<p style="margin: 0cm 0cm 8pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;background: white;"><span style="color: black;"><img border="0" width="458" height="135" src="https://azurehpc-certification.github.io/vred_files/image014.jpg"></span></p>
+<p style="margin: 0cm 0cm 8pt 28.5pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;background: white;">9.&nbsp; &nbsp; &nbsp; &nbsp;<span style="color: black;">In&nbsp;<strong>Advanced</strong> tab, under the Extensions click&nbsp;<strong>Select an extension to install</strong>, select&nbsp;<strong>NVIDIA GPU Driver Extension</strong> (user choice)</span></p>
+<p style="margin: 0cm 0cm 8pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;background: white;"><span style="color: black;"><img border="0" width="549" height="160" src="https://azurehpc-certification.github.io/vred_files/image016.jpg"></span></p>
+<p style="margin: 0cm 0cm 8pt 28.5pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;background: white;">10.&nbsp; &nbsp;<span style="color: black;">Leave the remaining defaults and then select the <strong>Review + create</strong> button at the bottom of the page.</span></p>
+<p style="margin: 0cm 0cm 8pt 28.5pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;background: white;">11.&nbsp; &nbsp;<span style="color: black;">After validation runs, select the&nbsp;Create&nbsp;button at the bottom of the page.</span></p>
+<p style="margin: 0cm 0cm 8pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;background: white;"><span style="color: black;"><img border="0" width="433" height="49" src="https://azurehpc-certification.github.io/vred_files/image018.jpg"></span></p>
+<p style="margin: 0cm 0cm 8pt 28.5pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;background: white;">12.&nbsp; &nbsp;<span style="color: black;">After deployment is complete, select&nbsp;Go to resource.</span></p>
+<p style="margin: 0cm 0cm 8pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;background: white;"><span style="color: black;"><img border="0" width="549" height="132" src="https://azurehpc-certification.github.io/vred_files/image020.jpg"></span></p>
+<p><b style='color: rgb(0, 0, 0);font-family: "Times New Roman";font-size: medium;font-style: normal;text-align: start;text-indent: 0px;'><span style="font-size:15px;font-family: Calibri, sans-serif;color: rgb(23, 23, 23);"><br></span></b></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><strong><span style="color: rgb(23, 23, 23);">&nbsp;</span></strong></p>
+<h2 style='margin: 2pt 0cm 0cm 35.9pt;text-indent: -28.8pt;line-height: normal;font-size:17px;font-family: "Calibri Light", sans-serif;color: rgb(47, 84, 150);font-weight: normal;font-style: normal;text-align: start;'>2.4&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Connect to virtual machine</h2>
+<p style='margin-right: 0cm;margin-left: 0cm;font-size: medium;font-family: "Times New Roman", serif;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;background: white;'><span style="font-size:15px;font-family: Calibri, sans-serif;color: rgb(23, 23, 23);">Create a remote desktop connection to the virtual machine. These directions&nbsp;tells&nbsp;user how to connect to a VM from a Windows computer. On a Mac, user need an RDP client such as this&nbsp;</span><span style="color: black;"><a href="https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12" style="color: rgb(5, 99, 193);text-decoration: underline;"><span style="font-size:15px;font-family: Calibri, sans-serif;">Remote Desktop Client</span></a></span><span style="font-size:15px;font-family: Calibri, sans-serif;color: rgb(23, 23, 23);">&nbsp;from the Mac App Store.</span></p>
+<p style='margin-right: 0cm;margin-left: 28.5pt;font-size: medium;font-family: "Times New Roman", serif;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;line-height: 18.4px;background: white;'><span style="font-size:15px;line-height: 16.8667px;font-family: Calibri, sans-serif;color: rgb(23, 23, 23);">1.&nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-size:15px;line-height: 16.8667px;font-family: Calibri, sans-serif;color: rgb(23, 23, 23);">On the overview page for a virtual machine, select the <strong><span style="font-family: Calibri, sans-serif;">Connect</span></strong> button then select <strong><span style="font-family: Calibri, sans-serif;">RDP</span></strong>.</span></p>
+<p style='margin-right: 0cm;margin-left: 0cm;font-size: medium;font-family: "Times New Roman", serif;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;line-height: 18.4px;background: white;'><span style="font-size:15px;line-height: 16.8667px;font-family: Calibri, sans-serif;color: black;"><img border="0" width="550" height="137" src="https://azurehpc-certification.github.io/vred_files/image022.jpg"></span></p>
+<p style='margin-right: 0cm;margin-left: 28.5pt;font-size: medium;font-family: "Times New Roman", serif;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;line-height: 18.4px;background: white;'><span style="font-size:15px;line-height: 16.8667px;font-family: Calibri, sans-serif;color: rgb(23, 23, 23);">2.&nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-size:15px;line-height: 16.8667px;font-family: Calibri, sans-serif;color: rgb(23, 23, 23);">In the <strong><span style="font-family: Calibri, sans-serif;">Connect with RDP</span></strong> page, keep the default options to connect by IP address, over port 3389, and click <strong><span style="font-family: Calibri, sans-serif;">Download RDP file</span></strong>.</span></p>
+<p style='margin-right: 0cm;margin-left: 28.5pt;font-size: medium;font-family: "Times New Roman", serif;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;line-height: 18.4px;background: white;'><span style="font-size:15px;line-height: 16.8667px;font-family: Calibri, sans-serif;color: rgb(23, 23, 23);">3.&nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-size:15px;line-height: 16.8667px;font-family: Calibri, sans-serif;color: rgb(23, 23, 23);">Open the downloaded RDP file and click <strong><span style="font-family: Calibri, sans-serif;">Connect</span></strong> when prompted.</span></p>
+<p style='margin-right: 0cm;margin-left: 28.5pt;font-size: medium;font-family: "Times New Roman", serif;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;line-height: 18.4px;background: white;'><span style="font-size:15px;line-height: 16.8667px;font-family: Calibri, sans-serif;color: rgb(23, 23, 23);">4.&nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-size:15px;line-height: 16.8667px;font-family: Calibri, sans-serif;color: rgb(23, 23, 23);">In the <strong><span style="font-family: Calibri, sans-serif;">Windows Security</span></strong> window, select <strong><span style="font-family: Calibri, sans-serif;">More choices</span></strong> and then <strong><span style="font-family: Calibri, sans-serif;">Use a different account</span></strong>. Type the username as <strong><span style="font-family: Calibri, sans-serif;">localhost</span></strong>\</span><em><span style="font-size:15px;line-height: 16.8667px;font-family: Calibri, sans-serif;color: rgb(23, 23, 23);">username</span></em><span style="font-size:15px;line-height: 16.8667px;font-family: Calibri, sans-serif;color: rgb(23, 23, 23);">, enter the password created for the virtual machine, and then click <strong><span style="font-family: Calibri, sans-serif;">OK</span></strong>.</span></p>
+<p style='margin-right: 0cm;margin-left: 28.5pt;font-size: medium;font-family: "Times New Roman", serif;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;line-height: 18.4px;background: white;'><span style="font-size:15px;line-height: 16.8667px;font-family: Calibri, sans-serif;color: rgb(23, 23, 23);">5.&nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-size:15px;line-height: 16.8667px;font-family: Calibri, sans-serif;color: rgb(23, 23, 23);">User may receive a certificate warning during the sign-in process. Click <strong><span style="font-family: Calibri, sans-serif;">Yes</span></strong> or <strong><span style="font-family: Calibri, sans-serif;">Continue</span></strong> to create the connection.</span></p>
+<h2 style='margin: 2pt 0cm 0cm 35.9pt;text-indent: -28.8pt;line-height: normal;font-size:17px;font-family: "Calibri Light", sans-serif;color: rgb(47, 84, 150);font-weight: normal;font-style: normal;text-align: start;'>2.5&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Install Nvidia Drivers</h2>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><span style="color: rgb(23, 23, 23);">To take advantage of the GPU capabilities of Azure N-series VMs backed by NVIDIA GPUs, user must install NVIDIA GPU drivers.</span></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><span style="color: rgb(23, 23, 23);">&nbsp;</span></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><span style="color: rgb(23, 23, 23);">In two ways user can install the drivers,</span></p>
+<p style="margin: 0cm 0cm 0cm 36pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;"><span style="font-family: Symbol;color: rgb(23, 23, 23);">�&nbsp; &nbsp; &nbsp; &nbsp;</span><span style="color: rgb(23, 23, 23);">The&nbsp;NVIDIA GPU Driver Extension&nbsp;installs appropriate NVIDIA CUDA or GRID drivers on an N-series VM. Install or manage the extension using the Azure portal (Ref&nbsp;</span><span style="color: rgb(23, 23, 23);">9</span><span style="color: rgb(23, 23, 23);">)</span></p>
+<p style="margin: 0cm 0cm 0cm 36pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: -18pt;"><span style="font-family: Symbol;color: rgb(23, 23, 23);">�&nbsp; &nbsp; &nbsp; &nbsp;</span><span style="color: rgb(23, 23, 23);">Install NVIDIA GPU drivers manually. (For the manual installation procedure follow&nbsp;</span><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/n-series-driver-setup/" style="color: rgb(5, 99, 193);text-decoration: underline;"><span style="font-family: Arial, sans-serif;">https://docs.microsoft.com/en-us/azure/virtual-machines/windows/n-series-driver-setup/</span></a><span style="font-family: Arial, sans-serif;color: rgb(23, 23, 23);">)</span></p>
+<p><span style="color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;font-size:15px;font-family: Calibri, sans-serif;"><br></span></p>
+
+ </div><!--deploy-->
+
+<div id="install">
+  <h3>Install VRED Application on Virtual Machine:</h3>
+  <h1 style='margin: 12pt 0cm 0cm 21.6pt;text-indent: -21.6pt;line-height: normal;font-size:21px;font-family: "Calibri Light", sans-serif;color: rgb(47, 84, 150);font-weight: normal;font-style: normal;text-align: start;'>3&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Install VRED Application on Virtual Machine:</h1>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;">For installing Autodesk VRED on Azure VM, first go to user&rsquo;s Autodesk Account, check for the purchased products available in user account under the tab Products and Services. Here in current scenario installed VRED Professional.</p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;"><img border="0" width="681" height="326" src="vred_files/image024.jpg"></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">&nbsp;</p>
+<h2 style='margin: 2pt 0cm 0cm 35.9pt;text-indent: -28.8pt;line-height: normal;font-size:17px;font-family: "Calibri Light", sans-serif;color: rgb(47, 84, 150);font-weight: normal;font-style: normal;text-align: start;'>3.1&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;License Manager Installation</h2>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">As a prerequisite to install VRED Application on Azure Virtual Machine, Autodesk Network License Manager need to be installed on the VM.</p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">Autodesk Network License Manager for windows platform can be found in the below link:&nbsp;<a href="https://knowledge.autodesk.com/search-result/caas/downloads/content/autodesk-network-license-manager-for-windows.html" style="color: rgb(5, 99, 193);text-decoration: underline;">https://knowledge.autodesk.com/search-result/caas/downloads/content/autodesk-network-license-manager-for-windows.html</a></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;"><img border="0" width="682" height="210" src="vred_files/image026.jpg"></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">&nbsp;</p>
+<p><span style="color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;font-size:15px;font-family: Calibri, sans-serif;"><br></span></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">&nbsp;</p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">User can install the Autodesk Network License Manager setup as shown in the below figure. Once user installs the setup, a folder with name Network License Manager will be created in the path &ldquo;C:\Autodesk\Network License Manager\ &ldquo;</p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;"><img border="0" width="669" height="305" src="vred_files/image028.jpg"></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;">Now generate the license file from user&rsquo;s Autodesk account, and keep the license file in the Network License Manager folder. Create a text file with name &ldquo;debug.log&rdquo; and keep it in the same Network License Manager folder.</p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;">Generating license file:</p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;"><img border="0" width="668" height="297" src="vred_files/image030.jpg"></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;">From the Autodesk account, Select VRED Professional downloads, open the above GUI and click on Generate network license file. In this case Network License file for VRED Professional is used. User can find their type of license from Products and Services tab in the Autodesk account. For next step user will be required to fill the details of Server or VM Name and Physical address. Physical Address or MAC address, one can get by typing &ldquo;ipconfig /all&rdquo; in the command prompt. After filling those details and selecting the Product for which license&nbsp;has to&nbsp;be generated, user can click on Get License File, the license file will be generated.</p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;">Below figure shows the above explained steps.</p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;"><img border="0" width="682" height="286" src="vred_files/image032.jpg"></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;">From the windows search bar, open&nbsp;lmtools, a GUI will open as shown below. Select Config Services and name the service name, in this case it named as Autodesk Network License Manager. Give the license file path where we placed it&nbsp;and also&nbsp;fill the other paths as shown here. Now tick mark the &lsquo;Start Server at Power Up&rsquo; at bottom and select &lsquo;Save Service&rsquo; button and then follow the automatic messages which will pop up.</p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;"><img border="0" width="682" height="371" src="vred_files/image034.jpg"></p>
+<p><span style="color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;font-size:15px;font-family: Calibri, sans-serif;"><br></span></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">&nbsp;</p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;">Now select the Start/Stop/Reread button from the top ribbon and then select Start Server as shown in the figure below. The service name &ndash; &lsquo;Autodesk Network License Manager&rsquo; should be seen under blue colour.</p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;"><img border="0" width="682" height="391" src="vred_files/image036.jpg"></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;">Once user clicks on start server, the below GUI should show up with service name &ldquo;Autodesk Network License Manager&rdquo;. Now the License Manager installation is complete. User can start downloading the VRED application and install it in the same Virtual Machine</p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;"><img border="0" width="681" height="307" src="vred_files/image038.jpg"></p>
+<p><span style="font-size:15px;font-family: Calibri, sans-serif;"><br></span></p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><span style='font-size:17px;font-family: "Calibri Light", sans-serif;color: rgb(47, 84, 150);'>&nbsp;</span></p>
+<h2 style='margin: 2pt 0cm 0cm 35.9pt;text-indent: -28.8pt;line-height: normal;font-size:17px;font-family: "Calibri Light", sans-serif;color: rgb(47, 84, 150);font-weight: normal;font-style: normal;text-align: start;'>3.2&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Product download and Install procedure</h2>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;">From the Autodesk account, go to products purchased and then select the product, in this case VRED Professional and click on downloads, then this GUI will open, user can see Install now option. Click on that and follow the prompt, VRED application will be installed.</p>
+<p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;"><img border="0" width="682" height="420" src="vred_files/image040.jpg"></p>
+</div><!--Install-->
+
+<div id="performance">
+  <h3>Performance results of Autodesk VRED on Azure Virtual Machines</h3>
+  <h1 style='margin: 12pt 0cm 0cm 21.6pt;text-indent: -21.6pt;line-height: normal;font-size:21px;font-family: "Calibri Light", sans-serif;color: rgb(47, 84, 150);font-weight: normal;'>4&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Performance results of Autodesk VRED on Azure Virtual Machines</h1>
+  <h2 style='margin: 2pt 0cm 0cm 35.9pt;text-indent: -28.8pt;line-height: normal;font-size:17px;font-family: "Calibri Light", sans-serif;color: rgb(47, 84, 150);font-weight: normal;'>4.1&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Autodesk VRED overview:</h2>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: justify;">Autodesk VRED is a visualization software which helps Automotive Designers and Engineers create product presentations, design reviews and virtual prototypes using interactive CPU and GPU ray tracing. Autodesk VRED, which was previously limited to CPU, now leverages GPU technology to support the high demands of consumers and provide interactive ray tracing and AI-powered Denoising. This allows users to gain immediate visual feedback to see how a vehicle&rsquo;s aesthetics will interact with different environments in real time</p>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: justify;">Autodesk VRED enables users to create digital prototypes so they can gain insight into how vehicles will look and perform. To be effective in guiding design decisions, the digital prototypes need to look and behave as close as possible to the real thing</p>
+  <h3 style='margin: 2pt 0cm 0cm 36pt;text-indent: -36pt;line-height: normal;font-size:16px;font-family: "Calibri Light", sans-serif;color: rgb(31, 55, 99);font-weight: normal;'>4.1.1&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Rendering</h3>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: justify;">The term rendering defines the automatic process of&nbsp;generating digital images from three-dimensional models, by means of a special software. These images simulate project or 3D model&rsquo;s photorealistic environments, materials,&nbsp;lights&nbsp;and objects.</p>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: justify;">&nbsp;</p>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: justify;"><strong>Types of Rendering</strong></p>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: justify;">Rendering Real Time<strong>:&nbsp;</strong>Real-time rendering is mainly&nbsp;used in gaming and interactive graphics, where images are calculated from 3D information at a very fast pace. As a result, dedicated graphics hardware&nbsp;have&nbsp;improved the performance of real-time rendering ensuring rapid image processing.</p>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: justify;">Rendering offline:<strong>&nbsp;</strong>Offline rendering is a technique mainly used in&nbsp;situations where the need for processing speed is lower. Visual effects work where photorealism needs to be at highest standard possible. There is no unpredictability, unlike real time</p>
+  <h2 style='margin: 2pt 0cm 0cm 35.9pt;text-indent: -28.8pt;line-height: normal;font-size:17px;font-family: "Calibri Light", sans-serif;color: rgb(47, 84, 150);font-weight: normal;'>4.2&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Autodesk VRED on Azure Platform:</h2>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: justify;">When it comes to performance parameters, rendering is one parameter which need to be carried out on visualization and design software. Often designers spend a lot of time in rendering process. With advanced capabilities like CPU &amp; GPU ray tracing, VRED has drastically reduced the Render times over the period. To carry out these complex and heavy rendering simulations on VRED software, right hardware is must.&nbsp;<strong><span style="color: rgb(47, 84, 150);">Microsoft</span>&nbsp;</strong>partnered with<strong>&nbsp;<span style="color: rgb(47, 84, 150);">Nvidia</span></strong> provides the required and suitable Infrastructure and hardware on Azure cloud platform. Microsoft Azure provides the latest and fastest compute capabilities for both CPU &amp; GPU intensive workloads.</p>
+  <h2 style='margin: 2pt 0cm 0cm 35.9pt;text-indent: -28.8pt;line-height: normal;font-size:17px;font-family: "Calibri Light", sans-serif;color: rgb(47, 84, 150);font-weight: normal;'>4.3&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Autodesk VRED Settings for&nbsp;expected performance</h2>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: justify;">For the current expected performance activity, carried out offline image rendering task and calculated the render times for CPU ray tracing and GPU Ray tracing. We carried out this activity with varying GPU number from the VRED application, and then compared the render time differences between CPU &amp; GPU raytracing.</p>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;">&nbsp;</p>
+  <p><span style="font-size:15px;font-family: Calibri, sans-serif;"><br></span></p>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;">&nbsp;</p>
+  <h3 style='margin: 2pt 0cm 0cm 36pt;text-indent: -36pt;line-height: normal;font-size:16px;font-family: "Calibri Light", sans-serif;color: rgb(31, 55, 99);font-weight: normal;'>4.3.1&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Opening&nbsp;Autodesk&nbsp;VRED Model</h3>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;">Open the VRED Application and load the VRED Model into the application, here in this case using a prebuilt car model.</p>
+  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;border: none;">
+      <tbody>
+          <tr>
+              <td style="width: 448.05pt;padding: 0cm 5.4pt;vertical-align: top;" valign="top" width="62.57861635220126%">
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: justify;"><img border="0" width="343" height="383" src="vred_files/image042.png"></p>
+              </td>
+              <td style="width: 267.55pt;padding: 0cm 5.4pt;vertical-align: top;" valign="top" width="37.42138364779874%">
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;"><img border="0" width="342" height="267" src="vred_files/image044.png"></p>
+              </td>
+          </tr>
+          <tr>
+              <td style="width: 448.05pt;padding: 0cm 5.4pt;vertical-align: top;" valign="top" width="62.57861635220126%">
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;">&nbsp;</p>
+              </td>
+              <td style="width: 267.55pt;padding: 0cm 5.4pt;vertical-align: top;" valign="top" width="37.42138364779874%">
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;">&nbsp;</p>
+              </td>
+          </tr>
+          <tr>
+              <td colspan="2" style="width: 715.6pt;padding: 0cm 5.4pt;vertical-align: top;" valign="top" width="100%">
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">&nbsp;</p>
+                  <h3 style='margin: 2pt 0cm 0cm 36pt;text-indent: -36pt;line-height: normal;font-size:16px;font-family: "Calibri Light", sans-serif;color: rgb(31, 55, 99);font-weight: normal;font-style: normal;text-align: start;'>4.3.2&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;CPU and GPU Raytracing:</h3>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><span style="font-size:16px;color: rgb(0, 112, 192);">Ray tracing</span></p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;">Ray tracing is a rendering technique that can produce incredibly realistic lighting effects. Ray tracing generates lifelike shadows and reflections, along with much-improved translucence and scattering,&nbsp;taking into account&nbsp;light phenomena such as reflection and refraction. The popularity gained by ray tracing lays the foundation in the realistic simulation of light compared to other rendering models (such as scanline rendering or ray casting).</p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">We can activate the CPU and GPU Raytracing options in VRED based on our Rendering requirements. Below figure shows how to activate CPU/GPU Raytracing in VRED application</p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;"><img border="0" width="576" height="197" src="vred_files/image046.jpg"></p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">&nbsp;</p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">&nbsp;</p>
+                  <h3 style='margin: 2pt 0cm 0cm 36pt;text-indent: -36pt;line-height: normal;font-size:16px;font-family: "Calibri Light", sans-serif;color: rgb(31, 55, 99);font-weight: normal;font-style: normal;text-align: start;'>4.3.3&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Antialiasing settings</h3>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">For the CPU and GPU raytracing rendering, we have kept the antialiasing option to high as shown in the figure below</p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;"><img border="0" width="529" height="315" src="vred_files/image048.jpg"></p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">&nbsp;</p>
+                  <h3 style='margin: 2pt 0cm 0cm 36pt;text-indent: -36pt;line-height: normal;font-size:16px;font-family: "Calibri Light", sans-serif;color: rgb(31, 55, 99);font-weight: normal;font-style: normal;text-align: start;'>4.3.4&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Render settings</h3>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">For render setting select the render option in VRED as shown below</p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;"><img border="0" width="577" height="155" src="vred_files/image050.png"></p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><strong><span style="color: rgb(31, 56, 100);">Saving the Images:&nbsp;</span></strong>User can save the image rendered in the desired location or path in desktop from selecting the option under Image option from Render settings tab. The image size like HD or 4K is also selected from the dropdown box under Image Size Presents. Here we have selected HD Image</p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;"><img border="0" width="566" height="184" src="vred_files/image051.png"></p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;"><strong><span style="color: rgb(31, 56, 100);">General Settings:</span></strong><span style="color: rgb(31, 56, 100);">&nbsp;</span>For CPU and GPU Raytracing, Image samples&nbsp;have to&nbsp;be selected for Antialiasing, more the number the number of samples, better the antialiasing output. Under general settings, we have selected the maximum number, 1024 Image samples for Antialiasing. For open GL less number can be selected like 16 to 32 samples.</p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: center;"><img border="0" width="583" height="267" src="vred_files/image053.png"></p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><strong><span style="color: rgb(31, 56, 100);">Raytracing Quality:</span></strong></p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">For Illumination mode for both interactive and still frame mode, Full Global Illumination option is selected under the Raytracing Quality settings</p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">&nbsp;</p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">&nbsp;</p>
+                  <h2 style='margin: 2pt 0cm 0cm 35.9pt;text-indent: -28.8pt;line-height: normal;font-size:17px;font-family: "Calibri Light", sans-serif;color: rgb(47, 84, 150);font-weight: normal;font-style: normal;text-align: start;'>4.1&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Autodesk&nbsp;VRED Performance Results&nbsp;on NCas_T4 VM</h2>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: justify;text-indent: 7.1pt;">To Analyse the performance&nbsp;<span style="color: rgb(23, 23, 23);background: white;">of VRED, carried out Rendering using CPU and GPU raytracing for 4K and HD Images, and then compared CPU, GPU render times. The aim of this rendering process is to compare the GPU Rendering performance with respect to CPU Rendering. For CPU rendering, the application is utilizing all the 64 Cores. We then performed GPU rendering with varying GPU numbers 1,2,3 and 4 on the same VM. The below graphs show all the results,</span></p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">&nbsp;</p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;"><span style="color: rgb(23, 23, 23);background: white;"><img border="0" width="418" height="275" src="vred_files/image055.png"></span><strong><img border="0" width="421" height="281" src="vred_files/image057.png"><span style="color: rgb(47, 84, 150);">&nbsp;</span></strong></p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;"><strong><span style="color: rgb(47, 84, 150);">Relative speedup between CPU and GPU raytracing:</span></strong></p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><strong><img border="0" width="443" height="295" src="vred_files/image059.png"></strong><img border="0" width="444" height="306" src="vred_files/image061.png"></p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><strong>&nbsp;</strong></p>
+                  <h2 style='margin: 2pt 0cm 0cm 35.9pt;text-indent: -28.8pt;line-height: normal;font-size:17px;font-family: "Calibri Light", sans-serif;color: rgb(47, 84, 150);font-weight: normal;font-style: normal;text-align: start;'>4.1&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Autodesk&nbsp;VRED Performance Results on NVv3 VM</h2>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;"><span style="color: rgb(23, 23, 23);background: white;">The below graphs&nbsp;shows&nbsp;the performance results for NVv3 VM.</span></p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;"><img border="0" width="435" height="281" src="vred_files/image063.png"><img border="0" width="436" height="281" src="vred_files/image065.png">&nbsp;</p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;">Note: GPU Rendering with 1 GPU settings on NVv3 VMs, application produced an error while rendering with 4K and higher resolution setting. It works fine with HD image rendering. It depends on the model complexity and environment setting for the model. For larger scale models, 1 GPU setting is not recommended.</p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-indent: 0px;text-align: justify;"><strong><span style="color: rgb(47, 84, 150);">Relative speedup between CPU and GPU raytracing:</span></strong></p>
+                  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><img border="0" width="395" height="308" src="vred_files/image067.png"><img border="0" width="394" height="272" src="vred_files/image069.png"></p>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div><!--performance-->
+
+<div id="consumption">
+  <h3>Azure Consumption</h3>
+  <h1 style='margin: 12pt 0cm 0cm 21.6pt;text-indent: -21.6pt;line-height: normal;font-size:21px;font-family: "Calibri Light", sans-serif;color: rgb(47, 84, 150);font-weight: normal;font-style: normal;text-align: start;'>5&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Azure Consumption</h1>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">For the below cost reports, the application installation time and pre-processing time is not considered, only considered the rendering time for 4K and HD images.</p>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><strong><span style="color: rgb(47, 84, 150);">GPU Rendering cost for 4K Image on Azure VMs</span></strong></p>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><strong>&nbsp;</strong></p>
+  <div align="center" style='color: rgb(0, 0, 0);font-family: "Times New Roman";font-size: medium;font-style: normal;font-weight: 400;text-indent: 0px;'>
+      <table border="0" cellpadding="0" cellspacing="0" style="width: 407.25pt;border-collapse: collapse;" width="543">
+          <tbody>
+              <tr>
+                  <td style="width: 79.15pt;border: 1pt solid windowtext;background: rgb(217, 217, 217);padding: 0cm 5.4pt;height: 34.35pt;" width="19.521178637200737%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">VM Name</span></p>
+                  </td>
+                  <td style="width: 57.35pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(217, 217, 217);padding: 0cm 5.4pt;height: 34.35pt;" width="13.996316758747698%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;"># GPUs on VM</span></p>
+                  </td>
+                  <td style="width: 86.05pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(217, 217, 217);padding: 0cm 5.4pt;height: 34.35pt;" width="21.17863720073665%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">Azure VM hourly cost ($)</span></p>
+                  </td>
+                  <td style="width: 102.05pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(217, 217, 217);padding: 0cm 5.4pt;height: 34.35pt;" width="25.046040515653775%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">4K Image Render time</span></p>
+                  </td>
+                  <td style="width: 82.65pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(217, 217, 217);padding: 0cm 5.4pt;height: 34.35pt;" width="20.257826887661142%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">Total Azure consumption</span></p>
+                  </td>
+              </tr>
+              <tr>
+                  <td style="width: 79.15pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0cm 5.4pt;height: 20.8pt;" width="19.521178637200737%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">NC64as_T4_v3</span></p>
+                  </td>
+                  <td style="width: 57.35pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 20.8pt;" width="13.996316758747698%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">4</span></p>
+                  </td>
+                  <td style="width: 86.05pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 20.8pt;" width="21.17863720073665%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">$8.60</span></p>
+                  </td>
+                  <td style="width: 102.05pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 20.8pt;" width="25.046040515653775%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">11 min 47 sec</span></p>
+                  </td>
+                  <td style="width: 82.65pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 20.8pt;" width="20.257826887661142%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: right;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">$1.69</span></p>
+                  </td>
+              </tr>
+              <tr>
+                  <td style="width: 79.15pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0cm 5.4pt;height: 20.8pt;" width="19.521178637200737%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">NV48s_v3</span></p>
+                  </td>
+                  <td style="width: 57.35pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 20.8pt;" width="13.996316758747698%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">4</span></p>
+                  </td>
+                  <td style="width: 86.05pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 20.8pt;" width="21.17863720073665%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">$8.59</span></p>
+                  </td>
+                  <td style="width: 102.05pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 20.8pt;" width="25.046040515653775%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">49 min 21 sec</span></p>
+                  </td>
+                  <td style="width: 82.65pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 20.8pt;" width="20.257826887661142%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: right;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">$7.06</span></p>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><strong><span style="color: rgb(47, 84, 150);">&nbsp;</span></strong></p>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><strong><span style="color: rgb(47, 84, 150);">CPU Rendering cost for 4K Image on Azure VMs</span></strong></p>
+  <div align="center" style='color: rgb(0, 0, 0);font-family: "Times New Roman";font-size: medium;font-style: normal;font-weight: 400;text-indent: 0px;'>
+      <table border="0" cellpadding="0" cellspacing="0" style="width: 414.55pt;border-collapse: collapse;" width="553">
+          <tbody>
+              <tr>
+                  <td style="width: 87.8pt;border: 1pt solid windowtext;background: rgb(217, 217, 217);padding: 0cm 5.4pt;height: 32.65pt;" width="21.195652173913043%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">VM Name</span></p>
+                  </td>
+                  <td style="width: 57.35pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(217, 217, 217);padding: 0cm 5.4pt;height: 32.65pt;" width="13.768115942028986%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">No. of CPU cores</span></p>
+                  </td>
+                  <td style="width: 80.8pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(217, 217, 217);padding: 0cm 5.4pt;height: 32.65pt;" width="19.565217391304348%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">Azure VM hourly cost ($)</span></p>
+                  </td>
+                  <td style="width: 104.3pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(217, 217, 217);padding: 0cm 5.4pt;height: 32.65pt;" width="25.181159420289855%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">4K Image Render time</span></p>
+                  </td>
+                  <td style="width: 84.3pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(217, 217, 217);padding: 0cm 5.4pt;height: 32.65pt;" width="20.28985507246377%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">Total Azure consumption</span></p>
+                  </td>
+              </tr>
+              <tr>
+                  <td style="width: 87.8pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0cm 5.4pt;height: 19.8pt;" width="21.195652173913043%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">NC64as_T4_v3</span></p>
+                  </td>
+                  <td style="width: 57.35pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 19.8pt;" width="13.768115942028986%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">64</span></p>
+                  </td>
+                  <td style="width: 80.8pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 19.8pt;" width="19.565217391304348%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">$8.60</span></p>
+                  </td>
+                  <td style="width: 104.3pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 19.8pt;" width="25.181159420289855%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">21 min 13 sec</span></p>
+                  </td>
+                  <td style="width: 84.3pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 19.8pt;" width="20.28985507246377%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: right;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">$3.04</span></p>
+                  </td>
+              </tr>
+              <tr>
+                  <td style="width: 87.8pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0cm 5.4pt;height: 19.8pt;" width="21.195652173913043%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">NV48s_v3</span></p>
+                  </td>
+                  <td style="width: 57.35pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 19.8pt;" width="13.768115942028986%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">48</span></p>
+                  </td>
+                  <td style="width: 80.8pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 19.8pt;" width="19.565217391304348%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">$8.59</span></p>
+                  </td>
+                  <td style="width: 104.3pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 19.8pt;" width="25.181159420289855%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">55 min 48 sec</span></p>
+                  </td>
+                  <td style="width: 84.3pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 19.8pt;" width="20.28985507246377%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: right;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">$8.00</span></p>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><strong><span style="color: rgb(47, 84, 150);">&nbsp;</span></strong></p>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><strong><span style="color: rgb(47, 84, 150);">GPU Rendering cost for HD Image on Azure VMs</span></strong></p>
+  <div align="center" style='color: rgb(0, 0, 0);font-family: "Times New Roman";font-size: medium;font-style: normal;font-weight: 400;text-indent: 0px;'>
+      <table border="0" cellpadding="0" cellspacing="0" style="width: 412.2pt;border-collapse: collapse;" width="550">
+          <tbody>
+              <tr>
+                  <td style="width: 79.15pt;border: 1pt solid windowtext;background: rgb(217, 217, 217);padding: 0cm 5.4pt;height: 33.15pt;" width="19.272727272727273%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">VM Name</span></p>
+                  </td>
+                  <td style="width: 58.2pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(217, 217, 217);padding: 0cm 5.4pt;height: 33.15pt;" width="14.181818181818182%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;"># GPUs on VM</span></p>
+                  </td>
+                  <td style="width: 87.35pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(217, 217, 217);padding: 0cm 5.4pt;height: 33.15pt;" width="21.09090909090909%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">Azure VM hourly cost ($)</span></p>
+                  </td>
+                  <td style="width: 103.6pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(217, 217, 217);padding: 0cm 5.4pt;height: 33.15pt;" width="25.09090909090909%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">HD Image Render time</span></p>
+                  </td>
+                  <td style="width: 83.9pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(217, 217, 217);padding: 0cm 5.4pt;height: 33.15pt;" width="20.363636363636363%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">Total Azure consumption</span></p>
+                  </td>
+              </tr>
+              <tr>
+                  <td style="width: 79.15pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0cm 5.4pt;height: 20.3pt;" width="19.272727272727273%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">NC64as_T4_v3</span></p>
+                  </td>
+                  <td style="width: 58.2pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 20.3pt;" width="14.181818181818182%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">4</span></p>
+                  </td>
+                  <td style="width: 87.35pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 20.3pt;" width="21.09090909090909%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">$8.60</span></p>
+                  </td>
+                  <td style="width: 103.6pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 20.3pt;" width="25.09090909090909%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">3 min 48 sec</span></p>
+                  </td>
+                  <td style="width: 83.9pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 20.3pt;" width="20.363636363636363%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: right;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">$0.54</span></p>
+                  </td>
+              </tr>
+              <tr>
+                  <td style="width: 79.15pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0cm 5.4pt;height: 20.3pt;" width="19.272727272727273%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">NV48s_v3</span></p>
+                  </td>
+                  <td style="width: 58.2pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 20.3pt;" width="14.181818181818182%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">4</span></p>
+                  </td>
+                  <td style="width: 87.35pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 20.3pt;" width="21.09090909090909%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">$8.59</span></p>
+                  </td>
+                  <td style="width: 103.6pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 20.3pt;" width="25.09090909090909%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">15 min 49 sec</span></p>
+                  </td>
+                  <td style="width: 83.9pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 20.3pt;" width="20.363636363636363%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: right;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">$2.26</span></p>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">&nbsp;</p>
+  <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;"><strong><span style="color: rgb(47, 84, 150);">CPU Rendering cost for HD Image on Azure VMs</span></strong></p>
+  <div align="center" style='color: rgb(0, 0, 0);font-family: "Times New Roman";font-size: medium;font-style: normal;font-weight: 400;text-indent: 0px;'>
+      <table border="0" cellpadding="0" cellspacing="0" style="width: 410.85pt;border-collapse: collapse;" width="548">
+          <tbody>
+              <tr>
+                  <td style="width: 87pt;border: 1pt solid windowtext;background: rgb(217, 217, 217);padding: 0cm 5.4pt;height: 34.8pt;" width="21.16788321167883%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">VM Name</span></p>
+                  </td>
+                  <td style="width: 56.85pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(217, 217, 217);padding: 0cm 5.4pt;height: 34.8pt;" width="13.86861313868613%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">No. of CPU cores</span></p>
+                  </td>
+                  <td style="width: 80.1pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(217, 217, 217);padding: 0cm 5.4pt;height: 34.8pt;" width="19.525547445255473%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">Azure VM hourly cost ($)</span></p>
+                  </td>
+                  <td style="width: 103.35pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(217, 217, 217);padding: 0cm 5.4pt;height: 34.8pt;" width="25.182481751824817%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">HD Image Render time</span></p>
+                  </td>
+                  <td style="width: 83.55pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(217, 217, 217);padding: 0cm 5.4pt;height: 34.8pt;" width="20.255474452554743%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">Total Azure consumption</span></p>
+                  </td>
+              </tr>
+              <tr>
+                  <td style="width: 87pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0cm 5.4pt;height: 21.3pt;" width="21.16788321167883%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">NC64as_T4_v3</span></p>
+                  </td>
+                  <td style="width: 56.85pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 21.3pt;" width="13.86861313868613%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">64</span></p>
+                  </td>
+                  <td style="width: 80.1pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 21.3pt;" width="19.525547445255473%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">$8.60</span></p>
+                  </td>
+                  <td style="width: 103.35pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 21.3pt;" width="25.182481751824817%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">5 min 48 sec</span></p>
+                  </td>
+                  <td style="width: 83.55pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 21.3pt;" width="20.255474452554743%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: right;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">$0.83</span></p>
+                  </td>
+              </tr>
+              <tr>
+                  <td style="width: 87pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0cm 5.4pt;height: 21.3pt;" width="21.16788321167883%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">NV48s_v3</span></p>
+                  </td>
+                  <td style="width: 56.85pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 21.3pt;" width="13.86861313868613%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">48</span></p>
+                  </td>
+                  <td style="width: 80.1pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 21.3pt;" width="19.525547445255473%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">$8.59</span></p>
+                  </td>
+                  <td style="width: 103.35pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 21.3pt;" width="25.182481751824817%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: center;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">14 min 27 sec</span></p>
+                  </td>
+                  <td style="width: 83.55pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0cm 5.4pt;height: 21.3pt;" width="20.255474452554743%">
+                      <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: right;"><span style="font-size:12px;font-family: Verdana, sans-serif;color: black;">$2.07</span></p>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div><!--consumption-->
+
+<div id="summary">
+  <h3>Summary</h3>
+  <table border="0" cellpadding="0" cellspacing="0" style='font-family: "Times New Roman";width: 100%;border-collapse: collapse;border: none;' width="1219">
+    <tbody>
+        <tr>
+            <td style="width: 914.05pt;padding: 0cm 5.4pt;vertical-align: top;" valign="top" width="100%">
+                <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;border: none;">
+                    <tbody>
+                        <tr>
+                            <td style="width: 717.1pt;padding: 0cm 5.4pt;vertical-align: top;" valign="top" width="100%">
+                                <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;border: none;">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2" style="width: 715.6pt;padding: 0cm 5.4pt;vertical-align: top;" valign="top" width="100%">
+                                                <h1 style='margin: 12pt 0cm 0cm 21.6pt;text-indent: -21.6pt;line-height: normal;font-size:21px;font-family: "Calibri Light", sans-serif;color: rgb(47, 84, 150);font-weight: normal;'>6&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Summary</h1>
+                                                <p style="margin: 0cm 0cm 0cm 18pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: justify;text-indent: -18pt;">1.&nbsp; &nbsp; &nbsp; &nbsp;VRED Application is successfully deployed and tested on NCas_T4_v3 series VMs and NVv3 series Virtual Machines on Azure Platform</p>
+                                                <p style="margin: 0cm 0cm 0cm 18pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: justify;text-indent: -18pt;">2.&nbsp; &nbsp; &nbsp; &nbsp;NC64as_T4 VM, GPU rendering is 1.8 times faster than the CPU rendering.</p>
+                                                <p style="margin: 0cm 0cm 0cm 18pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: justify;text-indent: -18pt;">3.&nbsp; &nbsp; &nbsp; &nbsp;NC64as_T4 Virtual Machine is recommended for VRED application as it demonstrated a better performance for both CPU and GPU rendering timelines.</p>
+                                                <p style="margin: 0cm 0cm 0cm 18pt;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;text-align: justify;text-indent: -18pt;">4.&nbsp; &nbsp; &nbsp; &nbsp;For NVv3 VM, it was observed that there isn&rsquo;t much improvement in GPU rendering times compared to CPU rendering time.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p style="margin: 0cm;font-size:15px;font-family: Calibri, sans-serif;line-height: normal;"><br></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="margin: 0cm 0cm 8pt;font-size:15px;font-family: Calibri, sans-serif;line-height: 15.6933px;color: rgb(0, 0, 0);font-style: normal;font-weight: 400;text-align: start;text-indent: 0px;">&nbsp;</p>
+</div><!--summary-->
+
+      </div><!--content-->
+
+      <!-- <div class="col-2">3</div> -->
+    </div><!--vred-->
+
+
+      </section>
+          
+      <button
+      type="button"
+      class="btn btn-danger btn-floating btn-lg"
+      id="btn-back-to-top"
+      >
+<i class="fas fa-arrow-up"></i>
+</button>
+ 
+    </main>
+
+
+    <footer>
+        <div class="d-flex justify-content-around align-items-center container">
+          <p class="pt-md-3">Copyright &copy; 2021 Microsoft HPC Azure</p>
+          <ul>
+            <li>
+              <a href="#">
+                <img src="img/CapgeminiLogo.png" alt="Capgemini Logo" />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="img/MicrosoftLogo.png" alt="Microsoft Logo" />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </footer>
+
+
+      </div><!--wrapper-->
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+
+    <script>let mybutton = document.getElementById("btn-back-to-top");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (
+    document.body.scrollTop > 20 ||
+    document.documentElement.scrollTop > 20
+  ) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+// When the user clicks on the button, scroll to the top of the document
+mybutton.addEventListener("click", backToTop);
+
+function backToTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}</script>
+  </body>
+</html>

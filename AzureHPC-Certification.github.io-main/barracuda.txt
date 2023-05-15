@@ -1,0 +1,2263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="shortcut icon" href="img/icon.ico">
+    <link rel="Stylesheet" href="css/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;0,300;0,400;1,400&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script type="text/javascript" src="js/script.js"></script>
+
+    <script src="https://kit.fontawesome.com/3d0a07deaa.js" crossorigin="anonymous"></script>
+
+    <title>Azure HPC | Barracuda Report</title>
+    
+  </head>
+  <body>
+    <div id="wrapper" class="row g-0">
+      
+      <header class="container-fluid">   
+        <div class="logo container">
+          <div class="title-text"><a href="index.html">Azure <span>HPC</span></a></div>
+         
+          <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo">
+          <span class="logoline-top1"></span> <span class="px-1 px-sm-2">
+             <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo">
+          </span>
+        
+        </div>
+      </header>
+
+    <main class="container-fluid">
+
+      <section class="container-lg px-3 px-lg-0 rpt-wrapper">        
+      <h3 class="text-center text-uppercase py-4"><!--The Report title goes here-->Azure HPC Recipe Document for Barracuda Virtual Reactor</h3>
+    <div class="d-flex flex-row rpt">
+
+      <div class="col-2 px-1 px-sm-0 text-left index">
+        <label class="px-3"><!--The Report Name goes here-->Barracuda Virtual Reactor</label>
+        <div class="index-scroll">   
+          <!--Manually remove 2.1 to 4.6 from index-->
+          <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc88471705">1</span> Introduction</span></a></p>
+          <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc88471706">2</span> Deploy Virtual Machine on Azure Cloud Platform</span></a></p>
+
+          <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc88471712">3</span> Install Barracuda Virtual Reactor Application on Virtual Machine</span></a></p>
+
+          <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc88471715">4</span> Performance results of Barracuda Virtual Reactor on Azure virtual machine</span></a></p>
+
+          <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc88471719">5</span> Azure Cost</span></a></p>
+          <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc88471720">6</span> Summary</span></a></p>
+    </div>
+      </div><!--index-->
+
+      <div class="col-8 col-md-8 px-3 content">
+        <!--Add class="h1" for the Manin Headings (1-6) eg. 1 Introdcution | 2 Deploy Virtual Machine on Azure Cloud Platform-->
+        <!--Add class="h2" for the Sub Headings (2.1 - 2.4) eg. 2.1 Azure Cloud Architecture for Application-->
+        <!--replace <p> with <ul><li> for list-->
+        <!--Add <div class="overflow-table"> before every tab within the content-->
+       
+        <!--The Report content goes here-->
+
+<p class="h1"><span >1</span> <a name="_Toc88471705"></a><span >Introduction</span></p>
+<p style=" text-indent: 36pt;"><span >This document briefly explains the steps to install and run Virtual Reactor application on a Virtual Machine deployed in Azure Cloud Platform and presents the performance results.</span></p>
+<p ><span >This recipe document covers the following topics: -</span></p>
+<ul><li>Deploy &amp; connect a required virtual machine on Azure platform.</li>
+<li>Install required NVIDIA drivers in virtual machine.</li>
+<li>Install Application on virtual machine.</li>
+<li>Install license manager for current application</li>
+<li>Performance results of current application on azure virtual machine</li>
+<li>Azure cost</li>
+<li>Summary</li></ul>
+<p class="h1"><span >2</span> <a name="_Toc88471706"></a><span >Deploy Virtual Machine on Azure Cloud Platform</span></h1>
+<p class="h2">2.1</span> <a name="_Toc88471707"></a><span >Azure Cloud Architecture for Application</span></p>
+<p ><span >The below Architecture explains the virtual machine running on an Azure Platform</span></p>
+<p ><img src="barracuda_files/Image1.png" alt="" width="604" height="477" border="0" /></p>
+<p class="h2">2.2</span> <a name="_Toc88471708"></a><span >Azure Virtual Machine (VM)</span></p>
+<p ><span >A VM is a virtualized instance of a computer that can perform almost all the same functions as a computer, including running applications and operating systems.</span></p>
+<p ><span >An Azure VM gives the flexibility of virtualization without having to buy and maintain the physical hardware that runs it. However, the user still needs to maintain the VM by performing tasks, such as configuring, patching, and installing the software that runs on it.</span></p>
+<p ><span >Things to be considered before deploying a VM,</span></p>
+<ul><li>The names of the application resources</li>
+<li>The location where the resources are stored</li>
+<li>The size of the VM</li>
+<li>The operating system that the VM runs</li>
+<li>The configuration of the VM</li>
+<li>The related resources that the VM needs</li></ul>
+<p ><span >There are different sizes and options available for the Azure virtual machines and </span><span >user can use to run apps</span><span > and workloads. Depending on the workload user must choose the appropriate VM size. For complete list, check this </span><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/sizes/"><span >https://docs.microsoft.com/en-us/azure/virtual-machines/sizes/</span></a><span >.</span></p>
+<p ><span >To test the performance of Virtual Reactor on Azure Platform, </span><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/nda100-v4-series"><span >NDv4 A100</span></a><span >,</span><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/ncv3-series"><span > NCv3-series</span></a><span >&amp; </span><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/nct4-v3-series"><span >NCas_T4-v3-series</span></a> <span >virtual machines are deployed.</span></p>
+<div class="overflow-table"><table ><colgroup><col  /><col  span="6" /></colgroup>
+<tbody>
+<tr >
+<td >
+<p ><span >VM Name</span></p>
+</td>
+<td >
+<p ><span >vCPU</span></p>
+</td>
+<td >
+<p ><span >Memory (GiB)</span></p>
+</td>
+<td >
+<p ><span >SSD (GiB)</span></p>
+</td>
+<td >
+<p ><span >GPU</span></p>
+</td>
+<td >
+<p ><span >GPU Memory (GiB)</span></p>
+</td>
+<td >
+<p ><span >Max Data Disk</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >Standard_ND96asr_v4</span></p>
+</td>
+<td >
+<p ><span >96</span></p>
+</td>
+<td >
+<p ><span >921</span></p>
+</td>
+<td >
+<p ><span >1024</span></p>
+</td>
+<td >
+<p ><span >8 A100</span></p>
+</td>
+<td >
+<p ><span >40</span></p>
+</td>
+<td >
+<p ><span >32</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >Standard NC24s_v3</span></p>
+</td>
+<td >
+<p ><span >24</span></p>
+</td>
+<td >
+<p ><span >448</span></p>
+</td>
+<td >
+<p ><span >2048</span></p>
+</td>
+<td >
+<p ><span >4 V100</span></p>
+</td>
+<td >
+<p ><span >16</span></p>
+</td>
+<td >
+<p ><span >32</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >Standard NC64as_T4_v3</span></p>
+</td>
+<td >
+<p ><span >64</span></p>
+</td>
+<td >
+<p ><span >448</span></p>
+</td>
+<td >
+<p ><span >1024</span></p>
+</td>
+<td >
+<p ><span >4 T4</span></p>
+</td>
+<td >
+<p ><span >16</span></p>
+</td>
+<td >
+<p ><span >32</span></p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p ><span >1.</span> <span >Standard_ND96asr_v4: This VMs is powered by </span><a href="https://www.nvidia.com/en-in/data-center/a100/"><span >NVIDIA Ampere A100 Tensor Core</span></a><span > GPUs and 96 physical 2nd-generation AMD Epyc&trade; CPU cores (2.44GHz). The &ldquo;ND96asr_v4&rdquo; VM has 8 GPUs with 40 GB of memory each and supported by 96 AMD processor cores with a total memory of 921GB. Each GPU features NVLINK 3.0 connectivity for communication within the VM.</span></p>
+<p ><span >2.</span> <span >Standard </span><span >NC24s_v3: This VM belongs to </span><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/ncv3-series"><span >Ncv3-series</span></a> <span >This VMs are powered by NVIDIA Tesla V100 GPUs. These GPUs can provide 1.5x the computational performance of the NCv2-series.</span></p>
+<p ><span >3.</span> <span >Standard </span><span >NC64as_T4_v3: This VM Belongs to </span><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/nct4-v3-series"><span >NCasT4_v3-series</span></a><span >.These Series VMs are powered by </span><a href="https://www.nvidia.com/en-us/data-center/tesla-t4/"><span >Nvidia T4</span></a><span >&nbsp;GPUs and AMD EPYC 7V12(Rome) CPUs. The &ldquo;NC64as_T4_v3&rdquo; VM has 4 NVIDIA T4 GPUs with 16 GB of memory each, up to 64 non-multithreaded AMD processor cores with a total memory of 448GB. </span></p>
+<p class="h2">2.3</span> <a name="_Toc88471709"></a><span >Create a Virtual Machine on Azure Platform</span></p>
+<p ><span style="font-family: roboto; font-weight: bold;">Sign into Azure</span></p>
+<p ><span >Sign into the Azure portal by using </span><a href="https://portal.azure.com/"><span >https://portal.azure.com/</span></a></p>
+<p ><a href="https://azure.microsoft.com/offers/ms-azr-0044p"><span >Free Trial subscriptions</span></a><span >&nbsp;are not eligible for limit or quota increases. </span></p>
+<p ><span >After the successful sign in or sign up, one has to upgrade the Azure subscription to </span><a href="https://azure.microsoft.com/en-us/offers/ms-azr-0003p/"><span >Pay-As-You-Go</span></a><span > to deploy a Virtual machine. For deployment, the user must have regional vCPU quota, which can be obtained by raising a request.</span></p>
+<p ><span >The step-by-step procedure to increase the vCPU quota is given below,</span></p>
+<p ><a href="https://docs.microsoft.com/en-us/azure/azure-portal/supportability/per-vm-quota-requests"><span >https://docs.microsoft.com/en-us/azure/azure-portal/supportability/per-vm-quota-requests</span></a></p>
+<p ><span >The step-by-step procedure to deploy Virtual machine is given below,</span></p>
+<p ><span >1.</span> <span >Type&nbsp;</span><span style="font-family: roboto; font-weight: bold;">virtual machines</span><span >&nbsp;in the marketplace search.</span></p>
+<p ><span >2.</span> <span >Under&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Services</span><span >, select&nbsp;</span><span >Virtual machines</span><span >.</span></p>
+<p ><span >3.</span> <span >In the&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Virtual machines</span><span >&nbsp;page, select&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Create</span><span >&nbsp;Then&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Virtual machine</span><span >.</span></p>
+<p ><span >4.</span> <span >In the&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Basics</span><span >&nbsp;tab, under&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Project details</span><span >, make sure the correct subscription is selected and then choose to&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Create new</span><span >&nbsp;resource group. Type&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Azure-PerformanceTest</span><span style="font-family: roboto; font-weight: bold;">&nbsp;(user choice) </span><span >for the name.</span></p>
+<p ><img src="barracuda_files/Image2.png" alt="" width="548" height="268" border="0" /></p>
+<p ><span >5.</span> <span >Under&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Instance details</span><span >, type&nbsp;</span><span >Azure-VM (user choice)</span><span >&nbsp;for the&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Virtual machine name</span><span >&nbsp;and choose&nbsp;West Europe</span> <span >for </span><span style="font-family: roboto; font-weight: bold;">Region</span><span >. Choose&nbsp;</span><span >CentOS, Version 8.1 HPC-Gen2 </span><span >for the&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Image</span><span >&nbsp;and&nbsp;</span><span >Standard_ND96asr_v4</span><span >&nbsp;for the&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Size </span><span >(user choice).</span><span > Leave the other defaults.</span></p>
+<p ><img src="barracuda_files/Image3.png" alt="" width="548" height="219" border="0" /></p>
+<p ><span >Note: </span></p>
+<ul>
+<li style="font-family: roboto; font-weight: bold;">Region</span><span > must be decided based on where the Virtual machine is going to be deployed. To avoid the network latency, the region should be near to the location where the VM is to be deployed.</li>
+<li style="font-family: roboto; font-weight: bold;">Image </span><span >selection is of user choice based on the application user can choose the image (Windows 10, Linux based OS and Windows Server)</li></ul>
+<p ><span >6.</span> <span >Under&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Administrator account</span><span >, provide a username, such as&nbsp;Azureuser&nbsp;and a password. The password must be at least 12 characters long and meet the&nbsp;</span><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm-"><span >defined complexity requirements</span></a><span >.</span></p>
+<p ><img src="barracuda_files/Image4.png" alt="" width="548" height="109" border="0" /></p>
+<p ><span >7.</span> <span >Under&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Inbound port rules</span><span >, choose&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Allow selected ports</span><span >&nbsp;and then select&nbsp;</span><span style="font-family: roboto; font-weight: bold;">SSH (22)</span><span >&nbsp;from the drop-down.</span></p>
+<p ><img src="barracuda_files/Image5.png" alt="" width="548" height="208" border="0" /></p>
+<p ><span >8.</span> <a name="_Ref81315987"></a><span >In </span><span style="font-family: roboto; font-weight: bold;">Advanced</span><span > tab, under the Extensions click </span><span style="font-family: roboto; font-weight: bold;">Select an extension to install</span><span >, select </span><span style="font-family: roboto; font-weight: bold;">NVIDIA GPU Driver Extension</span><span > (user choice)</span></p>
+<p ><img src="barracuda_files/Image6.png" alt="" width="548" height="158" border="0" /></p>
+<p ><span style="font-family: roboto; font-weight: bold;">Note: This Step 8, will installs the older version of Nvidia and Cuda driver hence the user can skip this step and proceed the VM deployment without extension. Follow manual installation as per chapter 2.5</span><span >.</span></p>
+<p ><span >9.</span> <span >Leave the remaining defaults and then select the&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Review + create</span><span >&nbsp;button at the bottom of the page.</span></p>
+<p ><span >10.</span> <span >After validation runs, select the&nbsp;Create&nbsp;button at the bottom of the page.</span></p>
+<p ><img src="barracuda_files/Image7.png" alt="" width="548" height="61" border="0" /></p>
+<p ><span >11.</span> <span >After deployment is complete, select&nbsp;Go to resource.</span></p>
+<p ><img src="barracuda_files/Image8.png" alt="" width="548" height="131" border="0" /></p>
+<p class="h2">2.4</span> <a name="_Toc88471710"></a><span >Connect to virtual machine</span></p>
+<p ><a name="_Toc81405764"></a><span >Create a SSH connection to the virtual machine. </span><a name="_Toc81389019"></a></p>
+<p ><span >1.</span> <span >On the overview page of a virtual machine, select the&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Connect</span><span >&nbsp;button then select&nbsp;</span><span style="font-family: roboto; font-weight: bold;">SSH </span><span >and copy the public IP address</span><span >.</span></p>
+<p ><a name="_Toc81389019"></a></p>
+<p ><img src="barracuda_files/Image9.png" alt="" width="548" height="136" border="0" /></p>
+<p ><a name="_Toc81389019"></a></p>
+<p ><span >2.</span> <span >Open any SSH client tool of user choice, in this case </span><span style="font-family: roboto; font-weight: bold;">PUTTY </span><span >is used.</span></p>
+<p ><a name="_Toc81389019"></a></p>
+<p ><a name="_Toc81389019"></a></p>
+<p ><span >3.</span> <span >Enter the </span><span style="font-family: roboto; font-weight: bold;">IP address</span><span > and port as 22 and click </span><span style="font-family: roboto; font-weight: bold;">Open</span></p>
+<p ><a name="_Toc81389019"></a></p>
+<p ><img src="barracuda_files/Image10.png" alt="" width="353" height="347" border="0" /></p>
+<p ><a name="_Toc81389019"></a></p>
+<p ><span >4.</span> <span >Enter username in </span><span style="font-family: roboto; font-weight: bold;">Login as</span><span >, enter the password,</span> <span >and click</span><span style="font-family: roboto; font-weight: bold;"> Enter.</span></p>
+<p ><a name="_Toc81389019"></a></p>
+<p ><span >5.</span> <span >Now user connected to the VM in Console</span></p>
+<p ><a name="_Toc81389019"></a></p>
+<p ><a name="_Toc81389019"></a></p>
+<p class="h2">2.5</span> <a name="_Toc88471711"></a><span >Install Nvidia Drivers</span></p>
+<p ><a name="_Toc81389019"></a></p>
+<p ><span >To take advantage of the GPU capabilities of Azure N-series VMs backed by NVIDIA GPUs, the user must install NVIDIA GPU drivers. </span></p>
+<p ><span >If the machine has a NVLink or NVSwitch connecting the GPUs like in the case of NDv4 virtual machine, one should also install the associated version of the Nvidia fabric manager.</span></p>
+<p ><span >There are two ways to install the drivers,</span></p>
+<ul><li>The&nbsp;NVIDIA GPU Driver Extension&nbsp;installs appropriate NVIDIA CUDA or GRID drivers on an N-series VM. Install or manage the extension using the Azure portal (Ref 8)</li>
+<li>Install NVIDIA GPU drivers manually. (For the manual installation follow the procedure given below)</li></ul>
+<p ><span style="font-family: roboto; font-weight: bold;">Nvidia Data Center Driver installation guide for CentOS 8</span></p>
+<p ><span >The step-by-step instruction is given below,</span></p>
+<p ><span >1.</span> <span >In some cases, user may need to install some additional dependencies that are required</span></p>
+<p ><span >For installing the NVIDIA drivers.</span></p>
+<p ><span style="font-family: roboto; font-weight: bold;"># sudo dnf install -y tar bzip2 make automake gcc gcc-c++ pciutils elfutils-libelf-devel libglvnd-devel</span></p>
+<p ><span >2.</span> <span >Enable the PowerTools repo and set up the external dependency on EPEL for DKMS.</span></p>
+<p ><span style="font-family: roboto; font-weight: bold;"># sudo dnf config-manager --set-enabled PowerTools</span></p>
+<p ><span style="font-family: roboto; font-weight: bold;"># sudo dnf install -y epel-release</span></p>
+<p ><span >3.</span> <span >Install the CUDA repository public GPG key</span></p>
+<p ><span style="font-family: roboto; font-weight: bold;"># Distribution=rhel8</span></p>
+<p ><span >4.</span> <span >Setup the CUDA network repository</span></p>
+<p ><span style="font-family: roboto; font-weight: bold;"># ARCH=$( /bin/arch)</span></p>
+<p ><span style="font-family: roboto; font-weight: bold;"># sudo dnf config-manager --add-repo </span><span >http://developer.download.nvidia.com/compute/cuda/repos/$distribution/${ARCH}/cuda-$distribution.repo</span></p>
+<p ><span >5.</span> <span >For CentOS 8, ensure that the system has the correct Linux kernel sources from the CentOS repositories:</span></p>
+<p ><span style="font-family: roboto; font-weight: bold;"># sudo dnf install -y kernel-devel-$(uname -r) kernel-headers-$(uname -r)</span></p>
+<p ><span >6.</span> <span >Note that in some cases, user may have to update the running kernel as a pre-requisite:</span></p>
+<p ><span style="font-family: roboto; font-weight: bold;"># sudo dnf install -y kernel kernel-core kernel-modules</span></p>
+<p ><span >7.</span> <span >Update the repository cache and install the driver using the nvidia-driver meta-package</span></p>
+<p ><span style="font-family: roboto; font-weight: bold;"># sudo dnf clean all</span></p>
+<p ><span style="font-family: roboto; font-weight: bold;"># sudo dnf -y module install nvidia-driver:latest-dkms</span></p>
+<p ><span >8.</span> <span >Install fabric manager to activate the NVswitch (For NDv4 instance)</span></p>
+<p ><span style="font-family: roboto; font-weight: bold;"># sudo dnf module install nvidia-driver:latest-dkms/fm</span></p>
+<p ><span >9.</span> <span >Enable FM Service to Auto Start at Boot</span></p>
+<p ><span style="font-family: roboto; font-weight: bold;"># sudo systemctl enable nvidia-fabricmanager</span></p>
+<p ><span >Reference: </span><a href="https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html#centos8/"><span >https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html#centos8/</span></a></p>
+<p class="h1"><span >3</span> <a name="_Toc88471712"></a><span >Install Barracuda Virtual Reactor Application on Virtual Machine</span></h1>
+<p class="h2">3.1</span> <a name="_Toc88471713"></a><span >Download product</span></p>
+<p ><span style="font-family: roboto; font-weight: bold;">Instructions on how to download </span><span >Virtual Reactor </span><span >products from CPFD Marketplace</span><span >:</span></p>
+<p ><span >Before beginning, open CPFD Marketplace in a web browser and log on. </span></p>
+<p ><span >1.</span> <span >Type </span><span style="font-family: roboto; font-weight: bold;">Virtual Reactor </span><span >in the search box and press Enter. </span></p>
+<p ><span >2.</span> <span >Click on </span><span style="font-family: roboto; font-weight: bold;">CPFD software: Home </span></p>
+<p ><span >3.</span> <span >Click on </span><span style="font-family: roboto; font-weight: bold;">Log on</span><span > to CPFD account at upper right corner.</span></p>
+<p ><span >4.</span> <span >For log in user need to create CPFD account.</span></p>
+<p ><span >5.</span> <span >After log in user have dashboard panel</span></p>
+<p ><span >6.</span> <span >Dashboard panel contain two downloadable packages.</span></p>
+<p ><span >7.</span> <span >Click the </span><span style="font-family: roboto; font-weight: bold;">Download For Linux </span><span >icon.</span></p>
+<p ><span >8.</span> <span >That package contains one installation user guide and one run file.</span></p>
+<p ><img src="barracuda_files/Image11.png" alt="A picture containing timeline
+
+Description automatically generated" width="538" height="254" border="0" /></p>
+<p ><img src="barracuda_files/Image12.png" alt="Graphical user interface, text, application
+
+Description automatically generated" width="548" height="272" border="0" /></p>
+<p ><img src="barracuda_files/Image13.png" alt="Graphical user interface, text, application, email
+
+Description automatically generated" width="579" height="297" border="0" /></p>
+<p class="h2">3.2</span> <a name="_Toc88471714"></a><span >Install Barracuda Virtual Reactor application</span><a name="_Toc85794521"></a><span > on Linux</span></p>
+<p ><span >Installation instructions for Barracuda Virtual Reactor can be found in below path:</span></p>
+<p ><a href="https://cpfd-software.com/user-manual/installation.html"><span >https://cpfd-software.com/user-manual/installation.html</span></a></p>
+<p class="h1"><span >4</span> <a name="_Toc88471715"></a><span >Performance results of Barracuda Virtual Reactor on Azure virtual machine</span></h1>
+<p class="h2">4.1</span> <a name="_Toc88471716"></a><span >Barracuda Virtual Reactor Overview</span></p>
+<p ><span >Barracuda Virtual Reactor is a computational fluid dynamics (CFD) software package developed specifically for engineering design, problem solving, and optimization of industrial-scale fluidized bed reactors (FBRs). Employing an easy-to-use Graphical User Interface (GUI), and enhanced with visualization software from Tecplot, Inc. of Bellevue, Washington, U.S.A. Virtual Reactor TM helps engineers improve the reliability, capacity, and profitability of FBRs &ndash; through efficient modelling of both non-reacting and reacting gas-particle dynamics. Leveraging low-cost, high-performance computing, Barracuda physics-based simulation technology delivers key process performance information supporting critical design and operational decisions &ndash; providing competitive advantage through improved equipment performance, lower warranty risk and rework, higher yields, lower operating costs and longer up-time</span></p>
+<p class="h2">4.2</span> <a name="_Toc88471717"></a><span >Barracuda Virtual Reactor </span><span >on Azure Platform</span></p>
+<p ><span >To carry out the CFD simulations on Virtual Reactor software, right hardware with latest CPUs and GPUs are required. Microsoft partnered with Nvidia provides the required and suitable Infrastructure and hardware on Azure cloud platform. It provides the latest and fastest compute capabilities for both CPU and GPU intensive workloads.</span></p>
+<div class="overflow-table"><table ><colgroup><col  /><col  /></colgroup>
+<tbody>
+<tr >
+<td colspan="2">
+<p ><span >Operating system and Nvidia drivers Details </span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >Operating system version</span></p>
+</td>
+<td >
+<p ><span >CentOS Linux release 8.1.1911 (Core)</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >OS Architecture</span></p>
+</td>
+<td >
+<p ><span >X86-64</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >GPU Drivers version </span></p>
+</td>
+<td >
+<p ><span >470.57.02</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >Cuda version</span></p>
+</td>
+<td >
+<p ><span >11.4</span></p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="h2">4.3</span> <a name="_Toc88471718"></a><span >Barracuda Virtual Reactor Performance Result</span><span >s</span></p>
+<p ><span >Model Details:</span></p>
+<div class="overflow-table"><table ><colgroup><col  span="6" /></colgroup>
+<tbody>
+<tr>
+<td >
+<p ><span >Test Problem No</span></p>
+</td>
+<td >
+<p ><span >Cell count</span></p>
+</td>
+<td >
+<p ><span >No. of particles</span></p>
+</td>
+<td >
+<p ><span >Chemistry</span></p>
+</td>
+<td >
+<p ><span >Thermal</span></p>
+</td>
+<td >
+<p ><span >P1 model</span></p>
+</td>
+</tr>
+<tr>
+<td >
+<p ><span >479</span></p>
+</td>
+<td >
+<p ><span >243267</span></p>
+</td>
+<td >
+<p ><span >29920300</span></p>
+</td>
+<td >
+<p ><span >enabled</span></p>
+</td>
+<td >
+<p ><span >enabled</span></p>
+</td>
+<td >
+<p ><span >disabled</span></p>
+</td>
+</tr>
+<tr>
+<td >
+<p ><span >499</span></p>
+</td>
+<td >
+<p ><span >243267</span></p>
+</td>
+<td >
+<p ><span >3581140</span></p>
+</td>
+<td >
+<p ><span >enabled</span></p>
+</td>
+<td >
+<p ><span >enabled</span></p>
+</td>
+<td >
+<p ><span >disabled</span></p>
+</td>
+</tr>
+<tr>
+<td >
+<p ><span >480</span></p>
+</td>
+<td >
+<p ><span >105157</span></p>
+</td>
+<td >
+<p ><span >40581300</span></p>
+</td>
+<td >
+<p ><span >disabled</span></p>
+</td>
+<td >
+<p ><span >disabled</span></p>
+</td>
+<td >
+<p ><span >disabled</span></p>
+</td>
+</tr>
+<tr>
+<td >
+<p ><span >500</span></p>
+</td>
+<td >
+<p ><span >105157</span></p>
+</td>
+<td >
+<p ><span >9528670</span></p>
+</td>
+<td >
+<p ><span >disabled</span></p>
+</td>
+<td >
+<p ><span >disabled</span></p>
+</td>
+<td >
+<p ><span >disabled</span></p>
+</td>
+</tr>
+<tr>
+<td >
+<p ><span >481</span></p>
+</td>
+<td >
+<p ><span >389320</span></p>
+</td>
+<td >
+<p ><span >50170500</span></p>
+</td>
+<td >
+<p ><span >enabled</span></p>
+</td>
+<td >
+<p ><span >enabled</span></p>
+</td>
+<td >
+<p ><span >disabled</span></p>
+</td>
+</tr>
+<tr>
+<td >
+<p ><span >501</span></p>
+</td>
+<td >
+<p ><span >389320</span></p>
+</td>
+<td >
+<p ><span >12994400</span></p>
+</td>
+<td >
+<p ><span >enabled</span></p>
+</td>
+<td >
+<p ><span >enabled</span></p>
+</td>
+<td >
+<p ><span >disabled</span></p>
+</td>
+</tr>
+<tr>
+<td >
+<p ><span >482</span></p>
+</td>
+<td >
+<p ><span >821781</span></p>
+</td>
+<td >
+<p ><span >55070200</span></p>
+</td>
+<td >
+<p ><span >enabled</span></p>
+</td>
+<td >
+<p ><span >enabled</span></p>
+</td>
+<td >
+<p ><span >disabled</span></p>
+</td>
+</tr>
+<tr>
+<td >
+<p ><span >502</span></p>
+</td>
+<td >
+<p ><span >821781</span></p>
+</td>
+<td >
+<p ><span >22625700</span></p>
+</td>
+<td >
+<p ><span >enabled</span></p>
+</td>
+<td >
+<p ><span >enabled</span></p>
+</td>
+<td >
+<p ><span >disabled</span></p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p ><span >Particle-based fluid dynamics simulations are carried out on the following Virtual machine configurations. </span></p>
+<p ><span >Azure Virtual machines tested: </span><span >ND96asr_v4,</span><span > NC24s_v3 and </span><span >NC64as_T4_v3</span></p>
+<p ><span >The simulations are carried out to see the performance of GPU and CPU on the chosen Azure Virtual Machine Configuration. Refer chapter 2.2 for the VM specifications.</span></p>
+<p ><span >The results are presented below,</span></p>
+<p ><span >Elapsed time for NDV4 Virtual Machine - (&ldquo;Seconds&rdquo;)</span></p>
+<div class="overflow-table"><table ><colgroup><col  /><col  /><col  span="3" /><col  /><col  /><col  span="2" /></colgroup>
+<tbody>
+<tr >
+<td >
+<p ><span >Test Problem NO.</span></p>
+</td>
+<td >
+<p ><span >479</span></p>
+</td>
+<td >
+<p ><span >480</span></p>
+</td>
+<td >
+<p ><span >481</span></p>
+</td>
+<td >
+<p ><span >482</span></p>
+</td>
+<td >
+<p ><span >499</span></p>
+</td>
+<td >
+<p ><span >500</span></p>
+</td>
+<td >
+<p ><span >501</span></p>
+</td>
+<td >
+<p ><span >502</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >CPU</span></p>
+</td>
+<td >
+<p ><span >422.55</span></p>
+</td>
+<td >
+<p ><span >755.8</span></p>
+</td>
+<td >
+<p ><span >755.8</span></p>
+</td>
+<td >
+<p ><span >1258.1</span></p>
+</td>
+<td >
+<p ><span >92.92</span></p>
+</td>
+<td >
+<p ><span >222.81</span></p>
+</td>
+<td >
+<p ><span >594.3</span></p>
+</td>
+<td >
+<p ><span >601.59</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >1-GPU</span></p>
+</td>
+<td >
+<p ><span >2.92</span></p>
+</td>
+<td >
+<p ><span >12.7</span></p>
+</td>
+<td >
+<p ><span >12.7</span></p>
+</td>
+<td >
+<p ><span >13.8</span></p>
+</td>
+<td >
+<p ><span >1.453</span></p>
+</td>
+<td >
+<p ><span >2.63</span></p>
+</td>
+<td >
+<p ><span >9.57</span></p>
+</td>
+<td >
+<p ><span >6.59</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >2-GPU</span></p>
+</td>
+<td >
+<p ><span >2.85</span></p>
+</td>
+<td >
+<p ><span >7.4</span></p>
+</td>
+<td >
+<p ><span >7.4</span></p>
+</td>
+<td >
+<p ><span >7.4</span></p>
+</td>
+<td >
+<p ><span >1.358</span></p>
+</td>
+<td >
+<p ><span >1.8</span></p>
+</td>
+<td >
+<p ><span >6.38</span></p>
+</td>
+<td >
+<p ><span >4.57</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >3-GPU</span></p>
+</td>
+<td >
+<p ><span >2.68</span></p>
+</td>
+<td >
+<p ><span >5.4</span></p>
+</td>
+<td >
+<p ><span >5.4</span></p>
+</td>
+<td >
+<p ><span >6.1</span></p>
+</td>
+<td >
+<p ><span >1.629</span></p>
+</td>
+<td >
+<p ><span >1.61</span></p>
+</td>
+<td >
+<p ><span >5.65</span></p>
+</td>
+<td >
+<p ><span >4.49</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >4-GPU</span></p>
+</td>
+<td >
+<p ><span >3.35</span></p>
+</td>
+<td >
+<p ><span >4.6</span></p>
+</td>
+<td >
+<p ><span >4.6</span></p>
+</td>
+<td >
+<p ><span >7.8</span></p>
+</td>
+<td >
+<p ><span >1.845</span></p>
+</td>
+<td >
+<p ><span >1.71</span></p>
+</td>
+<td >
+<p ><span >5.41</span></p>
+</td>
+<td >
+<p ><span >4.44</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >5-GPU</span></p>
+</td>
+<td >
+<p ><span >3.35</span></p>
+</td>
+<td >
+<p ><span >4.5</span></p>
+</td>
+<td >
+<p ><span >4.5</span></p>
+</td>
+<td >
+<p ><span >8</span></p>
+</td>
+<td >
+<p ><span >2.189</span></p>
+</td>
+<td >
+<p ><span >1.83</span></p>
+</td>
+<td >
+<p ><span >5.86</span></p>
+</td>
+<td >
+<p ><span >5.39</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >6-GPU</span></p>
+</td>
+<td >
+<p ><span >3.67</span></p>
+</td>
+<td >
+<p ><span >4.8</span></p>
+</td>
+<td >
+<p ><span >4.8</span></p>
+</td>
+<td >
+<p ><span >8</span></p>
+</td>
+<td >
+<p ><span >2.908</span></p>
+</td>
+<td >
+<p ><span >2.36</span></p>
+</td>
+<td >
+<p ><span >6.21</span></p>
+</td>
+<td >
+<p ><span >6.46</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >7-GPU</span></p>
+</td>
+<td >
+<p ><span >4.17</span></p>
+</td>
+<td >
+<p ><span >4.6</span></p>
+</td>
+<td >
+<p ><span >4.6</span></p>
+</td>
+<td >
+<p ><span >9.6</span></p>
+</td>
+<td >
+<p ><span >3.433</span></p>
+</td>
+<td >
+<p ><span >2.69</span></p>
+</td>
+<td >
+<p ><span >8.56</span></p>
+</td>
+<td >
+<p ><span >6.63</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >8-GPU</span></p>
+</td>
+<td >
+<p ><span >4.62</span></p>
+</td>
+<td >
+<p ><span >4.6</span></p>
+</td>
+<td >
+<p ><span >4.6</span></p>
+</td>
+<td >
+<p ><span >9</span></p>
+</td>
+<td >
+<p ><span >3.971</span></p>
+</td>
+<td >
+<p ><span >3.01</span></p>
+</td>
+<td >
+<p ><span >8.12</span></p>
+</td>
+<td >
+<p ><span >7.93</span></p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p ><span >Elapsed time for NCV3 Virtual Machine - (&ldquo;Seconds&rdquo;)</span></p>
+<div class="overflow-table"><table ><colgroup><col  /><col  /><col  span="3" /><col  /><col  /><col  span="2" /></colgroup>
+<tbody>
+<tr >
+<td >
+<p ><span >Test Problem NO.</span></p>
+</td>
+<td >
+<p ><span >479</span></p>
+</td>
+<td >
+<p ><span >480</span></p>
+</td>
+<td >
+<p ><span >481</span></p>
+</td>
+<td >
+<p ><span >482</span></p>
+</td>
+<td >
+<p ><span >499</span></p>
+</td>
+<td >
+<p ><span >500</span></p>
+</td>
+<td >
+<p ><span >501</span></p>
+</td>
+<td >
+<p ><span >502</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >CPU</span></p>
+</td>
+<td >
+<p ><span >595.68</span></p>
+</td>
+<td >
+<p ><span >1146.1</span></p>
+</td>
+<td >
+<p ><span >5327.5</span></p>
+</td>
+<td >
+<p ><span >1768.7</span></p>
+</td>
+<td >
+<p ><span >113.751</span></p>
+</td>
+<td >
+<p ><span >335.73</span></p>
+</td>
+<td >
+<p ><span >772.93</span></p>
+</td>
+<td >
+<p ><span >678.59</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >1-GPU</span></p>
+</td>
+<td >
+<p ><span >8.8</span></p>
+</td>
+<td >
+<p ><span >55</span></p>
+</td>
+<td >
+<p ><span >216.3</span></p>
+</td>
+<td >
+<p ><span >183.2</span></p>
+</td>
+<td >
+<p ><span >2.17</span></p>
+</td>
+<td >
+<p ><span >5.19</span></p>
+</td>
+<td >
+<p ><span >17.2</span></p>
+</td>
+<td >
+<p ><span >12.88</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >2-GPU</span></p>
+</td>
+<td >
+<p ><span >8.03</span></p>
+</td>
+<td >
+<p ><span >12.5</span></p>
+</td>
+<td >
+<p ><span >49.9</span></p>
+</td>
+<td >
+<p ><span >22.7</span></p>
+</td>
+<td >
+<p ><span >5.217</span></p>
+</td>
+<td >
+<p ><span >5.2</span></p>
+</td>
+<td >
+<p ><span >24.37</span></p>
+</td>
+<td >
+<p ><span >13.8</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >3-GPU</span></p>
+</td>
+<td >
+<p ><span >8.06</span></p>
+</td>
+<td >
+<p ><span >10.1</span></p>
+</td>
+<td >
+<p ><span >46</span></p>
+</td>
+<td >
+<p ><span >20.8</span></p>
+</td>
+<td >
+<p ><span >5.708</span></p>
+</td>
+<td >
+<p ><span >4.31</span></p>
+</td>
+<td >
+<p ><span >29.68</span></p>
+</td>
+<td >
+<p ><span >12.88</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >4-GPU</span></p>
+</td>
+<td >
+<p ><span >8.07</span></p>
+</td>
+<td >
+<p ><span >9.5</span></p>
+</td>
+<td >
+<p ><span >67.1</span></p>
+</td>
+<td >
+<p ><span >19.1</span></p>
+</td>
+<td >
+<p ><span >6.61</span></p>
+</td>
+<td >
+<p ><span >4.84</span></p>
+</td>
+<td >
+<p ><span >35.98</span></p>
+</td>
+<td >
+<p ><span >13.93</span></p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p ><span >Elapsed time for NCas-T4 Virtual Machine - (&ldquo;Seconds&rdquo;)</span></p>
+<div class="overflow-table"><table ><colgroup><col  /><col  /><col  span="3" /><col  /><col  /><col  span="2" /></colgroup>
+<tbody>
+<tr >
+<td >
+<p ><span >Test Problem NO.</span></p>
+</td>
+<td >
+<p ><span >479</span></p>
+</td>
+<td >
+<p ><span >480</span></p>
+</td>
+<td >
+<p ><span >481</span></p>
+</td>
+<td >
+<p ><span >482</span></p>
+</td>
+<td >
+<p ><span >499</span></p>
+</td>
+<td >
+<p ><span >500</span></p>
+</td>
+<td >
+<p ><span >501</span></p>
+</td>
+<td >
+<p ><span >502</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >CPU</span></p>
+</td>
+<td >
+<p ><span >439.31</span></p>
+</td>
+<td >
+<p ><span >789.6</span></p>
+</td>
+<td >
+<p ><span >1673.1</span></p>
+</td>
+<td >
+<p ><span >1266.5</span></p>
+</td>
+<td >
+<p ><span >96.427</span></p>
+</td>
+<td >
+<p ><span >251.59</span></p>
+</td>
+<td >
+<p ><span >609.31</span></p>
+</td>
+<td >
+<p ><span >609.34</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >1-GPU</span></p>
+</td>
+<td >
+<p ><span >28.31</span></p>
+</td>
+<td >
+<p ><span >87.1</span></p>
+</td>
+<td >
+<p ><span >295.1</span></p>
+</td>
+<td >
+<p ><span >238</span></p>
+</td>
+<td >
+<p ><span >6.37</span></p>
+</td>
+<td >
+<p ><span >9.9</span></p>
+</td>
+<td >
+<p ><span >49.15</span></p>
+</td>
+<td >
+<p ><span >39.5</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >2-GPU</span></p>
+</td>
+<td >
+<p ><span >16.82</span></p>
+</td>
+<td >
+<p ><span >29.9</span></p>
+</td>
+<td >
+<p ><span >163.6</span></p>
+</td>
+<td >
+<p ><span >50.7</span></p>
+</td>
+<td >
+<p ><span >7.271</span></p>
+</td>
+<td >
+<p ><span >7.95</span></p>
+</td>
+<td >
+<p ><span >87.51</span></p>
+</td>
+<td >
+<p ><span >27.47</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >3-GPU</span></p>
+</td>
+<td >
+<p ><span >14.17</span></p>
+</td>
+<td >
+<p ><span >21.7</span></p>
+</td>
+<td >
+<p ><span >258.2</span></p>
+</td>
+<td >
+<p ><span >45.2</span></p>
+</td>
+<td >
+<p ><span >7.47</span></p>
+</td>
+<td >
+<p ><span >7.72</span></p>
+</td>
+<td >
+<p ><span >127.32</span></p>
+</td>
+<td >
+<p ><span >24.21</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >4-GPU</span></p>
+</td>
+<td >
+<p ><span >12.73</span></p>
+</td>
+<td >
+<p ><span >18</span></p>
+</td>
+<td >
+<p ><span >351.1</span></p>
+</td>
+<td >
+<p ><span >35.4</span></p>
+</td>
+<td >
+<p ><span >8.025</span></p>
+</td>
+<td >
+<p ><span >7.72</span></p>
+</td>
+<td >
+<p ><span >128.35</span></p>
+</td>
+<td >
+<p ><span >22.34</span></p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p ><span >Simulation speed-up for NDV4 Virtual Machine - (&ldquo;Seconds/Day&rdquo;)</span></p>
+<div class="overflow-table"><table ><colgroup><col  /><col  /><col  span="3" /><col  /><col  /><col  span="2" /></colgroup>
+<tbody>
+<tr >
+<td >
+<p ><span >Test Problem NO.</span></p>
+</td>
+<td >
+<p ><span >479</span></p>
+</td>
+<td >
+<p ><span >480</span></p>
+</td>
+<td >
+<p ><span >481</span></p>
+</td>
+<td >
+<p ><span >482</span></p>
+</td>
+<td >
+<p ><span >499</span></p>
+</td>
+<td >
+<p ><span >500</span></p>
+</td>
+<td >
+<p ><span >501</span></p>
+</td>
+<td >
+<p ><span >502</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >CPU</span></p>
+</td>
+<td >
+<p ><span >1.84</span></p>
+</td>
+<td >
+<p ><span >1.03</span></p>
+</td>
+<td >
+<p ><span >0.49</span></p>
+</td>
+<td >
+<p ><span >0.62</span></p>
+</td>
+<td >
+<p ><span >7.44</span></p>
+</td>
+<td >
+<p ><span >3.49</span></p>
+</td>
+<td >
+<p ><span >1.31</span></p>
+</td>
+<td >
+<p ><span >1.29</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >1-GPU</span></p>
+</td>
+<td >
+<p ><span >172.10</span></p>
+</td>
+<td >
+<p ><span >61.10</span></p>
+</td>
+<td >
+<p ><span >29.37</span></p>
+</td>
+<td >
+<p ><span >56.11</span></p>
+</td>
+<td >
+<p ><span >475.84</span></p>
+</td>
+<td >
+<p ><span >295.82</span></p>
+</td>
+<td >
+<p ><span >81.31</span></p>
+</td>
+<td >
+<p ><span >118.05</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >2-GPU</span></p>
+</td>
+<td >
+<p ><span >266.81</span></p>
+</td>
+<td >
+<p ><span >104.80</span></p>
+</td>
+<td >
+<p ><span >52.80</span></p>
+</td>
+<td >
+<p ><span >96.60</span></p>
+</td>
+<td >
+<p ><span >509.10</span></p>
+</td>
+<td >
+<p ><span >433.26</span></p>
+</td>
+<td >
+<p ><span >81.31</span></p>
+</td>
+<td >
+<p ><span >170.29</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >3-GPU</span></p>
+</td>
+<td >
+<p ><span >272.85</span></p>
+</td>
+<td >
+<p ><span >145.75</span></p>
+</td>
+<td >
+<p ><span >68.53</span></p>
+</td>
+<td >
+<p ><span >105.11</span></p>
+</td>
+<td >
+<p ><span >424.87</span></p>
+</td>
+<td >
+<p ><span >482.75</span></p>
+</td>
+<td >
+<p ><span >137.87</span></p>
+</td>
+<td >
+<p ><span >173.19</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >4-GPU</span></p>
+</td>
+<td >
+<p ><span >290.68</span></p>
+</td>
+<td >
+<p ><span >168.87</span></p>
+</td>
+<td >
+<p ><span >75.92</span></p>
+</td>
+<td >
+<p ><span >126.11</span></p>
+</td>
+<td >
+<p ><span >375.23</span></p>
+</td>
+<td >
+<p ><span >454.95</span></p>
+</td>
+<td >
+<p ><span >144.20</span></p>
+</td>
+<td >
+<p ><span >175.39</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >5-GPU</span></p>
+</td>
+<td >
+<p ><span >232.16</span></p>
+</td>
+<td >
+<p ><span >162.10</span></p>
+</td>
+<td >
+<p ><span >77.81</span></p>
+</td>
+<td >
+<p ><span >99.79</span></p>
+</td>
+<td >
+<p ><span >316.32</span></p>
+</td>
+<td >
+<p ><span >426.85</span></p>
+</td>
+<td >
+<p ><span >132.83</span></p>
+</td>
+<td >
+<p ><span >144.44</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >6-GPU</span></p>
+</td>
+<td >
+<p ><span >211.66</span></p>
+</td>
+<td >
+<p ><span >172.31</span></p>
+</td>
+<td >
+<p ><span >79.69</span></p>
+</td>
+<td >
+<p ><span >96.47</span></p>
+</td>
+<td >
+<p ><span >238.60</span></p>
+</td>
+<td >
+<p ><span >329.83</span></p>
+</td>
+<td >
+<p ><span >125.22</span></p>
+</td>
+<td >
+<p ><span >120.73</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >7-GPU</span></p>
+</td>
+<td >
+<p ><span >186.82</span></p>
+</td>
+<td >
+<p ><span >163.73</span></p>
+</td>
+<td >
+<p ><span >71.68</span></p>
+</td>
+<td >
+<p ><span >81.18</span></p>
+</td>
+<td >
+<p ><span >201.66</span></p>
+</td>
+<td >
+<p ><span >289.21</span></p>
+</td>
+<td >
+<p ><span >101.61</span></p>
+</td>
+<td >
+<p ><span >117.47</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >8-GPU</span></p>
+</td>
+<td >
+<p ><span >168.21</span></p>
+</td>
+<td >
+<p ><span >171.39</span></p>
+</td>
+<td >
+<p ><span >78.23</span></p>
+</td>
+<td >
+<p ><span >85.89</span></p>
+</td>
+<td >
+<p ><span >174.89</span></p>
+</td>
+<td >
+<p ><span >258.41</span></p>
+</td>
+<td >
+<p ><span >96.02</span></p>
+</td>
+<td >
+<p ><span >98.20</span></p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p ><span >Simulation speed-up for NCV3 Virtual Machine - (&ldquo;Seconds/Day&rdquo;)</span></p>
+<div class="overflow-table"><table ><colgroup><col  /><col  /><col  span="3" /><col  /><col  /><col  span="2" /></colgroup>
+<tbody>
+<tr >
+<td >
+<p ><span >Test Problem NO.</span></p>
+</td>
+<td >
+<p ><span >479</span></p>
+</td>
+<td >
+<p ><span >480</span></p>
+</td>
+<td >
+<p ><span >481</span></p>
+</td>
+<td >
+<p ><span >482</span></p>
+</td>
+<td >
+<p ><span >499</span></p>
+</td>
+<td >
+<p ><span >500</span></p>
+</td>
+<td >
+<p ><span >501</span></p>
+</td>
+<td >
+<p ><span >502</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >CPU</span></p>
+</td>
+<td >
+<p ><span >1.31</span></p>
+</td>
+<td >
+<p ><span >0.68</span></p>
+</td>
+<td >
+<p ><span >0.24</span></p>
+</td>
+<td >
+<p ><span >0.44</span></p>
+</td>
+<td >
+<p ><span >6.08</span></p>
+</td>
+<td >
+<p ><span >2.32</span></p>
+</td>
+<td >
+<p ><span >1.01</span></p>
+</td>
+<td >
+<p ><span >1.15</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >1-GPU</span></p>
+</td>
+<td >
+<p ><span >91.28</span></p>
+</td>
+<td >
+<p ><span >14.14</span></p>
+</td>
+<td >
+<p ><span >3.60</span></p>
+</td>
+<td >
+<p ><span >4.25</span></p>
+</td>
+<td >
+<p ><span >317.20</span></p>
+</td>
+<td >
+<p ><span >149.69</span></p>
+</td>
+<td >
+<p ><span >45.20</span></p>
+</td>
+<td >
+<p ><span >60.38</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >2-GPU</span></p>
+</td>
+<td >
+<p ><span >96.82</span></p>
+</td>
+<td >
+<p ><span >61.91</span></p>
+</td>
+<td >
+<p ><span >17.18</span></p>
+</td>
+<td >
+<p ><span >34.33</span></p>
+</td>
+<td >
+<p ><span >132.88</span></p>
+</td>
+<td >
+<p ><span >149.65</span></p>
+</td>
+<td >
+<p ><span >32.40</span></p>
+</td>
+<td >
+<p ><span >56.41</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >3-GPU</span></p>
+</td>
+<td >
+<p ><span >96.62</span></p>
+</td>
+<td >
+<p ><span >76.89</span></p>
+</td>
+<td >
+<p ><span >18.84</span></p>
+</td>
+<td >
+<p ><span >37.51</span></p>
+</td>
+<td >
+<p ><span >122.35</span></p>
+</td>
+<td >
+<p ><span >180.74</span></p>
+</td>
+<td >
+<p ><span >27.03</span></p>
+</td>
+<td >
+<p ><span >60.45</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >4-GPU</span></p>
+</td>
+<td >
+<p ><span >96.45</span></p>
+</td>
+<td >
+<p ><span >82.22</span></p>
+</td>
+<td >
+<p ><span >12.13</span></p>
+</td>
+<td >
+<p ><span >40.68</span></p>
+</td>
+<td >
+<p ><span >105.15</span></p>
+</td>
+<td >
+<p ><span >160.74</span></p>
+</td>
+<td >
+<p ><span >24.38</span></p>
+</td>
+<td >
+<p ><span >55.87</span></p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p ><span >Simulation speed-up for NCas-T4 Virtual Machine - (&ldquo;Seconds/Day&rdquo;)</span></p>
+<div class="overflow-table"><table ><colgroup><col  /><col  /><col  span="3" /><col  /><col  /><col  span="2" /></colgroup>
+<tbody>
+<tr >
+<td >
+<p ><a name="_Hlk87619670"></a><span >Test Problem NO.</span></p>
+</td>
+<td >
+<p ><span >479</span></p>
+</td>
+<td >
+<p ><span >480</span></p>
+</td>
+<td >
+<p ><span >481</span></p>
+</td>
+<td >
+<p ><span >482</span></p>
+</td>
+<td >
+<p ><span >499</span></p>
+</td>
+<td >
+<p ><span >500</span></p>
+</td>
+<td >
+<p ><span >501</span></p>
+</td>
+<td >
+<p ><span >502</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >CPU</span></p>
+</td>
+<td >
+<p ><span >1.77</span></p>
+</td>
+<td >
+<p ><span >0.98</span></p>
+</td>
+<td >
+<p ><span >0.47</span></p>
+</td>
+<td >
+<p ><span >0.61</span></p>
+</td>
+<td >
+<p ><span >7.17</span></p>
+</td>
+<td >
+<p ><span >3.09</span></p>
+</td>
+<td >
+<p ><span >1.28</span></p>
+</td>
+<td >
+<p ><span >1.28</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >1-GPU</span></p>
+</td>
+<td >
+<p ><span >27.50</span></p>
+</td>
+<td >
+<p ><span >8.93</span></p>
+</td>
+<td >
+<p ><span >2.64</span></p>
+</td>
+<td >
+<p ><span >3.27</span></p>
+</td>
+<td >
+<p ><span >108.69</span></p>
+</td>
+<td >
+<p ><span >52.73</span></p>
+</td>
+<td >
+<p ><span >15.82</span></p>
+</td>
+<td >
+<p ><span >19.69</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >2-GPU</span></p>
+</td>
+<td >
+<p ><span >46.23</span></p>
+</td>
+<td >
+<p ><span >26.00</span></p>
+</td>
+<td >
+<p ><span >5.08</span></p>
+</td>
+<td >
+<p ><span >15.32</span></p>
+</td>
+<td >
+<p ><span >95.26</span></p>
+</td>
+<td >
+<p ><span >78.55</span></p>
+</td>
+<td >
+<p ><span >9.19</span></p>
+</td>
+<td >
+<p ><span >28.30</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >3-GPU</span></p>
+</td>
+<td >
+<p ><span >54.90</span></p>
+</td>
+<td >
+<p ><span >35.83</span></p>
+</td>
+<td >
+<p ><span >17.21</span></p>
+</td>
+<td >
+<p ><span >17.21</span></p>
+</td>
+<td >
+<p ><span >92.92</span></p>
+</td>
+<td >
+<p ><span >97.88</span></p>
+</td>
+<td >
+<p ><span >6.12</span></p>
+</td>
+<td >
+<p ><span >32.16</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >4-GPU</span></p>
+</td>
+<td >
+<p ><span >61.07</span></p>
+</td>
+<td >
+<p ><span >43.13</span></p>
+</td>
+<td >
+<p ><span >21.95</span></p>
+</td>
+<td >
+<p ><span >21.95</span></p>
+</td>
+<td >
+<p ><span >86.39</span></p>
+</td>
+<td >
+<p ><span >100.70</span></p>
+</td>
+<td >
+<p ><span >6.07</span></p>
+</td>
+<td >
+<p ><span >34.86</span></p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p ><span >Simulation Speed-up Charts for NDV4 Virtual Machine</span></p>
+<p ><span >The below chart shows the performance of two similar models with difference in particle count,</span></p>
+<p >&nbsp;</p>
+<p >&nbsp;</p>
+<p ><span >Simulation Speedup charts for NCV3 Virtual Machine</span></p>
+<p ><span >The below chart shows the performance of two similar models with difference in particle count,</span></p>
+<p >&nbsp;</p>
+<p >&nbsp;</p>
+<p ><span >Simulation Speedup Charts for NCas-T4 Virtual Machine</span></p>
+<p ><span >The below chart shows the performance of two similar models with difference in particle count,</span></p>
+<p >&nbsp;</p>
+<p >&nbsp;</p>
+<p class="h1"><span >5</span> <a name="_Toc88471719"></a><span >Azure Cost</span></h1>
+<p ><span >For the below cost reports, the application installation time is not considered and only wall clock time is considered for the cost calculation. The Hourly rates reported are subject to change. For the current rate please refer the link <a href="https://azure.microsoft.com/en-in/pricing/calculator/"><span>“https://azure.microsoft.com/en-in/pricing/calculator/”</span></a>.</span></p>
+<div class="overflow-table"><table ><colgroup><col  span="5" /></colgroup>
+<tbody>
+<tr >
+<td >
+<p ><span >Azure VM Size</span></p>
+</td>
+<td >
+<p ><span >CPU&amp;GPU</span></p>
+</td>
+<td >
+<p ><span >Elapsed Time in Hours</span></p>
+</td>
+<td >
+<p ><span >Azure VM Hourly Cost</span></p>
+</td>
+<td >
+<p ><span >Total Azure Cost</span></p>
+</td>
+</tr>
+<tr >
+<td  rowspan="9">
+<p ><span >ND96asr_v4</span></p>
+</td>
+<td >
+<p ><span >CPU</span></p>
+</td>
+<td >
+<p ><span >1.31</span></p>
+</td>
+<td >
+<p ><span >$39.77</span></p>
+</td>
+<td >
+<p ><span >$51.96</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >1-GPU</span></p>
+</td>
+<td >
+<p ><span >0.02</span></p>
+</td>
+<td >
+<p ><span >$39.77</span></p>
+</td>
+<td >
+<p ><span >$0.69</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >2-GPU</span></p>
+</td>
+<td >
+<p ><span >0.01</span></p>
+</td>
+<td >
+<p ><span >$39.77</span></p>
+</td>
+<td >
+<p ><span >$0.43</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >3-GPU</span></p>
+</td>
+<td >
+<p ><span >0.01</span></p>
+</td>
+<td >
+<p ><span >$39.77</span></p>
+</td>
+<td >
+<p ><span >$0.36</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >4-GPU</span></p>
+</td>
+<td >
+<p ><span >0.01</span></p>
+</td>
+<td >
+<p ><span >$39.77</span></p>
+</td>
+<td >
+<p ><span >$0.37</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >5-GPU</span></p>
+</td>
+<td >
+<p ><span >0.01</span></p>
+</td>
+<td >
+<p ><span >$39.77</span></p>
+</td>
+<td >
+<p ><span >$0.39</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >6-GPU</span></p>
+</td>
+<td >
+<p ><span >0.01</span></p>
+</td>
+<td >
+<p ><span >$39.77</span></p>
+</td>
+<td >
+<p ><span >$0.43</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >7-GPU</span></p>
+</td>
+<td >
+<p ><span >0.01</span></p>
+</td>
+<td >
+<p ><span >$39.77</span></p>
+</td>
+<td >
+<p ><span >$0.49</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >8-GPU</span></p>
+</td>
+<td >
+<p ><span >0.01</span></p>
+</td>
+<td >
+<p ><span >$39.77</span></p>
+</td>
+<td >
+<p ><span >$0.51</span></p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="overflow-table"><table ><colgroup><col  /><col  span="4" /></colgroup>
+<tbody>
+<tr>
+<td >
+<p ><a name="_Hlk87966446"></a><span >Azure VM Size</span></p>
+</td>
+<td >
+<p ><span >CPU&amp;GPU</span></p>
+</td>
+<td >
+<p ><span >Elapsed Time in Hours</span></p>
+</td>
+<td >
+<p ><span >Azure VM Hourly Cost</span></p>
+</td>
+<td >
+<p ><span >Total Azure Cost</span></p>
+</td>
+</tr>
+<tr>
+<td  rowspan="5">
+<p ><span >NC24s_v3</span></p>
+</td>
+<td >
+<p ><span >CPU</span></p>
+</td>
+<td >
+<p ><span >2.98</span></p>
+</td>
+<td >
+<p ><span >$16.41</span></p>
+</td>
+<td >
+<p ><span >$48.96</span></p>
+</td>
+</tr>
+<tr>
+<td >
+<p ><span >1-GPU</span></p>
+</td>
+<td >
+<p ><span >0.14</span></p>
+</td>
+<td >
+<p ><span >$16.41</span></p>
+</td>
+<td >
+<p ><span >$2.28</span></p>
+</td>
+</tr>
+<tr>
+<td >
+<p ><span >2-GPU</span></p>
+</td>
+<td >
+<p ><span >0.04</span></p>
+</td>
+<td >
+<p ><span >$16.41</span></p>
+</td>
+<td >
+<p ><span >$0.65</span></p>
+</td>
+</tr>
+<tr>
+<td >
+<p ><span >3-GPU</span></p>
+</td>
+<td >
+<p ><span >0.04</span></p>
+</td>
+<td >
+<p ><span >$16.41</span></p>
+</td>
+<td >
+<p ><span >$0.63</span></p>
+</td>
+</tr>
+<tr>
+<td >
+<p ><span >4-GPU</span></p>
+</td>
+<td >
+<p ><span >0.05</span></p>
+</td>
+<td >
+<p ><span >$16.41</span></p>
+</td>
+<td >
+<p ><span >$0.75</span></p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="overflow-table"><table ><colgroup><col  /><col  span="4" /></colgroup>
+<tbody>
+<tr>
+<td >
+<p ><span >Azure VM Size</span></p>
+</td>
+<td >
+<p ><span >CPU&amp;GPU</span></p>
+</td>
+<td >
+<p ><span >Elapsed Time in Hours</span></p>
+</td>
+<td >
+<p ><span >Azure VM Hourly Cost</span></p>
+</td>
+<td >
+<p ><span >Total Azure Cost</span></p>
+</td>
+</tr>
+<tr>
+<td  rowspan="5">
+<p ><span >NC64as_T4_v3</span></p>
+</td>
+<td >
+<p ><span >CPU</span></p>
+</td>
+<td >
+<p ><span >1.59</span></p>
+</td>
+<td >
+<p ><span >$</span><span >5.48</span></p>
+</td>
+<td >
+<p ><span >$8.73</span></p>
+</td>
+</tr>
+<tr>
+<td >
+<p ><span >1-GPU</span></p>
+</td>
+<td >
+<p ><span >0.21</span></p>
+</td>
+<td >
+<p ><span >$</span><span >5.48</span></p>
+</td>
+<td >
+<p ><span >$1.15</span></p>
+</td>
+</tr>
+<tr>
+<td >
+<p ><span >2-GPU</span></p>
+</td>
+<td >
+<p ><span >0.11</span></p>
+</td>
+<td >
+<p ><span >$</span><span >5.48</span></p>
+</td>
+<td >
+<p ><span >$0.60</span></p>
+</td>
+</tr>
+<tr>
+<td >
+<p ><span >3-GPU</span></p>
+</td>
+<td >
+<p ><span >0.14</span></p>
+</td>
+<td >
+<p ><span >$</span><span >5.48</span></p>
+</td>
+<td >
+<p ><span >$0.77</span></p>
+</td>
+</tr>
+<tr>
+<td >
+<p ><span >4-GPU</span></p>
+</td>
+<td >
+<p ><span >0.16</span></p>
+</td>
+<td >
+<p ><span >$</span><span >5.48</span></p>
+</td>
+<td >
+<p ><span >$0.89</span></p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p ><span style="font-family: roboto; font-weight: bold;">Note:</span><span > The Elapsed time for full production-level test cases will be on the higher side than the results presented here and hence, the associated cost will increase.</span></p>
+<p class="h1"><span >6</span> <a name="_Toc88471720"></a><span >Summary</span></h1>
+<p ><span >1.</span> <span >Virtual Reactor is successfully tested on NDV4, NCv3 and NCas-T4 Virtual Machines on Azure Cloud Platform</span></p>
+<p ><span >2.</span> <span >For NDv4 Virtual Machine, we can see that the application is scaling well up to 4 GPUs for the models with larger particle counts and for the models with lesser particle counts, it is scaling only up to 2 GPUs.</span></p>
+<p ><span >3.</span> <span >For NCv3 Virtual Machine, we can see performance improvement up to 3 GPUs for the models with larger particle counts and for models with smaller particle count, only 1 GPU configuration is recommended</span></p>
+<p ><span >4.</span> <span >For NCas-T4 Virtual Machine,</span><span > the application is speed-up well with all the 4 GPUs for models with larger particle count and for the models with lesser particle count, it is scaling well only with 1 GPU configuration.</span></p>
+<p ><span >5.</span> <span >For simulations with large numbers of particles and cells, a single 16 GB GPU may not be sufficient to run well due to the memory requirements. In these cases, running the simulation with two GPUs is critical. This is seen in test problems 480, 481, and 482 on the NCV3 and NCAS T4 machines</span></p>
+<p ><span >6.</span> <span >For smaller simulations where there are performance penalties when utilizing all GPUs on an instance, concurrent simulations can be run using the other GPUs. In this scenario, multiple points in the simulation parameter&nbsp;space could be explored more quickly.</span></p>
+
+</div><!--content-->
+      
+     <div class="col-4 col-md-2 px-1 px-sm-0 toc">
+        <label class="px-3">Table of Contents</label>
+        <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc88471705">1</span> Introduction</span></a></p>
+        <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc88471706">2</span> Deploy Virtual Machine on Azure Cloud Platform</span></a></p>
+        <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc88471707">2.1</span> Azure Cloud Architecture for Application</span></a></p>
+        <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc88471708">2.2</span> Azure Virtual Machine (VM)</span></a></p>
+        <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc88471709">2.3</span> Create a Virtual Machine on Azure Platform</span></a></p>
+        <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc88471710">2.4</span> Connect to virtual machine</span></a></p>
+        <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc88471711">2.5</span> Install Nvidia Drivers</span></a></p>
+        <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc88471712">3</span> Install Barracuda Virtual Reactor Application on Virtual Machine</span></a></p>
+        <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc88471713">3.1</span> Download product</span></a></p>
+        <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc88471714">3.2</span> Install Barracuda Virtual Reactor application on Linux</span></a></p>
+        <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc88471715">4</span> Performance results of Barracuda Virtual Reactor on Azure virtual machine</span></a></p>
+        <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc88471716">4.1</span> Barracuda Virtual Reactor Overview</span></a></p>
+        <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc88471717">4.2</span> Barracuda Virtual Reactor </span>on Azure Platform</span></a></p>
+        <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc88471718">4.3</span> Barracuda Virtual Reactor Performance Results</span></a></p>
+        <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc88471719">5</span> Azure Cost</span></a></p>
+        <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc88471720">6</span> Summary</span></a></p>
+     </div>
+
+    </div><!--rpt-->
+
+
+      </section>
+          
+      <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
+ 
+    </main>
+
+    <footer>
+      <div class="row g-0">		
+        <div class="container text-center mx-auto">
+        <div class="container px-3 d-flex justify-content-between flex-column flex-md-row-reverse my-auto">
+          <div>
+            <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo" />
+            <span class="logoline-bot1"></span> 
+            <span class="px-1 px-sm-2">
+              <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo" />
+            </span>
+      </div>
+            <div class="text-uppercase align-self-center pt-3 pt-md-2 footer-text">Copyright &copy; 2021 Azure HPC</div>
+          </div>
+        </div>
+      </div>
+      </footer>
+    </div><!--wrapper-->
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+    <script> 
+    
+      let mybutton = document.getElementById("btn-back-to-top");  
+      
+      // When the user clicks on the button, scroll to the top of the document
+      mybutton.addEventListener("click", backToTop);
+    
+    </script>
+    
+    </body>
+    </html>

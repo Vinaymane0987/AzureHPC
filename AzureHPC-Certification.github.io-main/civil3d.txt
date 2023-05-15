@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+     <link rel="shortcut icon" href="img/icon.ico">
+     <link rel="Stylesheet" href="css/style.css" type="text/css">
+     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet" />
+     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;0,300;0,400;1,400&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+     
+     <script type="text/javascript" src="js/script.js"></script>
+ 
+     <script src="https://kit.fontawesome.com/3d0a07deaa.js" crossorigin="anonymous"></script>
+    <title> Azure HPC | Civil 3D Report</title>
+</head>
+<body>
+    <div id="wrapper" class="row g-0">
+      
+        <header class="container-fluid">   
+          <div class="logo container">
+            <div class="title-text"><a href="index.html">Azure <span>HPC</span></a></div>
+           
+            <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo">
+            <span class="logoline-top1"></span> <span class="px-1 px-sm-2">
+               <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo">
+            </span>
+          
+          </div>
+        </header>
+  
+      <main class="container-fluid">
+  
+        <section class="container-lg px-3 px-lg-0 rpt-wrapper">  
+    <h3 class="text-center text-uppercase py-4"><!--The Report title goes here-->  Azure HPC Recipe Document for AUTODESK Civil 3D</h3>
+    <div class="d-flex flex-row rpt">
+        <div class="col-2 px-1 px-sm-0 text-left index">
+            <label class="px-3"><!--The Report Name goes here-->Autodesk Civil 3D</label>
+    <div class="index-scroll">
+<p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_Toc107417803"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Introduction</span></a></p>
+<p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_Toc107417804"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Deploy Virtual Machine on Azure Cloud Platform</span></a></p>
+<p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;;"><a style="text-decoration: none;" href="#_Toc107417810"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Install Autodesk Civil 3D Application on Virtual Machine</span></a></p>
+<p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_Toc107417812"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">4 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Performance results of Autodesk Civil 3D on azure virtual machine</span></a></p>
+<p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_Toc107417816"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">5 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Azure Cost</span></a></p>
+<p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_Toc107417817"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">6 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Summary</span></a></p>
+<!--Index content goes here-->
+</div>
+</div>
+ <div class="col-8 col-md-8 px-3 content">
+ <p> <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; line-height: 108%; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">1</span> <a name="_Toc81323166"></a><a name="_Toc81330548"></a><a name="_Toc81389013"></a><a name="_Toc81405758"></a><a name="_Toc107417803"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Introduction</span></h1> </p>
+<p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; text-align: justify; line-height: 108%; font-size: 11pt;"><span style="font-family: Calibri;">This document will briefly explain the </span><span style="font-family: Calibri;">performance</span> <span style="font-family: Calibri;">test </span><span style="font-family: Calibri;">methodology carried out for </span><span style="font-family: Calibri;">Autodesk Civil 3D</span> <span style="font-family: Calibri;">a</span><span style="font-family: Calibri;">pplication on a Virtual Machine deployed in Azure Cloud Platform.</span></p>
+<p style="margin-top: 0pt; margin-bottom: 8pt; text-align: justify; line-height: 108%; font-size: 11pt;"><span style="font-family: Calibri;">This recipe document covers the following topics:-</span></p>
+<ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+<li style="margin-left: 28.06pt; text-align: justify; line-height: 108%; padding-left: 7.94pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Deploy &amp; connect a required virtual machine for running Application to be tested on Azure platform.</span></li>
+<li style="margin-left: 28.52pt; text-align: justify; line-height: 108%; padding-left: 7.48pt; font-family: serif; font-size: 12pt; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri; font-size: 11pt;">Install required </span><span style="font-family: Calibri; font-size: 11pt;">NVIDIA</span><span style="font-family: Calibri; font-size: 11pt;"> drivers in virtual machine.</span></li>
+<li style="margin-left: 28.06pt; text-align: justify; line-height: 108%; padding-left: 7.94pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Install Application on virtual machine.</span></li>
+<li style="margin-left: 28.06pt; text-align: justify; line-height: 108%; padding-left: 7.94pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Install license manager for current application</span></li>
+<li style="margin-left: 28.52pt; text-align: justify; line-height: 108%; padding-left: 7.48pt; font-family: serif; font-size: 12pt; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri; font-size: 11pt;">Performance results of current application on azure virtual machine</span></li>
+<li style="margin-left: 28.52pt; text-align: justify; line-height: 108%; padding-left: 7.48pt; font-family: serif; font-size: 12pt; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri; font-size: 11pt;">Azure co</span><span style="font-family: Calibri; font-size: 11pt;">st</span></li>
+<li style="margin-left: 28.06pt; margin-bottom: 8pt; text-align: justify; line-height: 108%; padding-left: 7.94pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Summary</span></li>
+</ul>
+<h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; line-height: 108%; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2</span> <a name="_Toc81323168"></a><a name="_Toc81330550"></a><a name="_Toc81389015"></a><a name="_Toc81405760"></a><a name="_Toc107417804"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Deploy Virtual Machine on Azure Cloud Platform</span></h1>
+<p> <h2 style="margin-top: 2pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; line-height: 108%; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2.1</span> <a name="_Toc81323169"></a><a name="_Toc81330551"></a><a name="_Toc81389016"></a><a name="_Toc81405761"></a><a name="_Toc107417805"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Azure Cloud architecture for application</span></h2></p>
+<p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;"><span style="font-family: Calibri;">The below Architecture explains the virtual machine running on an Azure Platform</span></p>
+<p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; line-height: 108%; font-size: 11pt;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="Civil 3D_files/civil3d.1.png" alt="" width="626" height="494" /></p>
+<p><h2 style="margin-top: 2pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; line-height: 108%; font-size: 12pt;"><span style="font-family: 'Calibri Light'; font-size: 13pt; font-weight: normal; color: #2f5496;">2.2</span> <a name="_Toc107417806"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Azure Virtual Machine (VM)</span></h2> </p>
+<p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 28.8pt; text-align: justify; line-height: 108%; font-size: 11pt;"><span style="font-family: Calibri;">A VM is a virtualized instance of a computer that can perform almost </span><span style="font-family: Calibri;">all of</span><span style="font-family: Calibri;"> the same functions as a computer, including running applications and operating systems.</span></p>
+<p style="margin-top: 0pt; margin-bottom: 8pt; text-align: justify; line-height: 108%; font-size: 11pt;"><span style="font-family: Calibri;">An Azure VM gives you the flexibility of virtualization without having to buy and maintain the physical hardware that runs it. However, you still need to maintain the VM by performing tasks, such as configuring, patching, and installing the software that runs on it.</span></p>
+<p style="margin-top: 0pt; margin-bottom: 8pt; text-align: justify; line-height: 108%; font-size: 11pt;"><span style="font-family: Calibri;">Things to be considered before deploying a VM,</span></p>
+<ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+<li style="margin-left: 64.06pt; text-align: justify; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">The names of your application resources</span></li>
+<li style="margin-left: 64.06pt; text-align: justify; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">The location where the resources are stored</span></li>
+<li style="margin-left: 64.06pt; text-align: justify; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">The size of the VM</span></li>
+<li style="margin-left: 64.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">The operating system that the VM runs</span></li>
+<li style="margin-left: 64.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">The configuration of the VM after it starts</span></li>
+<li style="margin-left: 64.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">The related resources that the VM needs</span></li>
+</ul>
+<p style="margin-top: 0pt; margin-left: 28.5pt; margin-bottom: 0pt; font-size: 11pt; background-color: #ffffff;">&nbsp;</p>
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: justify; font-size: 11pt; background-color: #ffffff;"><span style="font-family: Calibri; color: #171717;">There are </span><span style="font-family: Calibri; color: #171717;">different</span><span style="font-family: Calibri; color: #171717;"> sizes and options </span><span style="font-family: Calibri; color: #171717;">available </span><span style="font-family: Calibri; color: #171717;">for the Azure virtual machines you can use to run your apps and workloads</span><span style="font-family: Calibri; color: #171717;">. Depending on the workload user has to choose the appropriate VM size for complete list check this </span><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/sizes/"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">https://docs.microsoft.com/en-us/azure/virtual-machines/sizes/</span></a><span style="font-family: Calibri; color: #171717;">.</span></p>
+<p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt; background-color: #ffffff;">&nbsp;</p>
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: justify; font-size: 11pt; background-color: #ffffff;"><span style="font-family: Calibri;">To test the performance of </span><span style="font-family: Calibri;">Autodesk Civil 3D</span><span style="font-family: Calibri;"> on Azure Platform</span><span style="font-family: Calibri;"> and</span><span style="font-family: Calibri;"> analyse the hardware performance</span><span style="font-family: Calibri;">,</span> <a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/nva10v5-series"><span style="font-family: Calibri; color: #0563c1;">NVv</span></a><span style="font-family: Calibri; color: #0563c1;">5</span> <span style="font-family: Calibri;">series </span><span style="font-family: Calibri;">v</span><span style="font-family: Calibri;">irtual machine </span><span style="font-family: Calibri;">is</span> <span style="font-family: Calibri;">deployed</span><span style="font-family: Calibri;">. Below table </span><span style="font-family: Calibri;">gives the details of </span><span style="font-family: Calibri;">configuration</span><span style="font-family: Calibri;">.</span></p>
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: justify; font-size: 11pt; background-color: #ffffff;">&nbsp;</p>
+<div style="text-align: center;">
+<table class="overflow-table" style="width: 483.55pt; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+<tbody>
+<tr style="height: 14.15pt;">
+<td style="width: 114pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><a name="_Hlk97140242"></a><span style="font-family: Calibri; font-weight: bold;">VM Name</span></p>
+</td>
+<td style="width: 26.9pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #a5a5a5;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">vCPU</span></p>
+</td>
+<td style="width: 53.25pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #a5a5a5;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">Memory (GiB)</span></p>
+</td>
+<td style="width: 45.9pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #a5a5a5;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">SSD (GiB)</span></p>
+</td>
+<td style="width: 45.9pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #a5a5a5;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">GPU</span></p>
+</td>
+<td style="width: 67.2pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #a5a5a5;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">GPU Memory (GiB)</span></p>
+</td>
+<td style="width: 54.05pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #a5a5a5;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">Max Data Disk</span></p>
+</td>
+</tr>
+<tr style="height: 22.7pt;">
+<td style="width: 114pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; color: #171717; background-color: #ffffff;">Standard_NV6ads_A10_v5</span></p>
+</td>
+<td style="width: 26.9pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">6</span></p>
+</td>
+<td style="width: 53.25pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">55</span></p>
+</td>
+<td style="width: 45.9pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">180</span></p>
+</td>
+<td style="width: 45.9pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">1/6</span></p>
+</td>
+<td style="width: 67.2pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">4</span></p>
+</td>
+<td style="width: 54.05pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">4</span></p>
+</td>
+</tr>
+<tr style="height: 22.7pt;">
+<td style="width: 114pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; color: #171717; background-color: #ffffff;">Standard_NV18ads_A10_v5</span></p>
+</td>
+<td style="width: 26.9pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">18</span></p>
+</td>
+<td style="width: 53.25pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">220</span></p>
+</td>
+<td style="width: 45.9pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">720</span></p>
+</td>
+<td style="width: 45.9pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">1/2</span></p>
+</td>
+<td style="width: 67.2pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">12</span></p>
+</td>
+<td style="width: 54.05pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">8</span></p>
+</td>
+</tr>
+<tr style="height: 22.7pt;">
+<td style="width: 114pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; color: #171717; background-color: #ffffff;">Standard_NV36ads_A10_v5</span></p>
+</td>
+<td style="width: 26.9pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">36</span></p>
+</td>
+<td style="width: 53.25pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">440</span></p>
+</td>
+<td style="width: 45.9pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">720</span></p>
+</td>
+<td style="width: 45.9pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">1</span></p>
+</td>
+<td style="width: 67.2pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">24</span></p>
+</td>
+<td style="width: 54.05pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">16</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt; background-color: #ffffff;">&nbsp;</p>
+<p> <h2 style="margin-top: 2pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; line-height: 108%; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2.3</span> <a name="_Toc81323171"></a><a name="_Toc81330553"></a><a name="_Toc81389017"></a><a name="_Toc81405762"></a><a name="_Toc107417807"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Creat</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">e</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;"> a Virtual Machine on Azure Platform</span></h2></p>
+<p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Sign in to Azure</span><span style="font-family: Calibri; font-weight: bold;"> Account</span></p>
+<p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 108%; font-size: 11pt;"><span style="font-family: Calibri; color: #171717;">Sign into the Azure portal </span><span style="font-family: Calibri; color: #171717;">by using </span><a style="text-decoration: none;" href="https://portal.azure.com/"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">https://portal.azure.com/</span></a></p>
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: justify; font-size: 11pt;"><a style="text-decoration: none;" href="https://azure.microsoft.com/offers/ms-azr-0044p"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1; background-color: #ffffff;">Free Trial subscriptions</span></a><span style="font-family: Calibri; color: #171717; background-color: #ffffff;">aren't eligible for limit or quota increases.</span></p>
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: justify; font-size: 11pt;">&nbsp;</p>
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: justify; font-size: 11pt;"><span style="font-family: Calibri; color: #171717;">After the successful sign in or sign up, one </span><span style="font-family: Calibri; color: #171717;">has to</span><span style="font-family: Calibri; color: #171717;"> upgrade the Azure subscription to </span><a style="text-decoration: none;" href="https://azure.microsoft.com/en-us/offers/ms-azr-0003p/"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Pay-As-You-Go</span></a><span style="font-family: Calibri; color: #171717;"> to deploy a Virtual machine. For deployment, the user must have regional vCPU quota which can be obtained by raising a request.</span></p>
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: justify; font-size: 11pt;">&nbsp;</p>
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: justify; font-size: 11pt;"><span style="font-family: Calibri; color: #171717;">The step-by-step procedure to increase the vCPU quota is given below,</span></p>
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: justify; font-size: 11pt;"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/azure-portal/supportability/per-vm-quota-requests"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">https://docs.microsoft.com/en-us/azure/azure-portal/supportability/per-vm-quota-requests</span></a></p>
+<ol style="margin: 0pt; padding-left: 0pt;" type="1">
+<li style="margin-top: 14pt; margin-left: 23.85pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">Type&nbsp;<span style="font-weight: bold;">virtual machines</span>&nbsp;in the marketplace search.</li>
+<li style="margin-left: 23.85pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">Under&nbsp;<span style="font-weight: bold;">Services</span>, select&nbsp;<span style="font-weight: bold;">Virtual machines</span>.</li>
+<li style="margin-left: 23.85pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">In the&nbsp;<span style="font-weight: bold;">Virtual machines</span>&nbsp;page, select&nbsp;<span style="font-weight: bold;">Create</span>&nbsp;Then&nbsp;<span style="font-weight: bold;">Virtual machine</span>.</li>
+<li style="margin-left: 23.85pt; margin-bottom: 14pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">In the&nbsp;<span style="font-weight: bold;">Basics</span>&nbsp;tab, under&nbsp;<span style="font-weight: bold;">Project details</span>, make sure the correct subscription is selected and then choose to&nbsp;<span style="font-weight: bold;">Create new</span>&nbsp;resource group. Type&nbsp;<span style="font-weight: bold; font-style: italic;">Azure-</span><span style="font-weight: bold; font-style: italic;">PerformanceTest</span><span style="font-weight: bold;">(user choice) </span>for the name.</li>
+</ol>
+<p style="margin-top: 14pt; margin-bottom: 14pt; text-align: center; font-size: 11pt; background-color: #ffffff;"><img style="border: 0.75pt solid #3f3f3f; -aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="Civil 3D_files/civil3d.2..png" alt="" width="553" height="273" /></p>
+<ol style="margin: 0pt; padding-left: 0pt;" start="5" type="1">
+<li style="margin-top: 14pt; margin-left: 23.85pt; margin-bottom: 14pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">Under&nbsp;<span style="font-weight: bold; color: #000000;">Instance details</span>, type&nbsp;<span style="color: #000000;">Azure-VM (user choice)</span>&nbsp;for the&nbsp;<span style="font-weight: bold; color: #000000;">Virtual machine name</span>&nbsp;and choose&nbsp;West Europe for your&nbsp;<span style="font-weight: bold; color: #000000;">Region</span>. Choose&nbsp;<span style="color: #000000;">Windows 10 pro, Version 2</span><span style="color: #000000;">1</span><span style="color: #000000;">H2-Gen2 </span>for the&nbsp;<span style="color: #000000;">Image</span>&nbsp;and&nbsp;<span style="font-family: 'Segoe UI'; font-size: 10pt; background-color: #ffffff;">Standard_NV</span><span style="font-family: 'Segoe UI'; font-size: 10pt; background-color: #ffffff;">6</span><span style="font-family: 'Segoe UI'; font-size: 10pt; background-color: #ffffff;">a</span><span style="font-family: 'Segoe UI'; font-size: 10pt; background-color: #ffffff;">d</span><span style="font-family: 'Segoe UI'; font-size: 10pt; background-color: #ffffff;">s_</span><span style="font-family: 'Segoe UI'; font-size: 10pt; background-color: #ffffff;">A10_</span><span style="font-family: 'Segoe UI'; font-size: 10pt; background-color: #ffffff;">v</span><span style="font-family: 'Segoe UI'; font-size: 10pt; background-color: #ffffff;">5</span> for the&nbsp;<span style="font-weight: bold; color: #000000;">Size </span><span style="color: #000000;">(user choice).</span> Leave the other defaults.</li>
+</ol>
+<p style="margin-top: 14pt; margin-bottom: 14pt; text-align: center; font-size: 11pt; background-color: #ffffff;"><img style="border: 0.75pt solid #000000; -aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="Civil 3D_files/civil3d.3.png" alt="" width="561" height="249" /></p>
+<p style="margin-top: 14pt; margin-bottom: 0pt; font-size: 11pt; background-color: #ffffff;"><span style="font-family: Calibri; font-weight: bold; color: #171717;">Note: </span></p>
+<ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+<li style="margin-left: 28.06pt; text-align: justify; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri; font-weight: bold;">Region</span><span style="font-family: Calibri;"> must be decided based on where you are going to deploy a Virtual machine. To avoid the network latency, the region should be near to the location where the VM is to be deployed.</span></li>
+<li style="margin-left: 28.06pt; text-align: justify; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri; font-weight: bold;">Image </span><span style="font-family: Calibri;">selection is of user choice based on the application user can choose the image (Windows 10, Linux based OS and Windows Server)</span></li>
+</ul>
+<ol style="margin: 0pt; padding-left: 0pt;" start="6" type="1">
+<li style="margin-left: 23.85pt; margin-bottom: 14pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; background-color: #ffffff;">Under&nbsp;<span style="font-weight: bold;">Administrator account</span>, provide a username, such as&nbsp;Azureuser&nbsp;and a password. The password must be at least 12 characters long and meet the&nbsp;<a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm-"><span style="text-decoration: underline; color: #0563c1; background-color: #ffffff;">defined complexity requirements</span></a><span style="color: #171717; background-color: #ffffff;">.</span></li>
+</ol>
+<p style="margin-top: 14pt; margin-bottom: 14pt; text-align: center; font-size: 11pt; background-color: #ffffff;"><img style="border: 0.75pt solid #3f3f3f; -aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="Civil 3D_files/civil3d.4.png" alt="" width="457" height="94" /></p>
+<ol style="margin: 0pt; padding-left: 0pt;" start="7" type="1">
+<li style="margin-top: 14pt; margin-left: 23.85pt; margin-bottom: 14pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; background-color: #ffffff;">Under&nbsp;<span style="font-weight: bold;">Inbound port rules</span>, choose&nbsp;<span style="font-weight: bold;">Allow selected ports</span>&nbsp;and then select&nbsp;<span style="font-weight: bold;">RDP (3389)</span>&nbsp;and&nbsp;<span style="font-weight: bold;">HTTP (80)</span>&nbsp;from the drop-down.</li>
+</ol>
+<p style="margin-top: 14pt; margin-bottom: 14pt; text-align: center; font-size: 11pt; background-color: #ffffff;"><img style="border: 0.75pt solid #3f3f3f; -aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="Civil 3D_files/civil3d.5.png" alt="" width="462" height="179" /></p>
+<ol style="margin: 0pt; padding-left: 0pt;" start="8" type="1">
+<li style="margin-top: 14pt; margin-left: 23.85pt; margin-bottom: 14pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; background-color: #ffffff;">Under the Licencing click the check box</li>
+</ol>
+<p style="margin-top: 14pt; margin-bottom: 14pt; text-align: center; font-size: 11pt; background-color: #ffffff;"><img style="border: 0.75pt solid #3f3f3f; -aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="Civil 3D_files/civil3d.6.png" alt="" width="473" height="140" /></p>
+<ol style="margin: 0pt; padding-left: 0pt;" start="9" type="1">
+<li style="margin-top: 14pt; margin-left: 23.85pt; margin-bottom: 14pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; background-color: #ffffff;"><a name="_Ref81315987"></a>NVIDIA GPU driver installation</li>
+</ol>
+<p style="margin-top: 14pt; margin-left: 28.5pt; margin-bottom: 14pt; font-size: 11pt; background-color: #ffffff;"><span style="font-family: Calibri;">In </span><span style="font-family: Calibri; font-weight: bold;">Advanced</span><span style="font-family: Calibri;"> tab, under the Extensions click </span><span style="font-family: Calibri; font-weight: bold;">Select an extension to install</span><span style="font-family: Calibri;">, select </span><span style="font-family: Calibri; font-weight: bold;">NVIDIA</span><span style="font-family: Calibri; font-weight: bold;"> GPU Driver Extension</span><span style="font-family: Calibri;"> (user choice)</span></p>
+<p style="margin-top: 14pt; margin-bottom: 14pt; text-align: center; font-size: 11pt; background-color: #ffffff;"><img style="border: 0.75pt solid #3f3f3f; -aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="Civil 3D_files/civil3d.7.png" alt="" width="475" height="141" /></p>
+<p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 11pt; background-color: #ffffff;"><span style="font-family: Calibri; font-weight: bold;">Note: </span><span style="font-family: Calibri; font-weight: bold;">This Step 9 </span><span style="font-family: Calibri; font-weight: bold;">may</span><span style="font-family: Calibri; font-weight: bold;"> install the older version of </span><span style="font-family: Calibri; font-weight: bold;">NVIDIA</span><span style="font-family: Calibri; font-weight: bold;"> driver hence the user can skip this step and proceed the VM deployment without extension. Follow manual installation as per chapter 2.5</span></p>
+<ol style="margin: 0pt; padding-left: 0pt;" start="10" type="1">
+<li style="margin-top: 14pt; margin-left: 28.5pt; font-family: Calibri; font-size: 11pt; background-color: #ffffff;">Leave the remaining defaults and then select the&nbsp;<span style="font-weight: bold;">Review + create</span>&nbsp;button at the bottom of the page.</li>
+<li style="margin-left: 28.5pt; margin-bottom: 14pt; font-family: Calibri; font-size: 11pt; background-color: #ffffff;">After validation runs, select the&nbsp;Create&nbsp;button at the bottom of the page.</li>
+</ol>
+<p style="margin-top: 14pt; margin-bottom: 14pt; text-align: center; font-size: 11pt; background-color: #ffffff;"><img style="border: 0.75pt solid #3f3f3f; -aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="Civil 3D_files/civil3d.8.png" alt="" width="464" height="57" /></p>
+<ol style="margin: 0pt; padding-left: 0pt;" start="12" type="1">
+<li style="margin-top: 14pt; margin-left: 28.5pt; margin-bottom: 14pt; font-family: Calibri; font-size: 11pt; background-color: #ffffff;">After deployment is complete, select&nbsp;Go to resource.</li>
+</ol>
+<p style="margin-top: 14pt; margin-bottom: 14pt; text-align: center; font-size: 11pt; background-color: #ffffff;"><img style="border: 0.75pt solid #000000; -aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="Civil 3D_files/civil3d.9.png" alt="" width="469" height="60" /></p>
+<p> <h2 style="margin-top: 2pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; line-height: 108%; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2.4</span> <a name="_Toc81313723"></a><a name="_Toc81323172"></a><a name="_Toc81330554"></a><a name="_Toc81389018"></a><a name="_Toc81405763"></a><a name="_Toc107417808"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Connect to virtual machine</span></h2> </p>
+<p style="margin-top: 0pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><span style="font-family: Calibri; font-size: 11pt; color: #171717;">Create a remote desktop connection to the virtual machine. These directions tell you how to connect to your VM from a Windows computer. On a Mac, you need an RDP client such as this</span><a style="text-decoration: none;" href="https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12"><span style="font-family: Calibri; font-size: 11pt; text-decoration: underline; color: #0563c1;">Remote Desktop Client</span></a><span style="font-family: Calibri; font-size: 11pt; color: #171717;">from the Mac App Store.</span></p>
+<ol style="margin: 0pt; padding-left: 0pt;" type="1">
+<li style="margin-left: 23.85pt; margin-bottom: 14pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">On the overview page for your virtual machine, select the&nbsp;<span style="font-weight: bold;">Connect</span>&nbsp;button then select&nbsp;<span style="font-weight: bold;">RDP</span>.</li>
+</ol>
+<p style="margin-top: 14pt; margin-bottom: 14pt; text-align: center; line-height: 115%; font-size: 11pt; background-color: #ffffff;"><img style="border: 0.75pt solid #000000; -aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="Civil 3D_files/civil3d.10.png" alt="" width="472" height="121" /></p>
+<ol style="margin: 0pt; padding-left: 0pt;" start="2" type="1">
+<li style="margin-top: 14pt; margin-left: 23.85pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">In the&nbsp;<span style="font-weight: bold;">Connect with RDP</span>&nbsp;page, keep the default options to connect by IP address, over port 3389, and click&nbsp;<span style="font-weight: bold;">Download RDP file</span>.</li>
+<li style="margin-left: 23.85pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">Open the downloaded RDP file and click&nbsp;<span style="font-weight: bold;">Connect</span>&nbsp;when prompted.</li>
+<li style="margin-left: 23.85pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">In the&nbsp;<span style="font-weight: bold;">Windows Security</span>&nbsp;window, select&nbsp;<span style="font-weight: bold;">More choices</span>&nbsp;and then&nbsp;<span style="font-weight: bold;">Use a different account</span>. Type the username as&nbsp;<span style="font-weight: bold;">localhost</span>\<span style="font-style: italic;">username</span>, enter the password you created for the virtual machine, and then click&nbsp;<span style="font-weight: bold;">OK</span>.</li>
+<li style="margin-left: 23.85pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">You may receive a certificate warning during the sign-in process. Click&nbsp;<span style="font-weight: bold;">Yes</span>&nbsp;or&nbsp;<span style="font-weight: bold;">Continue</span>&nbsp;to create the connection.</li>
+</ol>
+<p> <h2 style="margin-top: 2pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; line-height: 108%; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2.5</span> <a name="_Toc81330555"></a><a name="_Toc81389019"></a><a name="_Toc81405764"></a><a name="_Toc107417809"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Install </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">NVIDIA</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;"> GPU </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Drivers</span></h2> </p>
+<p style="margin-top: 0pt; margin-left: 28.8pt; margin-bottom: 12pt; font-size: 11pt;"><span style="font-family: Calibri; color: #171717;">To take advantage of the GPU capabilities of Azure N-series VMs backed by </span><span style="font-family: Calibri; color: #171717;">NVIDIA</span><span style="font-family: Calibri; color: #171717;"> GPUs, you must install </span><span style="font-family: Calibri; color: #171717;">NVIDIA</span><span style="font-family: Calibri; color: #171717;"> GPU drivers.</span></p>
+<p style="margin-top: 0pt; margin-left: 18pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri; color: #171717;">The drivers can be installed in two ways as explained below</span></p>
+<ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+<li style="margin-left: 28.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">The</span><span style="font-family: Calibri;">NVIDIA</span><span style="font-family: Calibri;"> GP</span><span style="font-family: Calibri;">U-P</span><span style="font-family: Calibri;"> Driver Extension</span><span style="font-family: Calibri;">installs appropriate</span><span style="font-family: Calibri;"> GPU</span><span style="font-family: Calibri;">-P</span><span style="font-family: Calibri;"> drivers on an N</span><span style="font-family: Calibri;">Vv5 </span><span style="font-family: Calibri;">series VM. Install or manage the extension using the Azure portal (Ref </span><a style="text-decoration: none; -aw-ignore: true;" href="#_Ref81315987"><span style="font-family: Calibri; color: #171717;">9</span></a><span style="font-family: Calibri;">)</span></li>
+<li style="margin-left: 27.91pt; padding-left: 7.79pt; font-family: serif; font-size: 11pt; color: #171717; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Install </span><span style="font-family: Calibri;">NVIDIA</span><span style="font-family: Calibri;"> GPU drivers manually</span><span style="font-family: Calibri;"> on Windows</span><span style="font-family: Calibri;">. For the manual installation procedure follow</span><span style="font-family: Calibri;"> the link </span><span style="font-family: Calibri;">as</span> <a style="text-decoration: none;" href="https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdownload.microsoft.com%2Fdownload%2F8%2Fd%2F2%2F8d228f28-56e2-4e60-bdde-a1dccfe94869%2F511.65_grid_win10_win11_server2016_server2019_server2022_64bit_Azure_swl.exe&amp;data=04%7C01%7Cgajunnar%40microsoft.com%7C0d40d8e9a7484f8f501008da0c1f2f89%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637835625486337991%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000&amp;sdata=KU%2B3AnUoH0w5sJl2%2F95I7t3PwUBaElVHgIkpIBxJzt8%3D&amp;reserved=0"><span style="font-family: Calibri; color: #0563c1;">Windows</span></a></li>
+</ul>
+<p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;">&nbsp;</p>
+<p> <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; line-height: 108%; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">3</span> <a name="_Toc81405765"></a><a name="_Toc107417810"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Instal</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">l</span> <span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Autodesk Civil 3D</span> <span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Application on Virtual Machine</span></h1> </p>
+<p style="margin-top: 0pt; margin-left: 21.6pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">Before beginning, </span><span style="font-family: Calibri; font-weight: bold;">log </span><span style="font-family: Calibri; font-weight: bold;">in</span> <span style="font-family: Calibri;">to</span> <a style="text-decoration: none;" href="https://www.autodesk.in/products/civil-3d/overview"><span style="font-family: Calibri; color: #0563c1;">Autodesk</span></a><span style="font-family: Calibri;"> account</span><span style="font-family: Calibri;">. Here we have used </span><span style="font-family: Calibri; font-weight: bold;">trial version</span><span style="font-family: Calibri;"> of Civil 3D to analyse performance on Azure platform.</span></p>
+<p> <h2 style="margin-top: 2pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; line-height: 108%; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">3.1</span> <a name="_Toc81399916"></a><a name="_Toc81405767"></a><a name="_Toc107417811"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Download and </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Install </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Civil 3D</span> <span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">application</span></h2> </p>
+<ol style="margin: 0pt; padding-left: 0pt;" type="1">
+<li style="margin-left: 31.35pt; line-height: 108%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Log in to <a style="text-decoration: none;" href="https://www.autodesk.in/products/civil-3d/overview"><span style="color: #0563c1;">Autodesk</span></a> account.</li>
+<li style="margin-left: 31.35pt; line-height: 108%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Search for Civil 3D under <span style="font-weight: bold;">products</span></li>
+<li style="margin-left: 31.35pt; line-height: 108%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;"><span style="font-weight: bold;">Download</span> and <span style="font-weight: bold;">install</span> Civil 3D.</li>
+<li style="margin-left: 31.35pt; margin-bottom: 8pt; line-height: 108%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">For detailed installation procedure, click <a style="text-decoration: none;" href="https://www.autodesk.in/support/download-install/individuals"><span style="color: #0563c1;">here</span></a></li>
+</ol>
+<h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; line-height: 108%; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">4</span> <a name="_Toc81399917"></a><a name="_Toc81405768"></a><a name="_Toc107417812"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Performance results</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;"> of </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Autodesk Civil 3D</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;"> on azure virtual machine</span></h1>
+<p> <h2 style="margin-top: 2pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; line-height: 108%; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">4.1</span> <a name="_Toc107417813"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Autodesk Civil 3D overview</span></h2></p> 
+<p style="margin-top: 0pt; margin-left: 28.8pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;"><span style="font-family: Calibri;">Civil 3D improve design processes and respond to changes quickly. Civil 3D supports workflows for various civil engineering project including roads and motorways, rail, bridges and tunnels, site development, and storm and sanitary networks. It will connect project teams any time, anywhere with Collaboration for Civil 3D and BIM Collaborate Pro to keep teams in sync and projects on track. Work in an intelligent, model-based design environment. It will support BIM throughout the project lifecycle.</span></p>
+<p> <h2 style="margin-top: 2pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; line-height: 108%; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">4.2</span> <a name="_Toc107417814"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Civil 3D on Azure platform</span></h2> </p>
+<p style="margin-top: 0pt; margin-left: 28.8pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;"><span style="font-family: Calibri;">AUTODESK Civil 3D </span><span style="font-family: Calibri; font-weight: bold;">2023 trial version</span><span style="font-family: Calibri;"> installed on</span> <a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/nva10v5-series"><span style="font-family: Calibri; color: #0563c1;">NVv5</span></a> <span style="font-family: Calibri;">series </span><span style="font-family: Calibri;">VM to analyse performance of Civil 3D on Azure platform.</span></p>
+<p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 14pt;"><span style="font-family: Calibri; font-weight: bold;">Model Details</span></p>
+<p style="margin-top: 6pt; margin-bottom: 0pt; text-indent: 31.2pt; line-height: 108%; font-size: 11pt;"><span style="font-family: Calibri;">For performance evaluation</span><span style="font-family: Calibri;">, </span><a style="text-decoration: none;" href="https://help.autodesk.com/view/CIV3D/2023/ENU/?guid=GUID-F6A629B7-EB6B-443A-91EE-491076F71440"><span style="font-family: Calibri; color: #0563c1;">Surface tutorial</span></a><span style="font-family: Calibri;"> and </span><a style="text-decoration: none;" href="https://help.autodesk.com/view/CIV3D/2023/ENU/?guid=GUID-DE41CF86-9A42-4F1F-B880-767F810CE0EB"><span style="font-family: Calibri; color: #0563c1;">Corridors tutorial</span></a><span style="font-family: Calibri;"> is considered.</span></p>
+<p style="margin-top: 6pt; margin-bottom: 0pt; text-indent: 31.2pt; line-height: 108%; font-size: 11pt;"><span style="font-family: Calibri;">Under </span><span style="font-family: Calibri; font-weight: bold;">Surfaces Tutorial</span><span style="font-family: Calibri;">, we have used </span><a style="text-decoration: none;" href="https://help.autodesk.com/view/CIV3D/2023/ENU/?guid=GUID-9087C6F6-9B87-4703-A987-64C92506A017"><span style="font-family: Calibri; color: #0563c1;">Rendering a surface</span></a><span style="font-family: Calibri;"> exercise to perform rendering operation.</span></p>
+<p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 31.2pt; line-height: 108%; font-size: 11pt;"><span style="font-family: Calibri;">Under </span><span style="font-family: Calibri; font-weight: bold;">Corridors Tutorial</span><span style="font-family: Calibri;">, we have used </span><a style="text-decoration: none;" href="https://help.autodesk.com/view/CIV3D/2023/ENU/?guid=GUID-6D746CF2-E33F-4964-BEEF-6589AB2F9287"><span style="font-family: Calibri; color: #0563c1;">Visualizing a Corridor</span></a><span style="font-family: Calibri;"> exercise to perform rendering operation.</span></p>
+<p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; line-height: 108%; font-size: 11pt;"><span style="height: 0pt; text-align: left; display: block; position: absolute; z-index: 2;"><img style="margin-top: 151.3pt; margin-left: 100.75pt; -aw-left-pos: 101pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 151.55pt; -aw-wrap-type: none; position: absolute;" src="Civil 3D_files/civil3d.11.png" alt="" width="114" height="30" /></span><span style="height: 0pt; text-align: left; display: block; position: absolute; z-index: 3;"><img style="margin-top: 151.05pt; margin-left: 307.75pt; -aw-left-pos: 308pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 151.3pt; -aw-wrap-type: none; position: absolute;" src="Civil 3D_files/civil3d.12.png" alt="" width="114" height="30" /></span><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="Civil 3D_files/civil3d.13.png" alt="A picture containing diagram
+
+Description automatically generated" width="256" height="202" /><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="Civil 3D_files/civil3d.14.png" alt="A picture containing text
+
+Description automatically generated" width="298" height="199" /></p>
+<div class="overflow-table" style="text-align: center;">
+<table class="overflow-table" style="margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+<tbody>
+<tr style="height: 12.8pt;">
+<td style="width: 59.8pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Image No.</span></p>
+</td>
+<td style="width: 175.8pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #a5a5a5;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Render Size</span></p>
+</td>
+</tr>
+<tr style="height: 18pt;">
+<td style="width: 59.8pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Image 1</span></p>
+</td>
+<td style="width: 175.8pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">800x600 px-SVGA</span></p>
+</td>
+</tr>
+<tr style="height: 17.55pt;">
+<td style="width: 59.8pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Image 2</span></p>
+</td>
+<td style="width: 175.8pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">1920x1080 px-Full HDTV</span></p>
+</td>
+</tr>
+<tr style="height: 17.55pt;">
+<td style="width: 59.8pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Image 3</span></p>
+</td>
+<td style="width: 175.8pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">3300x2500 px (11x8.5 in @300 dpi)</span></p>
+</td>
+</tr>
+<tr style="height: 17.55pt;">
+<td style="width: 59.8pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Image 4</span></p>
+</td>
+<td style="width: 175.8pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">5100x3300 px (17x11 in @300 dpi)</span></p>
+</td>
+</tr>
+<tr style="height: 18pt;">
+<td style="width: 59.8pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Image 5</span></p>
+</td>
+<td style="width: 175.8pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">2480x3508 px (ISO A4 @300 dpi)</span></p>
+</td>
+</tr>
+<tr style="height: 17.55pt;">
+<td style="width: 59.8pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Image 6</span></p>
+</td>
+<td style="width: 175.8pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri;">3508x4961 px (ISO A3 @300 dpi)</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Acronyms:-</span><span style="font-family: Calibri;"> dpi: dots per inch</span></p>
+<p> <h2 style="margin-top: 2pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; line-height: 108%; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">4.3</span> <a name="_Toc107417815"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">P</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">erformance </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">result</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">s on NVv5</span></h2> </p>
+<p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;"><span style="font-family: Calibri;">Below table shows </span><span style="font-family: Calibri; font-weight: bold;">Render time</span><span style="font-family: Calibri;"> in </span><span style="font-family: Calibri; font-weight: bold;">Seconds</span></p>
+<table class="overflow-table" style="width: 98.9%; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+<tbody>
+<tr style="height: 15.3pt;">
+<td style="border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;" colspan="2">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Drawing Name: Surface-7</span></p>
+</td>
+<td style="border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;" colspan="6">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Render Time (Sec)</span></p>
+</td>
+</tr>
+<tr style="height: 15.3pt;">
+<td style="width: 17.92%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">No. of GPUs</span></p>
+</td>
+<td style="width: 14.08%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">No. Of CPUs</span></p>
+</td>
+<td style="width: 11.36%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Image 1</span></p>
+</td>
+<td style="width: 11.38%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Image 2</span></p>
+</td>
+<td style="width: 11.4%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Image 3</span></p>
+</td>
+<td style="width: 11.38%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Image 4</span></p>
+</td>
+<td style="width: 11.4%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Image 5</span></p>
+</td>
+<td style="width: 11.1%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Image 6</span></p>
+</td>
+</tr>
+<tr style="height: 15.3pt;">
+<td style="width: 17.92%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">1/6</span><span style="font-family: Calibri; font-size: 7.33pt; font-weight: bold; vertical-align: super;">th</span><span style="font-family: Calibri; font-weight: bold;"> GPU</span></p>
+</td>
+<td style="width: 14.08%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">6</span></p>
+</td>
+<td style="width: 11.36%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">3</span></p>
+</td>
+<td style="width: 11.38%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">15</span></p>
+</td>
+<td style="width: 11.4%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">44</span></p>
+</td>
+<td style="width: 11.38%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">161</span></p>
+</td>
+<td style="width: 11.4%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">29</span></p>
+</td>
+<td style="width: 11.1%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">97</span></p>
+</td>
+</tr>
+<tr style="height: 15.3pt;">
+<td style="width: 17.92%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">1/2</span><span style="font-family: Calibri; font-size: 7.33pt; font-weight: bold; vertical-align: super;">nd</span><span style="font-family: Calibri; font-weight: bold;"> GPU</span></p>
+</td>
+<td style="width: 14.08%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">18</span></p>
+</td>
+<td style="width: 11.36%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">1</span></p>
+</td>
+<td style="width: 11.38%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">4</span></p>
+</td>
+<td style="width: 11.4%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">17</span></p>
+</td>
+<td style="width: 11.38%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">37</span></p>
+</td>
+<td style="width: 11.4%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">12</span></p>
+</td>
+<td style="width: 11.1%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">26</span></p>
+</td>
+</tr>
+<tr style="height: 15.3pt;">
+<td style="width: 17.92%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">1 GPU</span></p>
+</td>
+<td style="width: 14.08%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">36</span></p>
+</td>
+<td style="width: 11.36%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">1</span></p>
+</td>
+<td style="width: 11.38%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">3</span></p>
+</td>
+<td style="width: 11.4%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">13</span></p>
+</td>
+<td style="width: 11.38%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">28</span></p>
+</td>
+<td style="width: 11.4%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">10</span></p>
+</td>
+<td style="width: 11.1%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">25</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;">&nbsp;</p>
+<p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; line-height: 108%; font-size: 11pt;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="Civil 3D_files/civil3d.15.png" alt="" width="416" height="284" /></p>
+<p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;"><span style="height: 0pt; display: block; position: absolute; z-index: 4;"><img style="margin-top: 4.5pt; margin-left: -3.05pt; -aw-left-pos: -2.55pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 5pt; -aw-wrap-type: none; position: absolute;" src="Civil 3D_files/civil3d.16.png" alt="" width="675" height="2" /></span></p>
+<table class="overflow-table" style="width: 98.92%; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+<tbody>
+<tr style="height: 16.05pt;">
+<td style="border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;" colspan="2">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Drawing Name: Corridors-5c</span></p>
+</td>
+<td style="border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;" colspan="6">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Render Time (Sec)</span></p>
+</td>
+</tr>
+<tr style="height: 16.05pt;">
+<td style="width: 15.5%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">No. of GPUs</span></p>
+</td>
+<td style="width: 16.16%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">No. Of CPUs</span></p>
+</td>
+<td style="width: 11.42%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Image 1</span></p>
+</td>
+<td style="width: 11.44%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Image 2</span></p>
+</td>
+<td style="width: 11.44%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Image 3</span></p>
+</td>
+<td style="width: 11.42%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Image 4</span></p>
+</td>
+<td style="width: 11.44%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Image 5</span></p>
+</td>
+<td style="width: 11.16%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Image 6</span></p>
+</td>
+</tr>
+<tr style="height: 16.05pt;">
+<td style="width: 15.5%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">1/6</span><span style="font-family: Calibri; font-size: 7.33pt; font-weight: bold; vertical-align: super;">th</span><span style="font-family: Calibri; font-weight: bold;"> GPU</span></p>
+</td>
+<td style="width: 16.16%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">6</span></p>
+</td>
+<td style="width: 11.42%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: bottom;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">5</span></p>
+</td>
+<td style="width: 11.44%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: bottom;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">30</span></p>
+</td>
+<td style="width: 11.44%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: bottom;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">92</span></p>
+</td>
+<td style="width: 11.42%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: bottom;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">206</span></p>
+</td>
+<td style="width: 11.44%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: bottom;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">55</span></p>
+</td>
+<td style="width: 11.16%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: bottom;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">110</span></p>
+</td>
+</tr>
+<tr style="height: 16.05pt;">
+<td style="width: 15.5%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">1/2</span><span style="font-family: Calibri; font-size: 7.33pt; font-weight: bold; vertical-align: super;">nd</span><span style="font-family: Calibri; font-weight: bold;"> GPU</span></p>
+</td>
+<td style="width: 16.16%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">18</span></p>
+</td>
+<td style="width: 11.42%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: bottom; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">1</span></p>
+</td>
+<td style="width: 11.44%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: bottom; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">8</span></p>
+</td>
+<td style="width: 11.44%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: bottom; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">29</span></p>
+</td>
+<td style="width: 11.42%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: bottom; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">68</span></p>
+</td>
+<td style="width: 11.44%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: bottom; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">18</span></p>
+</td>
+<td style="width: 11.16%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: bottom; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">38</span></p>
+</td>
+</tr>
+<tr style="height: 16.05pt;">
+<td style="width: 15.5%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">1 GPU</span></p>
+</td>
+<td style="width: 16.16%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">36</span></p>
+</td>
+<td style="width: 11.42%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: bottom;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">1</span></p>
+</td>
+<td style="width: 11.44%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: bottom;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">4</span></p>
+</td>
+<td style="width: 11.44%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: bottom;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">17</span></p>
+</td>
+<td style="width: 11.42%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: bottom;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">36</span></p>
+</td>
+<td style="width: 11.44%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: bottom;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">10</span></p>
+</td>
+<td style="width: 11.16%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: bottom;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: right; font-size: 11pt;"><span style="font-family: Calibri;">20</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;">&nbsp;</p>
+<p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; line-height: 108%; font-size: 11pt;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="Civil 3D_files/civil3d.16.png" alt="" width="419" height="284" /></p>
+<p> <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; line-height: 108%; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">5</span> <a name="_Toc107417816"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Azure </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Cost</span></h1>  </p>
+<p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;"><span style="font-family: Calibri;">Note: </span><span style="font-family: Calibri;">For the below cost reports, the application installation time is not considered, only considered the total render time for all models. The Hourly rates reported are subject to change</span><span style="font-family: Calibri;">. </span></p>
+<p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;"><span style="font-family: Calibri;">For the </span><span style="font-family: Calibri;">cost estimate</span><span style="font-family: Calibri;"> please refer the link &ldquo;</span><a style="text-decoration: none;" href="https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fazure.microsoft.com%2Fen-in%2Fpricing%2Fcalculator%2F&amp;data=04%7C01%7Cgajunnar%40microsoft.com%7C6b3c77bfaba949ad558b08d9bb29f046%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637746611073978600%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000&amp;sdata=VVwS0fnU8M3k3FhEjoNrDhy%2Fb1OT27dOdOTg8cA11W8%3D&amp;reserved=0"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">https://azure.microsoft.com/en-in/pricing/calculator/</span></a><span style="font-family: Calibri;">&rdquo;</span></p>
+<div style="text-align: center;">
+<table class="overflow-table" style="width: 98.9%; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+<tbody>
+<tr style="height: 33.9pt;">
+<td style="width: 16.16%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Drawing Name</span></p>
+</td>
+<td style="width: 9.34%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">VM name</span></p>
+</td>
+<td style="width: 16.88%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">VM Size</span></p>
+</td>
+<td style="width: 10.6%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;"># GPUs</span></p>
+</td>
+<td style="width: 18.68%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Azure VM Hourly cost ($)</span></p>
+</td>
+<td style="width: 14.44%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Total time in Hrs</span></p>
+</td>
+<td style="width: 13.9%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Azure Cost</span></p>
+</td>
+</tr>
+<tr style="height: 8.4pt;">
+<td style="width: 16.16%; border-style: solid; border-width: 0.75pt 0.75pt 1.5pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;" rowspan="3">
+<p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Surface-7</span></p>
+</td>
+<td style="width: 9.34%; border-style: solid; border-width: 0.75pt 0.75pt 1.5pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;" rowspan="3">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">NVv5</span></p>
+</td>
+<td style="width: 16.88%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">6 vCPU</span></p>
+</td>
+<td style="width: 10.6%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1/6</span></p>
+</td>
+<td style="width: 18.68%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">$0.87</span></p>
+</td>
+<td style="width: 14.44%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">0.10</span></p>
+</td>
+<td style="width: 13.9%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">$0.08</span></p>
+</td>
+</tr>
+<tr style="height: 8.4pt;">
+<td style="width: 16.88%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">18 vCPU</span></p>
+</td>
+<td style="width: 10.6%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1/2</span></p>
+</td>
+<td style="width: 18.68%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">$2.91</span></p>
+</td>
+<td style="width: 14.44%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">0.03</span></p>
+</td>
+<td style="width: 13.9%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">$0.08</span></p>
+</td>
+</tr>
+<tr style="height: 8.4pt;">
+<td style="width: 16.88%; border-style: solid; border-width: 0.75pt 0.75pt 1.5pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">36 vCPU</span></p>
+</td>
+<td style="width: 10.6%; border-style: solid; border-width: 0.75pt 0.75pt 1.5pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1</span></p>
+</td>
+<td style="width: 18.68%; border-style: solid; border-width: 0.75pt 0.75pt 1.5pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">$5.82</span></p>
+</td>
+<td style="width: 14.44%; border-style: solid; border-width: 0.75pt 0.75pt 1.5pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">0.02</span></p>
+</td>
+<td style="width: 13.9%; border-style: solid; border-width: 0.75pt 0.75pt 1.5pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">$0.13</span></p>
+</td>
+</tr>
+<tr style="height: 8.4pt;">
+<td style="width: 16.16%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;" rowspan="3">
+<p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Corridors-5c</span></p>
+</td>
+<td style="width: 9.34%; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;" rowspan="3">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">NVv5</span></p>
+</td>
+<td style="width: 16.88%; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">6 vCPU</span></p>
+</td>
+<td style="width: 10.6%; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1/6</span></p>
+</td>
+<td style="width: 18.68%; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">$0.87</span></p>
+</td>
+<td style="width: 14.44%; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">0.14</span></p>
+</td>
+<td style="width: 13.9%; border-style: solid; border-width: 1pt 0.75pt 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">$0.12</span></p>
+</td>
+</tr>
+<tr style="height: 8.4pt;">
+<td style="width: 16.88%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">18 vCPU</span></p>
+</td>
+<td style="width: 10.6%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1/2</span></p>
+</td>
+<td style="width: 18.68%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">$2.91</span></p>
+</td>
+<td style="width: 14.44%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">0.05</span></p>
+</td>
+<td style="width: 13.9%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">$0.13</span></p>
+</td>
+</tr>
+<tr style="height: 8.4pt;">
+<td style="width: 16.88%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">36 vCPU</span></p>
+</td>
+<td style="width: 10.6%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1</span></p>
+</td>
+<td style="width: 18.68%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">$5.82</span></p>
+</td>
+<td style="width: 14.44%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">0.02</span></p>
+</td>
+<td style="width: 13.9%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+<p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">$0.14</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="margin-top: 0pt; margin-bottom: 8pt; text-align: justify; line-height: 108%; font-size: 11pt;">&nbsp;</p>
+<p> <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; line-height: 108%; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">6</span> <a name="_Toc107417817"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Summary</span></h1></p>
+<ol style="margin: 0pt; padding-left: 0pt;" type="1">
+<li style="margin-left: 27.5pt; line-height: 108%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">AUTODESK Civil 3D Application is successfully deployed and tested on NVadsA10_v5 series VM on Azure Platform.</li>
+<li style="margin-left: 27.5pt; margin-bottom: 8pt; line-height: 108%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">For NVv5 Virtual Machine, demonstrated good GPU acceleration. Every incremental GPU shows good speed.</li>
+</ol>
+ </div> 
+<div class="col-4 col-md-2 px-1 px-sm-0 toc">
+    <label class="px-3">Table of Contents</label>
+    <!--toc content goes here-->
+<p style="margin-top: 0pt; margin-bottom: 5pt; line-height: 108%; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc107417803"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Introduction</span></a></p>
+<p style="margin-top: 0pt; margin-bottom: 5pt; line-height: 108%; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc107417804"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Deploy Virtual Machine on Azure Cloud Platform</span></a></p>
+<p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; line-height: 108%; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc107417805"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Azure Cloud architecture for application</span></a></p>
+<p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; line-height: 108%; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc107417806"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Azure Virtual Machine (VM)</span></a></p>
+<p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; line-height: 108%; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc107417807"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.3 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Create a Virtual Machine on Azure Platform</span></a></p>
+<p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; line-height: 108%; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc107417808"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.4 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Connect to virtual machine</span></a></p>
+<p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; line-height: 108%; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc107417809"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.5 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Install NVIDIA GPU Drivers</span></a></p>
+<p style="margin-top: 0pt; margin-bottom: 5pt; line-height: 108%; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc107417810"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Install Autodesk Civil 3D Application on Virtual Machine</span></a></p>
+<p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; line-height: 108%; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc107417811"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3.1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Download and Install Civil 3D application</span></a></p>
+<p style="margin-top: 0pt; margin-bottom: 5pt; line-height: 108%; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc107417812"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">4 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Performance results of Autodesk Civil 3D on azure virtual machine</span></a></p>
+<p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; line-height: 108%; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc107417813"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">4.1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Autodesk Civil 3D overview</span></a></p>
+<p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; line-height: 108%; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc107417814"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">4.2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Civil 3D on Azure platform</span></a></p>
+<p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; line-height: 108%; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc107417815"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">4.3 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Performance results on NVv5</span></a></p>
+<p style="margin-top: 0pt; margin-bottom: 5pt; line-height: 108%; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc107417816"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">5 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Azure Cost</span></a></p>
+<p style="margin-top: 0pt; margin-bottom: 5pt; line-height: 108%; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc107417817"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">6 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Summary</span></a></p>
+</div>
+</div>
+
+</div>
+</section>
+          
+<button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+</main>
+
+<footer>
+<div class="row g-0">		
+  <div class="container text-center mx-auto">
+  <div class="container px-3 d-flex justify-content-between flex-column flex-md-row-reverse my-auto">
+    <div>
+      <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo" />
+      <span class="logoline-bot1"></span> 
+      <span class="px-1 px-sm-2">
+        <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo" />
+      </span>
+</div>
+      <div class="text-uppercase align-self-center pt-3 pt-md-2 footer-text">Copyright &copy; 2021 Azure HPC</div>
+    </div>
+  </div>
+</div>
+</footer>
+</div> <!--wrapper -->
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script> 
+
+let mybutton = document.getElementById("btn-back-to-top");  
+
+// When the user clicks on the button, scroll to the top of the document
+mybutton.addEventListener("click", backToTop);
+
+</script>
+</body>
+</html>

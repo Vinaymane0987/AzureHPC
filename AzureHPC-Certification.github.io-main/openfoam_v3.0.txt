@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+     <link rel="shortcut icon" href="img/icon.ico">
+     <link rel="Stylesheet" href="css/style.css" type="text/css">
+     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet" />
+     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;0,300;0,400;1,400&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+     
+     <script type="text/javascript" src="js/script.js"></script>
+ 
+     <script src="https://kit.fontawesome.com/3d0a07deaa.js" crossorigin="anonymous"></script>
+     
+     <title>Azure HPC | OpenFOAM Report</title>
+</head>
+<body>
+    <div id="wrapper" class="row g-0">
+      
+        <header class="container-fluid">   
+          <div class="logo container">
+            <div class="title-text"><a href="index.html">Azure <span>HPC</span></a></div>
+           
+            <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo">
+            <span class="logoline-top1"></span> <span class="px-1 px-sm-2">
+               <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo">
+            </span>
+          
+          </div>
+        </header>
+  
+      <main class="container-fluid">
+  
+        <section class="container-lg px-3 px-lg-0 rpt-wrapper">  
+    <h3 class="text-center text-uppercase py-4"><!--The Report title goes here-->  Azure HPC Recipe Document for OpenFOAM</h3>
+    <div class="d-flex flex-row rpt">
+        <div class="col-2 px-1 px-sm-0 text-left index">
+
+            <label class="px-3">OpenFOAM</label>
+    <div class="index-scroll">
+    <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_Introduction"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">1 </span><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">Introduction</span></a></p>
+    <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_Architecture&components"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">2 </span><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">Architecture & Components</span></a></p>
+    <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_Install"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">3 </span><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">Install OpenFOAM on a VM</span></a></p>
+    <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_Performance_results_of"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">4 </span><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">Performance results of OpenFOAM on an Azure VM</span></a></p> 
+    <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_pricing"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">5 </span><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">Pricing</span></a></p>
+    <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_Summary"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">6 </span><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">Summary, Contributors</span></a></p>
+    <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_nextsteps"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">7 </span><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">Next steps, Related resources</span></a></p>
+        </div>
+        </div>
+    <div class="col-8 col-md-8 px-3 content">
+        <div>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 24pt;"><a name="_Introduction"></a><span style="font-family: 'Segoe UI'; font-weight: bold;">Deploy</span> <span style="font-family: 'Segoe UI'; font-weight: bold;">OpenFOAM</span><span style="font-family: 'Segoe UI'; font-weight: bold;"> for HPC on a virtual machine</span></p>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 150%; font-size: 11pt;"><span style="font-family: 'Segoe UI'; color: #171717; background-color: #ffffff;">This article briefly describes the steps for running </span><a style="text-decoration: none;" href="https://www.openfoam.com/"><span style="font-family: 'Segoe UI'; color: #0000ff; background-color: #ffffff;">OpenFOAM</span></a><span style="font-family: 'Segoe UI'; color: #171717; background-color: #ffffff;"> application on a virtual machine (VM) that's deployed on Azure. It also presents the performance results </span><span style="font-family: 'Segoe UI'; color: #171717; background-color: #ffffff;">of running OpenFOAM</span><span style="font-family: 'Segoe UI'; color: #171717; background-color: #ffffff;"> on Azure.</span></p>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 150%; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold; background-color: #ffffff;">OpenFOAM</span><span style="font-family: 'Segoe UI'; background-color: #ffffff;"> (</span><span style="font-family: 'Segoe UI'; font-weight: bold; background-color: #ffffff;">Open</span><span style="font-family: 'Segoe UI'; background-color: #ffffff;">-source </span><span style="font-family: 'Segoe UI'; font-weight: bold; background-color: #ffffff;">F</span><span style="font-family: 'Segoe UI'; background-color: #ffffff;">ield </span><span style="font-family: 'Segoe UI'; font-weight: bold; background-color: #ffffff;">O</span><span style="font-family: 'Segoe UI'; background-color: #ffffff;">peration </span><span style="font-family: 'Segoe UI'; font-weight: bold; background-color: #ffffff;">A</span><span style="font-family: 'Segoe UI'; background-color: #ffffff;">nd</span><span style="font-family: 'Segoe UI'; font-weight: bold; background-color: #ffffff;"> M</span><span style="font-family: 'Segoe UI'; background-color: #ffffff;">anipulation) is a </span><a style="text-decoration: none;" href="https://en.wikipedia.org/wiki/C%2B%2B"><span style="font-family: 'Segoe UI'; color: #000000; background-color: #ffffff;">C++</span></a><span style="font-family: 'Segoe UI'; background-color: #ffffff;"> toolbox for the development of customized</span><a style="text-decoration: none;" href="https://en.wikipedia.org/wiki/Numerical_analysis"><span style="font-family: 'Segoe UI'; color: #000000; background-color: #ffffff;"> numerical solvers</span></a><span style="font-family: 'Segoe UI'; background-color: #ffffff;">, and pre-/post-processing utilities for the solution of</span><a style="text-decoration: none;" href="https://en.wikipedia.org/wiki/Continuum_mechanics"><span style="font-family: 'Segoe UI'; color: #000000; background-color: #ffffff;"> continuum mechanics</span></a><span style="font-family: 'Segoe UI'; background-color: #ffffff;"> problems, most prominently including </span><a style="text-decoration: none;" href="https://en.wikipedia.org/wiki/Computational_fluid_dynamics"><span style="font-family: 'Segoe UI'; color: #000000; background-color: #ffffff;">computational fluid dynamics</span></a><span style="font-family: 'Segoe UI'; background-color: #ffffff;">(CFD). </span></p>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 150%; font-size: 11pt;"><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;">OpenFOAM is a free, open source computational fluid dynamics (CFD) software package released by the OpenFOAM Foundation. It has a large user base across most areas of engineering and science, from both commercial and academic </span><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;">organizations</span><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;">. OpenFOAM has an extensive range of features to solve anything from complex fluid flows involving chemical reactions, turbulence and heat transfer, to solid dynamics and electromagnetics</span></p>
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: justify; line-height: 115%; font-size: 11pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI';">To test</span><span style="font-family: 'Segoe UI';"> the</span><span style="font-family: 'Segoe UI';"> performance of </span><span style="font-family: 'Segoe UI';">OpenFOAM </span><span style="font-family: 'Segoe UI';">on Azure Platform, </span><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/hbv3-series"><span style="font-family: 'Segoe UI'; color: #0000ff;">HBv3</span></a> <span style="font-family: 'Segoe UI';"> virtual</span><span style="font-family: 'Segoe UI';"> machines are</span><span style="font-family: 'Segoe UI';"> deployed.</span></p>
+            <h1 style="margin-top: 14pt; margin-bottom: 14pt; font-size: 18pt;"><a name="_Architecture&components"></a><span style="font-family: 'Segoe UI';">Architecture</span></h1>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; text-align: justify; line-height: 108%; font-size: 11pt;">&nbsp;</p>
+            
+            <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; line-height: 108%; font-size: 11pt;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="openfoam_v3.0_files/openfoam1.png" alt="" width="521" height="404" /></p>
+            <h1 style="margin-top: 14pt; margin-bottom: 14pt; font-size: 18pt;"><span style="font-family: 'Segoe UI';">Components</span></h1>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; text-align: justify; line-height: 108%; font-size: 11pt;">&nbsp;</p>
+            
+            <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://azure.microsoft.com/services/virtual-machines"><span style="font-family: 'Segoe UI'; font-size: 11pt; color: #0000ff;">Azure Virtual Machines</span></a><span style="font-family: 'Segoe UI'; font-size: 11pt;"> Create Linux and Windows virtual machines in seconds.</span></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://azure.microsoft.com/services/virtual-network"><span style="font-family: 'Segoe UI'; font-size: 11pt; color: #0000ff;">Azure Virtual Network</span></a><span style="font-family: 'Segoe UI'; font-size: 11pt;"> Use Virtual Network to create your own private network infrastructure in the cloud.</span></li>
+            </ul>
+            <h1 style="margin-top: 14pt; margin-bottom: 14pt; font-size: 18pt;"><a name="_Install"></a><span style="font-family: 'Segoe UI';">Install</span><span style="font-family: 'Segoe UI';"> OpenFOAM</span><span style="font-family: 'Segoe UI';"> on a VM</span></h1>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; text-align: justify; line-height: 108%; font-size: 11pt;">&nbsp;</p>
+            
+            <p style="margin-top: 0pt; margin-bottom: 6pt; line-height: 108%; font-size: 11pt;"><span style="font-family: 'Segoe UI'; color: #171717; background-color: #ffffff;">Before you install OpenFOAM, you need to deploy and connect a VM.</span></p>
+            <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">For information about deploying the VM, see one of these articles:</span></p>
+            <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/n-tier/windows-vm"><span style="font-family: 'Segoe UI'; font-size: 11pt; color: #0000ff;">Run a Windows VM on Azure</span></a></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/n-tier/linux-vm"><span style="font-family: 'Segoe UI'; font-size: 11pt; color: #0000ff;">Run a Linux VM on Azure</span></a></li>
+            </ul>
+            <p style="margin-top: 6pt; margin-bottom: 6pt; font-size: 11pt;"><a name="_Toc85794193"></a><a name="_Toc85794520"></a><a name="_Toc85798824"></a><a name="_Toc92365904"></a><span style="font-family: 'Segoe UI';">To </span><span style="font-family: 'Segoe UI';">download OpenFOAM from OpenFOAM web </span><span style="font-family: 'Segoe UI';">portal:</span></p>
+            <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+            <li style="margin-left: 31.16pt; line-height: 150%; padding-left: 4.54pt; font-family: 'Segoe UI'; font-size: 11pt;">To download CentOS repository, use the below command.</li>
+            </ol>
+            <p style="margin-top: 0pt; margin-bottom: 6pt; text-indent: 35.7pt; line-height: 150%; font-size: 11pt;"><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;">yum</span><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;"> -y install </span><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;">dnf</span><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;">-plugins-core</span></p>
+            <p style="margin-top: 0pt; margin-bottom: 6pt; text-indent: 35.7pt; line-height: 108%; font-size: 11pt;"><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;">yum</span><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;"> -y </span><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;">config</span><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;">-manager --set-enabled </span><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;">PowerTools</span></p>
+            <p style="margin-top: 0pt; margin-bottom: 6pt; text-indent: 35.7pt; line-height: 108%; font-size: 11pt;"><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;">yum</span><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;"> -y install </span><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;">epel</span><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;">-release</span></p>
+            <p style="margin-top: 0pt; margin-bottom: 6pt; text-indent: 35.7pt; line-height: 108%; font-size: 11pt;"><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;">dnf</span><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;"> -y </span><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;">copr</span><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;"> enable </span><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;">openfoam</span><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;">/</span><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;">openfoam</span></p>
+            <ol style="margin: 0pt; padding-left: 0pt;" start="2" type="1">
+            <li style="margin-left: 31.16pt; line-height: 150%; padding-left: 4.54pt; font-family: 'Segoe UI'; font-size: 11pt; color: #24292f;"><span style="background-color: #ffffff;">To install OpenFOAM,</span></li>
+            </ol>
+            <p style="margin-top: 0pt; margin-left: 35.7pt; margin-bottom: 0pt; line-height: 160%; font-size: 11pt;"><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;">yum</span><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;"> -y install </span><span style="font-family: 'Segoe UI'; color: #24292f; background-color: #ffffff;">openfoam</span></p>
+            <ol style="margin: 0pt; padding-left: 0pt;" start="3" type="1">
+            <li style="margin-left: 31.31pt; line-height: 150%; padding-left: 4.69pt; font-family: 'Segoe UI'; font-size: 11pt;">For a persistent OpenFOAM environment, the OpenFOAM bashrc file can be sourced from your ~/.bashrc file by adding a line resembling the following to that file:</li>
+            </ol>
+            <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; line-height: 150%; font-size: 11pt;"><span style="font-family: 'Segoe UI';">source</span><span style="font-family: 'Segoe UI';"> /</span><span style="font-family: 'Segoe UI';">usr</span><span style="font-family: 'Segoe UI';">/lib/</span><span style="font-family: 'Segoe UI';">openfoam</span><span style="font-family: 'Segoe UI';">/openfoam2106/</span><span style="font-family: 'Segoe UI';">etc</span><span style="font-family: 'Segoe UI';">/</span><span style="font-family: 'Segoe UI';">bashrc</span></p>
+            <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; line-height: 150%; font-size: 11pt;"><span style="font-family: 'Segoe UI';">The exact path used will change depending on the OpenFOAM version.</span></p>
+            <ol style="margin: 0pt; padding-left: 0pt;" start="4" type="1">
+            <li style="margin-left: 31.16pt; margin-bottom: 5.5pt; line-height: 150%; padding-left: 4.54pt; font-family: 'Segoe UI'; font-size: 11pt;">For more information of different versions of OpenFOAM, explore <a style="text-decoration: none;" href="https://develop.openfoam.com/Development/openfoam/-/wikis/precompiled"><span style="color: #0563c1;">here</span><span style="color: #0563c1;">.</span></a></li>
+            </ol>
+            <h1 style="margin-top: 14pt; margin-bottom: 14pt; font-size: 18pt;"><a name="_Performance_results_of"></a><span style="font-family: 'Segoe UI';">Performance results of </span><span style="font-family: 'Segoe UI';">OpenFOAM</span><span style="font-family: 'Segoe UI';"> on an Azure VM</span></h1>
+            <div style="margin-top: 2pt; background-color: #ffffff;">
+            <p style="margin-top: 0pt; margin-left: 28.8pt; margin-bottom: 0pt; text-indent: -28.8pt; line-height: 150%;"><a name="_Toc85794197"></a><a name="_Toc85794524"></a><a name="_Toc85798828"></a><a name="_Toc92365907"></a><span style="font-family: 'Segoe UI'; font-size: 14pt; font-weight: bold; text-transform: uppercase;">OpenFoam</span><span style="font-family: 'Segoe UI'; font-size: 14pt; font-weight: bold; text-transform: uppercase;"> OVERVIEW</span><a name="_Toc81323180"></a><a name="_Toc81330562"></a><a name="_Toc81390114"></a><a name="_Toc81411727"></a><a name="_Toc81413124"></a><a name="_Toc81420235"></a><a name="_Toc81498995"></a><a name="_Toc85794199"></a><a name="_Toc85794526"></a><a name="_Toc85798830"></a></p>
+            </div>
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify; line-height: 150%; font-size: 11pt;"><span style="font-family: 'Segoe UI';">OpenFOAM is leading free open-source software for Computational Fluid Dynamics. The wider user-base for OpenFOAM has grown steadily and produced valuable functionality to complement the official releases. The key to </span><span style="font-family: 'Segoe UI';">OpenFOAM&rsquo;s</span><span style="font-family: 'Segoe UI';"> future is bringing the Community together to participate within a welcoming, co-operative framework, ensuring the project&rsquo;s longevity and maintaining its core values of being freely available and open source. The core entity </span><span style="font-family: 'Segoe UI';">promoting its open, collaborative, and progressive development and maintenance, with the declared long-term support of partners in industry, academia and key individuals.</span></p>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; text-align: justify; line-height: 108%; font-size: 11pt;">&nbsp;</p>
+            <div class="overflow-table" style="text-align: center;">
+            <table style="width: 340.75pt; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr style="height: 11.55pt;">
+            <td style="width: 209.4pt; border-style: solid; border-width: 0.75pt; padding-right: 4.68pt; padding-left: 4.68pt; vertical-align: top; background-color: #a5a5a5;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Operating system and Hardware Details</span></p>
+            </td>
+            <td style="width: 119.75pt; border-style: solid; border-width: 0.75pt; vertical-align: top; background-color: #a5a5a5;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Milan-X</span></p>
+            </td>
+            </tr>
+            <tr style="height: 11.55pt;">
+            <td style="width: 209.4pt; border-style: solid; border-width: 0.75pt; padding-right: 4.68pt; padding-left: 4.68pt; vertical-align: top; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">Operating system version</span></p>
+            </td>
+            <td style="width: 119.75pt; border-style: solid; border-width: 0.75pt; vertical-align: top; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">CentOS 7.9.2009</span></p>
+            </td>
+            </tr>
+            <tr style="height: 11.55pt;">
+            <td style="width: 209.4pt; border-style: solid; border-width: 0.75pt; padding-right: 4.68pt; padding-left: 4.68pt; vertical-align: top;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">OS Architecture</span></p>
+            </td>
+            <td style="width: 119.75pt; border-style: solid; border-width: 0.75pt; vertical-align: top;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">X86-64</span></p>
+            </td>
+            </tr>
+            <tr style="height: 11.55pt;">
+            <td style="width: 209.4pt; border-style: solid; border-width: 0.75pt; padding-right: 4.68pt; padding-left: 4.68pt; vertical-align: top; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">Processor</span></p>
+            </td>
+            <td style="width: 119.75pt; border-style: solid; border-width: 0.75pt; vertical-align: top; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">AMD EPYC 7V13</span><span style="font-family: 'Segoe UI';">X</span></p>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;"><a name="_Toc81323186"></a><a name="_Toc81330568"></a><a name="_Toc81390120"></a><a name="_Toc81411733"></a><a name="_Toc81413130"></a><a name="_Toc81420241"></a><a name="_Toc81498996"></a><a name="_Toc85794200"></a><a name="_Toc85794527"></a><a name="_Toc85798831"></a><a name="_Toc92365908"></a></p>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; text-align: justify; line-height: 150%; font-size: 11pt;"><span style="font-family: 'Segoe UI';">The HBv3</span><span style="font-family: 'Segoe UI';"> (Milan-X)</span><span style="font-family: 'Segoe UI';"> instances at present are optimized for HPC applications such as fluid dynamics, explicit and implicit finite element analysis, weather modelling, seismic processing, reservoir simulation, and RTL simulation. HBv3 VMs feature up to 120 AMD EPYC&trade; 7V73X (Milan-X) CPU cores, 448 GB of RAM, and no hyper-threading. HBv3-series VMs also provide 350 GB/sec of memory bandwidth</span> <span style="font-family: 'Segoe UI';">(amplified up to 630 GB/s), up to 96 MB of L3 cache per core (1.536 GB total per VM), up to 7 GB/s of block device SSD performance, and clock frequencies up to 3.5 GHz. </span></p>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: justify; font-size: 11pt;"><span style="font-family: 'Segoe UI';">OpenFOAM</span><span style="font-family: 'Segoe UI';"> performance is tested on </span><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/hbv3-series"><span style="font-family: 'Segoe UI'; color: #0000ff;">HB120rs_v3</span></a><span style="font-family: 'Segoe UI';"> VM&rsquo;s the performance results are analyzed. The subsequent section will show the performance of </span><span style="font-family: 'Segoe UI';">OpenFOAM</span><span style="font-family: 'Segoe UI';"> on Azure HBv3 Virtual Machine.</span></p>
+            <div style="margin-top: 14pt; margin-bottom: 14pt; background-color: #ffffff;">
+            <p style="margin-top: 0pt; margin-left: 28.9pt; margin-bottom: 0pt; text-indent: -28.9pt; line-height: 14.05pt;"><span style="font-family: 'Segoe UI'; font-size: 14pt; font-weight: bold; text-transform: uppercase;">OpenFoam </span><span style="font-family: 'Segoe UI'; font-size: 14pt; font-weight: bold; text-transform: uppercase;">PERFORMANCE </span><span style="font-family: 'Segoe UI'; font-size: 14pt; font-weight: bold; text-transform: uppercase;">RESULTS</span></p>
+            </div>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 12pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; font-size: 12pt; font-weight: bold;">Model Details:</span></p>
+            <!-- <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify; line-height: 108%; font-size: 11pt;"><span style="height: 0pt; text-align: left; display: block; position: absolute; z-index: 0;"><img style="margin-top: 39.05pt; margin-left: 252.6pt; -aw-left-pos: 288.6pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 39.05pt; -aw-wrap-type: none; position: absolute;" src="akli4-h30dm.002.png" alt="Screenshot of a picture showing a 21M Motorbike tutorial model shown in a zoomed view in shaded view." width="287" height="236" /></span><span style="font-family: 'Segoe UI';">The Motorbike with 21M cells test case model is considered as standard performance test case for testing the expected performance of the OpenFOAM on Azure VM. The models are shown below,</span></p>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; line-height: 11.9pt; background-color: #ffffff;"><span style="height: 0pt; display: block; position: absolute; z-index: 1;"><img style="margin-top: 8.72pt; margin-left: -36pt; -aw-left-pos: 0pt; -aw-rel-hpos: margin; -aw-rel-vpos: paragraph; -aw-top-pos: 8.72pt; -aw-wrap-type: none; position: absolute;" src="akli4-h30dm.003.png" alt="Screenshot of a picture showing a 21M Motorbike tutorial model kept in the domain in wireframe view." width="375" height="170" /></span></p>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; line-height: 11.9pt; background-color: #ffffff;">&nbsp;</p>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; line-height: 11.9pt; background-color: #ffffff;">&nbsp;</p>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; line-height: 11.9pt; background-color: #ffffff;"><span style="height: 0pt; display: block; position: absolute; z-index: 3;"><img style="margin-top: 5.58pt; margin-left: 71.97pt; -aw-left-pos: 109.1pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 8.1pt; -aw-wrap-type: none; position: absolute;" src="akli4-h30dm.004.png" alt="" width="349" height="48" /></span></p>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; line-height: 11.9pt; background-color: #ffffff;"><span style="height: 0pt; display: block; position: absolute; z-index: 2;"><img style="margin-top: 1.08pt; margin-left: 22.12pt; -aw-left-pos: 59.25pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 2.2pt; -aw-wrap-type: none; position: absolute;" src="akli4-h30dm.005.png" alt="" width="70" height="47" /></span></p> -->
+            <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; line-height: 108%; font-size: 11pt;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="openfoam_v3.0_files/openfoam2.png" alt="Screenshot of picture showing a 21M Motorbike tutorial model in wireframe view and zoomed view." width="521" height="404" /></p>
+            
+            <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;"><a name="_Toc92365909"></a></p>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;">&nbsp;</p>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;">&nbsp;</p>
+            <div style="margin-top: 14pt; margin-bottom: 14pt; background-color: #ffffff;">
+            <p style="margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -36pt; line-height: 12.95pt;"><span style="font-family: 'Segoe UI'; font-size: 12pt; font-weight: bold;">Performance Results of</span><span style="font-family: 'Segoe UI'; font-size: 12pt; font-weight: bold;"> Open Foam</span></p>
+            </div>
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: justify; line-height: 11.9pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; font-size: 11pt;">Simulation is carried out to see the performance of chosen Azure VM and the </span><span style="font-family: 'Segoe UI'; font-size: 11pt;">optimized</span><span style="font-family: 'Segoe UI'; font-size: 11pt;"> CPU core configuration on single node</span></p>
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: justify; line-height: 11.9pt; background-color: #ffffff;">&nbsp;</p>
+            <div class="overflow-table" style="text-align: center;">
+            <table style="width: 100%; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr style="height: 24.6pt;">
+            <td style="border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;" colspan="3">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Elapsed time in Seconds</span></p>
+            </td>
+            </tr>
+            <tr style="height: 24.6pt;">
+            <td style="width: 33.78%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">No Of CPU&rsquo;s</span></p>
+            </td>
+            <td style="width: 40.12%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Motorbike_21M Milan-X</span></p>
+            </td>
+            <td style="width: 26.1%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Relative Speed Up</span></p>
+            </td>
+            </tr>
+            <tr style="height: 10.05pt;">
+            <td style="width: 33.78%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">16 CPU</span></p>
+            </td>
+            <td style="width: 40.12%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">412.08</span></p>
+            </td>
+            <td style="width: 26.1%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.00</span></p>
+            </td>
+            </tr>
+            <tr style="height: 9.65pt;">
+            <td style="width: 33.78%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">32 CPU</span></p>
+            </td>
+            <td style="width: 40.12%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">253.04</span></p>
+            </td>
+            <td style="width: 26.1%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.63</span></p>
+            </td>
+            </tr>
+            <tr style="height: 9.65pt;">
+            <td style="width: 33.78%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">64 CPU</span></p>
+            </td>
+            <td style="width: 40.12%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">176.43</span></p>
+            </td>
+            <td style="width: 26.1%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2.34</span></p>
+            </td>
+            </tr>
+            <tr style="height: 9.65pt;">
+            <td style="width: 33.78%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">96 CPU</span></p>
+            </td>
+            <td style="width: 40.12%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">159.62</span></p>
+            </td>
+            <td style="width: 26.1%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2.58</span></p>
+            </td>
+            </tr>
+            <tr style="height: 11.85pt;">
+            <td style="width: 33.78%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">120 CPU</span></p>
+            </td>
+            <td style="width: 40.12%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">157.88</span></p>
+            </td>
+            <td style="width: 26.1%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2.61</span></p>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; line-height: 11.9pt; background-color: #ffffff;"><a name="_Toc92365910"></a></p>
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; line-height: 11.9pt; background-color: #ffffff;"><img style="border: 0.75pt solid #000000; -aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="openfoam_v3.0_files/openfoam3.png" alt="The Bar Chart shows the Relative Speedup of OpenFOAM application on Azure VM HBv3 instances. On Horizontal axis we have different instance sizes and on the vertical axis their relavtive speedup is shown. The relative speedup of 16CPU is taken as 1 since it is the baseline value and for 32CPU the Relative Speedup is 1.63, for 64CPU it is 2.34, for 96CPU it is 2.58 and for 120CPU it is 2.61" width="510" height="294" /></p>
+            <h1 style="margin-top: 14pt; margin-bottom: 14pt; font-size: 18pt;"><a name="_pricing"></a><span style="font-family: 'Segoe UI';">Pricing</span></h1>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 150%; font-size: 11pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717; background-color: #ffffff;">Only model running time (wall clock time) is considered for these cost calculations. Application installation time isn't considered. The calculations are indicative. The actual numbers depend on the size of the model.</span></p>
+            <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; font-size: 11pt; color: #171717;">You can use the </span><a style="text-decoration: none;" href="https://azure.microsoft.com/pricing/calculator"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Azure pricing calculator</span></a><span style="font-family: 'Segoe UI'; font-size: 11pt; color: #171717;"> to estimate costs for your configuration.</span></p>
+            <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; font-size: 11pt; color: #171717;">The following tables provide elapsed times in hours. To compute the total cost, multiply by the Azure VM hourly cost, which you can find </span><a style="text-decoration: none;" href="https://azure.microsoft.com/pricing/details/virtual-machines/windows/#pricing"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">here for Windows</span></a><span style="font-family: 'Segoe UI'; font-size: 11pt; color: #171717;"> and </span><a style="text-decoration: none;" href="https://azure.microsoft.com/pricing/details/virtual-machines/linux/#pricing"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">here for Linux</span></a><span style="font-family: 'Segoe UI'; font-size: 11pt; color: #171717;">.</span></p>
+            <div class="overflow-table" style="text-align: center;">
+            <table style="width: 100%; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr style="height: 30pt;">
+            <td style="width: 45.88%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">No of </span><span style="font-family: 'Segoe UI'; font-weight: bold;">CPU</span><span style="font-family: 'Segoe UI'; font-weight: bold;"> cores</span></p>
+            </td>
+            <td style="width: 54.12%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #a5a5a5;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Wall clock time in Hours</span></p>
+            </td>
+            </tr>
+            <tr style="height: 15pt;">
+            <td style="width: 45.88%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">16</span></p>
+            </td>
+            <td style="width: 54.12%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">0.114</span></p>
+            </td>
+            </tr>
+            <tr style="height: 15pt;">
+            <td style="width: 45.88%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">32</span></p>
+            </td>
+            <td style="width: 54.12%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">0.070</span></p>
+            </td>
+            </tr>
+            <tr style="height: 15pt;">
+            <td style="width: 45.88%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">64</span></p>
+            </td>
+            <td style="width: 54.12%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">0.049</span></p>
+            </td>
+            </tr>
+            <tr style="height: 15pt;">
+            <td style="width: 45.88%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">96</span></p>
+            </td>
+            <td style="width: 54.12%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">0.044</span></p>
+            </td>
+            </tr>
+            <tr style="height: 15pt;">
+            <td style="width: 45.88%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">120</span></p>
+            </td>
+            <td style="width: 54.12%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">0.044</span></p>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+            <h1 style="margin-top: 14pt; margin-bottom: 14pt; font-size: 18pt;"><a name="_Summary"></a><span style="font-family: 'Segoe UI';">Summary</span></h1>
+            <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+            <li style="margin-left: 31.16pt; text-align: justify; line-height: 150%; padding-left: 4.54pt; font-family: 'Segoe UI'; font-size: 11pt;">OpenFOAM is successfully deployed and tested on HB120rs_v3 series VM on Azure Platform.</li>
+            <li style="margin-left: 31.16pt; text-align: justify; line-height: 125%; padding-left: 4.54pt; font-family: 'Segoe UI'; font-size: 11pt;">Appreciable Speed-up is achieved up to 64 CPU cores and there after the speedup is saturating with further increase in no of cores HBv3 VM&rsquo;s</li>
+            </ol>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 150%; font-size: 21pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Contributors</span></p>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;"><span style="font-family: Calibri; font-style: italic;">This article is being updated and maintained by Microsoft. It was originally written by the following contributors.</span></p>
+            <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">Principal authors:</span></p>
+            <ul style="margin: 0pt; padding-left: 0pt;" type="square">
+            <li style="margin-left: 28.03pt; padding-left: 7.97pt; font-family: serif; font-size: 11pt; background-color: #ffffff; -aw-font-family: 'Wingdings'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://www.linkedin.com/in/hari-bagudu-88732a19"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0000ff;">Hari Bagudu</span></a><span style="font-family: 'Segoe UI'; color: #171717;"> | Senior Manager</span></li>
+            <li style="margin-left: 28.03pt; padding-left: 7.97pt; font-family: serif; font-size: 11pt; background-color: #ffffff; -aw-font-family: 'Wingdings'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://www.linkedin.com/in/gauharjunnarkar"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0000ff;">Gauhar Junnarkar</span></a><span style="font-family: 'Segoe UI'; color: #171717;"> | Principal Program Manager</span></li>
+            <li style="margin-left: 28.03pt; margin-bottom: 8pt; line-height: 150%; padding-left: 7.97pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Wingdings'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://www.linkedin.com/in/kalai-selvan-5a153358/"><span style="font-family: Calibri; text-decoration: underline; color: #0000ff;">Kalai</span> <span style="font-family: Calibri; text-decoration: underline; color: #0000ff;">Selvan</span></a> <span style="font-family: 'Segoe UI'; color: #171717;"> | HPC Performance Engineer</span></li>
+            </ul>
+            <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">Other contributors:</span></p>
+            <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://www.linkedin.com/in/mick-alberts-a24a1414"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Mick Alberts</span></a><span style="font-family: 'Segoe UI'; font-size: 11pt;"> | Technical Writer</span></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://www.linkedin.com/in/guybursell"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Guy Bursell</span></a><span style="font-family: 'Segoe UI'; font-size: 11pt;"> | Director Business Strategy</span></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://www.linkedin.com/in/sachin-rastogi-907a3b5"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Sachin Rastogi</span></a><span style="font-family: 'Segoe UI'; font-size: 11pt;"> | Manager</span></li>
+            </ul>
+            <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; font-style: italic; color: #171717;">To see non-public LinkedIn profiles, sign in to LinkedIn.</span></p>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 21pt;"><a name="_nextsteps"></a><span style="font-family: 'Segoe UI'; font-weight: bold;">Next steps</span></p>
+            <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-hpc"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">HPC Compute Optimized Virtual Machine Sizes</span></a></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/overview"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Windows virtual machines in Azure</span></a></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/overview"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Linux virtual machines in Azure</span></a></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-network/network-overview"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Virtual networks and virtual machines in Azure</span></a></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/learn/paths/run-high-performance-computing-applications-azure"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Learning path: Run high-performance computing (HPC) applications on Azure</span></a></li>
+            </ul>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 21pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Related resources</span></p>
+            <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/n-tier/windows-vm"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Run a Windows VM on Azure</span></a></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/n-tier/linux-vm"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Run a Linux VM on Azure</span></a></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/architecture/solution-ideas/articles/big-compute-with-azure-batch"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">HPC system and big-compute solutions</span></a></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/architecture/solution-ideas/articles/hpc-cluster"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">HPC cluster deployed in the cloud</span></a></li>
+            </ul>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;">&nbsp;</p>
+            </div>
+        </div>
+    </div>
+ </section>      
+ <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+</main>
+
+<footer>
+<div class="row g-0">		
+ <div class="container text-center mx-auto">
+ <div class="container px-3 d-flex justify-content-between flex-column flex-md-row-reverse my-auto">
+   <div>
+     <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo" />
+     <span class="logoline-bot1"></span> 
+     <span class="px-1 px-sm-2">
+       <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo" />
+     </span>
+</div>
+     <div class="text-uppercase align-self-center pt-3 pt-md-2 footer-text">Copyright &copy; 2021 Azure HPC</div>
+   </div>
+ </div>
+</div>
+</footer>
+</div> <!--wrapper -->
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script> 
+
+let mybutton = document.getElementById("btn-back-to-top");  
+
+// When the user clicks on the button, scroll to the top of the document
+mybutton.addEventListener("click", backToTop);
+
+</script>
+</body>
+</html>

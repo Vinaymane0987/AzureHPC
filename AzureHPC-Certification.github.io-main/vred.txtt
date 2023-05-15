@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="shortcut icon" href="img/icon.ico">
+    <link rel="Stylesheet" href="css/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;0,300;0,400;1,400&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script type="text/javascript" src="js/script.js"></script>
+
+    <script src="https://kit.fontawesome.com/3d0a07deaa.js" crossorigin="anonymous"></script>
+
+    <title>Azure HPC | Vred Report</title>
+    
+  </head>
+  <body>
+    <div id="wrapper" class="row g-0">
+      
+      <header class="container-fluid">   
+        <div class="logo container">
+          <div class="title-text"><a href="index.html">Azure <span>HPC</span></a></div>
+         
+          <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo">
+          <span class="logoline-top1"></span> <span class="px-1 px-sm-2">
+             <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo">
+          </span>
+        
+        </div>
+      </header>
+
+    <main class="container-fluid">
+
+      <section class="container-lg px-3 px-lg-0 rpt-wrapper">        
+      <h3 class="text-center text-uppercase py-4">Azure HPC Recipe Document for Autodesk VRED</h3>
+    <div class="d-flex flex-row rpt">
+
+      <div class="col-2 px-1 px-sm-0 text-left index">
+        <label class="px-3">Autodesk VRED</label>
+        <div class="index-scroll">   
+          <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc86074394"><span> 1</span><span> Introduction</span></a></p>
+          <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc86074395"><span> 2</span><span> Deploy Virtual Machine on Azure Cloud Platform</span></a></p>
+          <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc86074401"><span> 3</span><span> Install VRED Application on Virtual Machine:</span></a></p>
+          <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc86074404"><span> 4</span><span> Performance results of Autodesk VRED on Azure Virtual Machines</span></a></p>
+          <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc86074415"><span> 5</span><span> Azure Cost</span></a></p>
+          <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc86074416"><span> 6</span><span> Summary</span></a></p>
+    </div>
+      </div><!--index-->
+
+      <div class="col-8 col-md-8 px-3 content">
+       
+        <p class="h1"><span >1</span> <a name="_Toc86074394"></a><span >Introduction</span></p>
+<p style="text-indent: 36pt;"><span >This document briefly explains the steps to install and run Autodesk VRED application on a Virtual Machine deployed in Azure Cloud Platform and presents the performance results.</span></p>
+<p ><span >This recipe document covers the following topics: -</span></p>
+<ul>
+<li>Deploy &amp; connect a required virtual machine on Azure platform.</li>
+<li>Install required NVIDIA drivers in virtual machine.</li>
+<li>Install Application on virtual machine.</li>
+<li>Install license manager for current application</li>
+<li>Performance results of current application on azure virtual machine</li>
+<li>Azure Cost</li>
+<li>Summary</li></ul>
+<p class="h1"><span >2</span> <a name="_Toc86074395"></a><span >Deploy Virtual Machine on Azure Cloud Platform</span></p>
+<p class="h2"><span >2.1</span> <a name="_Toc86074396"></a><span >Azure Cloud Architecture for Application</span></p>
+<p ><span >The below Architecture explains the virtual machine running on an Azure Platform</span></p>
+<p ><img src="VRED_files/Image1.png" alt="" width="604" height="477" border="0" /></p>
+<p class="h2"><span >2.2</span> <a name="_Toc86074397"></a><span >Azure Virtual Machine (VM)</span></p>
+<p ><span >A VM is a virtualized instance of a computer that can perform almost all of the same functions as a computer, including running applications and operating systems.</span></p>
+<p ><span >An Azure VM gives the flexibility of virtualization without having to buy and maintain the physical hardware that runs it. However, user still need to maintain the VM by performing tasks, such as configuring, patching, and installing the software that runs on it.</span></p>
+<p ><span >Things to be considered before deploying a VM,</span></p>
+<ul>
+<li>The names of the application resources</li>
+<li>The location where the resources are stored</li>
+<li>The size of the VM</li>
+<li>The operating system that the VM runs</li>
+<li>The configuration of the VM</li>
+<li>The related resources that the VM needs</li>
+</ul>
+<p ><span >There are different sizes and options for the Azure virtual machines one can use to run apps and workloads. Depending on the workload user has to choose the appropriate VM size or complete list check this </span><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/sizes/"><span >https://docs.microsoft.com/en-us/azure/virtual-machines/sizes/</span></a><span >.</span></p>
+<p ><span >The performance of </span><span >Autodesk VRED on Azure Platform </span><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/nct4-v3-series"><span >NC64as_T4_v3</span></a><span > &amp; </span><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/nvv3-series"><span >NV48s_v3</span></a><span > virtual machines are deployed to analyse the hardware performance.</span></p>
+<div class="overflow-table"><table><colgroup><col  /><col  /><col  /><col  /><col  /><col  /><col  /></colgroup>
+<tbody>
+<tr >
+<td >
+<p ><span >Size</span></p>
+</td>
+<td >
+<p ><span >vCPU</span></p>
+</td>
+<td >
+<p ><span >Memory: GiB</span></p>
+</td>
+<td >
+<p ><span >Temp storage (SSD) GiB</span></p>
+</td>
+<td >
+<p ><span ># GPU</span></p>
+</td>
+<td >
+<p ><span >GPU memory: GiB</span></p>
+</td>
+<td >
+<p ><span >Max data disks</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >Standard_NC64as_T4_v3</span></p>
+</td>
+<td >
+<p ><span >64</span></p>
+</td>
+<td >
+<p ><span >440</span></p>
+</td>
+<td >
+<p ><span >2880</span></p>
+</td>
+<td >
+<p ><span >4</span></p>
+</td>
+<td >
+<p ><span >64</span></p>
+</td>
+<td >
+<p ><span >32</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >Standard_NV48s_v3</span></p>
+</td>
+<td >
+<p ><span >48</span></p>
+</td>
+<td >
+<p ><span >448</span></p>
+</td>
+<td >
+<p ><span >1280</span></p>
+</td>
+<td >
+<p ><span >4</span></p>
+</td>
+<td >
+<p ><span >32</span></p>
+</td>
+<td >
+<p ><span >32</span></p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p ><span >To Analyse the performance of Autodesk VRED on Azure Platform </span><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/nct4-v3-series"><span >NCasT4_v3-series</span></a><span > VM is deployed. These Series VMs are powered by </span><a href="https://www.nvidia.com/en-us/data-center/tesla-t4/"><span >Nvidia T4</span></a><span >&nbsp;GPUs and AMD EPYC 7V12(Rome) CPUs. The &ldquo;NC64as_T4_v3&rdquo; VM has 4 NVIDIA T4 GPUs with 16 GB of memory each, up to 64 non-multithreaded AMD processor cores with a total memory of 448GB. </span></p>
+<p ><span >Another VM of </span><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/nvv3-series"><span >NVv3-series</span></a><span > is deployed and is powered by </span><a href="https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf"><span >NVIDIA M60</span></a><span >&nbsp;GPUs and Intel E5-2690 v4 (Broadwell) CPUs (2.60GHz). The &ldquo;NV48s_v3&rdquo; VM has NVIDIA Grid Technology with Intel cores and Intel Hyper-Threading Technology. Each GPU in NVv3 instances comes with a GRID license,</span> <span >this license gives the flexibility to use an NV instance as a virtual workstation for a single user, or 25 concurrent users can connect to the VM for a virtual application scenario</span></p>
+<p class="h2"><span >2.3</span> <a name="_Toc86074398"></a><span >Create a Virtual Machine on Azure Platform</span></p>
+<p ><span style="font-family: roboto; font-weight: bold;">Sign in to Azure</span></p>
+<p ><span >Sign into the Azure portal by using </span><a href="https://portal.azure.com/"><span >https://portal.azure.com/</span></a></p>
+<p ><a href="https://azure.microsoft.com/offers/ms-azr-0044p"><span >Free Trial subscriptions</span></a><span >&nbsp;aren't eligible for limit or quota increases. If user have a&nbsp;</span><a href="https://azure.microsoft.com/offers/ms-azr-0044p"><span >Free Trial subscription</span></a><span >, user can upgrade to a&nbsp;</span><a href="https://azure.microsoft.com/offers/ms-azr-0003p/"><span >Pay-As-You-Go</span></a><span >&nbsp;subscription</span></p>
+<p ><span >After the successful sign in or sign up, one has to upgrade the Azure subscription to </span><a href="https://azure.microsoft.com/en-us/offers/ms-azr-0003p/"><span >Pay-As-You-Go</span></a><span > to deploy a Virtual machine. For deployment, the user must have regional vCPU quota which can be obtained by raising a request.</span></p>
+<p ><span >The step-by-step procedure to increase the vCPU quota is given below,</span></p>
+<p ><a href="https://docs.microsoft.com/en-us/azure/azure-portal/supportability/per-vm-quota-requests"><span >https://docs.microsoft.com/en-us/azure/azure-portal/supportability/per-vm-quota-requests</span></a></p>
+<p ><span >The step-by-step procedure to deploy Virtual machine is given below,</span></p>
+<p ><span >1.</span> <span >Type&nbsp;</span><span style="font-family: roboto; font-weight: bold;">virtual machines</span><span >&nbsp;in the marketplace search.</span></p>
+<p ><span >2.</span> <span >Under&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Services</span><span >, select&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Virtual machines</span><span >.</span></p>
+<p ><span >3.</span> <span >In the&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Virtual machines</span><span >&nbsp;page, select&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Create</span><span >&nbsp;Then&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Virtual machine</span><span >.</span></p>
+<p ><span >4.</span> <span >In the&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Basics</span><span >&nbsp;tab, under&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Project details</span><span >, make sure the correct subscription is selected and then choose to&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Create new</span><span >&nbsp;resource group. Type&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Azure- PerformanceTest</span><span style="font-family: roboto; font-weight: bold;">&nbsp;(user choice) </span><span >for the name.</span></p>
+<p ><img src="VRED_files/Image2.png" alt="" width="548" height="268" border="0" /></p>
+<p ><span >5.</span> <span >Under&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Instance details</span><span >, type&nbsp;</span><span >Azure-VM (user choice)</span><span >&nbsp;for the&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Virtual machine name</span><span >&nbsp;and choose&nbsp;Australia </span><span >East </span><span >for your&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Region</span><span >. Choose&nbsp;</span><span >Windows 10 pro, Version 20H2-Gen2 </span><span >for the&nbsp;</span><span >Image</span><span >&nbsp;and&nbsp;</span><span >Standard_NC64as_T4_v3</span><span >&nbsp;for the&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Size </span><span >(user choice).</span><span > Leave the other defaults.</span></p>
+<p ><img src="VRED_files/Image3.png" alt="" width="548" height="221" border="0" /></p>
+<p ><span >Note: </span></p>
+<ul>
+<li><span style="font-family: roboto; font-weight: bold;">Region</span> must be decided based on where you are going to deploy a Virtual machine. To avoid the network latency, the region should be near to the location where the VM is to be deployed.</li>
+<li><span style="font-family: roboto; font-weight: bold;">Image</span> selection is of user choice based on the application user can choose the image (Windows 10, Linux based OS and Windows Server)</li></ul>
+<p ><span >6.</span> <span >Under&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Administrator account</span><span >, provide a username, such as&nbsp;Azureuser&nbsp;and a password. The password must be at least 12 characters long and meet the&nbsp;</span><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm-"><span >defined complexity requirements</span></a><span >.</span></p>
+<p ><img src="VRED_files/Image4.png" alt="" width="548" height="109" border="0" /></p>
+<p ><span >7.</span> <span >Under&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Inbound port rules</span><span >, choose&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Allow selected ports</span><span >&nbsp;and then select&nbsp;</span><span style="font-family: roboto; font-weight: bold;">RDP (3389)</span><span >&nbsp;and&nbsp;</span><span style="font-family: roboto; font-weight: bold;">HTTP (80)</span><span >&nbsp;from the drop-down.</span></p>
+<p ><img src="VRED_files/Image5.png" alt="" width="548" height="207" border="0" /></p>
+<p ><span >8.</span> <span >Under the Licencing click the check box </span></p>
+<p ><img src="VRED_files/Image6.png" alt="" width="457" height="133" border="0" /></p>
+<p ><span >9.</span> <a name="_Ref81315987"></a><span >In </span><span style="font-family: roboto; font-weight: bold;">Advanced</span><span > tab, under the Extensions click </span><span style="font-family: roboto; font-weight: bold;">Select an extension to install</span><span >, select </span><span style="font-family: roboto; font-weight: bold;">NVIDIA GPU Driver Extension</span><span > (user choice)</span></p>
+<p ><img src="VRED_files/Image7.png" alt="" width="548" height="158" border="0" /></p>
+<p ><span >10.</span> <span >Leave the remaining defaults and then select the&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Review + create</span><span >&nbsp;button at the bottom of the page.</span></p>
+<p ><span >11.</span> <span >After validation runs, select the&nbsp;Create&nbsp;button at the bottom of the page.</span></p>
+<p ><img src="VRED_files/Image8.png" alt="" width="432" height="48" border="0" /></p>
+<p ><span >12.</span> <span >After deployment is complete, select&nbsp;Go to resource.</span></p>
+<p ><img src="VRED_files/Image9.png" alt="" width="548" height="131" border="0" /></p>
+<p class="h2"><span >2.4</span> <a name="_Toc86074399"></a><span >Connect to virtual machine</span></p>
+<p ><span >Create a remote desktop connection to the virtual machine. These directions tells user how to connect to a VM from a Windows computer. On a Mac, user need an RDP client such as this&nbsp;</span><a href="https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12"><span >Remote Desktop Client</span></a><span >&nbsp;from the Mac App Store.</span></p>
+<p ><span >1.</span> <span >On the overview page for a virtual machine, select the&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Connect</span><span >&nbsp;button then select&nbsp;</span><span style="font-family: roboto; font-weight: bold;">RDP</span><span >.</span></p>
+<p ><img src="VRED_files/Image10.png" alt="" width="548" height="136" border="0" /></p>
+<p ><span >2.</span> <span >In the&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Connect with RDP</span><span >&nbsp;page, keep the default options to connect by IP address, over port 3389, and click&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Download RDP file</span><span >.</span></p>
+<p ><span >3.</span> <span >Open the downloaded RDP file and click&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Connect</span><span >&nbsp;when prompted.</span></p>
+<p ><span >4.</span> <span >In the&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Windows Security</span><span >&nbsp;window, select&nbsp;</span><span style="font-family: roboto; font-weight: bold;">More choices</span><span >&nbsp;and then&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Use a different account</span><span >. Type the username as&nbsp;</span><span style="font-family: roboto; font-weight: bold;">localhost</span><span >\</span><span >username</span><span >, enter the password created for the virtual machine, and then click&nbsp;</span><span style="font-family: roboto; font-weight: bold;">OK</span><span >.</span></p>
+<p ><span >5.</span> <span >User may receive a certificate warning during the sign-in process. Click&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Yes</span><span >&nbsp;or&nbsp;</span><span style="font-family: roboto; font-weight: bold;">Continue</span><span >&nbsp;to create the connection.</span></p>
+<p class="h2"><span >2.5</span> <a name="_Toc86074400"></a><span >Install Nvidia Drivers</span></p>
+<p ><span >To take advantage of the GPU capabilities of Azure N-series VMs backed by NVIDIA GPUs, user must install NVIDIA GPU drivers. </span></p>
+<p ><span >In two ways user can install the drivers,</span></p>
+<li>The&nbsp;NVIDIA GPU Driver Extension&nbsp;installs appropriate NVIDIA CUDA or GRID drivers on an N-series VM. Install or manage the extension using the Azure portal (Ref </span><span >9</span><span >)</span></p>
+<li>Install NVIDIA GPU drivers manually. (For the manual installation procedure follow </span><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/n-series-driver-setup/"><span >https://docs.microsoft.com/en-us/azure/virtual-machines/windows/n-series-driver-setup/</span></a><span >)</span></p>
+<p class="h1"><span >3</span> <a name="_Toc86074401"></a><span >Install VRED Application on Virtual Machine:</span></p>
+<p ><span >For installing Autodesk VRED on Azure VM, first go to user&rsquo;s Autodesk Account, check for the purchased products available in user account under the tab Products and Services. Here in current scenario installed VRED Professional.</span></p>
+<p ><img src="VRED_files/Image11.png" alt="" width="680" height="325" border="0" /></p>
+<p class="h2"><span >3.1</span> <a name="_Toc86074402"></a><span >License Manager Installation</span></p>
+<p ><span >As a prerequisite to install VRED Application on Azure Virtual Machine, Autodesk Network License Manager need to be installed on the VM.</span></p>
+<p ><span >Autodesk Network License Manager for windows platform can be found in the below link: </span><a href="https://knowledge.autodesk.com/search-result/caas/downloads/content/autodesk-network-license-manager-for-windows.html"><span >https://knowledge.autodesk.com/search-result/caas/downloads/content/autodesk-network-license-manager-for-windows.html</span></a></p>
+<p ><img src="VRED_files/Image12.png" alt="" width="680" height="209" border="0" /></p>
+<p ><span >User can install the Autodesk Network License Manager setup as shown in the below figure. Once user installs the setup, a folder with name Network License Manager will be created in the path &ldquo;C:\Autodesk\Network License Manager\ &ldquo;</span></p>
+<p ><img src="VRED_files/Image13.png" alt="" width="668" height="304" border="0" /></p>
+<p ><span >Now generate the license file from user&rsquo;s Autodesk account, and keep the license file in the Network License Manager folder. Create a text file with name &ldquo;debug.log&rdquo; and keep it in the same Network License Manager folder.</span></p>
+<p ><span >Generating license file:</span></p>
+<p ><img src="VRED_files/Image14.png" alt="" width="667" height="296" border="0" /></p>
+<p ><span >From the Autodesk account, Select VRED Professional downloads, open the above GUI and click on Generate network license file. In this case Network License file for VRED Professional is used. User can find their type of license from Products and Services tab in the Autodesk account. For next step user will be required to fill the details of Server or VM Name and Physical address. Physical Address or MAC address, one can get by typing &ldquo;ipconfig /all&rdquo; in the command prompt. After filling those details and selecting the Product for which license has to be generated, user can click on Get License File, the license file will be generated.</span></p>
+<p ><span >Below figure shows the above explained steps.</span></p>
+<p ><img src="VRED_files/Image15.png" alt="" width="680" height="285" border="0" /></p>
+<p ><span >From the windows search bar, open lmtools, a GUI will open as shown below. Select Config Services and name the service name, in this case it named as Autodesk Network License Manager. Give the license file path where we placed it and also fill the other paths as shown here. Now tick mark the &lsquo;Start Server at Power Up&rsquo; at bottom and select &lsquo;Save Service&rsquo; button and then follow the automatic messages which will pop up. </span></p>
+<p ><img src="VRED_files/Image16.png" alt="" width="680" height="369" border="0" /></p>
+<p ><span >Now select the Start/Stop/Reread button from the top ribbon and then select Start Server as shown in the figure below. The service name &ndash; &lsquo;Autodesk Network License Manager&rsquo; should be seen under blue colour.</span></p>
+<p ><img src="VRED_files/Image17.png" alt="" width="680" height="390" border="0" /></p>
+<p ><span >Once user clicks on start server, the below GUI should show up with service name &ldquo;Autodesk Network License Manager&rdquo;. Now the License Manager installation is complete. User can start downloading the VRED application and install it in the same Virtual Machine</span></p>
+<p ><img src="VRED_files/Image18.png" alt="" width="680" height="305" border="0" /></p>
+<p ><a name="_Toc81413120"></a></p>
+<p ><a name="_Toc81413120"></a><a name="_Toc81411723"></a></p>
+<p class="h2"><span >3.2</span> <a name="_Toc86074403"></a><span >Product download and Install procedure</span></p>
+<p ><a name="_Toc81411723"></a></p>
+<p ><span >From the Autodesk account, go to products purchased and then select the product, in this case VRED Professional and click on downloads, then this GUI will open, user can see Install now option. Click on that and follow the prompt, VRED application will be installed.</span></p>
+<p ><img src="VRED_files/Image19.png" alt="" width="680" height="419" border="0" /><a name="_Toc81390111"></a><a name="_Toc81330559"></a></p>
+<p ><a name="_Toc81330559"></a></p>
+<p class="h1"><span >4</span> <a name="_Toc86074404"></a><span >Performance results of Autodesk VRED on Azure Virtual Machines</span></p>
+<p ><a name="_Toc81330559"></a></p>
+<p class="h2"><span >4.1</span> <a name="_Toc86074405"></a><span >Autodesk VRED overview:</span></p>
+<p ><span >Autodesk VRED is a visualization software which helps Automotive Designers and Engineers create product presentations, design reviews and virtual prototypes using interactive CPU and GPU ray tracing. Autodesk VRED, which was previously limited to CPU, now leverages GPU technology to support the high demands of consumers and provide interactive ray tracing and AI-powered Denoising. This allows users to gain immediate visual feedback to see how a vehicle&rsquo;s aesthetics will interact with different environments in real time</span></p>
+<p ><span >Autodesk VRED enables users to create digital prototypes so they can gain insight into how vehicles will look and perform. To be effective in guiding design decisions, the digital prototypes need to look and behave as close as possible to the real thing</span></p>
+<p ><span >4.1.1</span> <a name="_Toc86074406"></a><span >Rendering</span></p>
+<p ><span >The term rendering defines the automatic process of&nbsp;generating digital images from three-dimensional models, by means of a special software. These images simulate project or 3D model&rsquo;s photorealistic environments, materials, lights and objects.</span></p>
+<p ><span >Types of Rendering</span></p>
+<p ><span >Rendering Real Time</span><span >: </span><span >Real-time rendering is mainly&nbsp;used in gaming and interactive graphics, where images are calculated from 3D information at a very fast pace. As a result, dedicated graphics hardware have improved the performance of real-time rendering ensuring rapid image processing.</span></p>
+<p ><span >Rendering offline:</span> <span >Offline rendering is a technique mainly used in&nbsp;situations where the need for processing speed is lower. Visual effects work where photorealism needs to be at highest standard possible. There is no unpredictability, unlike real time</span></p>
+<p class="h2"><span >4.2</span> <a name="_Toc86074407"></a><span >Autodesk VRED on Azure Platform:</span></p>
+<p ><span >When it comes to performance parameters, rendering is one parameter which need to be carried out on visualization and design software. Often designers spend a lot of time in rendering process. With advanced capabilities like CPU &amp; GPU ray tracing, VRED has drastically reduced the Render times over the period. To carry out these complex and heavy rendering simulations on VRED software, right hardware is must. </span><span >Microsoft</span> <span >partnered with</span> <span >Nvidia</span><span > provides the required and suitable Infrastructure and hardware on Azure cloud platform. Microsoft Azure provides the latest and fastest compute capabilities for both CPU &amp; GPU intensive workloads.</span></p>
+<p class="h2"><span >4.3</span> <a name="_Toc86074408"></a><span >Autodesk VRED Settings for </span><a name="_Toc81323181"></a><span >expected performance</span></p>
+<p ><span >For the current expected performance activity, carried out offline image rendering task and calculated the render times for CPU ray tracing and GPU Ray tracing. We carried out this activity with varying GPU number from the VRED application, and then compared the render time differences between CPU &amp; GPU raytracing.</span></p>
+<p ><span >4.3.1</span> <a name="_Toc86074409"></a><span >Opening </span><span >Autodesk </span><span >VRED Model</span></p>
+<p ><span >Open the VRED Application and load the VRED Model into the application, here in this case using a prebuilt car model.</span></p>
+<div class="overflow-table"><table><colgroup><col  /><col  /></colgroup>
+<tbody>
+<tr>
+<td >
+<p ><img src="VRED_files/Image20.png" alt="C:\Users\vipamula\OneDrive - Capgemini\Desktop\New_folder\Azure_Cloud_CAE\Microsoft_Project\Phase1\Work_Inprogress\AUGUST\Daily_Progress\W5_Aug30\VRED_Benchmarking\Screenshots_vred1\Screenshot (38).png" width="343" height="382" border="0" /></p>
+</td>
+<td >
+<p ><img src="VRED_files/Image21.png" alt="" width="342" height="267" border="0" /></p>
+</td>
+</tr>
+<tr>
+<td >&nbsp;</td>
+</tr>
+</tbody>
+</table></div>
+<p ><span >4.3.2</span> <a name="_Toc86074410"></a><span >CPU and GPU Raytracing:</span></p>
+<p ><span style="color:#0563c1;">Ray tracing</span></p>
+<p ><span >Ray tracing is a rendering technique that can produce incredibly realistic lighting effects. Ray tracing generates lifelike shadows and reflections, along with much-improved translucence and scattering, taking into account light phenomena such as reflection and refraction. The popularity gained by ray tracing lays the foundation in the realistic simulation of light compared to other rendering models (such as scanline rendering or ray casting).</span></p>
+<p ><span >We can activate the CPU and GPU Raytracing options in VRED based on our Rendering requirements. Below figure shows how to activate CPU/GPU Raytracing in VRED application</span></p>
+<p ><img src="VRED_files/Image22.png" alt="" width="576" height="197" border="0" /></p>
+<p ><span >4.3.3</span> <a name="_Toc86074411"></a><span >Antialiasing settings</span></p>
+<p ><span >For the CPU and GPU raytracing rendering, we have kept the antialiasing option to high as shown in the figure below</span></p>
+<p ><img src="VRED_files/Image23.png" alt="" width="529" height="315" border="0" /></p>
+<p ><span >4.3.4</span> <a name="_Toc86074412"></a><span >Render settings</span></p>
+<p ><span >For render setting select the render option in VRED as shown below</span></p>
+<p ><img src="VRED_files/Image24.png" alt="" width="576" height="155" border="0" /></p>
+<p ><span >Saving the Images: </span><span >User can save the image rendered in the desired location or path in desktop from selecting the option under Image option from Render settings tab. The image size like HD or 4K is also selected from the dropdown box under Image Size Presents. Here we have selected HD Image</span></p>
+<p ><img src="VRED_files/Image24.png" alt="" width="566" height="184" border="0" /></p>
+<p ><span style="font-family: roboto; font-weight: bold; color:#0563c1">General Settings:</span> <span >For CPU and GPU Raytracing, Image samples have to be selected for Antialiasing, more the number the number of samples, better the antialiasing output. Under general settings, we have selected the maximum number, 1024 Image samples for Antialiasing. For open GL less number can be selected like 16 to 32 samples.</span></p>
+<p ><img src="VRED_files/Image25.png" alt="" width="583" height="267" border="0" /></p>
+<p ><span style="font-family: roboto; font-weight: bold; color:#0563c1">Raytracing Quality:</span></p>
+<p ><span >For Illumination mode for both interactive and still frame mode, Full Global Illumination option is selected under the Raytracing Quality settings</span></p>
+<p ><a name="_Toc81390120"></a></p>
+<p ><a name="_Toc81390120"></a><a name="_Toc81330568"></a></p>
+<p ><a name="_Toc81330568"></a></p>
+<p class="h2"><span >4.4</span> <a name="_Toc86074413"></a><span >Autodesk</span><span > VRED Performance Results</span></p>
+<p ><a name="_Toc81330568"></a><a name="_Toc81323186"></a><span > on NCas_T4 VM</span></p>
+<p ><span >To Analyse the performance </span><span >of VRED, carried out Rendering using CPU and GPU raytracing for 4K and HD Images, and then compared CPU, GPU render times. The aim of this rendering process is to compare the GPU Rendering performance with respect to CPU Rendering. For CPU rendering, the application is utilizing all the 64 Cores. We then performed GPU rendering with varying GPU numbers 1,2,3 and 4 on the same VM. The below graphs show all the results,</span></p>
+<p ><img src="VRED_files/Image26.png" alt="" width="417" height="274" border="0" /></p>
+<p ><img src="VRED_files/Image27.png" alt="" width="419" height="279" border="0" /></p>
+<p ><span >Relative speedup between CPU and GPU raytracing:</span></p>
+<p ><img src="VRED_files/Image28.png" alt="" width="441" height="293" border="0" /></p>
+<div>
+<p ><img src="VRED_files/Image29.png" alt="" width="443" height="305" border="0" /></p>
+<p class="h2"><span >4.5</span> <a name="_Toc86074414"></a><span >Autodesk</span><span > VRED Performance Results on NVv3 VM</span></p>
+<p ><span >The below graphs shows the performance results for NVv3 VM.</span></p>
+<p ><img src="VRED_files/Image30.png" alt="" width="433" height="280" border="0" /></p>
+<p ><img src="VRED_files/Image31.png" alt="" width="435" height="280" border="0" /></p>
+<p ><span >Note: GPU Rendering with 1 GPU settings on NVv3 VMs, application produced an error while rendering with 4K and higher resolution setting. It works fine with HD image rendering. It depends on the model complexity and environment setting for the model. For larger scale models, 1 GPU setting is not recommended.</span></p>
+<p ><span >Relative speedup between CPU and GPU raytracing:</span></p>
+<p ><img src="VRED_files/Image32.png" alt="" width="394" height="307" border="0" /></p>
+<p ><img src="VRED_files/Image33.png" alt="" width="393" height="270" border="0" /></p>
+<p class="h1"><span >5</span> <a name="_Toc86074415"></a><span >Azure Cost</span></p>
+<p ><span >For the below cost reports, the application installation time and pre-processing time is not considered, only considered the rendering time for 4K and HD images. The Hourly rates reported are subject to change. For the current rate please refer the link <a href="https://azure.microsoft.com/en-in/pricing/calculator/"><span>“https://azure.microsoft.com/en-in/pricing/calculator/”</span></a>.</span></p>
+<p ><span style="font-family: roboto; font-weight: bold; color:#0563c1">GPU Rendering cost for 4K Image on Azure VMs</span></p>
+</div>
+<div class="overflow-table"><table><colgroup><col  /><col  /><col  /><col  /><col  /></colgroup>
+<tbody>
+<tr >
+<td >
+<p ><span >VM Name</span></p>
+</td>
+<td >
+<p ><span ># GPUs on VM</span></p>
+</td>
+<td >
+<p ><span >Azure VM hourly cost ($)</span></p>
+</td>
+<td >
+<p ><span >4K Image Render time</span></p>
+</td>
+<td >
+<p ><span >Total Azure Cost</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >NC64as_T4_v3</span></p>
+</td>
+<td >
+<p ><span >4</span></p>
+</td>
+<td >
+<p ><span >$8.60</span></p>
+</td>
+<td >
+<p ><span >11 min 47 sec</span></p>
+</td>
+<td >
+<p ><span >$1.69</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >NV48s_v3</span></p>
+</td>
+<td >
+<p ><span >4</span></p>
+</td>
+<td >
+<p ><span >$8.59</span></p>
+</td>
+<td >
+<p ><span >49 min 21 sec</span></p>
+</td>
+<td >
+<p ><span >$7.06</span></p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p ><span style="font-family: roboto; font-weight: bold; color:#0563c1">CPU Rendering cost for 4K Image on Azure VMs</span></p>
+<div class="overflow-table"><table><colgroup><col  /><col  /><col  /><col  /><col  /></colgroup>
+<tbody>
+<tr >
+<td >
+<p ><span >VM Name</span></p>
+</td>
+<td >
+<p ><span >No. of CPU cores</span></p>
+</td>
+<td >
+<p ><span >Azure VM hourly cost ($)</span></p>
+</td>
+<td >
+<p ><span >4K Image Render time</span></p>
+</td>
+<td >
+<p ><span >Total Azure Cost</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >NC64as_T4_v3</span></p>
+</td>
+<td >
+<p ><span >64</span></p>
+</td>
+<td >
+<p ><span >$8.60</span></p>
+</td>
+<td >
+<p ><span >21 min 13 sec</span></p>
+</td>
+<td >
+<p ><span >$3.04</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >NV48s_v3</span></p>
+</td>
+<td >
+<p ><span >48</span></p>
+</td>
+<td >
+<p ><span >$8.59</span></p>
+</td>
+<td >
+<p ><span >55 min 48 sec</span></p>
+</td>
+<td >
+<p ><span >$8.00</span></p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p ><span style="font-family: roboto; font-weight: bold; color:#0563c1">GPU Rendering cost for HD Image on Azure VMs</span></p>
+<div class="overflow-table"><table><colgroup><col  /><col  /><col  /><col  /><col  /></colgroup>
+<tbody>
+<tr >
+<td >
+<p ><span >VM Name</span></p>
+</td>
+<td >
+<p ><span ># GPUs on VM</span></p>
+</td>
+<td >
+<p ><span >Azure VM hourly cost ($)</span></p>
+</td>
+<td >
+<p ><span >HD Image Render time</span></p>
+</td>
+<td >
+<p ><span >Total Azure Cost</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >NC64as_T4_v3</span></p>
+</td>
+<td >
+<p ><span >4</span></p>
+</td>
+<td >
+<p ><span >$8.60</span></p>
+</td>
+<td >
+<p ><span >3 min 48 sec</span></p>
+</td>
+<td >
+<p ><span >$0.54</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >NV48s_v3</span></p>
+</td>
+<td >
+<p ><span >4</span></p>
+</td>
+<td >
+<p ><span >$8.59</span></p>
+</td>
+<td >
+<p ><span >15 min 49 sec</span></p>
+</td>
+<td >
+<p ><span >$2.26</span></p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p ><span style="font-family: roboto; font-weight: bold; color:#0563c1">CPU Rendering cost for HD Image on Azure VMs</span></p>
+<div class="overflow-table"><table><colgroup><col  /><col  /><col  /><col  /><col  /></colgroup>
+<tbody>
+<tr >
+<td >
+<p ><span >VM Name</span></p>
+</td>
+<td >
+<p ><span >No. of CPU cores</span></p>
+</td>
+<td >
+<p ><span >Azure VM hourly cost ($)</span></p>
+</td>
+<td >
+<p ><span >HD Image Render time</span></p>
+</td>
+<td >
+<p ><span >Total Azure Cost</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >NC64as_T4_v3</span></p>
+</td>
+<td >
+<p ><span >64</span></p>
+</td>
+<td >
+<p ><span >$8.60</span></p>
+</td>
+<td >
+<p ><span >5 min 48 sec</span></p>
+</td>
+<td >
+<p ><span >$0.83</span></p>
+</td>
+</tr>
+<tr >
+<td >
+<p ><span >NV48s_v3</span></p>
+</td>
+<td >
+<p ><span >48</span></p>
+</td>
+<td >
+<p ><span >$8.59</span></p>
+</td>
+<td >
+<p ><span >14 min 27 sec</span></p>
+</td>
+<td >
+<p ><span >$2.07</span></p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="h1"><span >6</span> <a name="_Toc86074416"></a><span >Summary</span></p>
+<p ><span >1.</span> <span >VRED Application is successfully deployed and tested on NCas_T4_v3 series VMs and NVv3 series Virtual Machines on Azure Platform</span></p>
+<p ><span >2.</span> <span >NC64as_T4 VM, GPU rendering is 1.8 times faster than the CPU rendering. </span></p>
+<p ><span >3.</span> <span >NC64as_T4 Virtual Machine is recommended for VRED application as it demonstrated a better performance for both CPU and GPU rendering timelines.</span></p>
+<p ><span >4.</span> <span >For NVv3 VM, it was observed that there isn&rsquo;t much improvement in GPU rendering times compared to CPU rendering time.</span></p>
+
+      </div><!--content-->
+      
+     <div class="col-4 col-md-2 px-1 px-sm-0 toc">
+        <label class="px-3">Table of Contents</label>
+
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc86074394"><span> 1</span><span> Introduction</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc86074395"><span> 2</span><span> Deploy Virtual Machine on Azure Cloud Platform</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc86074396"><span> 2.1</span><span> Azure Cloud Architecture for Application</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc86074397"><span> 2.2</span><span> Azure Virtual Machine (VM)</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc86074398"><span> 2.3</span><span> Create a Virtual Machine on Azure Platform</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc86074399"><span> 2.4</span><span> Connect to virtual machine</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc86074400"><span> 2.5</span><span> Install Nvidia Drivers</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc86074401"><span> 3</span><span> Install VRED Application on Virtual Machine:</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc86074402"><span> 3.1</span><span> License Manager Installation</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc86074403"><span> 3.2</span><span> Product download and Install procedure</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc86074404"><span> 4</span><span> Performance results of Autodesk VRED on Azure Virtual Machines</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc86074405"><span> 4.1</span><span> Autodesk VRED overview:</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 22pt;"><a href="#_Toc86074406"><span> 4.1.1</span><span> Rendering</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc86074407"><span> 4.2</span><span> Autodesk VRED on Azure Platform:</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc86074408"><span> 4.3</span><span> Autodesk VRED Settings for expected performance</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 22pt;"><a href="#_Toc86074409"><span> 4.3.1</span><span> Opening </span><span> Autodesk </span><span> VRED Model</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 22pt;"><a href="#_Toc86074410"><span> 4.3.2</span><span> CPU and GPU Raytracing:</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 22pt;"><a href="#_Toc86074411"><span> 4.3.3</span><span> Antialiasing settings</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 22pt;"><a href="#_Toc86074412"><span> 4.3.4</span><span> Render settings</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc86074413"><span> 4.4</span><span> Autodesk</span><span>  VRED Performance Results on NCas_T4 VM</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc86074414"><span> 4.5</span><span> Autodesk</span><span>  VRED Performance Results on NVv3 VM</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc86074415"><span> 5</span><span> Azure Cost</span></a></p>
+            <p style=" padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a href="#_Toc86074416"><span> 6</span><span> Summary</span></a></p>
+     </div>
+
+    </div><!--rpt-->
+
+
+      </section>
+          
+      <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
+ 
+    </main>
+
+    <footer>
+      <div class="row g-0">		
+        <div class="container text-center mx-auto">
+        <div class="container px-3 d-flex justify-content-between flex-column flex-md-row-reverse my-auto">
+          <div>
+            <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo" />
+            <span class="logoline-bot1"></span> 
+            <span class="px-1 px-sm-2">
+              <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo" />
+            </span>
+      </div>
+            <div class="text-uppercase align-self-center pt-3 pt-md-2 footer-text">Copyright &copy; 2021 Azure HPC</div>
+          </div>
+        </div>
+      </div>
+      </footer>
+    </div><!--wrapper-->
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+    <script> 
+    
+      let mybutton = document.getElementById("btn-back-to-top");  
+      
+      // When the user clicks on the button, scroll to the top of the document
+      mybutton.addEventListener("click", backToTop);
+    
+    </script>
+    
+    </body>
+    </html>

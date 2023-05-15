@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="shortcut icon" href="img/icon.ico">
+    <link rel="Stylesheet" href="css/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;0,300;0,400;1,400&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script type="text/javascript" src="js/script.js"></script>
+
+    <script src="https://kit.fontawesome.com/3d0a07deaa.js" crossorigin="anonymous"></script>
+    
+    <title>Azure HPC | Sandi HiFUN Report</title>
+</head>
+<body>
+    <div id="wrapper" class="row g-0">
+      
+        <header class="container-fluid">   
+          <div class="logo container">
+            <div class="title-text"><a href="index.html">Azure <span>HPC</span></a></div>
+           
+            <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo">
+            <span class="logoline-top1"></span> <span class="px-1 px-sm-2">
+               <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo">
+            </span>
+          
+          </div>
+        </header>
+  
+      <main class="container-fluid">
+  
+        <section class="container-lg px-3 px-lg-0 rpt-wrapper">  
+    <h3 class="text-center text-uppercase py-4"><!--The Report title goes here-->  Azure HPC Recipe Document for Sandi HiFUN </h3>
+    <div class="d-flex flex-row rpt">
+        <div class="col-2 px-1 px-sm-0 text-left index">
+
+            <label class="px-3">Sandi HiFUN</label>
+    <div class="index-scroll">
+    <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_Azure"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">1 </span><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">Introduction</span></a></p>
+    <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_Installation_of_Sandi_HiFUN"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">2 </span><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">Installation of Sandi HiFUN </span></a></p>
+    <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_Performance_results_of"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">3 </span><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">Performance results of Sandi HiFUN </span></a></p>
+    <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_Pricing"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">4 </span><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">Azure pricing</span></a></p> 
+    <p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 0pt;"><a style="text-decoration: none;" href="#_Additional_notes"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">5 </span><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0563c1;">Additional notes ,Contributors,Next steps</span></a></p>
+    
+        </div>
+        </div>
+     <div class="col-8 col-md-8 px-3 content">
+        <div>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 24pt;"><a name="_Azure"></a><span style="font-family: 'Segoe UI'; font-weight: bold;">Deploy Sandi HiFUN for HPC on a virtual machine </span></p>
+            <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 150%; font-size: 11pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717; background-color: #ffffff;">This article briefly describes the steps for running </span><a style="text-decoration: none;" href="https://sandi.co.in/"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0000ff; background-color: #ffffff;">Sandi&rsquo;s</span></a> <span style="font-family: 'Segoe UI'; color: #171717; background-color: #ffffff;">HiFUN application on a virtual machine (VM) that's deployed on Azure. It also presents the performance results of running HiFUN on Azure.</span></p>
+            <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 115%; font-size: 11pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI';">HiFUN is a state-of-the-art, general purpose CFD software, proprietary of S &amp; I</span> <span style="font-family: 'Segoe UI';">Engineering Solutions Pvt. Ltd. a technology company incubated</span> <span style="font-family: 'Segoe UI';">from IISc Bengaluru.</span></p>
+            <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 115%; font-size: 11pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI';">Sandi has developed one of the most high performance computing (HPC) friendly commercial Computational Fluid </span><span style="font-family: 'Segoe UI';">Dynamics (CFD) software HiFUN. </span><span style="font-family: 'Segoe UI';">It is capable of simulating airflow over flying configurations, automobiles as well as structures such as buildings, ships etc.</span></p>
+            <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+            <li style="margin-left: 28.06pt; line-height: 115%; padding-left: 7.94pt; font-family: serif; font-size: 11pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: 'Segoe UI';">HiFUN is a robust, fast and accurate solver providing aerodynamic design data in an</span> <span style="font-family: 'Segoe UI';">attractive turnaround time.</span></li>
+            <li style="margin-left: 28.06pt; line-height: 115%; padding-left: 7.94pt; font-family: serif; font-size: 11pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: 'Segoe UI';">HiFUN Application: Aerospace, Automotive, Industrial Engineering, Wind Engineering</span></li>
+            <li style="margin-left: 28.06pt; line-height: 115%; padding-left: 7.94pt; font-family: serif; font-size: 11pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: 'Segoe UI';">HiFUN employs unstructured cell center finite volume method capable of handling</span> <span style="font-family: 'Segoe UI';">complex geometries and complicated flow physics in a typical industry environment.</span></li>
+            <li style="margin-left: 28.06pt; line-height: 115%; padding-left: 7.94pt; font-family: serif; font-size: 11pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: 'Segoe UI';">HiFUN employs MPI directives for parallel computing on distributed memory HPC.</span></li>
+            <li style="margin-left: 28.06pt; line-height: 115%; padding-left: 7.94pt; font-family: serif; font-size: 11pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: 'Segoe UI';">An important strength of HiFUN solver is its ability to scale over several thousands of</span> <span style="font-family: 'Segoe UI';">processor cores</span></li>
+            <li style="margin-left: 28.06pt; line-height: 115%; padding-left: 7.94pt; font-family: serif; font-size: 11pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: 'Segoe UI';">OpenACC constructs are used for porting HiFUN on to NVIDIA GPUs for parallel</span> <span style="font-family: 'Segoe UI';">computing using hybrid HPC platform</span></li>
+            <li style="margin-left: 28.06pt; line-height: 115%; padding-left: 7.94pt; font-family: serif; font-size: 11pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: 'Segoe UI';">The accuracy of HiFUN has been amply demonstrated in various international CFD code evaluation exercises such as AIAA Drag Prediction and High Lift Prediction</span><span style="font-family: 'Segoe UI';"> w</span><span style="font-family: 'Segoe UI';">orkshop</span></li>
+            <li style="margin-left: 28.06pt; line-height: 115%; padding-left: 7.94pt; font-family: serif; font-size: 11pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: 'Segoe UI';">HiFUN is being routinely used in major Indian defense and space organizations</span></li>
+            </ul>
+            <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 115%; font-size: 11pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI';">To test </span><span style="font-family: 'Segoe UI';">the </span><span style="font-family: 'Segoe UI';">performance of </span><span style="font-family: 'Segoe UI';">Sandi HiFUN</span><span style="font-family: 'Segoe UI';"> on Azure Platform </span><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/hbv3-series"><span style="font-family: 'Segoe UI'; color: #0563c1; background-color: #ffffff;">HBv3-Series</span></a> <span style="font-family: 'Segoe UI';">virtual</span><span style="font-family: 'Segoe UI';"> machines are</span><span style="font-family: 'Segoe UI';"> deployed.</span></p>
+            <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 18pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;">Architecture</span></p>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; line-height: 108%; font-size: 11pt;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="img/SandiHiFUN_files/Picture2.png" alt="Diagram that shows an architecture for running HiFUN on Azure." width="624" height="577" /></p>
+            <h2 style="margin-top: 14pt; margin-bottom: 14pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">Components</span></h2>
+            <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://azure.microsoft.com/services/virtual-machines"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Azure Virtual Machines</span></a><span style="font-family: 'Segoe UI'; font-size: 11pt;">. Create Linux and Windows virtual machines in seconds.</span></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://azure.microsoft.com/services/virtual-network"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Azure Virtual Network</span></a><span style="font-family: 'Segoe UI'; font-size: 11pt;">. Use Virtual Network to create your own private network infrastructure in the cloud.</span></li>
+            </ul>
+            <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 18pt; background-color: #ffffff;"><a name="_Installation_of_Sandi_HiFUN"></a><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;">Install </span><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;">Sandi HiFUN</span><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;"> on a VM</span></p>
+            <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 115%; font-size: 11pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717; background-color: #ffffff;">Before you install HiFUN, you need to deploy and connect a VM</span></p>
+            <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><a name="_Toc81323168"></a><a name="_Toc81330550"></a><a name="_Toc81389015"></a><a name="_Toc81405760"></a><a name="_Toc85794187"></a><a name="_Toc85794514"></a><a name="_Toc85798817"></a><a name="_Toc92365897"></a><a name="_Toc81405765"></a><a name="_Toc85794192"></a><a name="_Toc85794519"></a><a name="_Toc85798823"></a><a name="_Toc92365903"></a><a name="_Install_Sandi_HiFUN"></a><a name="_Toc85794193"></a><a name="_Toc85794520"></a><a name="_Toc85798824"></a><a name="_Toc92365904"></a><a name="_Toc81399916"></a><a name="_Toc81405767"></a><a name="_Toc85794194"></a><a name="_Toc85794521"></a><a name="_Toc85798825"></a><a name="_Toc92365905"></a><a name="_Toc81399917"></a><a name="_Toc81405768"></a><a name="_Toc85794196"></a><a name="_Toc85794523"></a><a name="_Toc85798827"></a><a name="_Toc92365906"></a> <span style="font-family: 'Segoe UI'; color: #171717;">For information about deploying the VM and installing the drivers, see one of these articles:</span></p>
+            <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/n-tier/windows-vm"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Run a Windows VM on Azure</span></a></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/n-tier/linux-vm"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Run a Linux VM on Azure</span></a></li>
+            </ul>
+            <p style="margin-top: 14pt; margin-bottom: 14pt; line-height: 115%; font-size: 11pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">For Installing </span><span style="font-family: 'Segoe UI'; color: #171717;">Sandi HiFUN</span><span style="font-family: 'Segoe UI'; color: #171717;"> on Azure Virtual Machine, Users can connect with </span><span style="font-family: 'Segoe UI'; color: #171717;">Sandi</span><span style="font-family: 'Segoe UI'; color: #171717;"> by </span><span style="font-family: 'Segoe UI'; color: #171717;">contacting at</span> <a style="text-decoration: none;" href="mailto:sales@sandi.co.in"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0000ff;">sales@sandi.co.in</span></a> <span style="font-family: 'Segoe UI';">and </span><a style="text-decoration: none;" href="mailto:info@sandi.co.in"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0000ff;">info@sandi.co.in</span></a></p>
+            <p style="margin-top: 14pt; margin-bottom: 14pt; line-height: 115%; font-size: 11pt; background-color: #ffffff;">&nbsp;</p>
+            <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 18pt; background-color: #ffffff;"><a name="_Performance_results_of"></a><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;">Performance</span> <span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;">results of</span> <span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;">Sandi HiFUN</span><span style="font-family: 'Segoe UI'; font-weight: bold; color: #171717;"> on Azure VM</span></p>
+            <p style="margin-top: 6pt; margin-bottom: 8pt; line-height: 11.9pt; background-color: #ffffff;"><a name="_Toc81323186"></a><a name="_Toc81330568"></a><a name="_Toc81390120"></a><a name="_Toc81411733"></a><a name="_Toc81413130"></a><a name="_Toc81420241"></a><a name="_Toc81498996"></a><a name="_Toc85794200"></a><a name="_Toc85794527"></a><a name="_Toc85798831"></a><a name="_Toc92365908"></a><span style="font-family: 'Segoe UI'; font-size: 11pt; color: #171717; background-color: #ffffff;">The Windsor model is used for this performance evaluation. The model details are shown below,</span></p>
+            <table style="width: 100%; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr style="height: 16pt;  ">
+            <td style="border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;   " colspan="2">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;  "><span style="font-family: 'Segoe UI'; font-weight: bold;  ">Flow Conditions</span></p>
+            </td>
+            </tr>
+            <tr style="height: 16pt;">
+            <td style="width: 48.46%; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Parameter</span></p>
+            </td>
+            <td style="width: 51.54%; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Value</span></p>
+            </td>
+            </tr>
+            <tr style="height: 14.5pt;">
+            <td style="width: 48.46%; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Mach No.</span></p>
+            </td>
+            <td style="width: 51.54%; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">0.1207</span></p>
+            </td>
+            </tr>
+            <tr style="height: 14.5pt;">
+            <td style="width: 48.46%; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Velocity</span></p>
+            </td>
+            <td style="width: 51.54%; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">40 m/s</span></p>
+            </td>
+            </tr>
+            <tr style="height: 14.5pt;">
+            <td style="width: 48.46%; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Reynolds Number</span></p>
+            </td>
+            <td style="width: 51.54%; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.8 Million</span></p>
+            </td>
+            </tr>
+            <tr style="height: 14.5pt;">
+            <td style="width: 48.46%; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Flow Direction</span></p>
+            </td>
+            <td style="width: 51.54%; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Aligned to X axis</span></p>
+            </td>
+            </tr>
+            <tr style="height: 16pt;background-color: #f4f4f4;">
+            <td style="border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;background-color: #f4f4f4;" colspan="2">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;background-color: #f4f4f4;"><span style="font-family: 'Segoe UI'; font-weight: bold; ">Workload </span></p>
+            </td>
+            </tr>
+            <tr style="height: 16pt;">
+            <td style="width: 48.46%; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Model </span></p>
+            </td>
+            <td style="width: 51.54%; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Windsor Car Body </span></p>
+            </td>
+            </tr>
+            <tr style="height: 14.5pt;">
+            <td style="width: 48.46%; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">No. of volumes</span></p>
+            </td>
+            <td style="width: 51.54%; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">7.456 Million</span></p>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+            <p style="margin-top: 6pt; margin-bottom: 8pt; line-height: 11.9pt; background-color: #ffffff;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="img/SandiHiFUN_files/afmkr-u5ku7.002.png" alt="Image that shows a Windsor car model" width="624" height="366" /></p>
+            <h4 style="margin-top: 2pt; margin-bottom: 0pt; page-break-inside: avoid; page-break-after: avoid; line-height: 108%; font-size: 11pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">Performance results for HBv3 on Sandi HiFUN 4.1.1</span></h4>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 11pt;">&nbsp;</p>
+            <div style="text-align: center;">
+            <table style="width: 100%; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr style="height: 33.4pt;">
+            <td style="width: 27.42%; padding-right: 5.4pt; padding-left: 5.4pt; vertical-align: middle; background-color: #a5a5a5;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><a name="_Toc92365909"></a><span style="font-family: 'Segoe UI'; font-weight: bold;">VM Instances</span></p>
+            </td>
+            <td style="width: 16.98%; padding-right: 5.4pt; padding-left: 5.4pt; vertical-align: middle; background-color: #a5a5a5;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">No of iterations</span></p>
+            </td>
+            <td style="width: 35.64%; padding-right: 5.4pt; padding-left: 5.4pt; vertical-align: middle; background-color: #a5a5a5;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">T</span><span style="font-family: 'Segoe UI'; font-weight: bold;">ime taken per iteration</span><br /><span style="font-family: 'Segoe UI'; font-weight: bold;">(S)</span></p>
+            </td>
+            <td style="width: 19.96%; padding-right: 5.4pt; padding-left: 5.4pt; vertical-align: middle; background-color: #a5a5a5;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Relative</span> <span style="font-family: 'Segoe UI'; font-weight: bold;">Speed-up</span></p>
+            </td>
+            </tr>
+            <tr style="height: 14.5pt;">
+            <td style="width: 27.42%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Standard_HB120-16rs_v3</span></p>
+            </td>
+            <td style="width: 16.98%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI';">100</span></p>
+            </td>
+            <td style="width: 35.64%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI';">10.13</span></p>
+            </td>
+            <td style="width: 19.96%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI';">1.00</span></p>
+            </td>
+            </tr>
+            <tr style="height: 14.5pt;">
+            <td style="width: 27.42%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Standard_HB120-32rs_v3</span></p>
+            </td>
+            <td style="width: 16.98%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI';">100</span></p>
+            </td>
+            <td style="width: 35.64%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI';">5.29</span></p>
+            </td>
+            <td style="width: 19.96%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI';">1.91</span></p>
+            </td>
+            </tr>
+            <tr style="height: 14.5pt;">
+            <td style="width: 27.42%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Standard_HB120-64rs_v3</span></p>
+            </td>
+            <td style="width: 16.98%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI';">100</span></p>
+            </td>
+            <td style="width: 35.64%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI';">2.76</span></p>
+            </td>
+            <td style="width: 19.96%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI';">3.67</span></p>
+            </td>
+            </tr>
+            <tr style="height: 14.5pt;">
+            <td style="width: 27.42%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Standard_HB120-96rs_v3</span></p>
+            </td>
+            <td style="width: 16.98%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI';">100</span></p>
+            </td>
+            <td style="width: 35.64%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI';">2.00</span></p>
+            </td>
+            <td style="width: 19.96%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI';">5.07</span></p>
+            </td>
+            </tr>
+            <tr style="height: 14.5pt;">
+            <td style="width: 27.42%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Standard_HB120rs_v3</span></p>
+            </td>
+            <td style="width: 16.98%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI';">100</span></p>
+            </td>
+            <td style="width: 35.64%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI';">1.70</span></p>
+            </td>
+            <td style="width: 19.96%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI';">5.96</span></p>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+            <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 11.9pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; font-size: 11pt; font-weight: bold;">Note: </span><span style="font-family: 'Segoe UI'; font-size: 11pt;">In order to neglect the impact of IOPS, average time taken from 51-60 iterations.</span></p>
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; line-height: 11.9pt; background-color: #ffffff;">&nbsp;</p>
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: left; line-height: 11.9pt; background-color: #ffffff;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="img/SandiHiFUN_files/Picture1.png" alt="" width="557" height="344" /></p>
+            <p style="margin-top: 0pt; margin-bottom: 0pt; line-height: 11.9pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; font-size: 11pt; font-weight: bold;">Note: </span><span style="font-family: 'Segoe UI'; font-size: 11pt;">16CPU is taken as a baseline to calculate the relative Speed-up.</span></p>
+            <h3 style="margin-top: 14pt; margin-bottom: 14pt; font-size: 18pt;font-weight: bold;"><a name="_Pricing"></a><span style="font-family: 'Segoe UI';">Pricing</span></h3>
+            <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">Only model running time (wall clock time) is considered for these cost calculations. Application installation time isn't considered. The calculations are indicative. The actual numbers depend on the size of the model.</span></p>
+            <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">You can use the </span><a style="text-decoration: none;" href="https://azure.microsoft.com/pricing/calculator"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0000ff;"> Azure pricing calculator</span></a><span style="font-family: 'Segoe UI'; color: #171717;"> to estimate costs for your configuration.</span></p>
+            <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">The following tables provide elapsed times in hours. To compute the total cost, multiply by the Azure VM hourly cost, which you can find </span><a style="text-decoration: none;" href="https://azure.microsoft.com/pricing/details/virtual-machines/windows/#pricing"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0000ff;">here for Windows</span></a><span style="font-family: 'Segoe UI'; color: #171717;"> and </span><a style="text-decoration: none;" href="https://azure.microsoft.com/pricing/details/virtual-machines/linux/#pricing"><span style="font-family: 'Segoe UI'; text-decoration: underline; color: #0000ff;">here for Linux </span></a><span style="font-family: 'Segoe UI'; color: #171717;">.</span></p>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 115%; font-size: 11pt; background-color: #ffffff;">&nbsp;</p>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 115%; font-size: 11pt; background-color: #ffffff;">&nbsp;</p>
+            <div style="text-align: center;">
+            <table style="width: 100%; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr style="height: 17.45pt;">
+            <td style="width: 41.68%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Azure VM Size</span></p>
+            </td>
+            <td style="width: 21.22%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">No of </span><span style="font-family: 'Segoe UI'; font-weight: bold;">CPU</span><span style="font-family: 'Segoe UI'; font-weight: bold;">s</span></p>
+            </td>
+            <td style="width: 37.08%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Elapsed time in hours</span></p>
+            </td>
+            </tr>
+            <tr style="height: 16.5pt;">
+            <td style="width: 41.68%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI';">Standard_HB120-16rs_v3</span></p>
+            </td>
+            <td style="width: 21.22%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">16</span></p>
+            </td>
+            <td style="width: 37.08%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">0.297</span></p>
+            </td>
+            </tr>
+            <tr style="height: 16.5pt;">
+            <td style="width: 41.68%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI';">Standard_HB120-32rs_v3</span></p>
+            </td>
+            <td style="width: 21.22%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">32</span></p>
+            </td>
+            <td style="width: 37.08%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">0.156</span></p>
+            </td>
+            </tr>
+            <tr style="height: 16.5pt;">
+            <td style="width: 41.68%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI';">Standard_HB120-64rs_v3</span></p>
+            </td>
+            <td style="width: 21.22%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">64</span></p>
+            </td>
+            <td style="width: 37.08%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">0.083</span></p>
+            </td>
+            </tr>
+            <tr style="height: 16.5pt;">
+            <td style="width: 41.68%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI';">Standard_HB120-96rs_v3</span></p>
+            </td>
+            <td style="width: 21.22%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">96</span></p>
+            </td>
+            <td style="width: 37.08%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">0.061</span></p>
+            </td>
+            </tr>
+            <tr style="height: 16.5pt;">
+            <td style="width: 41.68%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: 'Segoe UI';">Standard_HB120rs_v3</span></p>
+            </td>
+            <td style="width: 21.22%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">120</span></p>
+            </td>
+            <td style="width: 37.08%; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+            <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: 'Segoe UI';">0.052</span></p>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+            <h4 style="margin-top: 14pt; margin-bottom: 14pt; font-size: 18pt;font-weight: bold;"><a name="_Additional_notes"><span style="font-family: 'Segoe UI';">Additional notes about the tests</span></h4>
+            <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+            <li style="margin-top: 14pt; margin-left: 28.06pt; line-height: 115%; padding-left: 7.94pt; font-family: serif; font-size: 12pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: 'Segoe UI';">Sandi HiFUN</span><span style="font-family: 'Segoe UI';"> is succ</span><span style="font-family: 'Segoe UI';">essfully tested on HBv3 Series</span><span style="font-family: 'Segoe UI';"> Virtual Machines on Azure Cloud Platform.</span></li>
+            <li style="margin-left: 28.06pt; margin-bottom: 14pt; line-height: 115%; padding-left: 7.94pt; font-family: serif; font-size: 12pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: 'Segoe UI';">Every incremental </span><span style="font-family: 'Segoe UI';">CPU </span><span style="font-family: 'Segoe UI';">demonstrated</span><span style="font-family: 'Segoe UI';"> good speed up in all different sizes of the VM</span><span style="font-family: 'Segoe UI';"> and </span><span style="font-family: 'Segoe UI';">the peak performance of 5.96</span><span style="font-family: 'Segoe UI';">x is achieved with 120C</span><span style="font-family: 'Segoe UI';">PUs.</span></li>
+            </ul>
+            <p style="margin-top: 0pt; margin-bottom: 8pt; line-height: 108%; font-size: 21pt;"><span style="font-family: 'Segoe UI'; font-weight: bold;">Contributors</span></p>
+            <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; font-style: italic; color: #171717;">This article is maintained by Microsoft. It was originally written by the following contributors.</span></p>
+            <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">Principal authors:</span></p>
+            <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://www.linkedin.com/in/hari-bagudu-88732a19"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Hari Bagudu</span></a><span style="font-family: 'Segoe UI'; font-size: 11pt;"> | Senior Manager</span></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://www.linkedin.com/in/gauharjunnarkar"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Gauhar Junnarkar</span></a><span style="font-family: 'Segoe UI'; font-size: 11pt;"> | Principal Program Manager</span></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://www.linkedin.com/in/kalai-selvan-5a153358/"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Kalai Selvan</span></a> <span style="font-family: Calibri; font-size: 11pt;"> | HPC Performance Engineer</span></li>
+            </ul>
+            <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">Other contributors:</span></p>
+            <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://www.linkedin.com/in/mick-alberts-a24a1414"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Mick Alberts</span></a><span style="font-family: 'Segoe UI'; font-size: 11pt;"> | Technical Writer</span></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://www.linkedin.com/in/guybursell"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Guy Bursell</span></a><span style="font-family: 'Segoe UI'; font-size: 11pt;"> | Director Business Strategy</span></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://www.linkedin.com/in/sachin-rastogi-907a3b5"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Sachin Rastogi</span></a><span style="font-family: 'Segoe UI'; font-size: 11pt;"> | Manager</span></li>
+            </ul>
+            <p style="margin-top: 14pt; margin-bottom: 14pt; font-size: 12pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; font-style: italic; color: #171717;">To see non-public LinkedIn profiles, sign in to LinkedIn.</span></p>
+            <h3 style="margin-top: 14pt; margin-bottom: 14pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">Next steps</span></h3>
+            <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-hpc"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">HPC Compute Optimized Virtual Machine Sizes</span></a></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/overview"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Windows virtual machines in Azure</span></a></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/overview"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Linux virtual machines in Azure</span></a></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-network/network-overview"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Virtual networks and virtual machines in Azure</span></a></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/learn/paths/run-high-performance-computing-applications-azure"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Learning path: Run high-performance computing (HPC) applications on Azure</span></a></li>
+            </ul>
+            <h3 style="margin-top: 14pt; margin-bottom: 14pt; background-color: #ffffff;"><span style="font-family: 'Segoe UI'; color: #171717;">Related resources</span></h3>
+            <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/n-tier/windows-vm"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Run a Windows VM on Azure</span></a></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/n-tier/linux-vm"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">Run a Linux VM on Azure</span></a></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/architecture/solution-ideas/articles/big-compute-with-azure-batch"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">HPC system and big-compute solutions</span></a></li>
+            <li style="margin-left: 20.1pt; padding-left: 8.4pt; font-family: serif; font-size: 10pt; color: #171717; background-color: #ffffff; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/architecture/solution-ideas/articles/hpc-cluster"><span style="font-family: 'Segoe UI'; font-size: 11pt; text-decoration: underline; color: #0000ff;">HPC cluster deployed in the cloud</span></a></li>
+            </ul>
+            <p style="margin-top: 0pt; margin-left: 28.5pt; margin-bottom: 0pt; font-size: 11pt; background-color: #ffffff;">&nbsp;</p>
+            </div>
+          </div>
+        </div>
+     </section>      
+     <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
+    
+    </main>
+    
+    <footer>
+    <div class="row g-0">		
+     <div class="container text-center mx-auto">
+     <div class="container px-3 d-flex justify-content-between flex-column flex-md-row-reverse my-auto">
+       <div>
+         <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo" />
+         <span class="logoline-bot1"></span> 
+         <span class="px-1 px-sm-2">
+           <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo" />
+         </span>
+    </div>
+         <div class="text-uppercase align-self-center pt-3 pt-md-2 footer-text">Copyright &copy; 2021 Azure HPC</div>
+       </div>
+     </div>
+    </div>
+    </footer>
+    </div> <!--wrapper -->
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+    <script> 
+    
+    let mybutton = document.getElementById("btn-back-to-top");  
+    
+    // When the user clicks on the button, scroll to the top of the document
+    mybutton.addEventListener("click", backToTop);
+    
+    </script> 

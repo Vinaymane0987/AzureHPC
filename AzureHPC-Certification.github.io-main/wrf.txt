@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="shortcut icon" href="img/icon.ico">
+    <link rel="Stylesheet" href="css/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;0,300;0,400;1,400&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script type="text/javascript" src="js/script.js"></script>
+
+    <script src="https://kit.fontawesome.com/3d0a07deaa.js" crossorigin="anonymous"></script>
+
+    <title>Azure HPC | WRF Report</title>
+    
+  </head>
+  <body>
+    <div id="wrapper" class="row g-0">
+      
+      <header class="container-fluid">   
+        <div class="logo container">
+          <div class="title-text"><a href="index.html">Azure <span>HPC</span></a></div>
+         
+          <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo">
+          <span class="logoline-top1"></span> <span class="px-1 px-sm-2">
+             <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo">
+          </span>
+        
+        </div>
+      </header>
+
+    <main class="container-fluid">
+
+      <section class="container-lg px-3 px-lg-0 rpt-wrapper">        
+      <h3 class="text-center text-uppercase py-4"><!--The Report title goes here-->Azure HPC Recipe Document for WRF</h3>
+    <div class="d-flex flex-row rpt">
+
+      <div class="col-2 px-1 px-sm-0 text-left index">
+        <label class="px-3"><!--The Report Name goes here-->WRF</label>
+        <div class="index-scroll"> 
+          <!--Index content goes here-->  
+
+          <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861069"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Introduction</span></a></p>
+          <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861070"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Deploy Virtual Machine on Azure Cloud Platform</span></a></p>
+
+          <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861075"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Install WRF 4.3.1</span></a></p>
+
+          <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861085"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">4 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Performance Results for WRF 4.3.1</span></a></p>
+
+          <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861090"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">5 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Azure Cost</span></a></p>
+          <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861091"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">6 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Summary</span></a></p>
+          <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861092"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">7 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Running WRF on Azure Virtual Machines:</span></a></p>         
+          <!--Index content goes here-->  
+      </div>
+      </div><!--index-->
+
+      <div class="col-8 col-md-8 px-3 content">
+       
+        <!--Add <div class="overflow-table"> before every table tag within the content-->
+       
+        <!--The Report content goes here-->
+
+        <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">1</span> <a name="_Toc81323166"></a><a name="_Toc81330548"></a><a name="_Toc81389013"></a><a name="_Toc81405758"></a><a name="_Toc85794185"></a><a name="_Toc85794512"></a><a name="_Toc85798816"></a><a name="_Toc94861069"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Introduction</span></h1>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; font-size: 11pt;"><span style="font-family: Calibri;">This document </span><span style="font-family: Calibri;">briefly explain</span><span style="font-family: Calibri;">s</span><span style="font-family: Calibri;"> the </span><span style="font-family: Calibri;">steps to </span><span style="font-family: Calibri;">install</span><span style="font-family: Calibri;"> and run</span> <span style="font-family: Calibri;">WRF</span> <span style="font-family: Calibri;">a</span><span style="font-family: Calibri;">pplication on a Virtual Machine deployed in Azure Cloud Platform</span><span style="font-family: Calibri;"> and presents the performance results</span><span style="font-family: Calibri;">.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">This </span><span style="font-family: Calibri;">recipe </span><span style="font-family: Calibri;">document covers the following topics</span><span style="font-family: Calibri;">: -</span></p>
+        <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+        <li style="margin-left: 30.56pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">D</span><span style="font-family: Calibri;">eploy </span><span style="font-family: Calibri;">&amp; </span><span style="font-family: Calibri;">connect </span><span style="font-family: Calibri;">a </span><span style="font-family: Calibri;">required </span><span style="font-family: Calibri;">v</span><span style="font-family: Calibri;">irtual </span><span style="font-family: Calibri;">m</span><span style="font-family: Calibri;">achine</span> <span style="font-family: Calibri;">on Azure </span><span style="font-family: Calibri;">p</span><span style="font-family: Calibri;">latform.</span></li>
+        <li style="margin-left: 30.56pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Download &amp; </span><span style="font-family: Calibri;">Install</span> <span style="font-family: Calibri;">A</span><span style="font-family: Calibri;">pplication o</span><span style="font-family: Calibri;">n virtual machine</span><span style="font-family: Calibri;">.</span></li>
+        <li style="margin-left: 31.02pt; padding-left: 7.48pt; font-family: serif; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri; font-size: 11pt;">Performance results of current app</span><span style="font-family: Calibri; font-size: 11pt;">lication</span><span style="font-family: Calibri; font-size: 11pt;"> on </span><span style="font-family: Calibri; font-size: 11pt;">azure virtual machine</span></li>
+        <li style="margin-left: 31.02pt; padding-left: 7.48pt; font-family: serif; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri; font-size: 11pt;">Azure co</span><span style="font-family: Calibri; font-size: 11pt;">st</span></li>
+        <li style="margin-left: 30.56pt; margin-bottom: 8pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri;">Summary</span></li>
+        </ul>
+        <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2</span> <a name="_Toc81323168"></a><a name="_Toc81330550"></a><a name="_Toc81389015"></a><a name="_Toc81405760"></a><a name="_Toc85794187"></a><a name="_Toc85794514"></a><a name="_Toc85798817"></a><a name="_Toc94861070"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Deploy Virtual Machine on Azure Cloud Platform</span></h1>
+        <h2 style="margin-top: 2pt; margin-left: 31.5pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2.1</span> <a name="_Toc85798818"></a><a name="_Toc94861071"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Azure</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;"> Cloud Architecture for Application</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; font-size: 11pt;"><span style="font-family: Calibri;">The below Architecture explains the virtual machine running on an Azure Platform</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; font-size: 11pt;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="wrf_files/a6pt9-3nf67.004.png" alt="" width="604" height="478" /></p>
+        <h2 style="margin-top: 2pt; margin-left: 31.5pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 12pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2.2</span> <a name="_Toc81323169"></a><a name="_Toc81330551"></a><a name="_Toc81389016"></a><a name="_Toc81405761"></a><a name="_Toc85794188"></a><a name="_Toc85794515"></a><a name="_Ref85797239"></a><a name="_Toc85798819"></a><a name="_Toc94861072"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Azure Virtual Machine (VM)</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; font-size: 11pt;"><span style="font-family: Calibri;">A VM is a virtualized instance of a computer that can perform almost </span><span style="font-family: Calibri;">all</span><span style="font-family: Calibri;"> the same functions as a computer, including running applications and operating systems.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">An Azure VM gives the flexibility of virtualization without having to buy and maintain the physical hardware that runs it. However, </span><span style="font-family: Calibri;">the user</span><span style="font-family: Calibri;"> still </span><span style="font-family: Calibri;">needs</span><span style="font-family: Calibri;"> to maintain the VM by performing tasks, such as configuring, patching, and installing the software that runs on it.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">Things to be c</span><span style="font-family: Calibri;">onsidered before deploying a VM:</span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+        <li style="margin-left: 67.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">The names of the application resources</li>
+        <li style="margin-left: 67.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">The location where the resources are stored</li>
+        <li style="margin-left: 67.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">The size of the VM</li>
+        <li style="margin-left: 67.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">The operating system that the VM runs</li>
+        <li style="margin-left: 67.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">The configuration of the VM</li>
+        <li style="margin-left: 67.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">The related resources that the VM needs</li>
+        </ol>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt; background-color: #ffffff;"><span style="font-family: Calibri; color: #171717;">There are </span><span style="font-family: Calibri; color: #171717;">different sizes</span> <span style="font-family: Calibri; color: #171717;">and options </span><span style="font-family: Calibri; color: #171717;">available</span> <span style="font-family: Calibri; color: #171717;">for the Azure virtual machines </span><span style="font-family: Calibri; color: #171717;">and </span><span style="font-family: Calibri;">user </span><span style="font-family: Calibri;">can use to run apps</span><span style="font-family: Calibri; color: #171717;"> and workloads. Depending on the workload user </span><span style="font-family: Calibri; color: #171717;">must</span><span style="font-family: Calibri; color: #171717;"> choose the appropriate VM size</span><span style="font-family: Calibri; color: #171717;">. F</span><span style="font-family: Calibri; color: #171717;">or complete list check this </span><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/sizes/"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">https://docs.microsoft.com/en-us/azure/virtual-machines/sizes/</span></a><span style="font-family: Calibri; color: #171717;">.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt; background-color: #ffffff;"><span style="font-family: Calibri;">To test</span> <span style="font-family: Calibri;">the </span><span style="font-family: Calibri;">p</span><span style="font-family: Calibri;">erformance of </span><span style="font-family: Calibri;">WRF</span><span style="font-family: Calibri;"> on Azure Platform,</span> <span style="font-family: Calibri;">below </span><span style="font-family: Calibri;">HBv3-series</span><span style="font-family: Calibri;"> virt</span><span style="font-family: Calibri;">ual mach</span><span style="font-family: Calibri;">ine </span><span style="font-family: Calibri;">is deployed</span><span style="font-family: Calibri;">:</span></p>
+        <div style="text-align: center;">
+        <div class="overflow-table"><table style="margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr style="height: 14.5pt;">
+        <td style="width: 123.15pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Size</span></p>
+        </td>
+        <td style="width: 30.9pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">vCPU</span></p>
+        </td>
+        <td style="width: 46.65pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">RAM</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Memory: </span><span style="font-family: Calibri; font-weight: bold;">GiB</span></p>
+        </td>
+        <td style="width: 50.7pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Memory bandwidth GB/s</span></p>
+        </td>
+        <td style="width: 52.25pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Base CPU frequency (GHz)</span></p>
+        </td>
+        <td style="width: 52.05pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">All-cores frequency (GHz, peak)</span></p>
+        </td>
+        <td style="width: 52.3pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Single-core frequency (GHz, peak)</span></p>
+        </td>
+        <td style="width: 60.05pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">RDMA performance (Gb/s)</span></p>
+        </td>
+        <td style="width: 22.7pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Max data disks</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 123.15pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Standard_HB120rs_v3</span></p>
+        </td>
+        <td style="width: 30.9pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">120</span></p>
+        </td>
+        <td style="width: 46.65pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">448</span></p>
+        </td>
+        <td style="width: 50.7pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">350</span></p>
+        </td>
+        <td style="width: 52.25pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2.45</span></p>
+        </td>
+        <td style="width: 52.05pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">3.1</span></p>
+        </td>
+        <td style="width: 52.3pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">3.675</span></p>
+        </td>
+        <td style="width: 60.05pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">200</span></p>
+        </td>
+        <td style="width: 22.7pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">32</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 123.15pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Standard_HB</span><span style="font-family: Calibri;">120-96</span><span style="font-family: Calibri;">rs_v3</span></p>
+        </td>
+        <td style="width: 30.9pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">96</span></p>
+        </td>
+        <td style="width: 46.65pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">448</span></p>
+        </td>
+        <td style="width: 50.7pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">350</span></p>
+        </td>
+        <td style="width: 52.25pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2.45</span></p>
+        </td>
+        <td style="width: 52.05pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">3.1</span></p>
+        </td>
+        <td style="width: 52.3pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">3.675</span></p>
+        </td>
+        <td style="width: 60.05pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">200</span></p>
+        </td>
+        <td style="width: 22.7pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">32</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 123.15pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Standard_HB</span><span style="font-family: Calibri;">120-</span><span style="font-family: Calibri;">64</span><span style="font-family: Calibri;">rs_v3</span></p>
+        </td>
+        <td style="width: 30.9pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">64</span></p>
+        </td>
+        <td style="width: 46.65pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">448</span></p>
+        </td>
+        <td style="width: 50.7pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">350</span></p>
+        </td>
+        <td style="width: 52.25pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2.45</span></p>
+        </td>
+        <td style="width: 52.05pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">3.1</span></p>
+        </td>
+        <td style="width: 52.3pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">3.675</span></p>
+        </td>
+        <td style="width: 60.05pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">200</span></p>
+        </td>
+        <td style="width: 22.7pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">32</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 123.15pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Standard_HB</span><span style="font-family: Calibri;">120-</span><span style="font-family: Calibri;">32</span><span style="font-family: Calibri;">rs_v3</span></p>
+        </td>
+        <td style="width: 30.9pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">32</span></p>
+        </td>
+        <td style="width: 46.65pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">448</span></p>
+        </td>
+        <td style="width: 50.7pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">350</span></p>
+        </td>
+        <td style="width: 52.25pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2.45</span></p>
+        </td>
+        <td style="width: 52.05pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">3.1</span></p>
+        </td>
+        <td style="width: 52.3pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">3.675</span></p>
+        </td>
+        <td style="width: 60.05pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">200</span></p>
+        </td>
+        <td style="width: 22.7pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">32</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 123.15pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">Standard_HB</span><span style="font-family: Calibri;">120-</span><span style="font-family: Calibri;">16</span><span style="font-family: Calibri;">rs_v3</span></p>
+        </td>
+        <td style="width: 30.9pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">16</span></p>
+        </td>
+        <td style="width: 46.65pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">448</span></p>
+        </td>
+        <td style="width: 50.7pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">350</span></p>
+        </td>
+        <td style="width: 52.25pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2.45</span></p>
+        </td>
+        <td style="width: 52.05pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">3.1</span></p>
+        </td>
+        <td style="width: 52.3pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">3.675</span></p>
+        </td>
+        <td style="width: 60.05pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">200</span></p>
+        </td>
+        <td style="width: 22.7pt; border-style: solid; border-width: 0.75pt; padding-right: 1.88pt; padding-left: 1.88pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">32</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        </div>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; font-size: 11pt;"><span style="font-family: Calibri;">The current virtual machine </span><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/hbv3-series"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">HBv3-series VMs</span></a><span style="font-family: Calibri;"> are optimized for HPC applications such as fluid dynamics, explicit and implicit finite element analysis, weather modelling, seismic processing, reservoir simulation, and RTL simulation. HBv3 VMs feature up to 120 AMD EPYC&trade; 7003-series (Milan) CPU cores, 448 GB of RAM, and no </span><span style="font-family: Calibri;">hyperthreading</span><span style="font-family: Calibri;">. HBv3-series VMs also provide 350 GB/sec of memory bandwidth; up to 32 MB of L3 cache per core, up to 7 GB/s of block device SSD performance, and clock frequencies up to 3.675 GHz.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><a name="_Toc81323171"></a><a name="_Toc81330553"></a><a name="_Toc81389017"></a><a name="_Toc81405762"></a><a name="_Toc85794189"></a><a name="_Toc85794516"></a><a name="_Toc85798820"></a></p>
+        <h2 style="margin-top: 2pt; margin-left: 31.5pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2.3</span> <a name="_Toc94861073"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Creat</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">ion </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">of Virtual</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;"> Machine</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">Sign </span><span style="font-family: Calibri; font-weight: bold;">into</span><span style="font-family: Calibri; font-weight: bold;"> Azure</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; font-size: 11pt;"><span style="font-family: Calibri; color: #171717;">Sign into the Azure portal </span><span style="font-family: Calibri; color: #171717;">by using </span><a style="text-decoration: none;" href="https://portal.azure.com/"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">https://portal.azure.com/</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; font-size: 11pt;"><a style="text-decoration: none;" href="https://azure.microsoft.com/offers/ms-azr-0044p"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1; background-color: #ffffff;">Free Trial subscriptions</span></a><span style="font-family: Calibri; color: #171717; background-color: #ffffff;">aren't eligible for limit or quota increases. </span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri; color: #171717;">After the successful sign in or sign up, one has to upgrade the Azure subscription </span><span style="font-family: Calibri; color: #171717;">to </span><a style="text-decoration: none;" href="https://azure.microsoft.com/en-us/offers/ms-azr-0003p/"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Pay-As-You-Go</span></a> <span style="font-family: Calibri; color: #171717;">to</span><span style="font-family: Calibri; color: #171717;"> deploy a Virtual machine. For deployment, the user must have regional vCPU quota which can be obtained by raising a request.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><span style="font-family: Calibri; color: #171717;">The </span><span style="font-family: Calibri; color: #171717;">step-by-step</span><span style="font-family: Calibri; color: #171717;"> procedure to increase the vCPU quota is given </span><span style="font-family: Calibri; color: #171717;">in below link:</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 11pt;"><a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/azure-portal/supportability/per-vm-quota-requests"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">https://docs.microsoft.com/en-us/azure/azure-portal/supportability/per-vm-quota-requests</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri; color: #171717;">The </span><span style="font-family: Calibri; color: #171717;">step-by-step</span><span style="font-family: Calibri; color: #171717;"> procedure to deploy</span><span style="font-family: Calibri; color: #171717;"> Virtual machine is given below:</span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+        <li style="margin-top: 14pt; margin-left: 23.85pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">Type&nbsp;<span style="font-weight: bold;">virtual machines</span>&nbsp;in the marketplace search.</li>
+        <li style="margin-left: 23.85pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">Under&nbsp;<span style="font-weight: bold;">Services</span>, select&nbsp;<span style="font-weight: bold;">Virtual machines</span>.</li>
+        <li style="margin-left: 23.85pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">In the&nbsp;<span style="font-weight: bold;">Virtual machines</span>&nbsp;page, select&nbsp;<span style="font-weight: bold;">Create</span>&nbsp;Then&nbsp;<span style="font-weight: bold;">Virtual machine</span>.</li>
+        <li style="margin-left: 23.85pt; margin-bottom: 14pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">In the&nbsp;<span style="font-weight: bold;">Basics</span>&nbsp;tab, under&nbsp;<span style="font-weight: bold;">Project details</span>, make sure the correct subscription is selected and then choose to&nbsp;<span style="font-weight: bold;">Create new</span>&nbsp;resource group. Type&nbsp;<span style="font-weight: bold; font-style: italic;">Azure-</span><span style="font-weight: bold; font-style: italic;">PerformanceTest</span><span style="font-weight: bold;">(user choice) </span>for the name.</li>
+        </ol>
+        <p style="margin-top: 14pt; margin-bottom: 14pt; text-align: center; font-size: 11pt; background-color: #ffffff;"><img style="margin-top: -0.75pt; margin-right: 9pt; margin-left: 8.25pt; -aw-left-pos: 21.4pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 29.65pt; -aw-wrap-type: square;" src="wrf_files/a6pt9-3nf67.005.png" alt="" width="620" height="306" /></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="5" type="1">
+        <li style="margin-top: 14pt; margin-left: 23.85pt; margin-bottom: 14pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">Under&nbsp;<span style="font-weight: bold; color: #000000;">Instance details</span>, type&nbsp;<span style="color: #000000;">Azure-VM (user choice)</span>&nbsp;for the&nbsp;<span style="font-weight: bold; color: #000000;">Virtual machine name</span>&nbsp;and choose&nbsp;West Europe for <span style="font-weight: bold; color: #000000;">Region</span>. Choose&nbsp;<span style="color: #000000;">CentOS-8.1</span> <span style="color: #000000;">HPC</span><span style="color: #000000;">-Gen2 </span>for the&nbsp;<span style="font-weight: bold; color: #000000;">Image</span>&nbsp;and&nbsp;<span style="color: #000000;">Standard_HB120rs_v3</span> for the&nbsp;<span style="font-weight: bold; color: #000000;">Size </span><span style="color: #000000;">(user choice).</span> Leave the other defaults.</li>
+        </ol>
+        <p style="margin-top: 14pt; margin-bottom: 14pt; text-align: center; font-size: 11pt; background-color: #ffffff;"><img style="border: 0.75pt solid #3f3f3f; -aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="wrf_files/a6pt9-3nf67.006.png" alt="" width="553" height="253" /></p>
+        <p style="margin-top: 14pt; margin-bottom: 0pt; font-size: 11pt; background-color: #ffffff;"><span style="font-family: Calibri; font-weight: bold; color: #171717;">Note: </span></p>
+        <ul style="margin: 0pt; padding-left: 0pt;" type="disc">
+        <li style="margin-left: 28.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri; font-weight: bold;">Region</span><span style="font-family: Calibri;"> must be decided based on where </span><span style="font-family: Calibri;">the</span><span style="font-family: Calibri;"> Virtual machine</span><span style="font-family: Calibri;"> is going to be deployed</span><span style="font-family: Calibri;">. To avoid the network latency, the region should be near to the location where the VM is to be deployed.</span></li>
+        <li style="margin-left: 28.06pt; padding-left: 7.94pt; font-family: serif; font-size: 11pt; color: #171717; -aw-font-family: 'Symbol'; -aw-font-weight: normal; -aw-number-format: '';"><span style="font-family: Calibri; font-weight: bold;">Image </span><span style="font-family: Calibri;">selection is of user choice based on the application user can choose the image (Windows 10, Linux based OS and Windows Server)</span></li>
+        </ul>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="6" type="1">
+        <li style="margin-left: 23.85pt; margin-bottom: 14pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; background-color: #ffffff;">Under&nbsp;<span style="font-weight: bold;">Administrator account</span>, provide a username, such as&nbsp;Azureuser&nbsp;and a password. The password must be at least 12 characters long and meet the&nbsp;<a style="text-decoration: none;" href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm-"><span style="text-decoration: underline; color: #0563c1; background-color: #ffffff;">defined complexity requirements</span></a><span style="color: #171717; background-color: #ffffff;">.</span></li>
+        </ol>
+        <p style="margin-top: 14pt; margin-bottom: 14pt; text-align: center; font-size: 11pt; background-color: #ffffff;"><img style="border: 0.75pt solid #3f3f3f; -aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="wrf_files/a6pt9-3nf67.007.png" alt="" width="553" height="113" /></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="7" type="1">
+        <li style="margin-top: 14pt; margin-left: 23.85pt; margin-bottom: 14pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; background-color: #ffffff;">Under&nbsp;<span style="font-weight: bold;">Inbound port rules</span>, choose&nbsp;<span style="font-weight: bold;">Allow selected ports</span>&nbsp;and then select&nbsp;<span style="font-weight: bold;">SSH (22</span><span style="font-weight: bold;">)</span>&nbsp;from the drop-down.</li>
+        </ol>
+        <p style="margin-top: 14pt; margin-bottom: 14pt; text-align: center; font-size: 11pt; background-color: #ffffff;"><img style="border: 0.75pt solid #3f3f3f; -aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="wrf_files/a6pt9-3nf67.008.png" alt="" width="553" height="213" /></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="8" type="1">
+        <li style="margin-top: 14pt; margin-left: 23.85pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; background-color: #ffffff;">Leave the remaining defaults and then select the&nbsp;<span style="font-weight: bold;">Review + create</span>&nbsp;button at the bottom of the page.</li>
+        <li style="margin-left: 23.85pt; margin-bottom: 14pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; background-color: #ffffff;">After validation runs, select the&nbsp;Create&nbsp;button at the bottom of the page.</li>
+        </ol>
+        <p style="margin-top: 14pt; margin-bottom: 14pt; text-align: center; font-size: 11pt; background-color: #ffffff;"><img style="border: 0.75pt solid #3f3f3f; -aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="wrf_files/a6pt9-3nf67.009.png" alt="" width="442" height="53" /></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="10" type="1">
+        <li style="margin-top: 14pt; margin-left: 28.5pt; margin-bottom: 14pt; font-family: Calibri; font-size: 11pt; background-color: #ffffff;">After deployment is complete, select&nbsp;Go to resource.</li>
+        </ol>
+        <p style="margin-top: 14pt; margin-bottom: 14pt; text-align: center; font-size: 11pt; background-color: #ffffff;"><img style="border: 0.75pt solid #000000; -aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="wrf_files/a6pt9-3nf67.010.png" alt="" width="490" height="121" /></p>
+        <h2 style="margin-top: 2pt; margin-left: 31.5pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">2.4</span> <a name="_Toc81313723"></a><a name="_Toc81323172"></a><a name="_Toc81330554"></a><a name="_Toc81389018"></a><a name="_Toc81405763"></a><a name="_Toc85794190"></a><a name="_Toc85794517"></a><a name="_Toc85798821"></a><a name="_Toc94861074"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Connect to virtual machine</span></h2>
+        <p style="margin-top: 14pt; margin-bottom: 14pt; text-indent: 17.85pt; font-size: 11pt; background-color: #ffffff;"><a name="_Toc81330555"></a><a name="_Toc81389019"></a><a name="_Toc81405764"></a><span style="font-family: Calibri; color: #171717;">Create a </span><span style="font-family: Calibri; color: #171717;">SSH</span><span style="font-family: Calibri; color: #171717;"> connection to the virtual machine. </span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+        <li style="margin-top: 14pt; margin-left: 31.2pt; line-height: 115%; padding-left: 4.5pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">On the overview page of a virtual machine, select the&nbsp;<span style="font-weight: bold;">Connect</span>&nbsp;button then select&nbsp;<span style="font-weight: bold;">SSH </span>and copy the public IP address<span style="font-weight: bold;">.</span></li>
+        </ol>
+        <p style="margin-top: 14pt; margin-bottom: 14pt; text-align: center; line-height: 115%; font-size: 11pt; background-color: #ffffff;"><img style="border: 0.75pt solid #000000; -aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="wrf_files/a6pt9-3nf67.011.png" alt="" width="460" height="117" /></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="2" type="1">
+        <li style="margin-top: 14pt; margin-left: 31.2pt; line-height: 115%; padding-left: 4.5pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">Open any SSH client tool of user choice, in this case <span style="font-weight: bold;">PUTTY </span>is used.</li>
+        <li style="margin-left: 31.35pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">Enter the <span style="font-weight: bold;">IP address</span> and port as 22 and click <span style="font-weight: bold;">Open</span></li>
+        </ol>
+        <p style="margin-top: 14pt; margin-left: 36pt; margin-bottom: 14pt; text-align: center; line-height: 115%; font-size: 11pt; background-color: #ffffff;"><img style="margin-right: 9pt; margin-left: 9pt; -aw-left-pos: 141.45pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 10.8pt; -aw-wrap-type: square;" src="wrf_files/a6pt9-3nf67.012.png" alt="" width="252" height="248" /></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" start="4" type="1">
+        <li style="margin-left: 31.35pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">Enter username in <span style="font-weight: bold;">Login </span><span style="font-weight: bold;">as</span>, enter the password, and click<span style="font-weight: bold;"> Enter.</span></li>
+        <li style="margin-left: 31.35pt; line-height: 115%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt; color: #171717; background-color: #ffffff;">Now user connected to the VM in Console</li>
+        </ol>
+        <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">3</span> <a name="_Toc81405765"></a><a name="_Toc85794192"></a><a name="_Toc85794519"></a><a name="_Toc85798823"></a><a name="_Toc94861075"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Install </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">WRF</span> <span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">4.3.1</span></h1>
+        <h2 style="margin-top: 2pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">3.1</span> <a name="_Toc85794193"></a><a name="_Toc85794520"></a><a name="_Toc85798824"></a><a name="_Ref94018582"></a><a name="_Toc94861076"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Download product</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; font-size: 11pt;"><a name="_Toc81399916"></a><a name="_Toc81405767"></a><a name="_Toc85794194"></a><a name="_Toc85794521"></a><a name="_Toc85798825"></a><span style="font-family: Calibri;">The WRF source code can be obtained from</span><span style="font-family: Calibri;"> below link</span><span style="font-family: Calibri;">: </span></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; font-size: 11pt;"><a style="text-decoration: none;" href="https://www2.mmm.ucar.edu/wrf/users/download/get_source.html"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">https://www2.mmm.ucar.edu/wrf/users/download/get_source.html</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; font-size: 11pt;"><span style="font-family: Calibri;">&ndash; Click &lsquo;Ne</span><span style="font-family: Calibri;">w Users&rsquo;, register and download</span><span style="font-family: Calibri;"> or </span><span style="font-family: Calibri;">exiting user can c</span><span style="font-family: Calibri;">lick &lsquo;Returning User&rsquo;</span><span style="font-family: Calibri;">,</span><span style="font-family: Calibri;"> enter email and download</span><span style="font-family: Calibri;"> the product.</span></p>
+        <h2 style="margin-top: 2pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">3.2</span> <a name="_Toc94861077"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Install </span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">WRF</span> <span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">4.3.1</span> <span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">on Linux</span></h2>
+        <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+        <li style="margin-left: 49.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Download source code using steps provided in section <a style="text-decoration: none; -aw-ignore: true;" href="#_Ref94018582"><span style="color: #000000;">3.1</span></a></li>
+        <li style="margin-left: 49.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Set up environment for paths and libraries</li>
+        <li style="margin-left: 49.35pt; margin-bottom: 8pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Configure and Compile WRF</li>
+        </ol>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 21.6pt; font-size: 11pt;"><span style="font-family: Calibri;">For detailed </span><span style="font-family: Calibri;">compiling</span><span style="font-family: Calibri;"> follow the steps provided in below link.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 21.6pt; font-size: 11pt;"><a style="text-decoration: none;" href="https://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">https://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php</span></a></p>
+        <h2 style="margin-top: 2pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">3.3</span> <a name="_Toc94861078"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Required data for</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;"> WRF 4.3.1</span></h2>
+        <h3 style="margin-top: 2pt; margin-left: 58.5pt; margin-bottom: 0pt; text-indent: -36pt; page-break-inside: avoid; page-break-after: avoid; font-size: 12pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">3.3.1</span> <a name="_Toc94861079"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">WRF work flow</span></h3>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; font-size: 11pt;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="wrf_files/a6pt9-3nf67.013.png" alt="" width="639" height="358" /></p>
+        <h3 style="margin-top: 2pt; margin-left: 58.5pt; margin-bottom: 0pt; text-indent: -36pt; page-break-inside: avoid; page-break-after: avoid; font-size: 12pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">3.3.2</span> <a name="_Toc94861080"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">Download static geographic data</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;"> (for geogrid.exe)</span></h3>
+        <p style="margin-top: 0pt; margin-left: 22.5pt; margin-bottom: 8pt; text-indent: 36pt; font-size: 11pt;"><span style="font-family: Calibri;">The WRF modelling system is able to create idealized simulations, though most users are interested in the real-data cases. To initiate a real-data case, the domain's physical location on the globe and the static information for that location must be created. This requires a data set that includes such fields as topography and land use categories. These data are available from the WRF download page</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 22.5pt; font-size: 11pt;"><a style="text-decoration: none;" href="http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html"><span style="font-family: Calibri; font-style: italic; text-decoration: underline; color: #0563c1;">http://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html</span></a></p>
+        <h3 style="margin-top: 2pt; margin-left: 58.5pt; margin-bottom: 0pt; text-indent: -36pt; page-break-inside: avoid; page-break-after: avoid; font-size: 12pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">3.3.3</span> <a name="_Toc94861081"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">Real time data</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;"> (for ungrib.exe)</span></h3>
+        <p style="margin-top: 0pt; margin-left: 22.5pt; margin-bottom: 8pt; text-indent: 36pt; font-size: 11pt;"><span style="font-family: Calibri;">For real-data cases, the WRF model requires up-to-date meteorological information for both an initial condition and also for lateral boundary conditions. This meteorological data is traditionally a </span><span style="font-family: Calibri;">Grib</span><span style="font-family: Calibri;"> file that is provided by a previously run external model or analysis.</span><span style="font-family: Calibri;"> This data can be downloaded from </span><span style="font-family: Calibri;">The National Centres for Environmental Prediction (NCEP)</span><span style="font-family: Calibri;"> portal in below link.</span></p>
+        <p style="margin-top: 0pt; margin-left: 22.5pt; margin-bottom: 8pt; text-indent: 36pt; font-size: 11pt;"><a style="text-decoration: none;" href="https://nomads.ncep.noaa.gov"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">https://nomads.ncep.noaa.gov</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">For current simulation below data are downloaded and used to create WPS output files which are the input data files to run the WRF.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 22.4pt; font-size: 11pt;"><a style="text-decoration: none;" href="https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.20211201/00/atmos/gfs.t00z.pgrb2.0p25.f000"><span style="font-family: Calibri; font-size: 10pt; font-style: italic; text-decoration: underline; color: #0563c1;">https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.20211201/00/atmos/gfs.t00z.pgrb2.0p25.f000</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 22.4pt; font-size: 11pt;"><a style="text-decoration: none;" href="https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.20211201/00/atmos/gfs.t00z.pgrb2.0p25.f003"><span style="font-family: Calibri; font-size: 10pt; font-style: italic; text-decoration: underline; color: #0563c1;">https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.20211201/00/atmos/gfs.t00z.pgrb2.0p25.f003</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 22.4pt; font-size: 11pt;"><a style="text-decoration: none;" href="https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.20211201/00/atmos/gfs.t00z.pgrb2.0p25.f006"><span style="font-family: Calibri; font-size: 10pt; font-style: italic; text-decoration: underline; color: #0563c1;">https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.20211201/00/atmos/gfs.t00z.pgrb2.0p25.f006</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 22.4pt; font-size: 11pt;"><a style="text-decoration: none;" href="https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.20211201/00/atmos/gfs.t00z.pgrb2.0p25.f009"><span style="font-family: Calibri; font-size: 10pt; font-style: italic; text-decoration: underline; color: #0563c1;">https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.20211201/00/atmos/gfs.t00z.pgrb2.0p25.f009</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 22.4pt; font-size: 11pt;"><a style="text-decoration: none;" href="https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.20211201/00/atmos/gfs.t00z.pgrb2.0p25.f012"><span style="font-family: Calibri; font-size: 10pt; font-style: italic; text-decoration: underline; color: #0563c1;">https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.20211201/00/atmos/gfs.t00z.pgrb2.0p25.f012</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 22.4pt; font-size: 11pt;"><a style="text-decoration: none;" href="https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.20211201/00/atmos/gfs.t00z.pgrb2.0p25.f384"><span style="font-family: Calibri; font-size: 10pt; font-style: italic; text-decoration: underline; color: #0563c1;">https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.20211201/00/atmos/gfs.t00z.pgrb2.0p25.f384</span></a></p>
+        <h3 style="margin-top: 2pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -36pt; page-break-inside: avoid; page-break-after: avoid; font-size: 12pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">3.3.1</span> <a name="_Toc94861082"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">WPS output file</span></h3>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">One must successfully run WPS, and create </span><span style="font-family: Calibri;">met_em</span><span style="font-family: Calibri;">. * file for more than one-time period and link or copy WPS output files to the WRF run directory.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">Refer to below link to compile &amp; run WPS:</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><a style="text-decoration: none;" href="https://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">https://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php</span></a></p>
+        <h3 style="margin-top: 2pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -36pt; page-break-inside: avoid; page-break-after: avoid; font-size: 12pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">3.3.2</span> <a name="_Toc94861083"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">Defining Model</span></h3>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">WRF model (In current case CONUS 2.5 km) is defined by the </span><span style="font-family: Calibri;">namelist.input</span><span style="font-family: Calibri;"> file which will have the </span><span style="font-family: Calibri;">model </span><span style="font-family: Calibri;">geometric details.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">Edit </span><span style="font-family: Calibri;">namelist.input</span><span style="font-family: Calibri;"> file for runtime options (at minimum, one must edit &amp;time control for start, end and integration times, and &amp;domains for grid dimensions)</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><a name="_Toc81399917"></a><a name="_Toc81405768"></a><a name="_Toc85794196"></a><a name="_Toc85794523"></a><a name="_Toc85798827"></a></p>
+        <h3 style="margin-top: 2pt; margin-left: 58.5pt; margin-bottom: 0pt; text-indent: -36pt; page-break-inside: avoid; page-break-after: avoid; font-size: 12pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">3.3.3</span> <a name="_Toc94861084"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #1f3763;">Configuring options</span></h3>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; font-size: 11pt;"><span style="height: 0pt; text-align: left; display: block; position: absolute; z-index: 4;"><img style="margin-top: 30.1pt; margin-left: 198.45pt; -aw-left-pos: 198.95pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 30.6pt; -aw-wrap-type: none; position: absolute;" src="wrf_files/a6pt9-3nf67.014.png" alt="" width="197" height="17" /></span><img style="border: 0.75pt solid #000000; -aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="wrf_files/a6pt9-3nf67.015.png" alt="" width="640" height="235" /></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; font-size: 11pt;"><span style="font-family: Calibri;">For current performance simulation configuring option </span><span style="font-family: Calibri; font-style: italic;">16 (</span><span style="font-family: Calibri; font-style: italic;">dm+sm</span><span style="font-family: Calibri; font-style: italic;">) &ndash; INTEL (</span><span style="font-family: Calibri; font-style: italic;">ifort</span><span style="font-family: Calibri; font-style: italic;">/</span><span style="font-family: Calibri; font-style: italic;">icc</span><span style="font-family: Calibri; font-style: italic;">)</span><span style="font-family: Calibri;"> is selected.</span></p>
+        <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">4</span> <a name="_Toc94861085"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Performance R</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">esults for</span> <span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">WRF</span> <span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">4.3.1</span></h1>
+        <h2 style="margin-top: 2pt; margin-left: 40.5pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">4.1</span> <a name="_Toc85794197"></a><a name="_Toc85794524"></a><a name="_Toc85798828"></a><a name="_Toc94861086"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Overview</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; font-size: 11pt;"><span style="font-family: Calibri;">The Weather Research and Forecasting (</span><span style="font-family: Calibri;">WRF 4.3.1)</span><span style="font-family: Calibri;"> Model is a next-generation mesoscale numerical weather prediction system designed for both atmospheric research and operational forecasting applications. It features two dynamical cores, a data assimilation system, and a software architecture supporting parallel computation and system extensibility. The model serves a wide range of meteorological applications across scales from tens of meters to thousands of kilometres</span><span style="font-family: Calibri;">.</span> <span style="font-family: Calibri;">The weather research and forecasting (WRF) model is popular in high performance computing (HPC) code used by the weather and climate community. WRF v4 typically performs well on traditional HPC architectures that support high floating-point processing, high memory bandwidth, and a low-latency network</span></p>
+        <h2 style="margin-top: 2pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">4.2</span> <a name="_Toc81498994"></a><a name="_Toc85794198"></a><a name="_Toc85794525"></a><a name="_Toc85798829"></a><a name="_Toc94861087"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Model De</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">tails</span></h2>
+        <div style="text-align: center;">
+        <div class="overflow-table"><table style="margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr style="height: 17.55pt;">
+        <td style="width: 78.65pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Model</span></p>
+        </td>
+        <td style="width: 49pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Resolution km</span></p>
+        </td>
+        <td style="width: 39.75pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">e_we</span></p>
+        </td>
+        <td style="width: 39.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">e_sn</span></p>
+        </td>
+        <td style="width: 40.6pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">e_vert</span></p>
+        </td>
+        <td style="width: 44.55pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Total grid</span> <span style="font-family: Calibri; font-weight: bold;">points</span></p>
+        </td>
+        <td style="width: 39.4pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Time step (s)</span></p>
+        </td>
+        <td style="width: 49.25pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Simulation hours</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.45pt;">
+        <td style="width: 78.65pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">new_conus2.5km</span></p>
+        </td>
+        <td style="width: 49pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2.5</span></p>
+        </td>
+        <td style="width: 39.75pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1901</span></p>
+        </td>
+        <td style="width: 39.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1301</span></p>
+        </td>
+        <td style="width: 40.6pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">35</span></p>
+        </td>
+        <td style="width: 44.55pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2,473,201</span></p>
+        </td>
+        <td style="width: 39.4pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">15</span></p>
+        </td>
+        <td style="width: 49.25pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">6</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        </div>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><img style="margin-top: -0.75pt; margin-right: 9pt; margin-left: 8.25pt; -aw-left-pos: 141.45pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 8.95pt; -aw-wrap-type: square;" src="wrf_files/a6pt9-3nf67.016.png" alt="" width="223" height="214" /></p>
+        <h2 style="margin-top: 2pt; margin-left: 36pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">4.3</span> <a name="_Toc81323180"></a><a name="_Toc81330562"></a><a name="_Toc81390114"></a><a name="_Toc81411727"></a><a name="_Toc81413124"></a><a name="_Toc81420235"></a><a name="_Toc81498995"></a><a name="_Toc85794199"></a><a name="_Toc85794526"></a><a name="_Toc85798830"></a><a name="_Toc94861088"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Azure Platform</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; font-size: 11pt;"><span style="font-family: Calibri;">When it comes to performance parameters, </span><span style="font-family: Calibri;">wall clock</span> <span style="font-family: Calibri;">time (time </span><span style="font-family: Calibri;">taken to complete the simulation</span><span style="font-family: Calibri;">) is one </span><span style="font-family: Calibri;">parameter, which</span><span style="font-family: Calibri;"> need</span><span style="font-family: Calibri;">s</span><span style="font-family: Calibri;"> to be </span><span style="font-family: Calibri;">analysed</span><span style="font-family: Calibri;">. To carry out these </span><span style="font-family: Calibri;">simulations on </span><span style="font-family: Calibri;">WRF</span> <span style="font-family: Calibri;">software, right hardware is required</span><span style="font-family: Calibri;">. </span><span style="font-family: Calibri; font-weight: bold; color: #2f5496;">Microsoft</span> <span style="font-family: Calibri;">partnered with</span> <span style="font-family: Calibri; font-weight: bold; color: #2f5496;">AMD</span><span style="font-family: Calibri;"> provides the required and suitable Infrastructure and hardware on Azure cloud platform. Microsoft Azure provides the latest and fastest compute capabilities for </span><span style="font-family: Calibri;">CPU</span><span style="font-family: Calibri;"> intensive workloads.</span></p>
+        <div style="text-align: center;">
+        <div class="overflow-table"><table style="width: 484pt; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr style="height: 22.5pt;">
+        <td style="width: 473.2pt; padding-right: 5.4pt; padding-left: 5.4pt; vertical-align: middle; background-color: #a5a5a5;" colspan="2">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 12pt;"><span style="font-family: Calibri; font-weight: bold;">System</span><span style="font-family: Calibri; font-weight: bold;">/Software</span><span style="font-family: Calibri; font-weight: bold; "> Details</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 203.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 10pt;"><span style="font-family: Calibri;">Operating system version</span></p>
+        </td>
+        <td style="width: 259.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 10pt;"><span style="font-family: Calibri;">CentOS Linux release 8.1.1911 (Core)</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 203.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 10pt;"><span style="font-family: Calibri;">OS Architecture</span></p>
+        </td>
+        <td style="width: 259.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 10pt;"><span style="font-family: Calibri;">X86-64</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 203.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 10pt;"><span style="font-family: Calibri;">MPI</span></p>
+        </td>
+        <td style="width: 259.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #ededed;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 10pt;"><span style="font-family: Calibri;">Open MPI</span><span style="font-family: Calibri;"> 4.1.0</span></p>
+        </td>
+        </tr>
+        <tr style="height: 14.5pt;">
+        <td style="width: 203.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 10pt;"><span style="font-family: Calibri;">Compiler</span></p>
+        </td>
+        <td style="width: 259.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; font-size: 10pt;"><span style="font-family: Calibri;">icc</span><span style="font-family: Calibri;"> (ICC) 2021.4.0</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        </div>
+        <h2 style="margin-top: 2pt; margin-left: 31.5pt; margin-bottom: 0pt; text-indent: -28.8pt; page-break-inside: avoid; page-break-after: avoid; font-size: 13pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">4.4</span> <a name="_Toc81323186"></a><a name="_Toc81330568"></a><a name="_Toc81390120"></a><a name="_Toc81411733"></a><a name="_Toc81413130"></a><a name="_Toc81420241"></a><a name="_Toc81498996"></a><a name="_Toc85794200"></a><a name="_Toc85794527"></a><a name="_Toc85798831"></a><a name="_Toc94861089"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Performance Results</span></h2>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 31.5pt; font-size: 11pt;"><span style="font-family: Calibri;">Simulation</span> <span style="font-family: Calibri;">is carried out to see the </span><span style="font-family: Calibri;">performance </span><span style="font-family: Calibri;">of chosen</span><span style="font-family: Calibri;"> Azure VM</span><span style="font-family: Calibri;"> and the optimised CPU core configuration on single node</span><span style="font-family: Calibri;">. </span><span style="font-family: Calibri;">R</span><span style="font-family: Calibri;">efer chapter </span><a style="text-decoration: none; -aw-ignore: true;" href="#_Ref85797239"><span style="font-family: Calibri; color: #000000;">2.2</span></a><span style="font-family: Calibri;"> for the VM specifications. </span></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">Thread configuration is an essential parameter to consider when analysing performance since it enhances performance.</span> <span style="font-family: Calibri;">The thread settings shown below are the best chance for improving hardware performance.</span></p>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; font-size: 11pt;"><span style="font-family: Calibri;">The results were measured by averaging the WRF computation time of each time step from the </span><span style="font-family: Calibri;">&ldquo;</span><span style="font-family: Calibri;">rsl.</span><span style="font-family: Calibri;">out</span><span style="font-family: Calibri;">.0000</span><span style="font-family: Calibri;">&rdquo;</span><span style="font-family: Calibri;"> output file.</span></p>
+        <div class="overflow-table"><table style="border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr>
+        <td style="width: 63.95pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Compiler</span></p>
+        </td>
+        <td style="width: 42.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">CPU</span></p>
+        </td>
+        <td style="width: 51.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Thread</span></p>
+        </td>
+        <td style="width: 51.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Tile</span></p>
+        </td>
+        <td style="width: 70.55pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">MPI Ranks</span></p>
+        </td>
+        <td style="width: 85.9pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Simulation time (Hrs)</span></p>
+        </td>
+        <td style="width: 68.8pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri; font-weight: bold;">Mean time per step (s)</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 63.95pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">ICC</span></p>
+        </td>
+        <td style="width: 42.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">16</span></p>
+        </td>
+        <td style="width: 51.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1</span></p>
+        </td>
+        <td style="width: 51.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">162</span></p>
+        </td>
+        <td style="width: 70.55pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">16</span></p>
+        </td>
+        <td style="width: 85.9pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">3.25</span></p>
+        </td>
+        <td style="width: 68.8pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">7.85</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 63.95pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">ICC</span></p>
+        </td>
+        <td style="width: 42.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">32</span></p>
+        </td>
+        <td style="width: 51.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2</span></p>
+        </td>
+        <td style="width: 51.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">162</span></p>
+        </td>
+        <td style="width: 70.55pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">16</span></p>
+        </td>
+        <td style="width: 85.9pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">2.08</span></p>
+        </td>
+        <td style="width: 68.8pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">4.97</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 63.95pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">ICC</span></p>
+        </td>
+        <td style="width: 42.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">64</span></p>
+        </td>
+        <td style="width: 51.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">4</span></p>
+        </td>
+        <td style="width: 51.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">325</span></p>
+        </td>
+        <td style="width: 70.55pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">16</span></p>
+        </td>
+        <td style="width: 85.9pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.59</span></p>
+        </td>
+        <td style="width: 68.8pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">3.75</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 63.95pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">ICC</span></p>
+        </td>
+        <td style="width: 42.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">96</span></p>
+        </td>
+        <td style="width: 51.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">6</span></p>
+        </td>
+        <td style="width: 51.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">325</span></p>
+        </td>
+        <td style="width: 70.55pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">16</span></p>
+        </td>
+        <td style="width: 85.9pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.46</span></p>
+        </td>
+        <td style="width: 68.8pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">3.44</span></p>
+        </td>
+        </tr>
+        <tr>
+        <td style="width: 63.95pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">ICC</span></p>
+        </td>
+        <td style="width: 42.2pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">120</span></p>
+        </td>
+        <td style="width: 51.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">6</span></p>
+        </td>
+        <td style="width: 51.35pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">260</span></p>
+        </td>
+        <td style="width: 70.55pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: top;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">20</span></p>
+        </td>
+        <td style="width: 85.9pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">1.</span><span style="font-family: Calibri;">43</span></p>
+        </td>
+        <td style="width: 68.8pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">3</span><span style="font-family: Calibri;">.</span><span style="font-family: Calibri;">34</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-align: center; font-size: 11pt;"><img style="-aw-left-pos: 0pt; -aw-rel-hpos: column; -aw-rel-vpos: paragraph; -aw-top-pos: 0pt; -aw-wrap-type: inline;" src="wrf_files/a6pt9-3nf67.017.png" alt="" width="531" height="305" /></p>
+        <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">5</span> <a name="_Toc85794201"></a><a name="_Toc85794528"></a><a name="_Toc85798832"></a><a name="_Toc94861090"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Azure Co</span><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">st</span></h1>
+        <p style="margin-top: 0pt; margin-bottom: 8pt; text-indent: 21.6pt; font-size: 11pt;"><span style="font-family: Calibri;">For the below cost reports, the</span> <span style="font-family: Calibri;">a</span><span style="font-family: Calibri;">pplication</span><span style="font-family: Calibri;"> i</span><span style="font-family: Calibri;">nstallation time </span><span style="font-family: Calibri;">is</span><span style="font-family: Calibri;"> not considered </span><span style="font-family: Calibri;">and only </span><span style="font-family: Calibri;">simulation </span><span style="font-family: Calibri;">time </span><span style="font-family: Calibri;">is considered for the cost calculation</span><span style="font-family: Calibri;">.</span> <span style="font-family: Calibri;">The Hourly rates reported are subject to change. For the curr</span><span style="font-family: Calibri;">ent rate, please refer the link </span><a style="text-decoration: none;" href="https://azure.microsoft.com/en-in/pricing/calculator/"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">https://azure.microsoft.com/en-in/pricing/calculator/</span></a><span style="font-family: Calibri;">.</span></p>
+        <div style="text-align: center;">
+        <div class="overflow-table"><table style="width: 451.75pt; margin-right: auto; margin-left: auto; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr style="height: 30pt;">
+        <td style="width: 62.05pt; border-style: solid; border-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">Azure VM </span><span style="font-family: Calibri; font-weight: bold;">Name</span></p>
+        </td>
+        <td style="width: 66.7pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">Model Name</span></p>
+        </td>
+        <td style="width: 57.75pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;"># </span><span style="font-family: Calibri; font-weight: bold;">CPU</span></p>
+        </td>
+        <td style="width: 64.2pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">Simulation</span><span style="font-family: Calibri; font-weight: bold;"> time in </span><span style="font-family: Calibri; font-weight: bold;">Hrs</span></p>
+        </td>
+        <td style="width: 64.2pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">Azure VM Hourly Cost</span></p>
+        </td>
+        <td style="width: 71.3pt; border-top-style: solid; border-top-width: 0.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle; background-color: #d9d9d9;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri; font-weight: bold;">Total Azure Cost</span></p>
+        </td>
+        </tr>
+        <tr style="height: 15pt;">
+        <td style="width: 62.05pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;" rowspan="5">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 11pt;"><span style="font-family: Calibri;">HBv3</span></p>
+        </td>
+        <td style="width: 66.7pt; border-right-style: solid; border-right-width: 0.75pt; border-left-style: solid; border-left-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.03pt; vertical-align: middle;" rowspan="5">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">New CONUS 2.5 KM</span></p>
+        </td>
+        <td style="width: 57.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">16</span></p>
+        </td>
+        <td style="width: 64.2pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">3.25</span></p>
+        </td>
+        <td style="width: 64.2pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">$4.68</span></p>
+        </td>
+        <td style="width: 71.3pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">$15.21</span></p>
+        </td>
+        </tr>
+        <tr style="height: 15pt;">
+        <td style="width: 57.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">32</span></p>
+        </td>
+        <td style="width: 64.2pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">2.08</span></p>
+        </td>
+        <td style="width: 64.2pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">$4.68</span></p>
+        </td>
+        <td style="width: 71.3pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">$9.75</span></p>
+        </td>
+        </tr>
+        <tr style="height: 15pt;">
+        <td style="width: 57.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">64</span></p>
+        </td>
+        <td style="width: 64.2pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">1.59</span></p>
+        </td>
+        <td style="width: 64.2pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">$4.68</span></p>
+        </td>
+        <td style="width: 71.3pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">$7.45</span></p>
+        </td>
+        </tr>
+        <tr style="height: 15pt;">
+        <td style="width: 57.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">96</span></p>
+        </td>
+        <td style="width: 64.2pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">1.46</span></p>
+        </td>
+        <td style="width: 64.2pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">$4.68</span></p>
+        </td>
+        <td style="width: 71.3pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">$6.84</span></p>
+        </td>
+        </tr>
+        <tr style="height: 15pt;">
+        <td style="width: 57.75pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">120</span></p>
+        </td>
+        <td style="width: 64.2pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">1.</span><span style="font-family: Calibri;">43</span></p>
+        </td>
+        <td style="width: 64.2pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">$4.68</span></p>
+        </td>
+        <td style="width: 71.3pt; border-right-style: solid; border-right-width: 0.75pt; border-bottom-style: solid; border-bottom-width: 0.75pt; padding-right: 5.03pt; padding-left: 5.4pt; vertical-align: middle;">
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-align: center; font-size: 10pt;"><span style="font-family: Calibri;">$</span><span style="font-family: Calibri;">6.68</span></p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        </div>
+        <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">6</span> <a name="_Toc85794202"></a><a name="_Toc85794529"></a><a name="_Toc85798833"></a><a name="_Toc94861091"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Summary</span></h1>
+        <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+        <li style="margin-left: 31.2pt; line-height: 125%; padding-left: 4.5pt; font-family: Calibri; font-size: 11pt;">WRF is successfully deployed and tested on HB120rs_v3 series VM on Azure Platform.</li>
+        <li style="margin-left: 31.2pt; line-height: 125%; padding-left: 4.5pt; font-family: Calibri; font-size: 11pt;">Expected meantime per step is achieved in all CPU cores.</li>
+        <li style="margin-left: 31.35pt; line-height: 125%; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">However, the scalability might vary depending on the dataset being used and the node count being tested. Ensure that to test the impact of the tile size, process, and threads per process before use.</li>
+        </ol>
+        <h1 style="margin-top: 12pt; margin-left: 21.6pt; margin-bottom: 0pt; text-indent: -21.6pt; page-break-inside: avoid; page-break-after: avoid; font-size: 16pt;"><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">7</span> <a name="_Toc88142531"></a><a name="_Toc88753561"></a><a name="_Toc93395353"></a><a name="_Toc94861092"></a><span style="font-family: 'Calibri Light'; font-weight: normal; color: #2f5496;">Running WRF on Azure Virtual Machines:</span></h1>
+        <p style="margin-top: 0pt; margin-bottom: 0pt; text-indent: 18pt; font-size: 11pt;"><span style="font-family: Calibri;">Users can use any one of the following t</span><span style="font-family: Calibri;">wo</span><span style="font-family: Calibri;"> options </span><span style="font-family: Calibri;">for the further </span><span style="font-family: Calibri;">details:</span></p>
+        <ol style="margin: 0pt; padding-left: 0pt;" type="1">
+        <li style="margin-left: 31.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Contact through Microsoft: <a style="text-decoration: none;" href="https://azure.microsoft.com/en-us/overview/contact-azure-sales/#contact-sales"><span style="text-decoration: underline; color: #0563c1;">Microsoft global black belt team</span></a></li>
+        <li style="margin-left: 31.35pt; padding-left: 4.65pt; font-family: Calibri; font-size: 11pt;">Contact through Capgemini: <a style="text-decoration: none;" href="mailto:AzureHPC-Certification@capgemini.com"><span style="text-decoration: underline; color: #0563c1;">AzureHPC-Certification@capgemini.com</span></a></li>
+        </ol>
+        
+        <!--The Report content goes here-->
+      </div><!--content-->
+      
+     <div class="col-4 col-md-2 px-1 px-sm-0 toc">
+        <label class="px-3">Table of Contents</label>
+        <!--toc content goes here-->  
+        <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861069"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Introduction</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861070"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Deploy Virtual Machine on Azure Cloud Platform</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861071"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Azure Cloud Architecture for Application</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861072"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Azure Virtual Machine (VM)</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861073"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.3 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Creation of Virtual Machine</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861074"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">2.4 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Connect to virtual machine</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861075"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Install WRF 4.3.1</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861076"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3.1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Download product</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861077"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3.2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Install WRF 4.3.1 on Linux</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861078"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3.3 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Required data for WRF 4.3.1</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 22pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861079"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3.3.1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">WRF work flow</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 22pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861080"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3.3.2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Download static geographic data (for geogrid.exe)</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 22pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861081"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3.3.3 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Real time data (for ungrib.exe)</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 22pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861082"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3.3.1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">WPS output file</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 22pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861083"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3.3.2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Defining Model</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 22pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861084"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">3.3.3 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Configuring options</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861085"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">4 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Performance Results for WRF 4.3.1</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861086"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">4.1 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Overview</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861087"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">4.2 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Model Details</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861088"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">4.3 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Azure Platform</span></a></p>
+        <p style="margin-top: 0pt; margin-left: 11pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861089"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">4.4 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Performance Results</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861090"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">5 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Azure Cost</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861091"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">6 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Summary</span></a></p>
+        <p style="margin-top: 0pt; margin-bottom: 5pt; font-size: 11pt;"><a style="text-decoration: none;" href="#_Toc94861092"><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">7 </span><span style="font-family: Calibri; text-decoration: underline; color: #0563c1;">Running WRF on Azure Virtual Machines:</span></a></p>
+        
+        <!--toc content goes here-->  
+     </div>
+
+    </div><!--rpt-->
+
+
+      </section>
+          
+      <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
+ 
+    </main>
+
+    <footer>
+      <div class="row g-0">		
+        <div class="container text-center mx-auto">
+        <div class="container px-3 d-flex justify-content-between flex-column flex-md-row-reverse my-auto">
+          <div>
+            <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo" />
+            <span class="logoline-bot1"></span> 
+            <span class="px-1 px-sm-2">
+              <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo" />
+            </span>
+      </div>
+            <div class="text-uppercase align-self-center pt-3 pt-md-2 footer-text">Copyright &copy; 2021 Azure HPC</div>
+          </div>
+        </div>
+      </div>
+      </footer>
+    </div><!--wrapper-->
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+    <script> 
+    
+      let mybutton = document.getElementById("btn-back-to-top");  
+      
+      // When the user clicks on the button, scroll to the top of the document
+      mybutton.addEventListener("click", backToTop);
+    
+    </script>
+    
+    </body>
+    </html>

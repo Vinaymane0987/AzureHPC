@@ -1,0 +1,2077 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="shortcut icon" href="img/icon.ico">
+    <link rel="Stylesheet" href="css/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;0,300;0,400;1,400&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script type="text/javascript" src="js/script.js"></script>
+
+    <script src="https://kit.fontawesome.com/3d0a07deaa.js" crossorigin="anonymous"></script>
+
+    <title>Azure HPC | nFx Report</title>
+  </head>
+  <body>
+    <div id="wrapper" class="row g-0">
+      
+      <header class="container-fluid">   
+        <div class="logo container">
+          <div class="title-text"><a href="index.html">Azure <span>HPC</span></a></div>
+         
+          <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo">
+          <span class="logoline-top1"></span> <span class="px-1 px-sm-2">
+             <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo">
+          </span>
+        
+        </div>
+      </header>
+
+    <main class="container-fluid">
+
+      <section class="container-lg px-3 px-lg-0 rpt-wrapper">        
+      <h3 class="text-center text-uppercase py-4"><!--The Report title goes here-->Azure HPC Recipe Document for Altair nanoFluidX</h3>
+    <div class="d-flex flex-row rpt">
+
+      <div class="col-2 px-1 px-sm-0 text-left index">
+        <label class="px-3"><!--The Report Name goes here-->Altair nanoFluidX</label>
+        <div class="index-scroll">   
+          <p><a name="_Toc81399914"></a></p>
+          <p><a href="#_Toc85827871"><span>1</span> <span>Introduction</span></a></p>
+          <p><a href="#_Toc85827872"><span>2</span> <span>Deploying Virtual Machine on Azure Cloud Platform</span></a></p>
+        
+          <p><a href="#_Toc85827878"><span>3</span> <span>Install Altair nanoFluidX Application on Virtual Machine</span></a></p>
+ 
+          <p><a href="#_Toc85827882"><span>4</span> <span>Performance results of Altair nanoFluidX on azure virtual machine</span></a></p>
+ 
+          <p><a href="#_Toc85827889"><span>5</span> <span>Azure Cost</span></a></p>
+          <p><a href="#_Toc85827890"><span>6</span> <span>Summary</span></a></p>
+    </div>
+      </div><!--index-->
+
+      <div class="col-8 col-md-8 px-3 content">
+        <!--Add class="h1" for the Manin Headings (1-6) eg. 1 Introdcution | 2 Deploy Virtual Machine on Azure Cloud Platform-->
+        <!--Add class="h2" for the Sub Headings (2.1 - 2.4) eg. 2.1 Azure Cloud Architecture for Application-->
+
+        <!--Add <div class="overflow-table"> before every <div class="overflow-table"><table> within the content-->
+       
+        <!--The Report content goes here-->
+        <p class="h1">1 <a name="_Toc85827871"></a>Introduction</h1>
+        <p style="text-indent: 36pt;"><a name="_Toc81405760"></a>Select the location of your project. If the project is hosted on GitHub,This document briefly explains the steps to install and run Altair nanoFluidX application on a Virtual Machine deployed in Azure Cloud Platform and presents the performance results.<a name="_Toc81389015"></a></p>
+        <p>This recipe document covers the following topics: -</p>
+
+        <ul>
+        <li>Deploy &amp; connect a required virtual machine on Azure platform.</li>
+
+        <li>Install required NVIDIA drivers in virtual machine.</li>
+
+        <li>Install Application on virtual machine.</li>
+
+        <li>Install license manager for current application</li>
+
+        <li>Performance results of current application on Azure virtual machine</li>
+
+        <li>Azure Cost</li>
+
+        <li>Summary</li></ul>
+
+        <p class="h1">2 <a name="_Toc85827872"></a>Deploying Virtual Machine on Azure Cloud Platform</h1>
+        <p><a name="_Toc81389015"></a></p>
+        <h2>2.1 <a name="_Toc85827873"></a>Azure Cloud Architecture for Application<a name="_Toc81389014"></a></h2>
+        <p>The below Architecture explains the virtual machine running on an Azure Platform</p>
+        <p><a name="_Toc81389014"></a></p>
+        <p><img src="nanoFluidX_files/Image1.png" alt="" width="604" height="477" border="0" /></p>
+        <p><a name="_Toc81389014"></a></p>
+        <p><a name="_Toc81389014"></a></p>
+        <h2>2.2 <a name="_Toc85827874"></a>Azure Virtual Machine (VM)</h2>
+        <p><a name="_Toc81389014"></a></p>
+        <p>A VM is a virtualized instance of a computer that can perform almost all the same functions as a computer, including running applications and operating systems.</p>
+        <p>An Azure VM gives the flexibility of virtualization without having to buy and maintain the physical hardware that runs it. However, the user still needs to maintain the VM by performing tasks, such as configuring, patching, and installing the software that runs on it.</p>
+        <p>Things to be considered before deploying a VM,</p>
+        <ul>
+        <li>The names of the application resources</li>
+        <li>The location where the resources are stored</li>
+        <li>The size of the VM</li>
+        <li>The operating system that the VM runs</li>
+        <li>The configuration of the VM</li>
+        <li>The related resources that the VM needs</li></ul>
+        <p>There are different sizes and options available for the Azure virtual machines and user can use to run apps and workloads. Depending on the workload user must choose the appropriate VM size. For complete list check this <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/sizes/">https://docs.microsoft.com/en-us/azure/virtual-machines/sizes/</a>.</p>
+        <p>To test the performance of Altair nanoFluidX on Azure Platform, <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/nda100-v4-series">ND A100 v4</a> and <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/nvv3-series">NVv3 M60</a> virtual machines are deployed.</p>
+        <div class="overflow-table"><table><colgroup><col /><col span="6" /></colgroup>
+        <tbody>
+        <tr>
+        <td>
+        <p>VM Name</p>
+        </td>
+        <td>
+        <p>vCPU</p>
+        </td>
+        <td>
+        <p>Memory (GiB)</p>
+        </td>
+        <td>
+        <p>SSD (GiB)</p>
+        </td>
+        <td>
+        <p>#GPU</p>
+        </td>
+        <td>
+        <p>GPU Memory (GiB)</p>
+        </td>
+        <td>
+        <p>Max Data Disk</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Standard_ND96asr_v4</p>
+        </td>
+        <td>
+        <p>96</p>
+        </td>
+        <td>
+        <p>900</p>
+        </td>
+        <td>
+        <p>6000</p>
+        </td>
+        <td>
+        <p>8 A100</p>
+        </td>
+        <td>
+        <p>40</p>
+        </td>
+        <td>
+        <p>32</p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p>The current virtual machine is a new flagship addition to the Azure GPU family. (Standard_ND96asr_v4 Virtual Machine). This VMs is powered by <a href="https://www.nvidia.com/en-in/data-center/a100/">NVIDIA Ampere A100 Tensor Core</a> GPUs and 96 physical 2nd-generation AMD Epyc&trade; CPU cores (2.44GHz). The &ldquo;ND96asr_v4&rdquo; VM has 8 GPUs with 40 GB of memory each and supported by 96 AMD processor cores with a total memory of 900GB. Each GPU features NVLINK 3.0 connectivity for communication within the VM.</p>
+        <div class="overflow-table"><table><colgroup><col /><col span="6" /></colgroup>
+        <tbody>
+        <tr>
+        <td>
+        <p>VM Name</p>
+        </td>
+        <td>
+        <p>vCPU</p>
+        </td>
+        <td>
+        <p>Memory (GiB)</p>
+        </td>
+        <td>
+        <p>SSD (GiB)</p>
+        </td>
+        <td>
+        <p>#GPU</p>
+        </td>
+        <td>
+        <p>GPU Memory (GiB)</p>
+        </td>
+        <td>
+        <p>Max Data Disk</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Standard_NV12s_v3</p>
+        </td>
+        <td>
+        <p>12</p>
+        </td>
+        <td>
+        <p>112</p>
+        </td>
+        <td>
+        <p>320</p>
+        </td>
+        <td>
+        <p>1</p>
+        </td>
+        <td>
+        <p>8</p>
+        </td>
+        <td>
+        <p>12</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Standard_NV24s_v3</p>
+        </td>
+        <td>
+        <p>24</p>
+        </td>
+        <td>
+        <p>224</p>
+        </td>
+        <td>
+        <p>640</p>
+        </td>
+        <td>
+        <p>2</p>
+        </td>
+        <td>
+        <p>16</p>
+        </td>
+        <td>
+        <p>24</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Standard_NV48s_v3</p>
+        </td>
+        <td>
+        <p>48</p>
+        </td>
+        <td>
+        <p>448</p>
+        </td>
+        <td>
+        <p>1280</p>
+        </td>
+        <td>
+        <p>4</p>
+        </td>
+        <td>
+        <p>32</p>
+        </td>
+        <td>
+        <p>32</p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p>This VM Belongs to <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/nvv3-series">NVv3-series</a> are powered by <a href="https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf">NVIDIA M60</a>&nbsp;GPUs and Intel E5-2690 v4 (Broadwell) CPUs (2.60GHz). The &ldquo;NV48s_v3&rdquo; VM has NVIDIA Grid Technology with Intel cores and Intel Hyper-Threading Technology. Each GPU in NVv3 instances comes with a GRID license, this license gives the flexibility to use an NV instance as a virtual workstation for a single user, or 25 concurrent users can connect to the VM for a virtual application scenario.</p>
+        <h2>2.3 <a name="_Toc85827875"></a><a name="_Toc81405762"></a>Create a Virtual Machine on Azure Platform</h2>
+        <p style="font-family: roboto; font-weight: bold;">Sign in to Azure</p>
+        <p>Sign into the Azure portal by using <a href="https://portal.azure.com/">https://portal.azure.com/</a></p>
+        <p><a href="https://azure.microsoft.com/offers/ms-azr-0044p">Free Trial subscriptions</a>&nbsp;aren't eligible for limit or quota increases.</p>
+        <p>After the successful sign in or sign up, one has to upgrade the Azure subscription to <a href="https://azure.microsoft.com/en-us/offers/ms-azr-0003p/">Pay-As-You-Go</a> to deploy a Virtual machine. For deployment, the user must have regional vCPU quota which can be obtained by raising a request.</p>
+        <p>The step-by-step procedure to increase the vCPU quota is given below,</p>
+        <p><a href="https://docs.microsoft.com/en-us/azure/azure-portal/supportability/per-vm-quota-requests">https://docs.microsoft.com/en-us/azure/azure-portal/supportability/per-vm-quota-requests</a></p>
+        <p>The step by step procedure to deploy Virtual machine is given below,</p>
+        <p>1. Type&nbsp;<span style="font-family: roboto; font-weight: bold;">virtual machines</span>&nbsp;in the marketplace search.</p>
+        <p>2. Under&nbsp;<span style="font-family: roboto; font-weight: bold;">Services</span>, select&nbsp;<span style="font-family: roboto; font-weight: bold;">Virtual machines.</span></p>
+        <p>3. In the&nbsp;<span style="font-family: roboto; font-weight: bold;">Virtual machines</span>&nbsp;page, select&nbsp;<span style="font-family: roboto; font-weight: bold;">Create</span>&nbsp;Then&nbsp;<span style="font-family: roboto; font-weight: bold;">Virtual machine</span>.</p>
+        <p>4. In the&nbsp;<span style="font-family: roboto; font-weight: bold;">Basics</span>&nbsp;tab, under&nbsp;<span style="font-family: roboto; font-weight: bold;">Project details</span>, make sure the correct subscription is selected and then choose to&nbsp;<span style="font-family: roboto; font-weight: bold;">Create new</span>&nbsp;resource group. Type&nbsp;<span style="font-family: roboto; font-weight: bold;">Azure-PerformanceTest&nbsp;(user choice)</span> for the name.</p>
+        <p><img src="nanoFluidX_files/Image2.png" alt="" width="548" height="268" border="0" /></p>
+        <p>5. Under&nbsp;<span style="font-family: roboto; font-weight: bold;">Instance details</span>, type&nbsp;Azure-VM (user choice)&nbsp;for the&nbsp;<span style="font-family: roboto; font-weight: bold;">Virtual machine name</span>&nbsp;and choose&nbsp;West Europe for your&nbsp;<span style="font-family: roboto; font-weight: bold;">Region</span>. Choose&nbsp;CentOS, Version 8.1 HPC-Gen2 for the&nbsp;<span style="font-family: roboto; font-weight: bold;">Image</span>&nbsp;and&nbsp;Standard_ND96asr_v4&nbsp;for the&nbsp;<span style="font-family: roboto; font-weight: bold;">Size</span> (user choice). Leave the other defaults.</p>
+        <p><img src="nanoFluidX_files/Image3.png" alt="" width="548" height="219" border="0" /></p>
+        <p>Note:</p>
+        <ul>
+        <li><span style="font-family: roboto; font-weight: bold;">Region</span> must be decided based on where the Virtual machine is going to be deployed. To avoid the network latency, the region should be near to the location where the VM is to be deployed.</li>
+        <li><span style="font-family: roboto; font-weight: bold;">Image</span> selection is of user choice based on the application user can choose the image (Windows 10, Linux based OS and Windows Server)</li></ul>
+        <p>6. Under&nbsp;<span style="font-family: roboto; font-weight: bold;">Administrator account</span>, provide a username, such as&nbsp;Azureuser&nbsp;and a password. The password must be at least 12 characters long and meet the&nbsp;<a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm-">defined complexity requirements</a>.</p>
+        <p><img src="nanoFluidX_files/Image4.png" alt="" width="548" height="109" border="0" /></p>
+        <p>7. Under&nbsp;<span style="font-family: roboto; font-weight: bold;">Inbound port rules</span>, choose&nbsp;<span style="font-family: roboto; font-weight: bold;">Allow selected ports</span>&nbsp;and then select&nbsp;<span style="font-family: roboto; font-weight: bold;">SSH (22)</span>&nbsp;from the drop-down.</p>
+        <p><img src="nanoFluidX_files/Image5.png" alt="" width="548" height="208" border="0" /></p>
+        <p>8. <a name="_Ref81315987"></a>In <span style="font-family: roboto; font-weight: bold;">Advanced</span> tab, under the Extensions click <span style="font-family: roboto; font-weight: bold;">Select an extension to install</span>, select <span style="font-family: roboto; font-weight: bold;">NVIDIA GPU Driver Extension</span> (user choice)</p>
+        <p><img src="nanoFluidX_files/Image6.png" alt="" width="548" height="158" border="0" /></p>
+        <p><span style="font-family: roboto; font-weight: bold;">Note: This Step 8, will installs the older version of Nvidia and Cuda driver hence the user can skip this step and proceed the VM deployment without extension. Follow manual installation as per chapter 2.5</span></p>
+        <p>9. Leave the remaining defaults and then select the&nbsp;<span style="font-family: roboto; font-weight: bold;">Review + create</span>&nbsp;button at the bottom of the page.</p>
+        <p>10. After validation runs, select the&nbsp;Create&nbsp;button at the bottom of the page.</p>
+        <p><img src="nanoFluidX_files/Image7.png" alt="" width="548" height="61" border="0" /></p>
+        <p>11. After deployment is complete, select&nbsp;&ldquo;Go to resource&rdquo;.</p>
+        <p><img src="nanoFluidX_files/Image8.png" alt="" width="548" height="131" border="0" /></p>
+        <h2>2.4 <a name="_Toc85827876"></a>Connect to virtual machine</h2>
+        <p><span style="font-family: roboto; font-weight: bold;">Create</span> a <span style="font-family: roboto; font-weight: bold;">SSH</span> connection to the virtual machine.</p>
+        <p>1. On the overview page for your virtual machine, select the&nbsp;Connect&nbsp;button then select&nbsp;SSH and copy the public IP address.</p>
+        <p><img src="nanoFluidX_files/Image9.png" alt="" width="497" height="123" border="0" /></p>
+        <p>2. Open any SSH client tool of user choice, in this case <span style="font-family: roboto; font-weight: bold;">PUTTY</span> is used.</p>
+        <p>3. Enter the <span style="font-family: roboto; font-weight: bold;">Public IP address</span> and port as 22 and click <span style="font-family: roboto; font-weight: bold;">Open</span></p>
+        <p><img src="nanoFluidX_files/Image10.png" alt="" width="353" height="347" border="0" /></p>
+        <p>4. Enter username in <span style="font-family: roboto; font-weight: bold;">Login as</span> and enter the <span style="font-family: roboto; font-weight: bold;">password</span> and click <span style="font-family: roboto; font-weight: bold;">Enter</span>.</p>
+        <p>5. Now user is connected to the VM in Console</p>
+        <h2>2.5 <a name="_Toc85827877"></a>Install Nvidia Drivers</h2>
+        <p>To take advantage of the GPU capabilities of Azure N-series VMs backed by NVIDIA GPUs, the user must install NVIDIA GPU drivers.</p>
+        <p>If the machine has a NVLink or NVSwitch connecting the GPUs (In this case the current VM ND A100 v4 series instances has), one should also install the associated version of the Nvidia fabric manager.</p>
+        <p>There are two ways to install the drivers,</p>
+        <ul>
+        <li>The&nbsp;NVIDIA GPU Driver Extension&nbsp;installs appropriate NVIDIA CUDA or GRID drivers on an N-series VM. Install or manage the extension using the Azure portal (Refer 8)</li>
+        <li>Install NVIDIA GPU drivers manually. (For the manual installation follow the procedure given below)</li></ul>
+        <p><span style="font-family: roboto; font-weight: bold;">Nvidia Data Center Driver installation guide for CentOS 8</span></p>
+        <p>The step-by-step instruction is given below,</p>
+        <p>1. In some cases, you may need to install some additional dependencies that are required</p>
+        <p>for installing the NVIDIA drivers.</p>
+        <p><span style="font-family: roboto; font-weight: bold;"># sudo dnf install -y tar bzip2 make automake gcc gcc-c++ pciutils elfutils-libelf-devel libglvnd-devel</span></p>
+        <p>2. Enable the PowerTools repo and set up the external dependency on EPEL for DKMS.</p>
+        <p><span style="font-family: roboto; font-weight: bold;"># sudo dnf config-manager --set-enabled PowerTools</span></p>
+        <p><span style="font-family: roboto; font-weight: bold;"># sudo dnf install -y epel-release</span></p>
+        <p>3. Install the CUDA repository public GPG key</p>
+        <p><span style="font-family: roboto; font-weight: bold;"># distribution=rhel8</span></p>
+        <p>4. Setup the CUDA network repository</p>
+        <p><span style="font-family: roboto; font-weight: bold;"># ARCH=$( /bin/arch )</span></p>
+        <p><span style="font-family: roboto; font-weight: bold;"># sudo dnf config-manager --add-repo http://developer.download.nvidia.com/compute/cuda/repos/$distribution/${ARCH}/cuda-$distribution.repo</span></p>
+        <p>5. For CentOS 8, ensure that the system has the correct Linux kernel sources from the CentOS repositories:</p>
+        <p><span style="font-family: roboto; font-weight: bold;"># sudo dnf install -y kernel-devel-$(uname -r) kernel-headers-$(uname -r)</span></p>
+        <p>6. Note that in some cases, you may have to update the running kernel as a pre-requisite:</p>
+        <p><span style="font-family: roboto; font-weight: bold;"># sudo dnf install -y kernel kernel-core kernel-modules</span></p>
+        <p>7. Update the repository cache and install the driver using the nvidia-driver meta-package</p>
+        <p><span style="font-family: roboto; font-weight: bold;"># sudo dnf clean all</span></p>
+        <p><span style="font-family: roboto; font-weight: bold;"># sudo dnf -y module install nvidia-driver:latest-dkms</span></p>
+        <p>8. Install fabric manager to activate the NVswitch</p>
+        <p><span style="font-family: roboto; font-weight: bold;"># sudo dnf module install nvidia-driver:latest-dkms/fm</span></p>
+        <p>9. Enable FM Service to Auto Start at Boot</p>
+        <p><span style="font-family: roboto; font-weight: bold;"># sudo systemctl enable nvidia-fabricmanager</span></p>
+        <p><span style="font-family: roboto; font-weight: bold;">Reference: <a href="https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html#centos8/">https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html#centos8/</a></span></p>
+        <p class="h1">3 <a name="_Toc85827878"></a>Install Altair nanoFluidX Application on Virtual Machine</h1>
+        <h2>3.1 <a name="_Toc85827879"></a><a name="_Toc81399915"></a>Download product</h2>
+        <p>Instructions on how to download Altair products from Altair One Marketplace. Before you begin, open Altair One Marketplace in a web browser and log on.</p>
+        <p>1. Type <span style="font-family: roboto; font-weight: bold;">nanofluidx</span> in the search box and press Enter.</p>
+        <p>2. In the right pane of the web browser, click the <span style="font-family: roboto; font-weight: bold;">Download</span> tab.</p>
+        <p>3. From the Suite Version drop-down menu, select a suite version.</p>
+        <p>4. From the Operating System drop-down menu, select a platform.</p>
+        <p>5. Click the <span style="font-family: roboto; font-weight: bold;">Download</span> button to the right of each software package to download and click the download icon.</p>
+        <p><img src="nanoFluidX_files/Image11.png" alt="" width="598" height="287" border="0" /></p>
+        <p>6. Click the <span style="font-family: roboto; font-weight: bold;">License Manager</span> tab button to the right of each software package you would like to download and click the download icon.</p>
+        <p><img src="nanoFluidX_files/Image12.png" alt="" width="594" height="282" border="0" /></p>
+        <h2>3.2 <a name="_Toc85827880"></a>Install Altair nanoFluidX application<a name="_Toc81399916"></a> on Linux</h2>
+        <p>1. Open a command terminal window/prompt.</p>
+        <p>a) <span style="font-family: roboto; font-weight: bold;">cd</span> &ndash; change directory &ndash; to the location where the installer executable resides.</p>
+        <p>b) Execute the <span style="font-family: roboto; font-weight: bold;">sh</span> command on the installer binary with the additional parameter "-i console",</p>
+        <p>for example, <span style="font-family: roboto; font-weight: bold;">sh hwCFDSolvers2021.2_linux64.bin -i console.</span></p>
+        <p>2. In the multi-language selector prompt, select the proper locale and press <span style="font-family: roboto; font-weight: bold;">Enter</span> to continue.</p>
+        <p>3. In the <span style="font-family: roboto; font-weight: bold;">License Agreement</span> panel, hit any key and press <span style="font-family: roboto; font-weight: bold;">Enter</span> to advance, or type <span style="font-family: roboto; font-weight: bold;">0</span> and press <span style="font-family: roboto; font-weight: bold;">Enter</span> to proceed to the acceptance of the license agreement. Type <span style="font-family: roboto; font-weight: bold;">Y</span> and press <span style="font-family: roboto; font-weight: bold;">Enter</span> to accept the agreement.</p>
+        <p>4. In the Pre-Installation Summary panel, review the Product Features list, Install Folder and disk space requirements. Press Enter to continue</p>
+        <p>5. Follow the prompt to complete the installation.</p>
+        <p>6. Once the installation completes, press <span style="font-family: roboto; font-weight: bold;">Enter</span> to exit the installer</p>
+        <p>For more information, the installation guide can be found in readme file, which is shown below,</p>
+        <p><img src="nanoFluidX_files/Image11.png" alt="" width="598" height="287" border="0" /></p>
+        <h2>3.3 <a name="_Toc85827881"></a>License Manager installation</h2>
+        <p>The License manage step by step installation procedure is given below,</p>
+        <p>1. Open a command terminal window/prompt.</p>
+        <p>a) <span style="font-family: roboto; font-weight: bold;">cd</span> &ndash; change directory &ndash; to the location where the installer executable resides.</p>
+        <p>2. Log in as <span style="font-family: roboto; font-weight: bold;">root</span> on the machine where the license package will be installed.</p>
+        <p>User need to log in as <span style="font-family: roboto; font-weight: bold;">root</span> to set up the license init scripts to automatically launch the daemons at boot time.</p>
+        <p>3. Execute the installer package.</p>
+        <p>for example, <span style="font-family: roboto; font-weight: bold;">sh altair_licensing_14.5.1.linux_x64.bin -i console</span></p>
+        <p>4. Follow the prompt to continue installation.</p>
+        <p>5. In the <span style="font-family: roboto; font-weight: bold;">Pre-Installation Summary</span> panel, review the Product Features list, Install Folder and disk space requirements. Press Enter to continue</p>
+        <p><img src="nanoFluidX_files/Image13.png" alt="" width="557" height="287" border="0" /></p>
+        <p>6. Follow the prompt to complete the installation.</p>
+        <p>7. Once the installation completes, press Enter to exit the installer</p>
+        <p><img src="nanoFluidX_files/Image14.png" alt="" width="554" height="287" border="0" /></p>
+        <p>The following steps explains license activation for Hosted Altair Units (HAU) system to manage the Licenses.</p>
+        <p><span style="font-family: roboto; font-weight: bold;">Pre-requisites</span>: To use the HAU system user must first have a valid Altair Connect user account, and account (user&rsquo;s company account) must have purchased and enabled Hosted Units. Check with the administrator if needed.</p>
+        <p>Once above pre-requisites are met, user should be able to see the HAU or Hosted Units menu on the left-hand side. There are both administrative functions (if user is one of the company's designated admins) and user functions. This section will cover the typical user functions such as authorizing a machine to use HAU.</p>
+        <p>1. The command line utility <span style="font-family: roboto; font-weight: bold;">almutil</span> is in the install directory, navigate to the directory where <span style="font-family: roboto; font-weight: bold;">almutil</span> resides.</p>
+        <p>2. To authorize a machine, obtain the authorization code by logging in to Altair Connect, click <span style="font-family: roboto; font-weight: bold;">HHWU User</span> and click <span style="font-family: roboto; font-weight: bold;">Generate New Token</span>.</p>
+        <p><img src="nanoFluidX_files/Image15.png" alt="" width="286" height="92" border="0" /></p>
+        <p>3. Highlight the code and copy it using your browser, or simply keep the window available to see the code.</p>
+        <p><img src="nanoFluidX_files/Image16.png" alt="" width="287" height="76" border="0" /></p>
+        <p>4. Enter the authorization code into the command prompt</p>
+        <p>Use the following command, replacing YOURCODE with the code you obtained from Altair portal</p>
+        <p><span style="font-family: roboto; font-weight: bold;">./almutil -hhwuauth -code YOURCODE</span></p>
+        <p>5. The below image shows the successful authorization of your machine.</p>
+        <p><img src="nanoFluidX_files/Image17.png" alt="" width="588" height="81" border="0" /></p>
+        <p><span style="font-family: roboto; font-weight: bold;">The detailed instruction can be found in the below highlighted document</span></p>
+        <p><img src="nanoFluidX_files/Image18.png" alt="" width="591" height="281" border="0" /></p>
+        <p class="h1">4 <a name="_Toc85827882"></a>Performance results of Altair nanoFluidX on azure virtual machine</h1>
+        <h2>4.1 <a name="_Toc85827883"></a><a name="_Toc81399918"></a>Altair nanoFluidX Overview</h2>
+        <p>Altair nanoFluidX is a particle based (SPH) fluid dynamics simulation tool to predict the flow in complex geometries with complex motion. nanoFluidX is based on a weakly compressible SPH formulation and contains a</p>
+        <p>number of exclusive features which improve accuracy and make the code a unique particle-based solution on the market. Mesh-less method to simulating complex fluid flow.</p>
+        <p>The software is created and optimized for use on clusters of Graphical Processing Units (GPUs), making it extremely fast. It can be used to predict, for example, the oiling in powertrain systems with rotating shafts/gears and analyze forces and torques on individual components of the system or predict the sloshing in tanks with transient motions</p>
+        <p>Altair nanoFluidX is ideal for the following industrial applications:</p>
+        <p><span style="font-family: roboto; font-weight: bold;">Powertrain</span>: Oil flow simulation in rotating gearbox</p>
+        <p><span style="font-family: roboto; font-weight: bold;">Automotive and Aerospace</span>: Tank sloshing simulations</p>
+        <p>4.1.1 <a name="_Toc85827884"></a><a name="_Toc81330561"></a>Model De<a name="_Toc81323179"></a>tails</p>
+        <p>A set of 4 test case models are considered for testing the performance of the Altair nanoFluidX on Azure VM. The model details are shown below,</p>
+        <p><img src="nanoFluidX_files/Image19.png" alt="" width="411" height="299" border="0" /></p>
+        <div class="overflow-table"><table><colgroup><col /><col /></colgroup>
+        <tbody>
+        <tr>
+        <td>
+        <p>Models</p>
+        </td>
+        <td>
+        <p>Number of Particles (Millions)</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Aero_gbx</p>
+        </td>
+        <td>
+        <p>~21</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Altair_egbx</p>
+        </td>
+        <td>
+        <p>~6.5</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>cuboid_192^3</p>
+        </td>
+        <td>
+        <p>~7</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>cuboid_198^3</p>
+        </td>
+        <td>
+        <p>~8</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>dambreak_dx0001</p>
+        </td>
+        <td>
+        <p>~54</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>dambreak_dx0002</p>
+        </td>
+        <td>
+        <p>~7</p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <h2>4.2 <a name="_Toc85827885"></a>Altair nanoFluidX on Azure Platform</h2>
+        <p>When it comes to performance parameters, wall clock time (time taken to complete the simulation) is one parameter which need to be carried out. To carry out these complex and heavy simulations on Altair nanoFluidX software, right hardware is must. <span style="font-family: roboto; font-weight: bold;color:rgb(0 113 174)">Microsoft</span> partnered with <span style="font-family: roboto; font-weight: bold; color:rgb(0 113 174)">Nvidia</span> provides the required and suitable infrastructure and hardware on Azure cloud platform. Microsoft Azure provides the latest and fastest compute capabilities for GPU intensive workloads.</p>
+        <div class="overflow-table"><table><colgroup><col /><col /></colgroup>
+        <tbody>
+        <tr>
+        <td colspan="2">
+        <p>Operating system and Nvidia drivers Details for Virtual Machine : NDv4 A100</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Operating system version</p>
+        </td>
+        <td>
+        <p>CentOS Linux release 8.1.1911 (Core)</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>OS Architecture</p>
+        </td>
+        <td>
+        <p>X86-64</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>GPU Drivers version</p>
+        </td>
+        <td>
+        <p>470.57.02</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Cuda version</p>
+        </td>
+        <td>
+        <p>11.4</p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <div class="overflow-table"><table><colgroup><col /><col /></colgroup>
+        <tbody>
+        <tr>
+        <td colspan="2">
+        <p>Operating system and Nvidia drivers Details for Virtual Machine : NVv3 M60</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Operating system version</p>
+        </td>
+        <td>
+        <p>Red Hat Enterprise Linux release 8.2 (Ootpa)</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>OS Architecture</p>
+        </td>
+        <td>
+        <p>X86-64</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>GPU Drivers version</p>
+        </td>
+        <td>
+        <p>470.57.02</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Cuda version</p>
+        </td>
+        <td>
+        <p>11.4</p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <h2>4.3 <a name="_Toc85827886"></a>Altair nanoFluidX 2021.2 Performance Results<a name="_Toc81323186"></a> on NDv4 A100</h2>
+        <p>To Analyse the performance particle based (SPH) fluid dynamics simulations are carried out on the VM. The aim of this performance tests is to test the simulation performance of GPU on chosen the Azure VM. Refer chapter 2.2 for the VM specifications. Since the Altair nanoFluidX is GPU based application the results are compared between number of GPUs.</p>
+        <p>The simulations are not performed for the full simulation time, it is performed for 1000-time steps and 10000-time steps. The speed-up for both cases almost same, hence, in this report only 1000-time step results presented.</p>
+        <p style="text-align:center; font-family: roboto; font-weight: bold;">Wall clock time in seconds (1000 Time Steps):</p>
+        <div class="overflow-table"><table><colgroup><col /><col /><col span="4" /></colgroup>
+        <tbody>
+        <tr>
+        <td>
+        <p>Model Name</p>
+        </td>
+        <td>
+        <p>No of Particles</p>
+        <p>(Millions)</p>
+        </td>
+        <td>
+        <p>#1 GPU</p>
+        </td>
+        <td>
+        <p>#2 GPU</p>
+        </td>
+        <td>
+        <p>#4 GPU</p>
+        </td>
+        <td>
+        <p>#8 GPU</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Altair_egbx</p>
+        </td>
+        <td>
+        <p>6.5</p>
+        </td>
+        <td>
+        <p>81.62</p>
+        </td>
+        <td>
+        <p>49.26</p>
+        </td>
+        <td>
+        <p>28.88</p>
+        </td>
+        <td>
+        <p>17.67</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>dambreak_dx0002</p>
+        </td>
+        <td>
+        <p>7</p>
+        </td>
+        <td>
+        <p>59.58</p>
+        </td>
+        <td>
+        <p>35.39</p>
+        </td>
+        <td>
+        <p>19.90</p>
+        </td>
+        <td>
+        <p>12.43</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>cuboid_192^3</p>
+        </td>
+        <td>
+        <p>7</p>
+        </td>
+        <td>
+        <p>47.24</p>
+        </td>
+        <td>
+        <p>24.90</p>
+        </td>
+        <td>
+        <p>13.25</p>
+        </td>
+        <td>
+        <p>7.75</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>cuboid_198^3</p>
+        </td>
+        <td>
+        <p>8</p>
+        </td>
+        <td>
+        <p>51.73</p>
+        </td>
+        <td>
+        <p>27.20</p>
+        </td>
+        <td>
+        <p>14.41</p>
+        </td>
+        <td>
+        <p>8.36</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Aero_gbx</p>
+        </td>
+        <td>
+        <p>21</p>
+        </td>
+        <td>
+        <p>263.76</p>
+        </td>
+        <td>
+        <p>149.49</p>
+        </td>
+        <td>
+        <p>76.47</p>
+        </td>
+        <td>
+        <p>44.04</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>dambreak_dx0001</p>
+        </td>
+        <td>
+        <p>54</p>
+        </td>
+        <td>
+        <p>413.15</p>
+        </td>
+        <td>
+        <p>243.03</p>
+        </td>
+        <td>
+        <p>125.56</p>
+        </td>
+        <td>
+        <p>64.75</p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p style="text-align:center; font-family: roboto; font-weight: bold;">Speed-up (1GPU vs #GPUs):</p>
+        <p><img src="nanoFluidX_files/Image20.png" alt="" width="603" height="401" border="0" /></p>
+        <h2>4.4 <a name="_Toc85827887"></a>Altair nanoFluidX 2021.2 Performance Results on NVv3 M60</h2>
+        <p>1000 time-step results are given in the following table</p>
+        <p style="text-align:center; font-family: roboto; font-weight: bold;">Wall clock time in seconds (1000 Time Steps):</p>
+        <div class="overflow-table"><table><colgroup><col /><col span="4" /></colgroup>
+        <tbody>
+        <tr>
+        <td>
+        <p>Model Name</p>
+        </td>
+        <td>
+        <p>No of Particles</p>
+        <p>(Millions)</p>
+        </td>
+        <td>
+        <p>#1 GPU</p>
+        </td>
+        <td>
+        <p>#2 GPU</p>
+        </td>
+        <td>
+        <p>#4 GPU</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Aero_gbx</p>
+        </td>
+        <td>
+        <p>21</p>
+        </td>
+        <td>
+        <p>1712</p>
+        </td>
+        <td>
+        <p>962</p>
+        </td>
+        <td>
+        <p>475</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Altair_egbx</p>
+        </td>
+        <td>
+        <p>6.5</p>
+        </td>
+        <td>
+        <p>486</p>
+        </td>
+        <td>
+        <p>275</p>
+        </td>
+        <td>
+        <p>153</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>cuboid_192^3</p>
+        </td>
+        <td>
+        <p>7</p>
+        </td>
+        <td>
+        <p>291</p>
+        </td>
+        <td>
+        <p>150</p>
+        </td>
+        <td>
+        <p>76</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>dambreak_dx0002</p>
+        </td>
+        <td>
+        <p>7</p>
+        </td>
+        <td>
+        <p>376</p>
+        </td>
+        <td>
+        <p>213</p>
+        </td>
+        <td>
+        <p>110</p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p style="text-align:center; font-family: roboto; font-weight: bold;">Speed-up (1GPU vs #GPUs):</p>
+        <p><img src="nanoFluidX_files/Image21.png" alt="" width="616" height="234" border="0" /></p>
+        <h2>4.5 <a name="_Toc85827888"></a>Altair nanoFluidX 2021.2 NDv4 A100 vs NVv3 M60</h2>
+        <p style="text-align:center; font-family: roboto; font-weight: bold;">Wall clock time in seconds on #2 GPUs (1000 Time Steps):</p>
+        <div class="overflow-table"><table><colgroup><col /><col /><col /></colgroup>
+        <tbody>
+        <tr>
+        <td>
+        <p>Model Name</p>
+        </td>
+        <td>
+        <p>NVv3 M60</p>
+        </td>
+        <td>
+        <p>NDv4 A100</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Altair_egbx</p>
+        </td>
+        <td>
+        <p>275</p>
+        </td>
+        <td>
+        <p>49.26</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>dambreak_dx0002</p>
+        </td>
+        <td>
+        <p>213</p>
+        </td>
+        <td>
+        <p>35.39</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>cuboid_192^3</p>
+        </td>
+        <td>
+        <p>150</p>
+        </td>
+        <td>
+        <p>24.90</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Aero_gbx</p>
+        </td>
+        <td>
+        <p>962</p>
+        </td>
+        <td>
+        <p>149.49</p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p style="text-align:center; font-family: roboto; font-weight: bold;">Speed-up (NVv3 vs NDv4):</p>
+        <p><img src="nanoFluidX_files/Image22.png" alt="" width="379" height="221" border="0" /></p>
+        <p style="text-align:center; font-family: roboto; font-weight: bold;">Wall clock time in seconds on #4 GPUs (1000 Time Steps):</p>
+        <div class="overflow-table"><table><colgroup><col /><col /><col /></colgroup>
+        <tbody>
+        <tr>
+        <td>
+        <p>Model Name</p>
+        </td>
+        <td>
+        <p>NVv3 M60</p>
+        </td>
+        <td>
+        <p>NDv4 A100</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Altair_egbx</p>
+        </td>
+        <td>
+        <p>153</p>
+        </td>
+        <td>
+        <p>28.88</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>dambreak_dx0002</p>
+        </td>
+        <td>
+        <p>110</p>
+        </td>
+        <td>
+        <p>19.90</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>cuboid_192^3</p>
+        </td>
+        <td>
+        <p>76</p>
+        </td>
+        <td>
+        <p>13.25</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Aero_gbx</p>
+        </td>
+        <td>
+        <p>475</p>
+        </td>
+        <td>
+        <p>76.47</p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p style="text-align:center; font-family: roboto; font-weight: bold;">Speed-up (NVv3 vs NDv4):</p>
+        <p><img src="nanoFluidX_files/Image23.png" alt="" width="418" height="229" border="0" /></p>
+        <p class="h1">5 <a name="_Toc85827889"></a>Azure Cost</h1>
+        <p>For the below cost reports, the application installation time is not considered and only wall clock time considered for cost calculation. The Hourly rates reported are subject to change. For the current rate please refer the link <a href="https://azure.microsoft.com/en-in/pricing/calculator/"><span>“https://azure.microsoft.com/en-in/pricing/calculator/”</span></a>.</span></p>
+        <div class="overflow-table"><table><colgroup><col /><col /><col /><col /><col /><col /><col /></colgroup>
+        <tbody>
+        <tr>
+        <td>
+        <p>Azure VM Name</p>
+        </td>
+        <td>
+        <p>Model Name</p>
+        </td>
+        <td>
+        <p>Time Steps</p>
+        </td>
+        <td>
+        <p># GPU</p>
+        </td>
+        <td>
+        <p>Wall clock time in Sec</p>
+        </td>
+        <td>
+        <p>Azure VM Hourly Cost</p>
+        </td>
+        <td>
+        <p>Total Azure Cost</p>
+        </td>
+        </tr>
+        <tr>
+        <td rowspan="6">
+        <p>ND96asr_v4</p>
+        </td>
+        <td>
+        <p>Aero_gbx</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>1</p>
+        </td>
+        <td>
+        <p>263.76</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$2.91</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Altair_egbx</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>1</p>
+        </td>
+        <td>
+        <p>81.62</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$0.90</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>dambreak_dx0001</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>1</p>
+        </td>
+        <td>
+        <p>413.15</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$4.56</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>dambreak_dx0002</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>1</p>
+        </td>
+        <td>
+        <p>59.58</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$0.66</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>cuboid_192^3</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>1</p>
+        </td>
+        <td>
+        <p>47.24</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$0.52</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>cuboid_198^3</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>1</p>
+        </td>
+        <td>
+        <p>51.73</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$0.57</p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <div class="overflow-table"><table><colgroup><col /><col /><col /><col /><col /><col /><col /></colgroup>
+        <tbody>
+        <tr>
+        <td>
+        <p>Azure VM Name</p>
+        </td>
+        <td>
+        <p>Model Name</p>
+        </td>
+        <td>
+        <p>Time Steps</p>
+        </td>
+        <td>
+        <p># GPU</p>
+        </td>
+        <td>
+        <p>Wall clock time in Sec</p>
+        </td>
+        <td>
+        <p>Azure VM Hourly Cost</p>
+        </td>
+        <td>
+        <p>Total Azure Cost</p>
+        </td>
+        </tr>
+        <tr>
+        <td rowspan="6">
+        <p>ND96asr_v4</p>
+        </td>
+        <td>
+        <p>Aero_gbx</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>2</p>
+        </td>
+        <td>
+        <p>149.49</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$1.65</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Altair_egbx</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>2</p>
+        </td>
+        <td>
+        <p>49.26</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$0.54</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>dambreak_dx0001</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>2</p>
+        </td>
+        <td>
+        <p>243.03</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$2.69</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>dambreak_dx0002</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>2</p>
+        </td>
+        <td>
+        <p>35.39</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$0.39</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>cuboid_192^3</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>2</p>
+        </td>
+        <td>
+        <p>24.90</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$0.28</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>cuboid_198^3</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>2</p>
+        </td>
+        <td>
+        <p>27.20</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$0.30</p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <div class="overflow-table"><table><colgroup><col /><col /><col /><col /><col /><col /><col /></colgroup>
+        <tbody>
+        <tr>
+        <td>
+        <p>Azure VM Name</p>
+        </td>
+        <td>
+        <p>Model Name</p>
+        </td>
+        <td>
+        <p>Time Steps</p>
+        </td>
+        <td>
+        <p># GPU</p>
+        </td>
+        <td>
+        <p>Wall clock time in Sec</p>
+        </td>
+        <td>
+        <p>Azure VM Hourly Cost</p>
+        </td>
+        <td>
+        <p>Total Azure Cost</p>
+        </td>
+        </tr>
+        <tr>
+        <td rowspan="6">
+        <p>ND96asr_v4</p>
+        </td>
+        <td>
+        <p>Aero_gbx</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>4</p>
+        </td>
+        <td>
+        <p>76.47</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$0.84</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Altair_egbx</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>4</p>
+        </td>
+        <td>
+        <p>28.88</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$0.32</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>dambreak_dx0001</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>4</p>
+        </td>
+        <td>
+        <p>125.56</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$1.39</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>dambreak_dx0002</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>4</p>
+        </td>
+        <td>
+        <p>19.90</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$0.22</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>cuboid_192^3</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>4</p>
+        </td>
+        <td>
+        <p>13.25</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$0.15</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>cuboid_198^3</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>4</p>
+        </td>
+        <td>
+        <p>14.41</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$0.16</p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <div class="overflow-table"><table><colgroup><col /><col /><col /><col /><col /><col /><col /></colgroup>
+        <tbody>
+        <tr>
+        <td>
+        <p>Azure VM Name</p>
+        </td>
+        <td>
+        <p>Model Name</p>
+        </td>
+        <td>
+        <p>Time Steps</p>
+        </td>
+        <td>
+        <p># GPU</p>
+        </td>
+        <td>
+        <p>Wall clock time in Sec</p>
+        </td>
+        <td>
+        <p>Azure VM Hourly Cost</p>
+        </td>
+        <td>
+        <p>Total Azure Cost</p>
+        </td>
+        </tr>
+        <tr>
+        <td rowspan="6">
+        <p>ND96asr_v4</p>
+        </td>
+        <td>
+        <p>Aero_gbx</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>8</p>
+        </td>
+        <td>
+        <p>44.04</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$0.49</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Altair_egbx</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>8</p>
+        </td>
+        <td>
+        <p>17.67</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$0.20</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>dambreak_dx0001</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>8</p>
+        </td>
+        <td>
+        <p>64.75</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$0.72</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>dambreak_dx0002</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>8</p>
+        </td>
+        <td>
+        <p>12.43</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$0.14</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>cuboid_192^3</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>8</p>
+        </td>
+        <td>
+        <p>7.75</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$0.09</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>cuboid_198^3</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>8</p>
+        </td>
+        <td>
+        <p>8.36</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$0.09</p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p>Note: The performance analysis is performed on a single instance VM and by changing GPU numbers through application. Hence the Hourly cost of the #8 GPU machine is used to calculate #1GPU, #2GPU and #4GPU as well.</p>
+        <div class="overflow-table"><table><colgroup><col /><col /><col /><col /><col /><col /><col /></colgroup>
+        <tbody>
+        <tr>
+        <td>
+        <p>Azure VM Name</p>
+        </td>
+        <td>
+        <p>Model Name</p>
+        </td>
+        <td>
+        <p>Time Steps</p>
+        </td>
+        <td>
+        <p># GPU</p>
+        </td>
+        <td>
+        <p>Wall clock time in Sec</p>
+        </td>
+        <td>
+        <p>Azure VM Hourly Cost</p>
+        </td>
+        <td>
+        <p>Total Azure Cost</p>
+        </td>
+        </tr>
+        <tr>
+        <td rowspan="4">
+        <p>NV12s v3</p>
+        </td>
+        <td>
+        <p>Aero_gbx</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>1</p>
+        </td>
+        <td>
+        <p>1712</p>
+        </td>
+        <td>
+        <p>$2.15</p>
+        </td>
+        <td>
+        <p>$1.02</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Altair_egbx</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>1</p>
+        </td>
+        <td>
+        <p>486</p>
+        </td>
+        <td>
+        <p>$2.15</p>
+        </td>
+        <td>
+        <p>$0.29</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>cuboid_192^3</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>1</p>
+        </td>
+        <td>
+        <p>291</p>
+        </td>
+        <td>
+        <p>$2.15</p>
+        </td>
+        <td>
+        <p>$0.17</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>dambreak_dx0002</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>1</p>
+        </td>
+        <td>
+        <p>376</p>
+        </td>
+        <td>
+        <p>$2.15</p>
+        </td>
+        <td>
+        <p>$0.22</p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p>Please note due to GPU memory requirement, few test cases didn&rsquo;t complete with Nvv3 with 1 GPU VM.</p>
+        <div class="overflow-table"><table><colgroup><col /><col /><col /><col /><col /><col /><col /></colgroup>
+        <tbody>
+        <tr>
+        <td>
+        <p>Azure VM Name</p>
+        </td>
+        <td>
+        <p>Model Name</p>
+        </td>
+        <td>
+        <p>Time Steps</p>
+        </td>
+        <td>
+        <p># GPU</p>
+        </td>
+        <td>
+        <p>Wall clock time in Sec</p>
+        </td>
+        <td>
+        <p>Azure VM Hourly Cost</p>
+        </td>
+        <td>
+        <p>Total Azure Cost</p>
+        </td>
+        </tr>
+        <tr>
+        <td rowspan="4">
+        <p>NV24s v3</p>
+        </td>
+        <td>
+        <p>Aero_gbx</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>2</p>
+        </td>
+        <td>
+        <p>962</p>
+        </td>
+        <td>
+        <p>$4.30</p>
+        </td>
+        <td>
+        <p>$1.15</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Altair_egbx</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>2</p>
+        </td>
+        <td>
+        <p>275</p>
+        </td>
+        <td>
+        <p>$4.30</p>
+        </td>
+        <td>
+        <p>$0.33</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>cuboid_192^3</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>2</p>
+        </td>
+        <td>
+        <p>150</p>
+        </td>
+        <td>
+        <p>$4.30</p>
+        </td>
+        <td>
+        <p>$0.18</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>dambreak_dx0002</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>2</p>
+        </td>
+        <td>
+        <p>213</p>
+        </td>
+        <td>
+        <p>$4.30</p>
+        </td>
+        <td>
+        <p>$0.25</p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <div class="overflow-table"><table><colgroup><col /><col /><col /><col /><col /><col /><col /></colgroup>
+        <tbody>
+        <tr>
+        <td>
+        <p>Azure VM Name</p>
+        </td>
+        <td>
+        <p>Model Name</p>
+        </td>
+        <td>
+        <p>Time Steps</p>
+        </td>
+        <td>
+        <p># GPU</p>
+        </td>
+        <td>
+        <p>Wall clock time in Sec</p>
+        </td>
+        <td>
+        <p>Azure VM Hourly Cost</p>
+        </td>
+        <td>
+        <p>Total Azure Cost</p>
+        </td>
+        </tr>
+        <tr>
+        <td rowspan="4">
+        <p>NV48s v3</p>
+        </td>
+        <td>
+        <p>Aero_gbx</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>4</p>
+        </td>
+        <td>
+        <p>475</p>
+        </td>
+        <td>
+        <p>$8.59</p>
+        </td>
+        <td>
+        <p>$1.13</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>Altair_egbx</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>4</p>
+        </td>
+        <td>
+        <p>153</p>
+        </td>
+        <td>
+        <p>$8.59</p>
+        </td>
+        <td>
+        <p>$0.37</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>cuboid_192^3</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>4</p>
+        </td>
+        <td>
+        <p>76</p>
+        </td>
+        <td>
+        <p>$8.59</p>
+        </td>
+        <td>
+        <p>$0.18</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>dambreak_dx0002</p>
+        </td>
+        <td>
+        <p>1000</p>
+        </td>
+        <td>
+        <p>4</p>
+        </td>
+        <td>
+        <p>110</p>
+        </td>
+        <td>
+        <p>$8.59</p>
+        </td>
+        <td>
+        <p>$0.26</p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p class="h1">6 <a name="_Toc85827890"></a>Summary</h1>
+        <p>1. Altair nanoFluidX is successfully deployed and tested on ND A100_v4 series VM and NVv3 M60 VM on Azure Platform.</p>
+        <p>2. Please refer following consolidation table of different test case by using different number of GPUs and associated lead time and Azure cost. It is evident that NDv4 VM better performing in terms of total lead time.</p>
+        <div class="overflow-table"><table><colgroup><col /><col /><col /><col /><col /><col /></colgroup>
+        <tbody>
+        <tr>
+        <td>
+        <p>Azure VM Name</p>
+        </td>
+        <td>
+        <p># of Test Cases</p>
+        </td>
+        <td>
+        <p># GPU</p>
+        </td>
+        <td>
+        <p>Wall clock time in Hrs</p>
+        </td>
+        <td>
+        <p>Azure VM Hr Cost ($)</p>
+        </td>
+        <td>
+        <p>Total Azure Cost ($)</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>ND96asr_v4</p>
+        </td>
+        <td>
+        <p>6</p>
+        </td>
+        <td>
+        <p>1</p>
+        </td>
+        <td>
+        <p>0.25</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$10.13</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>ND96asr_v4</p>
+        </td>
+        <td>
+        <p>6</p>
+        </td>
+        <td>
+        <p>2</p>
+        </td>
+        <td>
+        <p>0.15</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$5.85</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>ND96asr_v4</p>
+        </td>
+        <td>
+        <p>6</p>
+        </td>
+        <td>
+        <p>4</p>
+        </td>
+        <td>
+        <p>0.08</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$3.08</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>ND96asr_v4</p>
+        </td>
+        <td>
+        <p>6</p>
+        </td>
+        <td>
+        <p>8</p>
+        </td>
+        <td>
+        <p>0.04</p>
+        </td>
+        <td>
+        <p>$39.77</p>
+        </td>
+        <td>
+        <p>$1.71</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>NV12sV3</p>
+        </td>
+        <td>
+        <p>4</p>
+        </td>
+        <td>
+        <p>1</p>
+        </td>
+        <td>
+        <p>0.80</p>
+        </td>
+        <td>
+        <p>$2.15</p>
+        </td>
+        <td>
+        <p>$1.71</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>NV24sV3</p>
+        </td>
+        <td>
+        <p>4</p>
+        </td>
+        <td>
+        <p>2</p>
+        </td>
+        <td>
+        <p>0.44</p>
+        </td>
+        <td>
+        <p>$4.30</p>
+        </td>
+        <td>
+        <p>$1.91</p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p>NV48sV3</p>
+        </td>
+        <td>
+        <p>4</p>
+        </td>
+        <td>
+        <p>4</p>
+        </td>
+        <td>
+        <p>0.23</p>
+        </td>
+        <td>
+        <p>$8.59</p>
+        </td>
+        <td>
+        <p>$1.94</p>
+        </td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p>3. Any complex problems can be solved within an hour or few on Azure ND A100_v4 instance.</p>
+        <p>4. Expected speed-up is achieved with multi-GPUs.</p> 
+        
+      </div><!--content ends-->
+      
+     <div class="col-4 col-md-2 px-1 px-sm-0 toc">
+        <label class="px-3">Table of Contents</label>
+
+        <p><a href="#_Toc85827871">1 Introduction</a></p>
+<p><a href="#_Toc85827872">2 Deploying Virtual Machine on Azure Cloud Platform</a></p>
+<p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc85827873">2.1 Azure Cloud Architecture for Application</a></p>
+<p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc85827874">2.2 Azure Virtual Machine (VM)</a></p>
+<p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc85827875">2.3 Create a Virtual Machine on Azure Platform</a></p>
+<p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc85827876">2.4 Connect to virtual machine</a></p>
+<p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc85827877">2.5 Install Nvidia Drivers</a></p>
+<p><a href="#_Toc85827878">3 Install Altair nanoFluidX Application on Virtual Machine</a></p>
+<p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc85827879">3.1 Download product</a></p>
+<p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc85827880">3.2 Install Altair nanoFluidX application on Linux</a></p>
+<p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc85827881">3.3 License Manager installation</a></p>
+<p><a href="#_Toc85827882">4 Performance results of Altair nanoFluidX on azure virtual machine</a></p>
+<p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc85827883">4.1 Altair nanoFluidX Overview</a></p>
+<p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc85827884">4.1.1 Model Details</a></p>
+<p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc85827885">4.2 Altair nanoFluidX on Azure Platform</a></p>
+<p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc85827886">4.3 Altair nanoFluidX 2021.2 Performance Results on NDv4 A100</a></p>
+<p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc85827887">4.4 Altair nanoFluidX 2021.2 Performance Results on NVv3 M60</a></p>
+<p style="padding: 1pt 4pt; margin: 0pt 0pt 5pt 11pt;"><a href="#_Toc85827888">4.5 Altair nanoFluidX 2021.2 NDv4 A100 vs NVv3 M60</a></p>
+<p><a href="#_Toc85827889">5 Azure Cost</a></p>
+<p><a href="#_Toc85827890">6 Summary</a></p>
+     </div>
+
+    </div><!--rpt-->
+
+
+      </section>
+          
+      <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
+ 
+    </main>
+
+
+    <footer>
+      <div class="row g-0">		
+        <div class="container text-center mx-auto">
+        <div class="container px-3 d-flex justify-content-between flex-column flex-md-row-reverse my-auto">
+          <div>
+            <img src="img/MicrosoftLogo.png" class="footer-logo" alt="Microsoft Logo" />
+            <span class="logoline-bot1"></span> 
+            <span class="px-1 px-sm-2">
+              <img src="img/CapgeminiLogo.png" class="footer-logo" alt="Capgemini Logo" />
+            </span>
+      </div>
+            <div class="text-uppercase align-self-center pt-3 pt-md-2 footer-text">Copyright &copy; 2021 Azure HPC</div>
+          </div>
+        </div>
+      </div>
+      </footer>
+    </div><!--wrapper-->
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+    <script> 
+    
+      let mybutton = document.getElementById("btn-back-to-top");  
+      
+      // When the user clicks on the button, scroll to the top of the document
+      mybutton.addEventListener("click", backToTop);
+    
+    </script>
+    
+    </body>
+    </html>
